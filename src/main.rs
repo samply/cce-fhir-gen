@@ -1,16 +1,16 @@
-mod models;
 mod data_gen_svc;
+mod models;
 
 use chrono::prelude::*;
+use data_gen_svc::get_bundle;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::{serde::SerializeResource, xml};
-use data_gen_svc::get_bundle;
 
 fn main() {
     println!("Hello, world!");
     println!("");
-    
+
     use_fhir_models();
 }
 
@@ -39,7 +39,9 @@ fn use_fhir_models() {
     let s1 = s.clone();
     print_fhir_data(s, "specimen");
 
-    let c = data_gen_svc::get_condition(condition_id, patient_ref_id, "C34.0", "C34.0", Faker.fake());
+    let c =
+        data_gen_svc::get_condition(condition_id, patient_ref_id, "C34.0", "C34.0", Faker.fake());
+    let c1 = c.clone();
     print_fhir_data(c, "condition");
 
     let o = data_gen_svc::get_observation(
@@ -64,7 +66,15 @@ fn use_fhir_models() {
     );
     print_fhir_data(m, "medication statement");
 
-    let b = get_bundle("752", pt1, patient_ref_id, s1, speciment_ref_id);
+    let b = get_bundle(
+        "752",
+        pt1,
+        patient_ref_id,
+        s1,
+        speciment_ref_id,
+        c1,
+        condition_ref_id,
+    );
     print_fhir_data(b, "bundle");
 }
 

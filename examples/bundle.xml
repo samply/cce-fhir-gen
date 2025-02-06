@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+    <id value="752" />
+    <type value="transaction" />
+    <entry>
+        <fullUrl value="http://example.com/Patient-identifier-1" />
+        <resource>
+            <Patient>
+                <id value="Patient-identifier-1" />
+                <gender value="male" />
+                <birthDate value="1931-09-26" />
+            </Patient>
+        </resource>
+        <request>
+            <method value="PUT" />
+            <url value="Patient/Patient-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value="http://example.com/Specimen-identifier-1" />
+        <resource>
+            <Specimen>
+                <id value="Specimen-identifier-1" />
+                <type>
+                    <coding>
+                        <system
+                            value="https://www.cancercoreeurope.eu/fhir/CodeSystem/CodeSystem-cce-core-CodeSystem-SampleMaterialType" />
+                        <code value="csf-liquor" />
+                    </coding>
+                </type>
+                <subject>
+                    <reference value="Patient/Patient-identifier-1" />
+                </subject>
+                <collection>
+                    <collectedDateTime value="2021-02-02" />
+                </collection>
+            </Specimen>
+        </resource>
+        <request>
+            <method value="PUT" />
+            <url value="Specimen/Specimen-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value="http://example.com/Condition-identifier-1" />
+        <resource>
+            <Condition>
+                <id value="Condition-identifier-1" />
+                <code>
+                    <coding>
+                        <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm" />
+                        <version value="2004" />
+                        <code value="C34.0" />
+                    </coding>
+                </code>
+                <bodySite>
+                    <coding>
+                        <system value="urn:oid:2.16.840.1.113883.6.43.1" />
+                        <version value="31" />
+                        <code value="C34.0" />
+                    </coding>
+                    <coding>
+                        <system
+                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
+                        <code value="B" />
+                    </coding>
+                </bodySite>
+                <subject>
+                    <reference value="Patient/Patient-identifier-1" />
+                </subject>
+                <onsetDateTime value="2021-02-02" />
+                <recordedDate value="2021-02-02" />
+            </Condition>
+        </resource>
+        <request>
+            <method value="PUT" />
+            <url value="Condition/Condition-identifier-1" />
+        </request>
+    </entry>
+</Bundle>

@@ -1,4 +1,4 @@
-use chrono::{Local, Months, NaiveDate, TimeZone};
+use chrono::{Months, NaiveDate};
 use fhirbolt::model::r4b::resources::{
     Bundle, BundleEntry, BundleEntryRequest, Condition, ConditionOnset, MedicationStatement,
     MedicationStatementEffective, MedicationStatementMedication, Observation, ObservationEffective,
@@ -6,7 +6,7 @@ use fhirbolt::model::r4b::resources::{
     SpecimenCollection, SpecimenCollectionCollected,
 };
 use fhirbolt::model::r4b::types::{
-    Code, CodeableConcept, Coding, Date, DateTime, Id, Identifier, Period, Reference, Uri,
+    Code, CodeableConcept, Coding, Date, DateTime, Id, Period, Reference, Uri,
 };
 use fhirbolt::model::r4b::Resource;
 
@@ -19,23 +19,14 @@ use crate::models::enums::tumor_site_location::TumorSiteLocation;
 /// defined in fhirbolt crate.
 ///
 
-fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {
-    BundleEntryRequest {
-        method: Code {
-            value: Some(method.to_string()),
-            ..Default::default()
-        },
-        url: Uri::from(url),
-        ..Default::default()
-    }
-}
-
 pub fn get_bundle(
     id: &str,
     patient: Patient,
     patient_ref_id: &str,
     specimen: Specimen,
     speciment_ref_id: &str,
+    condition: Condition,
+    condition_ref_id: &str,
 ) -> Bundle {
     let id = Id {
         value: Some(id.to_string()),
@@ -45,6 +36,7 @@ pub fn get_bundle(
         value: Some("transaction".to_string()),
         ..Default::default()
     };
+
     let patient = BundleEntry {
         full_url: Some(get_full_url(
             patient.clone().id.unwrap().value.unwrap().as_str(),
@@ -53,6 +45,7 @@ pub fn get_bundle(
         request: Some(get_bundle_entry_request("PUT", patient_ref_id)),
         ..Default::default()
     };
+
     let specimen = BundleEntry {
         full_url: Some(get_full_url(
             specimen.clone().id.unwrap().value.unwrap().as_str(),
@@ -62,16 +55,21 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let condition = BundleEntry {
+        full_url: Some(get_full_url(
+            condition.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Condition(Box::new(condition.clone()))),
+        request: Some(get_bundle_entry_request("PUT", condition_ref_id)),
+        ..Default::default()
+    };
+
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![patient, specimen],
+        entry: vec![patient, specimen, condition],
         ..Default::default()
     }
-}
-
-fn get_full_url(id: &str) -> Uri {
-    Uri::from(format!("http://example.com/{}", id))
 }
 
 pub fn get_patient(id: &str, gender: Gender, birthdate: NaiveDate, deceased: bool) -> Patient {
@@ -355,4 +353,19 @@ pub fn get_med_statement(
         reason_reference: vec![reason_rfrnc],
         ..Default::default()
     }
+}
+
+fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {
+    BundleEntryRequest {
+        method: Code {
+            value: Some(method.to_string()),
+            ..Default::default()
+        },
+        url: Uri::from(url),
+        ..Default::default()
+    }
+}
+
+fn get_full_url(id: &str) -> Uri {
+    Uri::from(format!("http://example.com/{}", id))
 }
