@@ -1,0 +1,12 @@
+[package]
+name = "cce-fhir-gen"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.39"
+fake = { version = "3.1.0", features = ["derive", "chrono"] }
+fhirbolt = { version = "0.4", features = ["r4b"] }
+quick-xml = { version = "0.37.1", features = ["serialize"] }
+serde = { version = "1.0.217", features = ["derive"] }
+yaserde = { version = "0.12.0", features = ["derive"] }
