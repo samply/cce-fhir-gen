@@ -32,6 +32,8 @@ pub fn get_bundle(
     observation_ref_id: &str,
     procedure: Procedure,
     procedure_ref_id: &str,
+    med_stmt: MedicationStatement,
+    med_stmt_ref_id: &str,
 ) -> Bundle {
     let id = Id {
         value: Some(id.to_string()),
@@ -87,10 +89,19 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let med_stmt = BundleEntry {
+        full_url: Some(get_full_url(
+            med_stmt.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::MedicationStatement(Box::new(med_stmt.clone()))),
+        request: Some(get_bundle_entry_request("PUT", med_stmt_ref_id)),
+        ..Default::default()
+    };
+
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![patient, specimen, condition, observation, procedure],
+        entry: vec![patient, specimen, condition, observation, procedure, med_stmt],
         ..Default::default()
     }
 }
@@ -318,7 +329,7 @@ pub fn get_med_statement(
     med_ref: &str,
     sub_ref: &str,
     reason_ref: &str,
-    code_value: &str,
+    therapy_type: SystTherapyType,
     start: &str,
     end: &str,
 ) -> MedicationStatement {
@@ -347,7 +358,7 @@ pub fn get_med_statement(
         system: Some(Uri::from(
             "https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS",
         )),
-        code: Some(Code::from(code_value)),
+        code: Some(Code::from(therapy_type.to_string())),
         ..Default::default()
     };
     let cod_concept = CodeableConcept {

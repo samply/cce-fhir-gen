@@ -31,6 +31,9 @@ fn use_fhir_models() {
     let procedure_id = "Procedure-identifier-1";
     let procedure_ref_id = "Procedure/Procedure-identifier-1";
 
+    let med_stmt_id = "SystemicTherapy-identifier-1";
+    let med_stmt_ref_id = "MedicationStatement/SystemicTherapy-identifier-1";
+
     // let sample_id = "Sample-identifier-1";
     // let operation_id = "Operation-identifier-1";
 
@@ -72,14 +75,15 @@ fn use_fhir_models() {
     print_fhir_data(p, "procedure");
 
     let m = data_gen_svc::get_med_statement(
-        "SystemicTherapy-identifier-1",
+        med_stmt_id,
         "medicine",
         patient_ref_id,
         condition_ref_id,
-        "OP",
+        Faker.fake(),
         "2021-06-12",
         "2021-06-21",
     );
+    let m1 = m.clone();
     print_fhir_data(m, "medication statement");
 
     let b = get_bundle(
@@ -94,6 +98,8 @@ fn use_fhir_models() {
         observation_ref_id,
         p1,
         procedure_ref_id,
+        m1,
+        med_stmt_ref_id
     );
     print_fhir_data(b, "bundle");
 }
