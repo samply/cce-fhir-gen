@@ -12,6 +12,7 @@ use fhirbolt::model::r4b::Resource;
 
 use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
+use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
 
 ///
@@ -29,6 +30,8 @@ pub fn get_bundle(
     condition_ref_id: &str,
     observation: Observation,
     observation_ref_id: &str,
+    procedure: Procedure,
+    procedure_ref_id: &str,
 ) -> Bundle {
     let id = Id {
         value: Some(id.to_string()),
@@ -75,10 +78,19 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let procedure = BundleEntry {
+        full_url: Some(get_full_url(
+            procedure.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Procedure(Box::new(procedure.clone()))),
+        request: Some(get_bundle_entry_request("PUT", procedure_ref_id)),
+        ..Default::default()
+    };
+
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![patient, specimen, condition, observation],
+        entry: vec![patient, specimen, condition, observation, procedure],
         ..Default::default()
     }
 }
@@ -212,7 +224,7 @@ pub fn get_condition(
     }
 }
 
-pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, code_value: &str) -> Observation {
+pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, effective_date: NaiveDate, code_value: &str) -> Observation {
     // TODO: check date, code etc.
     let oid = Id {
         value: Some(id.to_string()),
@@ -227,7 +239,7 @@ pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, code_value: &st
         ..Default::default()
     };
     let effective = DateTime {
-        value: Some("2021-02-02".to_string()),
+        value: Some(effective_date.to_string()),
         ..Default::default()
     };
     let coding = Coding {
@@ -256,7 +268,7 @@ pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, code_value: &st
     }
 }
 
-pub fn get_procedure(id: &str, sub_ref: &str, reason_ref: &str, code_value: &str) -> Procedure {
+pub fn get_procedure(id: &str, sub_ref: &str, reason_ref: &str, effective_date: NaiveDate, therapy_type: SystTherapyType) -> Procedure {
     let pid = Id {
         value: Some(id.to_string()),
         ..Default::default()
@@ -274,15 +286,15 @@ pub fn get_procedure(id: &str, sub_ref: &str, reason_ref: &str, code_value: &str
         ..Default::default()
     };
     let effective = DateTime {
-        value: Some("2021-02-02".to_string()),
+        value: Some(effective_date.to_string()),
         ..Default::default()
     };
     let coding = Coding {
         system: Some(Uri::from(
             "https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS",
         )),
-        code: Some(Code::from(code_value)),
-        display: Some("Operation".into()),
+        code: Some(Code::from(therapy_type.to_string())),
+        display: Some(therapy_type.as_str().into()),
         ..Default::default()
     };
     let cod_concept = CodeableConcept {

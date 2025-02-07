@@ -28,8 +28,11 @@ fn use_fhir_models() {
     let observation_id = "Histology-identifier-1";
     let observation_ref_id = "Observation/Histology-identifier-1";
 
+    let procedure_id = "Procedure-identifier-1";
+    let procedure_ref_id = "Procedure/Procedure-identifier-1";
+
     // let sample_id = "Sample-identifier-1";
-    let operation_id = "Operation-identifier-1";
+    // let operation_id = "Operation-identifier-1";
 
     let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
     let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
@@ -51,12 +54,21 @@ fn use_fhir_models() {
         observation_id,
         patient_ref_id,
         condition_ref_id,
+        Faker.fake(),
         "8140/3",
     );
     let o1 = o.clone();
     print_fhir_data(o, "observation");
 
-    let p = data_gen_svc::get_procedure(operation_id, patient_ref_id, condition_ref_id, "OP");
+    let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let p = data_gen_svc::get_procedure(
+        procedure_id,
+        patient_ref_id,
+        condition_ref_id,
+        ed.date_naive(),
+        Faker.fake(),
+    );
+    let p1 = p.clone();
     print_fhir_data(p, "procedure");
 
     let m = data_gen_svc::get_med_statement(
@@ -79,7 +91,9 @@ fn use_fhir_models() {
         c1,
         condition_ref_id,
         o1,
-        observation_ref_id
+        observation_ref_id,
+        p1,
+        procedure_ref_id,
     );
     print_fhir_data(b, "bundle");
 }

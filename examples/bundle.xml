@@ -7,9 +7,8 @@
         <resource>
             <Patient>
                 <id value="Patient-identifier-1" />
-                <gender value="male" />
-                <birthDate value="1930-06-12" />
-                <deceasedDateTime value="1980-06-12" />
+                <gender value="female" />
+                <birthDate value="1931-09-21" />
             </Patient>
         </resource>
         <request>
@@ -26,7 +25,7 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/CodeSystem/CodeSystem-cce-core-CodeSystem-SampleMaterialType" />
-                        <code value="cf-dna" />
+                        <code value="normal-tissue-frozen" />
                     </coding>
                 </type>
                 <subject>
@@ -63,7 +62,7 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
-                        <code value="L" />
+                        <code value="R" />
                     </coding>
                 </bodySite>
                 <subject>
@@ -93,7 +92,7 @@
                 <focus>
                     <reference value="Condition/Condition-identifier-1" />
                 </focus>
-                <effectiveDateTime value="2021-02-02" />
+                <effectiveDateTime value="1235-02-20" />
                 <valueCodeableConcept>
                     <coding>
                         <system value="urn:oid:2.16.840.1.113883.6.43.1" />
@@ -106,6 +105,34 @@
         <request>
             <method value="PUT" />
             <url value="Observation/Histology-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value="http://example.com/Procedure-identifier-1" />
+        <resource>
+            <Procedure>
+                <id value="Procedure-identifier-1" />
+                <status id="successful" />
+                <category>
+                    <coding>
+                        <system
+                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
+                        <code value="SO" />
+                        <display value="Miscellaneous" />
+                    </coding>
+                </category>
+                <subject>
+                    <reference value="Patient/Patient-identifier-1" />
+                </subject>
+                <performedDateTime value="1930-01-21" />
+                <reasonReference>
+                    <reference value="Condition/Condition-identifier-1" />
+                </reasonReference>
+            </Procedure>
+        </resource>
+        <request>
+            <method value="PUT" />
+            <url value="Procedure/Procedure-identifier-1" />
         </request>
     </entry>
 </Bundle>
