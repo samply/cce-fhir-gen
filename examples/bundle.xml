@@ -8,7 +8,8 @@
             <Patient>
                 <id value="Patient-identifier-1" />
                 <gender value="male" />
-                <birthDate value="1931-09-26" />
+                <birthDate value="1930-06-12" />
+                <deceasedDateTime value="1980-06-12" />
             </Patient>
         </resource>
         <request>
@@ -25,7 +26,7 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/CodeSystem/CodeSystem-cce-core-CodeSystem-SampleMaterialType" />
-                        <code value="csf-liquor" />
+                        <code value="cf-dna" />
                     </coding>
                 </type>
                 <subject>
@@ -62,7 +63,7 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
-                        <code value="B" />
+                        <code value="L" />
                     </coding>
                 </bodySite>
                 <subject>
@@ -75,6 +76,36 @@
         <request>
             <method value="PUT" />
             <url value="Condition/Condition-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value="http://example.com/Histology-identifier-1" />
+        <resource>
+            <Observation>
+                <id value="Histology-identifier-1" />
+                <status value="final" />
+                <code>
+                    <text value="some code" />
+                </code>
+                <subject>
+                    <reference value="Patient/Patient-identifier-1" />
+                </subject>
+                <focus>
+                    <reference value="Condition/Condition-identifier-1" />
+                </focus>
+                <effectiveDateTime value="2021-02-02" />
+                <valueCodeableConcept>
+                    <coding>
+                        <system value="urn:oid:2.16.840.1.113883.6.43.1" />
+                        <version value="31" />
+                        <code value="8140/3" />
+                    </coding>
+                </valueCodeableConcept>
+            </Observation>
+        </resource>
+        <request>
+            <method value="PUT" />
+            <url value="Observation/Histology-identifier-1" />
         </request>
     </entry>
 </Bundle>

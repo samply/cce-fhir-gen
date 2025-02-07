@@ -24,9 +24,11 @@ pub fn get_bundle(
     patient: Patient,
     patient_ref_id: &str,
     specimen: Specimen,
-    speciment_ref_id: &str,
+    specimen_ref_id: &str,
     condition: Condition,
     condition_ref_id: &str,
+    observation: Observation,
+    observation_ref_id: &str,
 ) -> Bundle {
     let id = Id {
         value: Some(id.to_string()),
@@ -51,7 +53,7 @@ pub fn get_bundle(
             specimen.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::Specimen(Box::new(specimen.clone()))),
-        request: Some(get_bundle_entry_request("PUT", speciment_ref_id)),
+        request: Some(get_bundle_entry_request("PUT", specimen_ref_id)),
         ..Default::default()
     };
 
@@ -64,10 +66,19 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let observation = BundleEntry {
+        full_url: Some(get_full_url(
+            observation.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Observation(Box::new(observation.clone()))),
+        request: Some(get_bundle_entry_request("PUT", observation_ref_id)),
+        ..Default::default()
+    };
+
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![patient, specimen, condition],
+        entry: vec![patient, specimen, condition, observation],
         ..Default::default()
     }
 }
@@ -202,6 +213,7 @@ pub fn get_condition(
 }
 
 pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, code_value: &str) -> Observation {
+    // TODO: check date, code etc.
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()

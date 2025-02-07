@@ -22,8 +22,11 @@ fn use_fhir_models() {
     let condition_id = "Condition-identifier-1";
     let condition_ref_id = "Condition/Condition-identifier-1";
 
-    let speciment_id = "Specimen-identifier-1";
-    let speciment_ref_id = "Specimen/Specimen-identifier-1";
+    let specimen_id = "Specimen-identifier-1";
+    let specimen_ref_id = "Specimen/Specimen-identifier-1";
+
+    let observation_id = "Histology-identifier-1";
+    let observation_ref_id = "Observation/Histology-identifier-1";
 
     // let sample_id = "Sample-identifier-1";
     let operation_id = "Operation-identifier-1";
@@ -35,7 +38,7 @@ fn use_fhir_models() {
     let pt1 = pt.clone();
     print_fhir_data(pt, "patient");
 
-    let s = data_gen_svc::get_specimen(speciment_id, patient_ref_id, Faker.fake());
+    let s = data_gen_svc::get_specimen(specimen_id, patient_ref_id, Faker.fake());
     let s1 = s.clone();
     print_fhir_data(s, "specimen");
 
@@ -45,11 +48,12 @@ fn use_fhir_models() {
     print_fhir_data(c, "condition");
 
     let o = data_gen_svc::get_observation(
-        "Histology-identifier-1",
+        observation_id,
         patient_ref_id,
         condition_ref_id,
         "8140/3",
     );
+    let o1 = o.clone();
     print_fhir_data(o, "observation");
 
     let p = data_gen_svc::get_procedure(operation_id, patient_ref_id, condition_ref_id, "OP");
@@ -71,9 +75,11 @@ fn use_fhir_models() {
         pt1,
         patient_ref_id,
         s1,
-        speciment_ref_id,
+        specimen_ref_id,
         c1,
         condition_ref_id,
+        o1,
+        observation_ref_id
     );
     print_fhir_data(b, "bundle");
 }
