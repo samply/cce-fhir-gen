@@ -14,6 +14,7 @@ use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
+use crate::utils::{get_bundle_entry_request, get_full_url};
 
 ///
 /// A service with methods that generate XML using the domain model classes
@@ -388,19 +389,4 @@ pub fn get_med_statement(
         reason_reference: vec![reason_rfrnc],
         ..Default::default()
     }
-}
-
-fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {
-    BundleEntryRequest {
-        method: Code {
-            value: Some(method.to_string()),
-            ..Default::default()
-        },
-        url: Uri::from(url),
-        ..Default::default()
-    }
-}
-
-fn get_full_url(id: &str) -> Uri {
-    Uri::from(format!("http://example.com/{}", id))
 }
