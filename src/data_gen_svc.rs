@@ -1,6 +1,6 @@
 use chrono::{Months, NaiveDate};
 use fhirbolt::model::r4b::resources::{
-    Bundle, BundleEntry, BundleEntryRequest, Condition, ConditionOnset, MedicationStatement,
+    Bundle, BundleEntry, Condition, ConditionOnset, MedicationStatement,
     MedicationStatementEffective, MedicationStatementMedication, Observation, ObservationEffective,
     ObservationValue, Patient, PatientDeceased, Procedure, ProcedurePerformed, Specimen,
     SpecimenCollection, SpecimenCollectionCollected,
@@ -10,6 +10,7 @@ use fhirbolt::model::r4b::types::{
 };
 use fhirbolt::model::r4b::Resource;
 
+use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
@@ -50,7 +51,7 @@ pub fn get_bundle(
             patient.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::Patient(Box::new(patient.clone()))),
-        request: Some(get_bundle_entry_request("PUT", patient_ref_id)),
+        request: get_bundle_entry_request("PUT", patient_ref_id).into_some(),
         ..Default::default()
     };
 
@@ -59,7 +60,7 @@ pub fn get_bundle(
             specimen.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::Specimen(Box::new(specimen.clone()))),
-        request: Some(get_bundle_entry_request("PUT", specimen_ref_id)),
+        request: get_bundle_entry_request("PUT", specimen_ref_id).into_some(),
         ..Default::default()
     };
 
@@ -68,7 +69,7 @@ pub fn get_bundle(
             condition.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::Condition(Box::new(condition.clone()))),
-        request: Some(get_bundle_entry_request("PUT", condition_ref_id)),
+        request: get_bundle_entry_request("PUT", condition_ref_id).into_some(),
         ..Default::default()
     };
 
@@ -77,7 +78,7 @@ pub fn get_bundle(
             observation.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::Observation(Box::new(observation.clone()))),
-        request: Some(get_bundle_entry_request("PUT", observation_ref_id)),
+        request: get_bundle_entry_request("PUT", observation_ref_id).into_some(),
         ..Default::default()
     };
 
@@ -86,7 +87,7 @@ pub fn get_bundle(
             procedure.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::Procedure(Box::new(procedure.clone()))),
-        request: Some(get_bundle_entry_request("PUT", procedure_ref_id)),
+        request: get_bundle_entry_request("PUT", procedure_ref_id).into_some(),
         ..Default::default()
     };
 
@@ -95,14 +96,21 @@ pub fn get_bundle(
             med_stmt.clone().id.unwrap().value.unwrap().as_str(),
         )),
         resource: Some(Resource::MedicationStatement(Box::new(med_stmt.clone()))),
-        request: Some(get_bundle_entry_request("PUT", med_stmt_ref_id)),
+        request: get_bundle_entry_request("PUT", med_stmt_ref_id).into_some(),
         ..Default::default()
     };
 
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![patient, specimen, condition, observation, procedure, med_stmt],
+        entry: vec![
+            patient,
+            specimen,
+            condition,
+            observation,
+            procedure,
+            med_stmt,
+        ],
         ..Default::default()
     }
 }
@@ -236,7 +244,13 @@ pub fn get_condition(
     }
 }
 
-pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, effective_date: NaiveDate, code_value: &str) -> Observation {
+pub fn get_observation(
+    id: &str,
+    sub_ref: &str,
+    focus_ref: &str,
+    effective_date: NaiveDate,
+    code_value: &str,
+) -> Observation {
     // TODO: check date, code etc.
     let oid = Id {
         value: Some(id.to_string()),
@@ -280,7 +294,13 @@ pub fn get_observation(id: &str, sub_ref: &str, focus_ref: &str, effective_date:
     }
 }
 
-pub fn get_procedure(id: &str, sub_ref: &str, reason_ref: &str, effective_date: NaiveDate, therapy_type: SystTherapyType) -> Procedure {
+pub fn get_procedure(
+    id: &str,
+    sub_ref: &str,
+    reason_ref: &str,
+    effective_date: NaiveDate,
+    therapy_type: SystTherapyType,
+) -> Procedure {
     let pid = Id {
         value: Some(id.to_string()),
         ..Default::default()

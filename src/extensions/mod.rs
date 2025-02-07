@@ -1,2 +1,2 @@
-mod option_ext;
-mod result_ext;
+pub mod option_ext;
+pub mod result_ext;
