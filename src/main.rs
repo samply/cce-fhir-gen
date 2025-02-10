@@ -5,9 +5,10 @@ mod utils;
 
 use chrono::prelude::*;
 use data_gen_svc::get_bundle;
+use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
-use utils::print_fhir_data;
+use utils::{get_ids, print_fhir_data};
 
 fn main() {
     println!("Hello, world!");
@@ -18,47 +19,45 @@ fn main() {
 
 fn use_fhir_models() {
     // Use Default::default() or constructing new resources by yourself
-    let patient_id = "Patient-identifier-1";
-    let patient_ref_id = "Patient/Patient-identifier-1";
-
-    let condition_id = "Condition-identifier-1";
-    let condition_ref_id = "Condition/Condition-identifier-1";
-
-    let specimen_id = "Specimen-identifier-1";
-    let specimen_ref_id = "Specimen/Specimen-identifier-1";
-
-    let observation_id = "Histology-identifier-1";
-    let observation_ref_id = "Observation/Histology-identifier-1";
-
-    let procedure_id = "Procedure-identifier-1";
-    let procedure_ref_id = "Procedure/Procedure-identifier-1";
-
-    let med_stmt_id = "SystemicTherapy-identifier-1";
-    let med_stmt_ref_id = "MedicationStatement/SystemicTherapy-identifier-1";
-
-    // let sample_id = "Sample-identifier-1";
-    // let operation_id = "Operation-identifier-1";
+    let i: i8 = Faker.fake();
+    let (patient_id, patient_ref_id) = get_ids(None, "Patient", i);
+    let (condition_id, condition_ref_id) = get_ids(None, "Condition", i);
+    let (specimen_id, specimen_ref_id) = get_ids(None, "Specimen", i);
+    let (observation_id, observation_ref_id) = get_ids("Observation".into_some(), "Histology", i);
+    let (procedure_id, procedure_ref_id) = get_ids(None, "Procedure", i);
+    let (med_stmt_id, med_stmt_ref_id) =
+        get_ids("MedicationStatement".into_some(), "SystemicTherapy", i);
 
     let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
     let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
-    let pt = data_gen_svc::get_patient(patient_id, Faker.fake(), bd.date_naive(), Faker.fake());
+    let pt = data_gen_svc::get_patient(
+        patient_id.as_str(),
+        Faker.fake(),
+        bd.date_naive(),
+        Faker.fake(),
+    );
     let pt1 = pt.clone();
     print_fhir_data(pt, "patient");
 
-    let s = data_gen_svc::get_specimen(specimen_id, patient_ref_id, Faker.fake());
+    let s = data_gen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
     let s1 = s.clone();
     print_fhir_data(s, "specimen");
 
-    let c =
-        data_gen_svc::get_condition(condition_id, patient_ref_id, "C34.0", "C34.0", Faker.fake());
+    let c = data_gen_svc::get_condition(
+        condition_id.as_str(),
+        patient_ref_id.as_str(),
+        "C34.0",
+        "C34.0",
+        Faker.fake(),
+    );
     let c1 = c.clone();
     print_fhir_data(c, "condition");
 
     let o = data_gen_svc::get_observation(
-        observation_id,
-        patient_ref_id,
-        condition_ref_id,
+        observation_id.as_str(),
+        patient_ref_id.as_str(),
+        condition_ref_id.as_str(),
         Faker.fake(),
         "8140/3",
     );
@@ -67,9 +66,9 @@ fn use_fhir_models() {
 
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let p = data_gen_svc::get_procedure(
-        procedure_id,
-        patient_ref_id,
-        condition_ref_id,
+        procedure_id.as_str(),
+        patient_ref_id.as_str(),
+        condition_ref_id.as_str(),
         ed.date_naive(),
         Faker.fake(),
     );
@@ -77,10 +76,10 @@ fn use_fhir_models() {
     print_fhir_data(p, "procedure");
 
     let m = data_gen_svc::get_med_statement(
-        med_stmt_id,
+        med_stmt_id.as_str(),
         "medicine",
-        patient_ref_id,
-        condition_ref_id,
+        patient_ref_id.as_str(),
+        condition_ref_id.as_str(),
         Faker.fake(),
         "2021-06-12",
         "2021-06-21",
@@ -90,12 +89,12 @@ fn use_fhir_models() {
 
     let b = get_bundle(
         "752",
-        (pt1, patient_ref_id),
-        (s1, specimen_ref_id),
-        (c1, condition_ref_id),
-        (o1, observation_ref_id),
-        (p1, procedure_ref_id),
-        (m1, med_stmt_ref_id),
+        (pt1, patient_ref_id.as_str()),
+        (s1, specimen_ref_id.as_str()),
+        (c1, condition_ref_id.as_str()),
+        (o1, observation_ref_id.as_str()),
+        (p1, procedure_ref_id.as_str()),
+        (m1, med_stmt_ref_id.as_str()),
     );
     print_fhir_data(b, "bundle");
 }

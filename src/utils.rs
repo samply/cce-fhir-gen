@@ -35,3 +35,15 @@ where
     println!("{name}: {serialized_data:#?}");
     println!("");
 }
+
+pub fn get_ids(res_group: Option<&str>, res_type: &str, i: i8) -> (String, String) {
+    let id = format!("{res_type}-identifier-{}", i);
+
+    let ref_id = if res_group.is_some() {
+        format!("{}/{}", res_group.unwrap(), id)
+    } else {
+        format!("{res_type}/{}", id)
+    };
+    
+    (id, ref_id)
+}
