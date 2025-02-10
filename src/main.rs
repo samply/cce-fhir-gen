@@ -7,7 +7,7 @@ use chrono::prelude::*;
 use data_gen_svc::get_bundle;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
-use fhirbolt::{serde::SerializeResource, xml};
+use utils::print_fhir_data;
 
 fn main() {
     println!("Hello, world!");
@@ -90,27 +90,12 @@ fn use_fhir_models() {
 
     let b = get_bundle(
         "752",
-        pt1,
-        patient_ref_id,
-        s1,
-        specimen_ref_id,
-        c1,
-        condition_ref_id,
-        o1,
-        observation_ref_id,
-        p1,
-        procedure_ref_id,
-        m1,
-        med_stmt_ref_id
+        (pt1, patient_ref_id),
+        (s1, specimen_ref_id),
+        (c1, condition_ref_id),
+        (o1, observation_ref_id),
+        (p1, procedure_ref_id),
+        (m1, med_stmt_ref_id),
     );
     print_fhir_data(b, "bundle");
-}
-
-fn print_fhir_data<T>(t: T, name: &str)
-where
-    T: SerializeResource,
-{
-    let serialized_data = xml::to_string(&t, None).unwrap();
-    println!("{name}: {serialized_data:#?}");
-    println!("");
 }
