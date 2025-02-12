@@ -47,3 +47,15 @@ pub fn get_ids(res_group: Option<&str>, res_type: &str, i: i8) -> (String, Strin
     
     (id, ref_id)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_get_ids() {
+        let (bundle_id, bundle_ref_id) = get_ids(None, "Bundle", 1);
+        assert_eq!(bundle_id, "Bundle-identifier-1", "id does not match");
+        assert_eq!(bundle_ref_id, "Bundle/Bundle-identifier-1", "ref id does not match");
+    }
+}

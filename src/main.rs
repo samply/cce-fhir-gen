@@ -20,6 +20,7 @@ fn main() {
 fn use_fhir_models() {
     // Use Default::default() or constructing new resources by yourself
     let i: i8 = Faker.fake();
+    let (bundle_id, _) = get_ids(None, "Bundle", i);
     let (patient_id, patient_ref_id) = get_ids(None, "Patient", i);
     let (condition_id, condition_ref_id) = get_ids(None, "Condition", i);
     let (specimen_id, specimen_ref_id) = get_ids(None, "Specimen", i);
@@ -88,7 +89,7 @@ fn use_fhir_models() {
     print_fhir_data(m, "medication statement");
 
     let b = get_bundle(
-        "752",
+        bundle_id.as_str(),
         (pt1, patient_ref_id.as_str()),
         (s1, specimen_ref_id.as_str()),
         (c1, condition_ref_id.as_str()),
