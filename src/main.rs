@@ -25,12 +25,14 @@ fn use_fhir_models() {
     let (condition_id, condition_ref_id) = get_ids(None, "Condition", i);
     let (specimen_id, specimen_ref_id) = get_ids(None, "Specimen", i);
     let (observation_id, observation_ref_id) = get_ids("Observation".into_some(), "Histology", i);
+    let (vital_status_id, vital_status_ref_id) = get_ids("Observation".into_some(), "VitalStatus", i);
     let (procedure_id, procedure_ref_id) = get_ids(None, "Procedure", i);
     let (med_stmt_id, med_stmt_ref_id) =
         get_ids("MedicationStatement".into_some(), "SystemicTherapy", i);
 
     let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
     let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let od: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let pt = data_gen_svc::get_patient(
         patient_id.as_str(),
@@ -59,11 +61,20 @@ fn use_fhir_models() {
         observation_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
-        Faker.fake(),
+        od.date_naive(),
         "8140/3",
     );
     let o1 = o.clone();
     print_fhir_data(o, "observation");
+
+    let v = data_gen_svc::get_vital_status(
+        vital_status_id.as_str(),
+        patient_ref_id.as_str(),
+        od.date_naive(),
+        Faker.fake(),
+    );
+    let v1 = v.clone();
+    print_fhir_data(v, "vitalstatus");
 
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let p = data_gen_svc::get_procedure(
@@ -94,6 +105,7 @@ fn use_fhir_models() {
         (s1, specimen_ref_id.as_str()),
         (c1, condition_ref_id.as_str()),
         (o1, observation_ref_id.as_str()),
+        (v1, vital_status_ref_id.as_str()),
         (p1, procedure_ref_id.as_str()),
         (m1, med_stmt_ref_id.as_str()),
     );

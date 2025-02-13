@@ -15,6 +15,7 @@ use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
+use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{get_bundle_entry_request, get_full_url};
 
 ///
@@ -28,6 +29,7 @@ pub fn get_bundle(
     specimen_tuple: (Specimen, &str),
     condition_tuple: (Condition, &str),
     observation_tuple: (Observation, &str),
+    vital_status_tuple: (Observation, &str),
     procedure_tuple: (Procedure, &str),
     med_stmt_tuple: (MedicationStatement, &str),
 ) -> Bundle {
@@ -76,6 +78,15 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let vital_status = BundleEntry {
+        full_url: Some(get_full_url(
+            vital_status_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Observation(Box::new(vital_status_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", vital_status_tuple.1).into_some(),
+        ..Default::default()
+    };
+
     let procedure = BundleEntry {
         full_url: Some(get_full_url(
             procedure_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
@@ -102,6 +113,7 @@ pub fn get_bundle(
             specimen,
             condition,
             observation,
+            vital_status,
             procedure,
             med_stmt,
         ],
@@ -278,12 +290,66 @@ pub fn get_observation(
         subject: Some(Box::new(sub_rfrnc)),
         focus: vec![focus_rfrnc],
         effective: Some(ObservationEffective::DateTime(effective)),
+        // NOTE: status is required by the FHIR lib
         status: "final".into(),
         value: Some(ObservationValue::CodeableConcept(Box::new(cod_concept))),
         code: Box::new(CodeableConcept {
             text: Some("some code".into()),
             ..Default::default()
         }),
+        ..Default::default()
+    }
+}
+
+pub fn get_vital_status(
+    id: &str,
+    sub_ref: &str,
+    effective_date: NaiveDate,
+    code_value: VitalStatus,
+) -> Observation {
+    // NOTE: VitalStatus is also an Observation
+    // TODO: check date, code etc.
+    let oid = Id {
+        value: Some(id.to_string()),
+        ..Default::default()
+    };
+    let sub_rfrnc = Reference {
+        reference: Some(sub_ref.into()),
+        ..Default::default()
+    };
+    let effective = DateTime {
+        value: Some(effective_date.to_string()),
+        ..Default::default()
+    };
+    let coding = Coding {
+        system: Some(Uri::from("https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS")),
+        // version: Some("31".into()),
+        code: Some(Code::from(code_value.as_str())),
+        ..Default::default()
+    };
+    let cod_concept = CodeableConcept {
+        coding: vec![coding],
+        ..Default::default()
+    };
+    let loinc_coding = Coding {
+        system: Some(Uri::from("https://loinc.org")),
+        // version: Some("31".into()),
+        code: Some(Code::from("75186-7")),
+        ..Default::default()
+    };
+    let loinc_cod_concept = CodeableConcept {
+        coding: vec![loinc_coding],
+        ..Default::default()
+    };
+
+    Observation {
+        r#id: Some(oid),
+        subject: Some(Box::new(sub_rfrnc)),
+        effective: Some(ObservationEffective::DateTime(effective)),
+        // NOTE: status is required by the FHIR lib
+        status: "final".into(),
+        value: Some(ObservationValue::CodeableConcept(Box::new(cod_concept))),
+        code: Box::new(loinc_cod_concept),
         ..Default::default()
     }
 }

@@ -1,0 +1,211 @@
+<Bundle xmlns= "http://hl7.org/fhir">
+    <id value= "752" />
+    <type value= "transaction" />
+    <entry>
+        <fullUrl value= "http://example.com/Patient/Patient-identifier-1" />
+        <resource>
+            <Patient>
+                <id value= "Patient-identifier-1" />
+                <identifier>
+                    <type>
+                        <coding>
+                            <system
+                                value= "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/PseudonymArtCS" />
+                            <code value= "Lokal" />
+                        </coding>
+                    </type>
+                    <value
+                        value= "GR_VDC_1" />
+                </identifier>
+                <gender value= "male" />
+                <birthDate
+                    value= "1980-01-01" />
+            </Patient>
+        </resource>
+        <request>
+            <method value= "PUT" />
+            <url value= "Patient/Patient-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value= "http://example.com/Specimen/Sample-identifier-1" />
+        <resource>
+            <Specimen>
+                <id value= "Sample-identifier-1" />
+                <type>
+                    <coding>
+                        <system
+                            value= "https://fhir.bbmri.de/CodeSystem/SampleMaterialType" />
+                        <code value= "tumor-tissue-ffpe" />
+                    </coding>
+                </type>
+                <subject>
+                    <reference value= "Patient/Patient-identifier-1" />
+                </subject>
+                <collection>
+                    <collectedDateTime
+                        value= "2021-01-01" />
+                </collection>
+            </Specimen>
+        </resource>
+        <request>
+            <method value= "PUT" />
+            <url value= "Specimen/Sample-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value= "http://example.com/Condition/Condition-identifier-1" />
+        <resource>
+            <Condition>
+                <id value= "Condition-identifier-1" />
+                <code>
+                    <coding>
+                        <system value= "http://fhir.de/CodeSystem/bfarm/icd-10-gm" />
+                        <version value= "2004" />
+                        <code value= "C34.0" />
+                    </coding>
+                </code>
+                <bodySite>
+                    <coding>
+                        <system value= "urn:oid:2.16.840.1.113883.6.43.1" />
+                        <version value= "31" />
+                        <code value= "C34.0" />
+                    </coding>
+                    <coding>
+                        <system
+                            value= "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SeitenlokalisationCS" />
+                        <code value= "L" />
+                    </coding>
+                </bodySite>
+                <subject>
+                    <reference value= "Patient/Patient-identifier-1" />
+                </subject>
+                <onsetDateTime value= "2021-03-12" />
+                <recordedDate value= "2022-03-12" />
+            </Condition>
+        </resource>
+        <request>
+            <method value= "PUT" />
+            <url value= "Condition/Condition-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value= "http://example.com/Observation/Histology-identifier-1" />
+        <resource>
+            <Observation>
+                <id value= "Histology-identifier-1" /><!--<code>
+                <coding>         <system value="http://loinc.org"/>         <code value="59847-4"/>
+                </coding>   </code>-->
+                <subject>
+                    <reference
+                        value= "Patient/Patient-identifier-1" />
+                </subject>
+                <focus>
+                    <reference value= "Condition/Condition-identifier-1" />
+                </focus>
+                <effectiveDateTime value= "2021-02-02" />
+                <valueCodeableConcept>
+                    <coding>
+                        <system
+                            value= "urn:oid:2.16.840.1.113883.6.43.1" />
+                        <version value= "31" />
+                        <code value= "8140/3" />
+                    </coding>
+                </valueCodeableConcept>
+            </Observation>
+        </resource>
+        <request>
+            <method
+                value= "PUT" />
+            <url value= "Observation/Histology-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl
+            value= "http://example.com/Procedure/Operation-identifier-1" />
+        <resource>
+            <Procedure>
+                <id value= "Operation-identifier-1" />
+                <category>
+                    <coding>
+                        <system value= "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SYSTTherapieartCS" />
+                        <code value= "OP" />
+                        <display value= "Operation" />
+                    </coding>
+                </category>
+                <subject>
+                    <reference value= "Patient/Patient-identifier-1" />
+                </subject>
+                <performedDateTime
+                    value= "2021-04-01" />
+                <reasonReference>
+                    <reference value= "Condition/Condition-identifier-1" />
+                </reasonReference>
+            </Procedure>
+        </resource>
+        <request>
+            <method value= "PUT" />
+            <url
+                value= "Procedure/Operation-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value= "http://example.com/Procedure/Radiation-identifier-1" />
+        <resource>
+            <Procedure>
+                <id value= "Radiation-identifier-1" />
+                <category>
+                    <coding>
+                        <system value= "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SYSTTherapieartCS" />
+                        <code value= "ST" />
+                        <display value= "Strahlentherapie" />
+                    </coding>
+                </category>
+                <subject>
+                    <reference value= "Patient/Patient-identifier-1" />
+                </subject>
+                <performedPeriod>
+                    <start
+                        value= "2021-04-10" />
+                    <end value= "2021-04-12" />
+                </performedPeriod>
+                <reasonReference>
+                    <reference value= "Condition/Condition-identifier-1" />
+                </reasonReference>
+            </Procedure>
+        </resource>
+        <request>
+            <method value= "PUT" />
+            <url value= "Procedure/Radiation-identifier-1" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value= "http://example.com/MedicationStatement/SystemicTherapy-identifier-1" />
+        <resource>
+            <MedicationStatement>
+                <id value= "SystemicTherapy-identifier-1" />
+                <category>
+                    <coding>
+                        <system value= "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/SYSTTherapieartCS" />
+                        <code value= "CH" />
+                    </coding>
+                </category>
+                <subject>
+                    <reference value= "Patient/Patient-identifier-1" />
+                </subject>
+                <effectivePeriod>
+                    <start
+                        value= "2021-06-12" />
+                    <end value= "2021-06-21" />
+                </effectivePeriod>
+                <reasonReference>
+                    <reference value= "Condition/Condition-identifier-1" />
+                </reasonReference>
+            </MedicationStatement>
+        </resource>
+        <request>
+            <method value= "PUT" />
+            <url value= "MedicationStatement/SystemicTherapy-identifier-1" />
+        </request>
+    </entry>
+</Bundle>
