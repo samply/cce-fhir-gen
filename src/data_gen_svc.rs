@@ -1,8 +1,7 @@
 use chrono::{Months, NaiveDate};
 use fhirbolt::model::r4b::resources::{
     Bundle, BundleEntry, Condition, ConditionOnset, MedicationStatement,
-    MedicationStatementEffective, MedicationStatementMedication, Observation, ObservationEffective,
-    ObservationValue, Patient, PatientDeceased, Procedure, ProcedurePerformed, Specimen,
+    MedicationStatementEffective, MedicationStatementMedication, Observation, Patient, PatientDeceased, Procedure, ProcedurePerformed, Specimen,
     SpecimenCollection, SpecimenCollectionCollected,
 };
 use fhirbolt::model::r4b::types::{
@@ -15,7 +14,6 @@ use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
-use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{get_bundle_entry_request, get_full_url};
 
 ///
@@ -246,161 +244,6 @@ pub fn get_condition(
         subject: Box::new(sub_rfrnc),
         onset: Some(ConditionOnset::DateTime(effective.clone())),
         recorded_date: Some(effective.clone()),
-        ..Default::default()
-    }
-}
-
-pub fn get_observation(
-    id: &str,
-    sub_ref: &str,
-    focus_ref: &str,
-    effective_date: NaiveDate,
-    code_value: &str,
-) -> Observation {
-    // TODO: check date, code etc.
-    let oid = Id {
-        value: Some(id.to_string()),
-        ..Default::default()
-    };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
-        ..Default::default()
-    };
-    let focus_rfrnc = Reference {
-        reference: Some(focus_ref.into()),
-        ..Default::default()
-    };
-    let effective = DateTime {
-        value: Some(effective_date.to_string()),
-        ..Default::default()
-    };
-    let coding = Coding {
-        system: Some(Uri::from("urn:oid:2.16.840.1.113883.6.43.1")),
-        version: Some("31".into()),
-        code: Some(Code::from(code_value)),
-        ..Default::default()
-    };
-    let cod_concept = CodeableConcept {
-        coding: vec![coding],
-        ..Default::default()
-    };
-
-    Observation {
-        r#id: Some(oid),
-        subject: Some(Box::new(sub_rfrnc)),
-        focus: vec![focus_rfrnc],
-        effective: Some(ObservationEffective::DateTime(effective)),
-        // NOTE: status is required by the FHIR lib
-        status: "final".into(),
-        value: Some(ObservationValue::CodeableConcept(Box::new(cod_concept))),
-        code: Box::new(CodeableConcept {
-            text: Some("some code".into()),
-            ..Default::default()
-        }),
-        ..Default::default()
-    }
-}
-
-pub fn get_vital_status(
-    id: &str,
-    sub_ref: &str,
-    effective_date: NaiveDate,
-    code_value: VitalStatus,
-) -> Observation {
-    // NOTE: VitalStatus is also an Observation
-    // TODO: check date, code etc.
-    let oid = Id {
-        value: Some(id.to_string()),
-        ..Default::default()
-    };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
-        ..Default::default()
-    };
-    let effective = DateTime {
-        value: Some(effective_date.to_string()),
-        ..Default::default()
-    };
-    let coding = Coding {
-        system: Some(Uri::from("https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS")),
-        // version: Some("31".into()),
-        code: Some(Code::from(code_value.as_str())),
-        ..Default::default()
-    };
-    let cod_concept = CodeableConcept {
-        coding: vec![coding],
-        ..Default::default()
-    };
-    let loinc_coding = Coding {
-        system: Some(Uri::from("https://loinc.org")),
-        // version: Some("31".into()),
-        code: Some(Code::from("75186-7")),
-        ..Default::default()
-    };
-    let loinc_cod_concept = CodeableConcept {
-        coding: vec![loinc_coding],
-        ..Default::default()
-    };
-
-    Observation {
-        r#id: Some(oid),
-        subject: Some(Box::new(sub_rfrnc)),
-        effective: Some(ObservationEffective::DateTime(effective)),
-        // NOTE: status is required by the FHIR lib
-        status: "final".into(),
-        value: Some(ObservationValue::CodeableConcept(Box::new(cod_concept))),
-        code: Box::new(loinc_cod_concept),
-        ..Default::default()
-    }
-}
-
-pub fn get_procedure(
-    id: &str,
-    sub_ref: &str,
-    reason_ref: &str,
-    effective_date: NaiveDate,
-    therapy_type: SystTherapyType,
-) -> Procedure {
-    let pid = Id {
-        value: Some(id.to_string()),
-        ..Default::default()
-    };
-    let status = Code {
-        id: Some("successful".to_string()),
-        ..Default::default()
-    };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
-        ..Default::default()
-    };
-    let reason_rfrnc = Reference {
-        reference: Some(reason_ref.into()),
-        ..Default::default()
-    };
-    let effective = DateTime {
-        value: Some(effective_date.to_string()),
-        ..Default::default()
-    };
-    let coding = Coding {
-        system: Some(Uri::from(
-            "https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS",
-        )),
-        code: Some(Code::from(therapy_type.to_string())),
-        display: Some(therapy_type.as_str().into()),
-        ..Default::default()
-    };
-    let cod_concept = CodeableConcept {
-        coding: vec![coding],
-        ..Default::default()
-    };
-
-    Procedure {
-        r#id: Some(pid),
-        status,
-        category: Some(Box::new(cod_concept)),
-        subject: Box::new(sub_rfrnc),
-        performed: Some(ProcedurePerformed::DateTime(effective)),
-        reason_reference: vec![reason_rfrnc],
         ..Default::default()
     }
 }

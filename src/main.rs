@@ -1,6 +1,8 @@
 mod data_gen_svc;
 mod extensions;
 mod models;
+mod observation_svc;
+mod procedure_svc;
 mod utils;
 
 use chrono::prelude::*;
@@ -57,7 +59,7 @@ fn use_fhir_models() {
     let c1 = c.clone();
     print_fhir_data(c, "condition");
 
-    let o = data_gen_svc::get_observation(
+    let o = observation_svc::get_observation(
         observation_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
@@ -67,7 +69,7 @@ fn use_fhir_models() {
     let o1 = o.clone();
     print_fhir_data(o, "observation");
 
-    let v = data_gen_svc::get_vital_status(
+    let v = observation_svc::get_vital_status(
         vital_status_id.as_str(),
         patient_ref_id.as_str(),
         od.date_naive(),
@@ -77,7 +79,7 @@ fn use_fhir_models() {
     print_fhir_data(v, "vitalstatus");
 
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-    let p = data_gen_svc::get_procedure(
+    let p = procedure_svc::get_procedure(
         procedure_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
