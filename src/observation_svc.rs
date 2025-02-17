@@ -7,6 +7,7 @@ use fhirbolt::model::r4b::types::{
     Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri,
 };
 use crate::models::enums::vital_status::VitalStatus;
+use crate::utils::get_vital_status_url;
 
 pub fn get_observation(
     id: &str,
@@ -80,7 +81,7 @@ pub fn get_vital_status(
         ..Default::default()
     };
     let coding = Coding {
-        system: Some(Uri::from("https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS")),
+        system: Some(get_vital_status_url()),
         // version: Some("31".into()),
         code: Some(Code::from(code_value.as_str())),
         ..Default::default()

@@ -1,8 +1,9 @@
 use chrono::NaiveDate;
 use fhirbolt::model::r4b::resources::{Procedure, ProcedurePerformed};
-use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri};
+use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference};
 
 use crate::models::enums::syst_therapy_type::SystTherapyType;
+use crate::utils::get_syst_therapy_type_url;
 
 pub fn get_procedure(
     id: &str,
@@ -32,9 +33,7 @@ pub fn get_procedure(
         ..Default::default()
     };
     let coding = Coding {
-        system: Some(Uri::from(
-            "https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS",
-        )),
+        system: Some(get_syst_therapy_type_url()),
         code: Some(Code::from(therapy_type.to_string())),
         display: Some(therapy_type.as_str().into()),
         ..Default::default()

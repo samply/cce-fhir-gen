@@ -9,6 +9,37 @@ use fhirbolt::{
 
 use crate::extensions::option_ext::OptionExt;
 
+const CCE_URL: &str = "https://www.cancercoreeurope.eu";
+
+const SITE_LOCATION_CS: &str = "SitelocationCS";
+const SYST_THERAPY_TYPE_CS: &str = "SYSTTherapyTypeCS";
+const VITAL_STATUS_CS: &str = "VitalStatusCS";
+const SAMPLE_MATERIAL_TYPE_CS: &str = "SampleMaterialType";
+
+pub fn get_fhir_url() -> String {
+    format!("{CCE_URL}/fhir/core")
+}
+
+fn get_code_system_url(name: &str) -> String {
+    format!("{}/CodeSystem/{}", get_fhir_url(), name)
+}
+
+pub fn get_site_location_url() -> Uri {
+    Uri::from(get_code_system_url(SITE_LOCATION_CS))
+}
+
+pub fn get_sample_mat_type_url() -> Uri {
+    Uri::from(get_code_system_url(SAMPLE_MATERIAL_TYPE_CS))
+}
+
+pub fn get_syst_therapy_type_url() -> Uri {
+    Uri::from(get_code_system_url(SYST_THERAPY_TYPE_CS))
+}
+
+pub fn get_vital_status_url() -> Uri {
+    Uri::from(get_code_system_url(VITAL_STATUS_CS))
+}
+
 pub fn get_full_url(id: &str) -> Uri {
     Uri::from(format!(
         "https://www.cancercoreeurope.eu/fhir-xml/examples/{}",
@@ -57,5 +88,12 @@ mod tests {
         let (bundle_id, bundle_ref_id) = get_ids(None, "Bundle", 1);
         assert_eq!(bundle_id, "Bundle-identifier-1", "id does not match");
         assert_eq!(bundle_ref_id, "Bundle/Bundle-identifier-1", "ref id does not match");
+    }
+
+    #[test]
+    fn test_get_sample_mat_type_url() {
+        let smt_url = get_sample_mat_type_url();
+        let expected = Uri::from("https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType");
+        assert_eq!(smt_url, expected, "urls do not match");
     }
 }

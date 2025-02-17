@@ -1,7 +1,7 @@
 use chrono::{Months, NaiveDate};
 use fhirbolt::model::r4b::resources::{
     Bundle, BundleEntry, Condition, ConditionOnset, MedicationStatement,
-    MedicationStatementEffective, MedicationStatementMedication, Observation, Patient, PatientDeceased, Procedure, ProcedurePerformed, Specimen,
+    MedicationStatementEffective, MedicationStatementMedication, Observation, Patient, PatientDeceased, Procedure, Specimen,
     SpecimenCollection, SpecimenCollectionCollected,
 };
 use fhirbolt::model::r4b::types::{
@@ -14,7 +14,7 @@ use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
-use crate::utils::{get_bundle_entry_request, get_full_url};
+use crate::utils::{get_bundle_entry_request, get_full_url, get_sample_mat_type_url, get_site_location_url, get_syst_therapy_type_url};
 
 ///
 /// A service with methods that generate XML using the domain model classes
@@ -168,9 +168,7 @@ pub fn get_specimen(id: &str, sub_ref: &str, sample_material_type: SampleMateria
         ..Default::default()
     };
     let coding = Coding {
-        system: Some(Uri::from(
-            "https://www.cancercoreeurope.eu/fhir/CodeSystem/CodeSystem-cce-core-CodeSystem-SampleMaterialType",
-        )),
+        system: Some(get_sample_mat_type_url()),
         version: None,
         code: Some(Code::from(sample_material_type.as_str())),
         ..Default::default()
@@ -225,9 +223,7 @@ pub fn get_condition(
         ..Default::default()
     };
     let body_site_coding2 = Coding {
-        system: Some(Uri::from(
-            "https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS",
-        )),
+        system: Some(get_site_location_url()),
         version: None,
         code: Some(Code::from(bs_code_value2.to_string())),
         ..Default::default()
@@ -279,9 +275,7 @@ pub fn get_med_statement(
         ..Default::default()
     };
     let coding = Coding {
-        system: Some(Uri::from(
-            "https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS",
-        )),
+        system: Some(get_syst_therapy_type_url()),
         code: Some(Code::from(therapy_type.to_string())),
         ..Default::default()
     };

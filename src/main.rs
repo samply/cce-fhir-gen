@@ -42,12 +42,12 @@ fn use_fhir_models() {
         bd.date_naive(),
         Faker.fake(),
     );
-    let pt1 = pt.clone();
-    print_fhir_data(pt, "patient");
+    // let pt1 = pt.clone();
+    // print_fhir_data(pt, "patient");
 
     let s = data_gen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
-    let s1 = s.clone();
-    print_fhir_data(s, "specimen");
+    // let s1 = s.clone();
+    // print_fhir_data(s, "specimen");
 
     let c = data_gen_svc::get_condition(
         condition_id.as_str(),
@@ -56,8 +56,8 @@ fn use_fhir_models() {
         "C34.0",
         Faker.fake(),
     );
-    let c1 = c.clone();
-    print_fhir_data(c, "condition");
+    // let c1 = c.clone();
+    // print_fhir_data(c, "condition");
 
     let o = observation_svc::get_observation(
         observation_id.as_str(),
@@ -66,8 +66,8 @@ fn use_fhir_models() {
         od.date_naive(),
         "8140/3",
     );
-    let o1 = o.clone();
-    print_fhir_data(o, "observation");
+    // let o1 = o.clone();
+    // print_fhir_data(o, "observation");
 
     let v = observation_svc::get_vital_status(
         vital_status_id.as_str(),
@@ -75,8 +75,8 @@ fn use_fhir_models() {
         od.date_naive(),
         Faker.fake(),
     );
-    let v1 = v.clone();
-    print_fhir_data(v, "vitalstatus");
+    // let v1 = v.clone();
+    // print_fhir_data(v, "vitalstatus");
 
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let p = procedure_svc::get_procedure(
@@ -86,8 +86,8 @@ fn use_fhir_models() {
         ed.date_naive(),
         Faker.fake(),
     );
-    let p1 = p.clone();
-    print_fhir_data(p, "procedure");
+    // let p1 = p.clone();
+    // print_fhir_data(p, "procedure");
 
     let m = data_gen_svc::get_med_statement(
         med_stmt_id.as_str(),
@@ -98,18 +98,18 @@ fn use_fhir_models() {
         "2021-06-12",
         "2021-06-21",
     );
-    let m1 = m.clone();
-    print_fhir_data(m, "medication statement");
+    // let m1 = m.clone();
+    // print_fhir_data(m, "medication statement");
 
     let b = get_bundle(
         bundle_id.as_str(),
-        (pt1, patient_ref_id.as_str()),
-        (s1, specimen_ref_id.as_str()),
-        (c1, condition_ref_id.as_str()),
-        (o1, observation_ref_id.as_str()),
-        (v1, vital_status_ref_id.as_str()),
-        (p1, procedure_ref_id.as_str()),
-        (m1, med_stmt_ref_id.as_str()),
+        (pt, patient_ref_id.as_str()),
+        (s, specimen_ref_id.as_str()),
+        (c, condition_ref_id.as_str()),
+        (o, observation_ref_id.as_str()),
+        (v, vital_status_ref_id.as_str()),
+        (p, procedure_ref_id.as_str()),
+        (m, med_stmt_ref_id.as_str()),
     );
     print_fhir_data(b, "bundle");
 }

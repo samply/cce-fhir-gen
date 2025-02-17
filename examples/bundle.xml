@@ -8,8 +8,7 @@
             <Patient>
                 <id value="Patient-identifier-43" />
                 <gender value="male" />
-                <birthDate value="1930-11-18" />
-                <deceasedDateTime value="1980-11-18" />
+                <birthDate value="1930-07-11" />
             </Patient>
         </resource>
         <request>
@@ -25,8 +24,8 @@
                 <type>
                     <coding>
                         <system
-                            value="https://www.cancercoreeurope.eu/fhir/CodeSystem/CodeSystem-cce-core-CodeSystem-SampleMaterialType" />
-                        <code value="tissue-frozen" />
+                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType" />
+                        <code value="derivative-other" />
                     </coding>
                 </type>
                 <subject>
@@ -63,7 +62,7 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
-                        <code value="R" />
+                        <code value="C" />
                     </coding>
                 </bodySite>
                 <subject>
@@ -93,7 +92,7 @@
                 <focus>
                     <reference value="Condition/Condition-identifier-43" />
                 </focus>
-                <effectiveDateTime value="1930-03-05" />
+                <effectiveDateTime value="1931-10-05" />
                 <valueCodeableConcept>
                     <coding>
                         <system value="urn:oid:2.16.840.1.113883.6.43.1" />
@@ -123,12 +122,12 @@
                 <subject>
                     <reference value="Patient/Patient-identifier-43" />
                 </subject>
-                <effectiveDateTime value="1930-03-05" />
+                <effectiveDateTime value="1931-10-05" />
                 <valueCodeableConcept>
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS" />
-                        <code value="deceased" />
+                        <code value="alive" />
                     </coding>
                 </valueCodeableConcept>
             </Observation>
@@ -148,14 +147,14 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-                        <code value="MI" />
-                        <display value="Miscellaneous" />
+                        <code value="AS" />
+                        <display value="Active Surveillance" />
                     </coding>
                 </category>
                 <subject>
                     <reference value="Patient/Patient-identifier-43" />
                 </subject>
-                <performedDateTime value="1930-08-10" />
+                <performedDateTime value="1931-04-14" />
                 <reasonReference>
                     <reference value="Condition/Condition-identifier-43" />
                 </reasonReference>
