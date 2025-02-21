@@ -27,13 +27,13 @@ fn use_fhir_models() {
     let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
     let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
     let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
-    let (observation_id, observation_ref_id) =
+    let (obs_hist_id, obs_hist_ref_id) =
         get_ids("Observation".into_some(), IdType::Id, "Histology", i);
-    let (vital_status_id, vital_status_ref_id) =
+    let (obs_vital_status_id, obs_vital_status_ref_id) =
         get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-    let (procedure_id, procedure_ref_id) =
+    let (proc_rt_id, proc_rt_ref_id) =
         get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (operation_id, operation_ref_id) =
+    let (proc_op_id, proc_op_ref_id) =
         get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
         "MedicationStatement".into_some(),
@@ -71,28 +71,28 @@ fn use_fhir_models() {
     let c1 = c.clone();
     print_fhir_data(c1, "condition");
 
-    let o = observation_svc::get_observation(
-        observation_id.as_str(),
+    let ohist = observation_svc::get_observation(
+        obs_hist_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
         od.date_naive(),
         "8140/3",
     );
-    let o1 = o.clone();
-    print_fhir_data(o1, "observation-histology");
+    let ohist1 = ohist.clone();
+    print_fhir_data(ohist1, "observation-histology");
 
-    let v = observation_svc::get_vital_status(
-        vital_status_id.as_str(),
+    let ovs = observation_svc::get_vital_status(
+        obs_vital_status_id.as_str(),
         patient_ref_id.as_str(),
         od.date_naive(),
         Faker.fake(),
     );
-    let v1 = v.clone();
-    print_fhir_data(v1, "observation-vitalstatus");
+    let ovs1 = ovs.clone();
+    print_fhir_data(ovs1, "observation-vitalstatus");
 
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let prt = procedure_svc::get_procedure(
-        procedure_id.as_str(),
+        proc_rt_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
         ed.date_naive(),
@@ -102,8 +102,8 @@ fn use_fhir_models() {
     print_fhir_data(prt1, "procedure-radiotherapy");
 
     let pop = procedure_svc::get_procedure(
-        operation_id.as_str(),
-        operation_ref_id.as_str(),
+        proc_op_id.as_str(),
+        proc_op_ref_id.as_str(),
         condition_ref_id.as_str(),
         ed.date_naive(),
         models::enums::syst_therapy_type::SystTherapyType::OP,
@@ -128,10 +128,10 @@ fn use_fhir_models() {
         (pt, patient_ref_id.as_str()),
         (s, specimen_ref_id.as_str()),
         (c, condition_ref_id.as_str()),
-        (o, observation_ref_id.as_str()),
-        (v, vital_status_ref_id.as_str()),
-        (prt, procedure_ref_id.as_str()),
-        (pop, operation_ref_id.as_str()),
+        (ohist, obs_hist_ref_id.as_str()),
+        (ovs, obs_vital_status_ref_id.as_str()),
+        (pop, proc_op_ref_id.as_str()),
+        (prt, proc_rt_ref_id.as_str()),
         (m, med_stmt_ref_id.as_str()),
     );
     print_fhir_data(b, "bundle");

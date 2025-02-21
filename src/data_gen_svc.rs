@@ -26,10 +26,10 @@ pub fn get_bundle(
     patient_tuple: (Patient, &str),
     specimen_tuple: (Specimen, &str),
     condition_tuple: (Condition, &str),
-    observation_tuple: (Observation, &str),
-    vital_status_tuple: (Observation, &str),
-    procedure_tuple: (Procedure, &str),
-    operation_tuple: (Procedure, &str),
+    obs_histology_tuple: (Observation, &str),
+    obs_vital_status_tuple: (Observation, &str),
+    proc_op_tuple: (Procedure, &str),
+    proc_rt_tuple: (Procedure, &str),
     med_stmt_tuple: (MedicationStatement, &str),
 ) -> Bundle {
     let id = Id {
@@ -70,37 +70,37 @@ pub fn get_bundle(
 
     let observation = BundleEntry {
         full_url: Some(get_full_url(
-            observation_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+            obs_histology_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
         )),
-        resource: Some(Resource::Observation(Box::new(observation_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", observation_tuple.1).into_some(),
+        resource: Some(Resource::Observation(Box::new(obs_histology_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", obs_histology_tuple.1).into_some(),
         ..Default::default()
     };
 
     let vital_status = BundleEntry {
         full_url: Some(get_full_url(
-            vital_status_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+            obs_vital_status_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
         )),
-        resource: Some(Resource::Observation(Box::new(vital_status_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", vital_status_tuple.1).into_some(),
+        resource: Some(Resource::Observation(Box::new(obs_vital_status_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", obs_vital_status_tuple.1).into_some(),
         ..Default::default()
     };
 
     let procedure = BundleEntry {
         full_url: Some(get_full_url(
-            procedure_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+            proc_rt_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
         )),
-        resource: Some(Resource::Procedure(Box::new(procedure_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", procedure_tuple.1).into_some(),
+        resource: Some(Resource::Procedure(Box::new(proc_rt_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", proc_rt_tuple.1).into_some(),
         ..Default::default()
     };
 
     let operation = BundleEntry {
         full_url: Some(get_full_url(
-            operation_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+            proc_op_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
         )),
-        resource: Some(Resource::Procedure(Box::new(operation_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", operation_tuple.1).into_some(),
+        resource: Some(Resource::Procedure(Box::new(proc_op_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", proc_op_tuple.1).into_some(),
         ..Default::default()
     };
 
