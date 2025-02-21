@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Observation xmlns="http://hl7.org/fhir">
+    <id value="Histology-id-115" />
+    <status value="final" />
+    <code>
+        <text value="some code" />
+    </code>
+    <subject>
+        <reference value="Patient/Patient-id-115" />
+    </subject>
+    <focus>
+        <reference value="Condition/Condition-id-115" />
+    </focus>
+    <effectiveDateTime value="1930-06-18" />
+    <valueCodeableConcept>
+        <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1" />
+            <version value="31" />
+            <code value="8140/3" />
+        </coding>
+    </valueCodeableConcept>
+</Observation>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure xmlns="http://hl7.org/fhir">
+    <id value="Operation-id-115" />
+    <status id="successful" />
+    <category>
+        <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
+            <code value="OP" />
+            <display value="Operation" />
+        </coding>
+    </category>
+    <subject>
+        <reference value="Procedure/Operation-id-115" />
+    </subject>
+    <performedDateTime value="1931-10-15" />
+    <reasonReference>
+        <reference value="Condition/Condition-id-115" />
+    </reasonReference>
+</Procedure>

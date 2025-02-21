@@ -9,6 +9,7 @@ use fhirbolt::model::r4b::types::{
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::get_vital_status_url;
 
+/// Generates obsetvation histology
 pub fn get_observation(
     id: &str,
     sub_ref: &str,
@@ -60,6 +61,7 @@ pub fn get_observation(
     }
 }
 
+/// Generates obsetvation vitalstatus
 pub fn get_vital_status(
     id: &str,
     sub_ref: &str,

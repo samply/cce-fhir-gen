@@ -7,7 +7,7 @@ use fhirbolt::{
     xml,
 };
 
-use crate::extensions::option_ext::OptionExt;
+use crate::{extensions::option_ext::OptionExt, models::enums::id_type::IdType};
 
 const CCE_URL: &str = "https://www.cancercoreeurope.eu";
 
@@ -67,8 +67,12 @@ where
     println!("");
 }
 
-pub fn get_ids(res_group: Option<&str>, res_type: &str, i: i8) -> (String, String) {
-    let id = format!("{res_type}-identifier-{}", i);
+pub fn get_ids(res_group: Option<&str>, id_type: IdType, res_type: &str, i: i8) -> (String, String) {
+    let id_type_str = match id_type {
+        IdType::Id => id_type.as_str().to_string(),
+        IdType::Identifier => format!("src-{}", id_type.as_str()),
+    };
+    let id = format!("{res_type}-{}-{}", id_type_str, i);
 
     let ref_id = if res_group.is_some() {
         format!("{}/{}", res_group.unwrap(), id)
@@ -84,10 +88,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_get_ids() {
-        let (bundle_id, bundle_ref_id) = get_ids(None, "Bundle", 1);
-        assert_eq!(bundle_id, "Bundle-identifier-1", "id does not match");
-        assert_eq!(bundle_ref_id, "Bundle/Bundle-identifier-1", "ref id does not match");
+    fn test_get_ids_with_id_type_id() {
+        let (bundle_id, bundle_ref_id) = get_ids(None, IdType::Id, "Bundle", 1);
+        assert_eq!(bundle_id, "Bundle-id-1", "id does not match");
+        assert_eq!(bundle_ref_id, "Bundle/Bundle-id-1", "ref id does not match");
+    }
+
+    #[test]
+    fn test_get_ids_with_id_type_identifier() {
+        let (bundle_id, bundle_ref_id) = get_ids(None, IdType::Identifier, "Bundle", 1);
+        assert_eq!(bundle_id, "Bundle-src-identifier-1", "id does not match");
+        assert_eq!(bundle_ref_id, "Bundle/Bundle-src-identifier-1", "ref id does not match");
     }
 
     #[test]

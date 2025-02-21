@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bundle xmlns="http://hl7.org/fhir">
-    <id value="Bundle-identifier-43" />
+    <id value="Bundle-id-115" />
     <type value="transaction" />
     <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-115" />
         <resource>
             <Patient>
-                <id value="Patient-identifier-43" />
+                <id value="Patient-id-115" />
+                <identifier>
+                    <value value="Patient-src-identifier-115" />
+                </identifier>
                 <gender value="male" />
-                <birthDate value="1930-07-11" />
+                <birthDate value="1930-11-07" />
+                <deceasedDateTime value="1980-11-07" />
             </Patient>
         </resource>
         <request>
             <method value="PUT" />
-            <url value="Patient/Patient-identifier-43" />
+            <url value="Patient/Patient-id-115" />
         </request>
     </entry>
     <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-115" />
         <resource>
             <Specimen>
-                <id value="Specimen-identifier-43" />
+                <id value="Specimen-id-115" />
                 <type>
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType" />
-                        <code value="derivative-other" />
+                        <code value="g-dna" />
                     </coding>
                 </type>
                 <subject>
-                    <reference value="Patient/Patient-identifier-43" />
+                    <reference value="Patient/Patient-id-115" />
                 </subject>
                 <collection>
                     <collectedDateTime value="2021-02-02" />
@@ -38,14 +42,14 @@
         </resource>
         <request>
             <method value="PUT" />
-            <url value="Specimen/Specimen-identifier-43" />
+            <url value="Specimen/Specimen-id-115" />
         </request>
     </entry>
     <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-115" />
         <resource>
             <Condition>
-                <id value="Condition-identifier-43" />
+                <id value="Condition-id-115" />
                 <code>
                     <coding>
                         <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm" />
@@ -62,11 +66,11 @@
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
-                        <code value="C" />
+                        <code value="N" />
                     </coding>
                 </bodySite>
                 <subject>
-                    <reference value="Patient/Patient-identifier-43" />
+                    <reference value="Patient/Patient-id-115" />
                 </subject>
                 <onsetDateTime value="2021-02-02" />
                 <recordedDate value="2021-02-02" />
@@ -74,25 +78,25 @@
         </resource>
         <request>
             <method value="PUT" />
-            <url value="Condition/Condition-identifier-43" />
+            <url value="Condition/Condition-id-115" />
         </request>
     </entry>
     <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Histology-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Histology-id-115" />
         <resource>
             <Observation>
-                <id value="Histology-identifier-43" />
+                <id value="Histology-id-115" />
                 <status value="final" />
                 <code>
                     <text value="some code" />
                 </code>
                 <subject>
-                    <reference value="Patient/Patient-identifier-43" />
+                    <reference value="Patient/Patient-id-115" />
                 </subject>
                 <focus>
-                    <reference value="Condition/Condition-identifier-43" />
+                    <reference value="Condition/Condition-id-115" />
                 </focus>
-                <effectiveDateTime value="1931-10-05" />
+                <effectiveDateTime value="1930-06-18" />
                 <valueCodeableConcept>
                     <coding>
                         <system value="urn:oid:2.16.840.1.113883.6.43.1" />
@@ -104,14 +108,14 @@
         </resource>
         <request>
             <method value="PUT" />
-            <url value="Observation/Histology-identifier-43" />
+            <url value="Observation/Histology-id-115" />
         </request>
     </entry>
     <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/VitalStatus-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/VitalStatus-id-115" />
         <resource>
             <Observation>
-                <id value="VitalStatus-identifier-43" />
+                <id value="VitalStatus-id-115" />
                 <status value="final" />
                 <code>
                     <coding>
@@ -120,83 +124,110 @@
                     </coding>
                 </code>
                 <subject>
-                    <reference value="Patient/Patient-identifier-43" />
+                    <reference value="Patient/Patient-id-115" />
                 </subject>
-                <effectiveDateTime value="1931-10-05" />
+                <effectiveDateTime value="1930-06-18" />
                 <valueCodeableConcept>
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS" />
-                        <code value="alive" />
+                        <code value="deceased" />
                     </coding>
                 </valueCodeableConcept>
             </Observation>
         </resource>
         <request>
             <method value="PUT" />
-            <url value="Observation/VitalStatus-identifier-43" />
+            <url value="Observation/VitalStatus-id-115" />
         </request>
     </entry>
     <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Procedure-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Radiotherapy-id-115" />
         <resource>
             <Procedure>
-                <id value="Procedure-identifier-43" />
+                <id value="Radiotherapy-id-115" />
                 <status id="successful" />
                 <category>
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-                        <code value="AS" />
-                        <display value="Active Surveillance" />
+                        <code value="RT" />
+                        <display value="Radiotherapy" />
                     </coding>
                 </category>
                 <subject>
-                    <reference value="Patient/Patient-identifier-43" />
+                    <reference value="Patient/Patient-id-115" />
                 </subject>
-                <performedDateTime value="1931-04-14" />
+                <performedDateTime value="1931-10-15" />
                 <reasonReference>
-                    <reference value="Condition/Condition-identifier-43" />
+                    <reference value="Condition/Condition-id-115" />
                 </reasonReference>
             </Procedure>
         </resource>
         <request>
             <method value="PUT" />
-            <url value="Procedure/Procedure-identifier-43" />
+            <url value="Procedure/Radiotherapy-id-115" />
         </request>
     </entry>
     <entry>
-        <fullUrl
-            value="https://www.cancercoreeurope.eu/fhir-xml/examples/SystemicTherapy-identifier-43" />
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Operation-id-115" />
+        <resource>
+            <Procedure>
+                <id value="Operation-id-115" />
+                <status id="successful" />
+                <category>
+                    <coding>
+                        <system
+                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
+                        <code value="OP" />
+                        <display value="Operation" />
+                    </coding>
+                </category>
+                <subject>
+                    <reference value="Procedure/Operation-id-115" />
+                </subject>
+                <performedDateTime value="1931-10-15" />
+                <reasonReference>
+                    <reference value="Condition/Condition-id-115" />
+                </reasonReference>
+            </Procedure>
+        </resource>
+        <request>
+            <method value="PUT" />
+            <url value="Procedure/Operation-id-115" />
+        </request>
+    </entry>
+    <entry>
+        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/SystemicTherapy-id-115" />
         <resource>
             <MedicationStatement>
-                <id value="SystemicTherapy-identifier-43" />
+                <id value="SystemicTherapy-id-115" />
                 <status id="ongoing" />
                 <category>
                     <coding>
                         <system
                             value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-                        <code value="WS" />
+                        <code value="HO" />
                     </coding>
                 </category>
                 <medicationReference>
                     <reference value="medicine" />
                 </medicationReference>
                 <subject>
-                    <reference value="Patient/Patient-identifier-43" />
+                    <reference value="Patient/Patient-id-115" />
                 </subject>
                 <effectivePeriod>
                     <start value="2021-06-12" />
                     <end value="2021-06-21" />
                 </effectivePeriod>
                 <reasonReference>
-                    <reference value="Condition/Condition-identifier-43" />
+                    <reference value="Condition/Condition-id-115" />
                 </reasonReference>
             </MedicationStatement>
         </resource>
         <request>
             <method value="PUT" />
-            <url value="MedicationStatement/SystemicTherapy-identifier-43" />
+            <url value="MedicationStatement/SystemicTherapy-id-115" />
         </request>
     </entry>
 </Bundle>

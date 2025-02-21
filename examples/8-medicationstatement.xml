@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MedicationStatement xmlns="http://hl7.org/fhir">
+    <id value="SystemicTherapy-id-115" />
+    <status id="ongoing" />
+    <category>
+        <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
+            <code value="HO" />
+        </coding>
+    </category>
+    <medicationReference>
+        <reference value="medicine" />
+    </medicationReference>
+    <subject>
+        <reference value="Patient/Patient-id-115" />
+    </subject>
+    <effectivePeriod>
+        <start value="2021-06-12" />
+        <end value="2021-06-21" />
+    </effectivePeriod>
+    <reasonReference>
+        <reference value="Condition/Condition-id-115" />
+    </reasonReference>
+</MedicationStatement>

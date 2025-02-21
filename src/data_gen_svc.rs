@@ -5,7 +5,7 @@ use fhirbolt::model::r4b::resources::{
     SpecimenCollection, SpecimenCollectionCollected,
 };
 use fhirbolt::model::r4b::types::{
-    Code, CodeableConcept, Coding, Date, DateTime, Id, Period, Reference, Uri,
+    Code, CodeableConcept, Coding, Date, DateTime, Id, Identifier, Period, Reference, String, Uri
 };
 use fhirbolt::model::r4b::Resource;
 
@@ -29,6 +29,7 @@ pub fn get_bundle(
     observation_tuple: (Observation, &str),
     vital_status_tuple: (Observation, &str),
     procedure_tuple: (Procedure, &str),
+    operation_tuple: (Procedure, &str),
     med_stmt_tuple: (MedicationStatement, &str),
 ) -> Bundle {
     let id = Id {
@@ -94,6 +95,15 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let operation = BundleEntry {
+        full_url: Some(get_full_url(
+            operation_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Procedure(Box::new(operation_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", operation_tuple.1).into_some(),
+        ..Default::default()
+    };
+
     let med_stmt = BundleEntry {
         full_url: Some(get_full_url(
             med_stmt_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
@@ -113,20 +123,31 @@ pub fn get_bundle(
             observation,
             vital_status,
             procedure,
+            operation,
             med_stmt,
         ],
         ..Default::default()
     }
 }
 
-pub fn get_patient(id: &str, gender: Gender, birthdate: NaiveDate, deceased: bool) -> Patient {
+pub fn get_patient(id: &str, src_id: &str, gender: Gender, birthdate: NaiveDate, deceased: bool) -> Patient {
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()
     };
 
+    let id_val = String {
+        value: Some(src_id.to_string()),
+        ..Default::default()
+    };
+    let identifier = Identifier {
+        value: Some(id_val),
+        ..Default::default()
+    };
+
     let mut patient = Patient {
         r#id: Some(oid),
+        r#identifier: vec![identifier],
         gender: Some(Code {
             value: Some(gender.as_str().to_string()),
             ..Default::default()

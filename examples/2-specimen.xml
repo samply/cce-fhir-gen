@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Specimen xmlns="http://hl7.org/fhir">
+    <id value="Specimen-id-115" />
+    <type>
+        <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType" />
+            <code value="g-dna" />
+        </coding>
+    </type>
+    <subject>
+        <reference value="Patient/Patient-id-115" />
+    </subject>
+    <collection>
+        <collectedDateTime value="2021-02-02" />
+    </collection>
+</Specimen>

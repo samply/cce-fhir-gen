@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+    <id value="Patient-id-115" />
+    <identifier>
+        <value value="Patient-src-identifier-115" />
+    </identifier>
+    <gender value="male" />
+    <birthDate value="1930-11-07" />
+    <deceasedDateTime value="1980-11-07" />
+</Patient>
