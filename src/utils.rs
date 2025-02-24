@@ -40,6 +40,10 @@ pub fn get_vital_status_url() -> Uri {
     Uri::from(get_code_system_url(VITAL_STATUS_CS))
 }
 
+pub fn get_body_site_url() -> Uri {
+    Uri::from("urn:oid:1.3.6.1.4.1.19376.1.3.11.36")
+}
+
 pub fn get_full_url(id: &str) -> Uri {
     Uri::from(format!(
         "https://www.cancercoreeurope.eu/fhir-xml/examples/{}",

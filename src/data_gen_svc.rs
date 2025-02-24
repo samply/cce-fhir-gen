@@ -14,7 +14,7 @@ use crate::models::enums::gender::Gender;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_sample_mat_type_url, get_site_location_url, get_syst_therapy_type_url};
+use crate::utils::{get_body_site_url, get_bundle_entry_request, get_full_url, get_sample_mat_type_url, get_site_location_url, get_syst_therapy_type_url};
 
 ///
 /// A service with methods that generate XML using the domain model classes
@@ -184,8 +184,20 @@ pub fn get_specimen(id: &str, sub_ref: &str, sample_material_type: SampleMateria
         value: Some("2021-02-02".to_string()),
         ..Default::default()
     };
+    
+    let bs_coding = Coding {
+        system: Some(get_body_site_url()),
+        version: None,
+        code: Some(Code::from("C26.8")),
+        ..Default::default()
+    };
+    let bs_cod_concept = CodeableConcept {
+        coding: vec![bs_coding],
+        ..Default::default()
+    };
     let specimen_collection = SpecimenCollection {
         collected: Some(SpecimenCollectionCollected::DateTime(collected)),
+        body_site: Some(Box::new(bs_cod_concept)),
         ..Default::default()
     };
     let coding = Coding {
@@ -229,7 +241,7 @@ pub fn get_condition(
     };
     let coding = Coding {
         system: Some(Uri::from("http://fhir.de/CodeSystem/bfarm/icd-10-gm")),
-        version: Some("2004".into()),
+        version: Some("2019".into()),
         code: Some(Code::from(code_value)),
         ..Default::default()
     };
