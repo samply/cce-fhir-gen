@@ -10,14 +10,21 @@ use fhirbolt::{
 use crate::{extensions::option_ext::OptionExt, models::enums::id_type::IdType};
 
 const CCE_URL: &str = "https://www.cancercoreeurope.eu";
+const LOINC_URL: &str = "https://loinc.org";
 
 const SITE_LOCATION_CS: &str = "SitelocationCS";
 const SYST_THERAPY_TYPE_CS: &str = "SYSTTherapyTypeCS";
 const VITAL_STATUS_CS: &str = "VitalStatusCS";
 const SAMPLE_MATERIAL_TYPE_CS: &str = "SampleMaterialType";
 
+pub const OBSERVATION_STATUS: &str = "final";
+
 pub fn get_fhir_url() -> String {
     format!("{CCE_URL}/fhir/core")
+}
+
+pub fn get_loinc_url() -> Uri {
+    Uri::from(LOINC_URL)
 }
 
 fn get_code_system_url(name: &str) -> String {

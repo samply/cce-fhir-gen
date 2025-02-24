@@ -71,10 +71,11 @@ fn use_fhir_models() {
     let c1 = c.clone();
     print_fhir_data(c1, "condition");
 
-    let ohist = observation_svc::get_observation(
+    let ohist = observation_svc::get_histology(
         obs_hist_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
+        specimen_ref_id.as_str(),
         od.date_naive(),
         "8140/3",
     );

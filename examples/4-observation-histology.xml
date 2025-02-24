@@ -3,7 +3,10 @@
     <id value="Histology-id-115" />
     <status value="final" />
     <code>
-        <text value="some code" />
+        <coding>
+            <system value="https://loinc.org" />
+            <code value="59847-4" />
+        </coding>
     </code>
     <subject>
         <reference value="Patient/Patient-id-115" />
@@ -15,8 +18,11 @@
     <valueCodeableConcept>
         <coding>
             <system value="urn:oid:2.16.840.1.113883.6.43.1" />
-            <version value="31" />
+            <version value="32" />
             <code value="8140/3" />
         </coding>
     </valueCodeableConcept>
+    <specimen>
+        <reference value="Specimen/Specimen-id-115" />
+    </specimen>
 </Observation>
