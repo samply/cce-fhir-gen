@@ -12,12 +12,15 @@ use crate::{extensions::option_ext::OptionExt, models::enums::id_type::IdType};
 const CCE_URL: &str = "https://www.cancercoreeurope.eu";
 const LOINC_URL: &str = "https://loinc.org";
 
+const UICC_STAGE_CS: &str = "UICCStageCS";
 const SITE_LOCATION_CS: &str = "SitelocationCS";
 const SYST_THERAPY_TYPE_CS: &str = "SYSTTherapyTypeCS";
 const VITAL_STATUS_CS: &str = "VitalStatusCS";
 const SAMPLE_MATERIAL_TYPE_CS: &str = "SampleMaterialType";
 
 const TNMMCS_CS: &str = "TNMMCS";
+const TNMNCS_CS: &str = "TNMNCS";
+const TNMTCS_CS: &str = "TNMTCS";
 const TNMR_SYMBOL_CS: &str = "TNMrSymbolCS";
 const TNMY_SYMBOL_CS: &str = "TNMySymbolCS";
 
@@ -33,6 +36,10 @@ pub fn get_loinc_url() -> Uri {
 
 fn get_code_system_url(name: &str) -> String {
     format!("{}/CodeSystem/{}", get_fhir_url(), name)
+}
+
+pub fn get_uicc_stage_url() -> Uri {
+    Uri::from(get_code_system_url(UICC_STAGE_CS))
 }
 
 pub fn get_site_location_url() -> Uri {
@@ -53,6 +60,14 @@ pub fn get_vital_status_url() -> Uri {
 
 pub fn get_tnmm_url() -> Uri {
     Uri::from(get_code_system_url(TNMMCS_CS))
+}
+
+pub fn get_tnmn_url() -> Uri {
+    Uri::from(get_code_system_url(TNMNCS_CS))
+}
+
+pub fn get_tnmt_url() -> Uri {
+    Uri::from(get_code_system_url(TNMTCS_CS))
 }
 
 pub fn get_tnmr_symbol_url() -> Uri {

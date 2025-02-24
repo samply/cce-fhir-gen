@@ -96,7 +96,10 @@ fn use_fhir_models() {
         &obs_tnmc_id.as_str(),
         patient_ref_id.as_str(),
         od.date_naive(),
+        "IIIA",
         Faker.fake(),
+        Faker.fake(),
+        "4a",
         Faker.fake(),
         Faker.fake(),
     );

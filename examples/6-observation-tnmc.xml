@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Observation xmlns="http://hl7.org/fhir">
-    <id value="TNMc-id-95" />
+    <id value="TNMc-id-115" />
     <status value="final" />
     <code>
         <coding>
@@ -9,9 +9,30 @@
         </coding>
     </code>
     <subject>
-        <reference value="Patient/Patient-id-95" />
+        <reference value="Patient/Patient-id-115" />
     </subject>
-    <effectiveDateTime value="1930-10-11" />
+    <effectiveDateTime value="1931-08-27" />
+    <valueCodeableConcept>
+        <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/UICCStageCS" />
+            <version value="8" />
+            <code value="IIIA" />
+        </coding>
+    </valueCodeableConcept>
+    <component>
+        <code>
+            <coding>
+                <system value="https://loinc.org" />
+                <code value="21907-1" />
+            </coding>
+        </code>
+        <valueCodeableConcept>
+            <coding>
+                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS" />
+                <code value="1c" />
+            </coding>
+        </valueCodeableConcept>
+    </component>
     <component>
         <code>
             <coding>
@@ -21,8 +42,8 @@
         </code>
         <valueCodeableConcept>
             <coding>
-                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS" />
-                <code value="1a" />
+                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMNCS" />
+                <code value="2a" />
             </coding>
         </valueCodeableConcept>
     </component>
@@ -30,27 +51,13 @@
         <code>
             <coding>
                 <system value="https://loinc.org" />
-                <code value="21983-2" />
+                <code value="21907-1" />
             </coding>
         </code>
         <valueCodeableConcept>
             <coding>
-                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMrSymbolCS" />
-                <code value="r" />
-            </coding>
-        </valueCodeableConcept>
-    </component>
-    <component>
-        <code>
-            <coding>
-                <system value="https://loinc.org" />
-                <code value="59479-6" />
-            </coding>
-        </code>
-        <valueCodeableConcept>
-            <coding>
-                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMySymbolCS" />
-                <code value="9" />
+                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMTCS" />
+                <code value="4a" />
             </coding>
         </valueCodeableConcept>
     </component>
