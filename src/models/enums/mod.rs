@@ -2,5 +2,8 @@ pub mod gender;
 pub mod id_type;
 pub mod sample_material_type;
 pub mod syst_therapy_type;
+pub mod tnmm_category;
+pub mod tnmr_symbol;
+pub mod tnmy_symbol;
 pub mod tumor_site_location;
 pub mod vital_status;

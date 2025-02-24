@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Observation xmlns="http://hl7.org/fhir">
+    <id value="TNMc-id-95" />
+    <status value="final" />
+    <code>
+        <coding>
+            <system value="https://loinc.org" />
+            <code value="21908-9" />
+        </coding>
+    </code>
+    <subject>
+        <reference value="Patient/Patient-id-95" />
+    </subject>
+    <effectiveDateTime value="1930-10-11" />
+    <component>
+        <code>
+            <coding>
+                <system value="https://loinc.org" />
+                <code value="201906-3" />
+            </coding>
+        </code>
+        <valueCodeableConcept>
+            <coding>
+                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS" />
+                <code value="1a" />
+            </coding>
+        </valueCodeableConcept>
+    </component>
+    <component>
+        <code>
+            <coding>
+                <system value="https://loinc.org" />
+                <code value="21983-2" />
+            </coding>
+        </code>
+        <valueCodeableConcept>
+            <coding>
+                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMrSymbolCS" />
+                <code value="r" />
+            </coding>
+        </valueCodeableConcept>
+    </component>
+    <component>
+        <code>
+            <coding>
+                <system value="https://loinc.org" />
+                <code value="59479-6" />
+            </coding>
+        </code>
+        <valueCodeableConcept>
+            <coding>
+                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMySymbolCS" />
+                <code value="9" />
+            </coding>
+        </valueCodeableConcept>
+    </component>
+</Observation>

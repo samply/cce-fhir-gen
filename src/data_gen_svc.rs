@@ -28,6 +28,7 @@ pub fn get_bundle(
     condition_tuple: (Condition, &str),
     obs_histology_tuple: (Observation, &str),
     obs_vital_status_tuple: (Observation, &str),
+    obs_tnmc_tuple: (Observation, &str),
     proc_op_tuple: (Procedure, &str),
     proc_rt_tuple: (Procedure, &str),
     med_stmt_tuple: (MedicationStatement, &str),
@@ -86,6 +87,15 @@ pub fn get_bundle(
         ..Default::default()
     };
 
+    let tnmc = BundleEntry {
+        full_url: Some(get_full_url(
+            obs_tnmc_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Observation(Box::new(obs_tnmc_tuple.0.clone()))),
+        request: get_bundle_entry_request("PUT", obs_tnmc_tuple.1).into_some(),
+        ..Default::default()
+    };
+
     let procedure = BundleEntry {
         full_url: Some(get_full_url(
             proc_rt_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
@@ -122,6 +132,7 @@ pub fn get_bundle(
             condition,
             observation,
             vital_status,
+            tnmc,
             procedure,
             operation,
             med_stmt,

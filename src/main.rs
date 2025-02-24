@@ -31,10 +31,11 @@ fn use_fhir_models() {
         get_ids("Observation".into_some(), IdType::Id, "Histology", i);
     let (obs_vital_status_id, obs_vital_status_ref_id) =
         get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+    let (obs_tnmc_id, obs_tnmc_ref_id) =
+        get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
     let (proc_rt_id, proc_rt_ref_id) =
         get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (proc_op_id, proc_op_ref_id) =
-        get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (proc_op_id, proc_op_ref_id) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
         "MedicationStatement".into_some(),
         IdType::Id,
@@ -91,6 +92,17 @@ fn use_fhir_models() {
     let ovs1 = ovs.clone();
     print_fhir_data(ovs1, "observation-vitalstatus");
 
+    let otnmc = observation_svc::get_tnmc(
+        &obs_tnmc_id.as_str(),
+        patient_ref_id.as_str(),
+        od.date_naive(),
+        Faker.fake(),
+        Faker.fake(),
+        Faker.fake(),
+    );
+    let otnmc1 = otnmc.clone();
+    print_fhir_data(otnmc1, "observation-tnmc");
+
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let prt = procedure_svc::get_procedure(
         proc_rt_id.as_str(),
@@ -131,6 +143,7 @@ fn use_fhir_models() {
         (c, condition_ref_id.as_str()),
         (ohist, obs_hist_ref_id.as_str()),
         (ovs, obs_vital_status_ref_id.as_str()),
+        (otnmc, obs_tnmc_ref_id.as_str()),
         (pop, proc_op_ref_id.as_str()),
         (prt, proc_rt_ref_id.as_str()),
         (m, med_stmt_ref_id.as_str()),

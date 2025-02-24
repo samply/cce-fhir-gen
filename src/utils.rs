@@ -17,6 +17,10 @@ const SYST_THERAPY_TYPE_CS: &str = "SYSTTherapyTypeCS";
 const VITAL_STATUS_CS: &str = "VitalStatusCS";
 const SAMPLE_MATERIAL_TYPE_CS: &str = "SampleMaterialType";
 
+const TNMMCS_CS: &str = "TNMMCS";
+const TNMR_SYMBOL_CS: &str = "TNMrSymbolCS";
+const TNMY_SYMBOL_CS: &str = "TNMySymbolCS";
+
 pub const OBSERVATION_STATUS: &str = "final";
 
 pub fn get_fhir_url() -> String {
@@ -45,6 +49,18 @@ pub fn get_syst_therapy_type_url() -> Uri {
 
 pub fn get_vital_status_url() -> Uri {
     Uri::from(get_code_system_url(VITAL_STATUS_CS))
+}
+
+pub fn get_tnmm_url() -> Uri {
+    Uri::from(get_code_system_url(TNMMCS_CS))
+}
+
+pub fn get_tnmr_symbol_url() -> Uri {
+    Uri::from(get_code_system_url(TNMR_SYMBOL_CS))
+}
+
+pub fn get_tnmy_symbol_url() -> Uri {
+    Uri::from(get_code_system_url(TNMY_SYMBOL_CS))
 }
 
 pub fn get_body_site_url() -> Uri {
