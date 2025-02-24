@@ -45,7 +45,7 @@ fn use_fhir_models() {
 
     let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
     let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-    let od: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
     let pt = data_gen_svc::get_patient(
@@ -77,7 +77,7 @@ fn use_fhir_models() {
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
         specimen_ref_id.as_str(),
-        od.date_naive(),
+        ed.date_naive(),
         "8140/3",
     );
     let ohist1 = ohist.clone();
@@ -86,7 +86,7 @@ fn use_fhir_models() {
     let ovs = observation_svc::get_vital_status(
         obs_vital_status_id.as_str(),
         patient_ref_id.as_str(),
-        od.date_naive(),
+        ed.date_naive(),
         Faker.fake(),
     );
     let ovs1 = ovs.clone();
@@ -95,7 +95,7 @@ fn use_fhir_models() {
     let otnmc = observation_svc::get_tnmc(
         &obs_tnmc_id.as_str(),
         patient_ref_id.as_str(),
-        od.date_naive(),
+        ed.date_naive(),
         "IIIA",
         Faker.fake(),
         Faker.fake(),
@@ -106,11 +106,13 @@ fn use_fhir_models() {
     let otnmc1 = otnmc.clone();
     print_fhir_data(otnmc1, "observation-tnmc");
 
-    let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let sd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let ed: DateTime<Utc> = DateTimeAfter(sd).fake();
     let prt = procedure_svc::get_procedure(
         proc_rt_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
+        sd.date_naive(),
         ed.date_naive(),
         models::enums::syst_therapy_type::SystTherapyType::RT,
     );
@@ -121,6 +123,7 @@ fn use_fhir_models() {
         proc_op_id.as_str(),
         proc_op_ref_id.as_str(),
         condition_ref_id.as_str(),
+        sd.date_naive(),
         ed.date_naive(),
         models::enums::syst_therapy_type::SystTherapyType::OP,
     );

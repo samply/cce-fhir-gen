@@ -12,7 +12,10 @@
     <subject>
         <reference value="Procedure/Operation-id-115" />
     </subject>
-    <performedDateTime value="1931-10-15" />
+    <performedPeriod>
+        <start value="1930-10-24" />
+        <end value="1931-09-20" />
+    </performedPeriod>
     <reasonReference>
         <reference value="Condition/Condition-id-115" />
     </reasonReference>
