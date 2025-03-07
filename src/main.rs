@@ -5,7 +5,7 @@ mod observation_svc;
 mod procedure_svc;
 mod utils;
 
-use std::fs;
+use std::{env, fs};
 
 use chrono::prelude::*;
 use data_gen_svc::get_bundle;
@@ -18,15 +18,26 @@ use utils::{get_ids, print_fhir_data};
 
 const DATA_FOLDER: &str = "generated-data";
 
+enum OutputMode {
+    Screen,
+    File,
+    ApiCall,
+}
+
 fn main() {
     println!("Hello, world!");
     println!("");
 
-    generate_fhir_bundles(2, true);
+    // TODO: env::current_dir()
+    // TODO: fix bug
+    // TODO: directly post a request to an endpoint
+    // TODO: parse cmd line params for number, file, print or curl
+    generate_fhir_bundles(1, OutputMode::File);
 }
 
-fn generate_fhir_bundles(number: i32, write_to_file: bool) {
+fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
     let range = 1..(number + 1);
+    println!("current dir: {}", env::current_dir().unwrap().display());
 
     for _i in range {
         // Use Default::default() or constructing new resources by yourself
@@ -165,14 +176,26 @@ fn generate_fhir_bundles(number: i32, write_to_file: bool) {
             (m, med_stmt_ref_id.as_str()),
         );
 
-        if write_to_file {
-            let file_name = format!("Bundle-{}.xml", i);
-            let file_path = format!("./{DATA_FOLDER}/{}", file_name);
-            let data =
-                xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
-            fs::write(file_path, data).expect("Unable to write file");
-        } else {
-            print_fhir_data(b, "bundle");
+        match output_mode {
+            OutputMode::Screen => print_fhir_data(b, "bundle"),
+
+            OutputMode::File => {
+                let dir_path = format!("./{DATA_FOLDER}");
+                if fs::exists(&dir_path).expect("dir exists error") {
+                    println!("{} already exists.", dir_path);
+                } else {
+                    println!("creating {}.", &dir_path);
+                    fs::create_dir(&dir_path).expect("failed to create dir");
+                }
+
+                let file_name = format!("Bundle-{}.xml", i);
+                let file_path = format!("{}/{}", &dir_path, file_name);
+                let data =
+                    xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
+                fs::write(file_path, data).expect("Unable to write file");
+            },
+
+            OutputMode::ApiCall => todo!(),
         }
     }
 }
