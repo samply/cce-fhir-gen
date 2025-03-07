@@ -15,10 +15,15 @@ use fake::{Fake, Faker};
 use fhirbolt::serde::xml;
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
+use reqwest::blocking::Client;
+use reqwest::header::{ACCEPT, CONTENT_TYPE, USER_AGENT};
+use reqwest::Proxy;
 use utils::{get_ids, print_fhir_data};
 
 const DATA_FOLDER: &str = "generated-data";
+const PROXY_URL: &str = "";
 
+#[derive(PartialEq)]
 enum OutputMode {
     Screen,
     File,
@@ -31,12 +36,25 @@ fn main() {
 
     // TODO: directly post a request to an endpoint
     // TODO: parse cmd line params for number, file, print or curl
-    generate_fhir_bundles(1, OutputMode::File);
+    // TODO: for curl, we need a server name, user name, pwd, proxy url
+    generate_fhir_bundles(1, OutputMode::ApiCall);
 }
 
 fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
     let range = 1..(number + 1);
     // println!("current dir: {}", env::current_dir().unwrap().display());
+
+    let server_name = "";
+    let user_name = "";
+    let pwd = "";
+
+    let mut client: Option<Client> = None;
+    if output_mode == OutputMode::ApiCall {
+        // let http_proxy = reqwest::Proxy::http(http_proxy_svr).unwrap();
+        // let https_proxy = reqwest::Proxy::http(https_proxy_svr).unwrap();
+        client = Some(get_client());
+        // client = Some(Client::new());
+    }
 
     for _i in range {
         // Use Default::default() or constructing new resources by yourself
@@ -174,6 +192,8 @@ fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
             (prt, proc_rt_ref_id.as_str()),
             (m, med_stmt_ref_id.as_str()),
         );
+        let data =
+            xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
 
         match output_mode {
             OutputMode::Screen => print_fhir_data(b, "bundle"),
@@ -189,12 +209,37 @@ fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
 
                 let file_name = format!("Bundle-{}.xml", i);
                 let file_path = format!("{}/{}", &dir_path, file_name);
-                let data = xml::to_string(&b, None)
-                    .unwrap_or("Cannot serialize bundle to XML.".to_string());
                 fs::write(file_path, data).expect("Unable to create XML file");
             }
 
-            OutputMode::ApiCall => todo!(),
+            OutputMode::ApiCall => {
+                let url = utils::get_bh_fhir_api_url(server_name);
+                println!("api url: {}", &url);
+                let res = client
+                    .as_mut()
+                    .unwrap()
+                    .post(url)
+                    .basic_auth(user_name, Some(pwd))
+                    .header(ACCEPT, "application/xml")
+                    .header(CONTENT_TYPE, "application/xml") // this fixed it
+                    .header(USER_AGENT, "Rust-Reqwest-App")
+                    .body(data)
+                    .send();
+
+                match res {
+                    Ok(resp) => println!("Successfully posted bundle({}): {}", i, resp.status().as_str()),
+                    Err(e) => println!("Error in posting bundle({}): connect: {}, body: {}, timeout: {}", i, e.is_connect(), e.is_body(), e.is_timeout()),
+                }
+            }
         }
     }
+}
+
+fn get_client() -> Client {
+    let proxy = get_proxy();
+    Client::builder().proxy(proxy).build().unwrap()
+}
+
+fn get_proxy() -> Proxy {
+    Proxy::all(PROXY_URL).unwrap()
 }

@@ -11,6 +11,7 @@ use crate::{extensions::option_ext::OptionExt, models::enums::id_type::IdType};
 
 const CCE_URL: &str = "https://www.cancercoreeurope.eu";
 const LOINC_URL: &str = "https://loinc.org";
+const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
 
 const UICC_STAGE_CS: &str = "UICCStageCS";
 const SITE_LOCATION_CS: &str = "SitelocationCS";
@@ -32,6 +33,9 @@ pub fn get_fhir_url() -> String {
 
 pub fn get_loinc_url() -> Uri {
     Uri::from(LOINC_URL)
+}
+pub fn get_bh_fhir_api_url(server_name: &str) -> String {
+    format!("https://{}/{FHIR_ENDPOINT}", server_name)
 }
 
 fn get_code_system_url(name: &str) -> String {
