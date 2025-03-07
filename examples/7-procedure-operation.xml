@@ -10,7 +10,7 @@
         </coding>
     </category>
     <subject>
-        <reference value="Procedure/Operation-id-115" />
+        <reference value="Patient/Patient-id-115" />
     </subject>
     <performedPeriod>
         <start value="1930-10-24" />

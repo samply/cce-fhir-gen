@@ -5,7 +5,7 @@ mod observation_svc;
 mod procedure_svc;
 mod utils;
 
-use std::{env, fs};
+use std::fs;
 
 use chrono::prelude::*;
 use data_gen_svc::get_bundle;
@@ -14,6 +14,7 @@ use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::serde::xml;
 use models::enums::id_type::IdType;
+use models::enums::syst_therapy_type::SystTherapyType;
 use utils::{get_ids, print_fhir_data};
 
 const DATA_FOLDER: &str = "generated-data";
@@ -28,8 +29,6 @@ fn main() {
     println!("Hello, world!");
     println!("");
 
-    // TODO: env::current_dir()
-    // TODO: fix bug
     // TODO: directly post a request to an endpoint
     // TODO: parse cmd line params for number, file, print or curl
     generate_fhir_bundles(1, OutputMode::File);
@@ -37,7 +36,7 @@ fn main() {
 
 fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
     let range = 1..(number + 1);
-    println!("current dir: {}", env::current_dir().unwrap().display());
+    // println!("current dir: {}", env::current_dir().unwrap().display());
 
     for _i in range {
         // Use Default::default() or constructing new resources by yourself
@@ -135,18 +134,18 @@ fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
             condition_ref_id.as_str(),
             sd.date_naive(),
             ed.date_naive(),
-            models::enums::syst_therapy_type::SystTherapyType::RT,
+            SystTherapyType::RT,
         );
         // let prt1 = prt.clone();
         // print_fhir_data(prt1, "procedure-radiotherapy");
 
         let pop = procedure_svc::get_procedure(
             proc_op_id.as_str(),
-            proc_op_ref_id.as_str(),
+            patient_ref_id.as_str(),
             condition_ref_id.as_str(),
             sd.date_naive(),
             ed.date_naive(),
-            models::enums::syst_therapy_type::SystTherapyType::OP,
+            SystTherapyType::OP,
         );
         // let pop1 = pop.clone();
         // print_fhir_data(pop1, "procedure-operation");
@@ -190,10 +189,10 @@ fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
 
                 let file_name = format!("Bundle-{}.xml", i);
                 let file_path = format!("{}/{}", &dir_path, file_name);
-                let data =
-                    xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
-                fs::write(file_path, data).expect("Unable to write file");
-            },
+                let data = xml::to_string(&b, None)
+                    .unwrap_or("Cannot serialize bundle to XML.".to_string());
+                fs::write(file_path, data).expect("Unable to create XML file");
+            }
 
             OutputMode::ApiCall => todo!(),
         }
