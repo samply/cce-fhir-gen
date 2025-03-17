@@ -34,6 +34,7 @@ pub fn get_fhir_url() -> String {
 pub fn get_loinc_url() -> Uri {
     Uri::from(LOINC_URL)
 }
+
 pub fn get_bh_fhir_api_url(server_name: &str) -> String {
     format!("https://{}/{FHIR_ENDPOINT}", server_name)
 }
@@ -87,10 +88,7 @@ pub fn get_body_site_url() -> Uri {
 }
 
 pub fn get_full_url(id: &str) -> Uri {
-    Uri::from(format!(
-        "https://www.cancercoreeurope.eu/fhir-xml/examples/{}",
-        id
-    ))
+    Uri::from(format!("{CCE_URL}/fhir-xml/examples/{}", id))
 }
 
 pub fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {
@@ -113,7 +111,12 @@ where
     println!("");
 }
 
-pub fn get_ids(res_group: Option<&str>, id_type: IdType, res_type: &str, i: i8) -> (String, String) {
+pub fn get_ids(
+    res_group: Option<&str>,
+    id_type: IdType,
+    res_type: &str,
+    i: i8,
+) -> (String, String) {
     let id_type_str = match id_type {
         IdType::Id => id_type.as_str().to_string(),
         IdType::Identifier => format!("src-{}", id_type.as_str()),
@@ -125,7 +128,7 @@ pub fn get_ids(res_group: Option<&str>, id_type: IdType, res_type: &str, i: i8) 
     } else {
         format!("{res_type}/{}", id)
     };
-    
+
     (id, ref_id)
 }
 
@@ -144,13 +147,24 @@ mod tests {
     fn test_get_ids_with_id_type_identifier() {
         let (bundle_id, bundle_ref_id) = get_ids(None, IdType::Identifier, "Bundle", 1);
         assert_eq!(bundle_id, "Bundle-src-identifier-1", "id does not match");
-        assert_eq!(bundle_ref_id, "Bundle/Bundle-src-identifier-1", "ref id does not match");
+        assert_eq!(
+            bundle_ref_id, "Bundle/Bundle-src-identifier-1",
+            "ref id does not match"
+        );
     }
 
     #[test]
     fn test_get_sample_mat_type_url() {
         let smt_url = get_sample_mat_type_url();
-        let expected = Uri::from("https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType");
+        let expected = Uri::from(format!("{CCE_URL}/fhir/core/CodeSystem/SampleMaterialType"));
         assert_eq!(smt_url, expected, "urls do not match");
+    }
+
+    #[test]
+    fn test_get_full_url() {
+        let id = "1";
+        let id_url = get_full_url(id);
+        let expected = Uri::from(format!("{CCE_URL}/fhir-xml/examples/1"));
+        assert_eq!(id_url, expected, "urls do not match");
     }
 }
