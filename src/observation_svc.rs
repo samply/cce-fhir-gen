@@ -155,7 +155,6 @@ pub fn get_tnmc(
         value: Some(effective_date.to_string()),
         ..Default::default()
     };
-
     
     let coding = Coding {
         system: Some(get_uicc_stage_url()),
@@ -212,7 +211,7 @@ pub fn get_tnmc(
         ..Default::default()
     };
     let tnmt_comp = ObservationComponent {
-        code: Box::new(get_loinc_code("21907-1")),
+        code: Box::new(get_loinc_code("21899-0")),
         value: Some(ObservationComponentValue::CodeableConcept(Box::new(
             tnmt_concept,
         ))),
