@@ -1,0 +1,68 @@
+use fake::Dummy;
+
+#[derive(Debug, Dummy)]
+pub enum UiccStage {
+    Zero,
+    ZeroA,
+    ZeroIs,
+    I,
+    IA,
+    IA1,
+    IA2,
+    IB,
+    IB1,
+    IB2,
+    IC,
+    II,
+    IIA,
+    IIA1,
+    IIA2,
+    IIB,
+    IIC,
+    III,
+    IIIA,
+    IIIB,
+    IIIC,
+    IIIC1,
+    IIIC2,
+    IV,
+    IVA,
+    IVB,
+    IVC,
+    IS,
+}
+
+impl UiccStage {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            UiccStage::Zero => "0",
+            UiccStage::ZeroA => "0a",
+            UiccStage::ZeroIs => "0is",
+            UiccStage::I => "I",
+            UiccStage::IA => "IA",
+            UiccStage::IA1 => "IA1",
+            UiccStage::IA2 => "IA2",
+            UiccStage::IB => "IB",
+            UiccStage::IB1 => "IB1",
+            UiccStage::IB2 => "IB2",
+            UiccStage::IC => "IC",
+            UiccStage::II => "II",
+            UiccStage::IIA => "IIA",
+            UiccStage::IIA1 => "IIA1",
+            UiccStage::IIA2 => "IIA2",
+            UiccStage::IIB => "IIB",
+            UiccStage::IIC => "IIC",
+            UiccStage::III => "III",
+            UiccStage::IIIA => "IIIA",
+            UiccStage::IIIB => "IIIB",
+            UiccStage::IIIC => "IIIC",
+            UiccStage::IIIC1 => "IIIC1",
+            UiccStage::IIIC2 => "IIIC2",
+            UiccStage::IV => "IV",
+            UiccStage::IVA => "IVA",
+            UiccStage::IVB => "IVB",
+            UiccStage::IVC => "IVC",
+            UiccStage::IS => "IS",
+        }
+    }
+}

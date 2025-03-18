@@ -1,7 +1,9 @@
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
 use crate::models::enums::tnmr_symbol::TnmrSymbol;
+use crate::models::enums::tnmt_category::TnmtCategory;
 use crate::models::enums::tnmy_symbol::TnmySymbol;
+use crate::models::enums::uicc_stage::UiccStage;
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{
     get_loinc_url, get_tnmm_url, get_tnmn_url, get_tnmr_symbol_url, get_tnmt_url, get_tnmy_symbol_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS
@@ -135,10 +137,10 @@ pub fn get_tnmc(
     id: &str,
     sub_ref: &str,
     effective_date: NaiveDate,
-    uicc_code_value: &str,
+    uicc_code_value: UiccStage,
     tnmm: TnmmCategory,
     tnmn: TnmnCategory,
-    tnmt: &str,
+    tnmt: TnmtCategory,
     tnmr: TnmrSymbol,
     tnmy: TnmySymbol,
 ) -> Observation {
@@ -159,7 +161,7 @@ pub fn get_tnmc(
     let coding = Coding {
         system: Some(get_uicc_stage_url()),
         version: Some("8".into()),
-        code: Some(Code::from(uicc_code_value)),
+        code: Some(Code::from(uicc_code_value.as_str())),
         ..Default::default()
     };
     let cod_concept = CodeableConcept {
@@ -203,7 +205,7 @@ pub fn get_tnmc(
 
     let tnmt_coding = Coding {
         system: Some(get_tnmt_url()),
-        code: Some(Code::from(tnmt)),
+        code: Some(Code::from(tnmt.as_str())),
         ..Default::default()
     };
     let tnmt_concept = CodeableConcept {
