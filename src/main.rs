@@ -37,7 +37,6 @@ fn main() {
     // TODO: directly post a request to an endpoint
     // TODO: parse cmd line params for number, file, print or curl
     // TODO: for curl, we need a server name, user name, pwd, proxy url
-    // TODO: add enums for TNM p & c codes
     generate_fhir_bundles(1, OutputMode::Screen);
 }
 

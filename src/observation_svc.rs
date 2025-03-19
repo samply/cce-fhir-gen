@@ -1,3 +1,4 @@
+use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmtClassification};
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
 use crate::models::enums::tnmr_symbol::TnmrSymbol;
@@ -179,7 +180,7 @@ pub fn get_tnmc(
         ..Default::default()
     };
     let tnmm_comp = ObservationComponent {
-        code: Box::new(get_loinc_code("21907-1")),
+        code: Box::new(get_loinc_code(TnmmClassification::Clinical.as_str())),
         value: Some(ObservationComponentValue::CodeableConcept(Box::new(
             tnmm_concept,
         ))),
@@ -213,7 +214,7 @@ pub fn get_tnmc(
         ..Default::default()
     };
     let tnmt_comp = ObservationComponent {
-        code: Box::new(get_loinc_code("21899-0")),
+        code: Box::new(get_loinc_code(TnmtClassification::Clinical.as_str())),
         value: Some(ObservationComponentValue::CodeableConcept(Box::new(
             tnmt_concept,
         ))),
@@ -261,7 +262,7 @@ pub fn get_tnmc(
         // NOTE: status is required by the FHIR lib
         status: OBSERVATION_STATUS.into(),
         value: Some(ObservationValue::CodeableConcept(Box::new(cod_concept))),
-        code: Box::new(get_loinc_code("21908-9")),
+        code: Box::new(get_loinc_code(TnmClassification::Clinical.as_str())),
         // component: vec![tnmm_comp, tnmn_comp, tnmr_comp, tnmy_comp],
         component: vec![tnmm_comp, tnmn_comp, tnmt_comp],
         ..Default::default()

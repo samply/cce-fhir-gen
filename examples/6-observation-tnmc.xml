@@ -51,7 +51,7 @@
         <code>
             <coding>
                 <system value="https://loinc.org" />
-                <code value="21899-0" />
+                <code value="21905-5" />
             </coding>
         </code>
         <valueCodeableConcept>
