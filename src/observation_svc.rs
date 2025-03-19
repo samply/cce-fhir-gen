@@ -1,4 +1,4 @@
-use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmtClassification};
+use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification};
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
 use crate::models::enums::tnmr_symbol::TnmrSymbol;
@@ -197,7 +197,7 @@ pub fn get_tnmc(
         ..Default::default()
     };
     let tnmn_comp = ObservationComponent {
-        code: Box::new(get_loinc_code("201906-3")),
+        code: Box::new(get_loinc_code(TnmnClassification::Clinical.as_str())),
         value: Some(ObservationComponentValue::CodeableConcept(Box::new(
             tnmn_concept,
         ))),

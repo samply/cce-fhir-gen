@@ -37,7 +37,7 @@
         <code>
             <coding>
                 <system value="https://loinc.org" />
-                <code value="201906-3" />
+                <code value="21906-3" />
             </coding>
         </code>
         <valueCodeableConcept>
