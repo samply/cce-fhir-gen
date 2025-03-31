@@ -1,8 +1,8 @@
 # cce-fhir-gen
 
-Fake XML data generator for CCE FHIR profiles.
+Synthetic XML data generator for CCE FHIR profiles.
 
-This repository contains [Rust](https://www.rust-lang.org/) code to generate fake XML data for [CCE FHIR models](https://simplifier.net/cce).
+This repository contains [Rust](https://www.rust-lang.org/) code to generate synthetic XML data for [CCE FHIR models](https://simplifier.net/cce).
 
 ## FHIR library
 

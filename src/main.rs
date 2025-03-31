@@ -1,3 +1,4 @@
+mod cli;
 mod data_gen_svc;
 mod extensions;
 mod models;
@@ -8,6 +9,8 @@ mod utils;
 use std::fs;
 
 use chrono::prelude::*;
+use cli::args::{CliArgs, OutputMode};
+use clap::Parser;
 use data_gen_svc::get_bundle;
 use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
@@ -23,24 +26,18 @@ use utils::{get_ids, print_fhir_data};
 const DATA_FOLDER: &str = "generated-data";
 const PROXY_URL: &str = "";
 
-#[derive(PartialEq)]
-enum OutputMode {
-    Screen,
-    File,
-    ApiCall,
-}
-
 fn main() {
+    let cli = CliArgs::parse();
+    
     println!("Hello, world!");
     println!("");
 
     // TODO: directly post a request to an endpoint
-    // TODO: parse cmd line params for number, file, print or curl
     // TODO: for curl, we need a server name, user name, pwd, proxy url
-    generate_fhir_bundles(1, OutputMode::Screen);
+    generate_fhir_bundles(cli.number, cli.output_mode);
 }
 
-fn generate_fhir_bundles(number: i32, output_mode: OutputMode) {
+fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
     let range = 1..(number + 1);
     // println!("current dir: {}", env::current_dir().unwrap().display());
 
