@@ -1,3 +1,6 @@
+//! We have multiple FHIR resources for a Procedure. This module has functions to generate XML for these
+//! different Procedure resources.
+
 use chrono::NaiveDate;
 use fhirbolt::model::r4b::resources::{Procedure, ProcedurePerformed};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Period, Reference};

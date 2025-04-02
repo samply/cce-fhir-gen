@@ -1,3 +1,6 @@
+//! We have multiple FHIR resources for an Observation. This module has functions to generate XML for these
+//! different Observation resources.
+
 use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification};
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
