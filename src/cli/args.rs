@@ -56,10 +56,10 @@ pub struct CliArgs {
     pub number: u8,
 
     /// Type of resource to generate
-    #[arg(short, long, value_enum)]
+    #[arg(short, long, value_enum, default_value_t=ResourceType::Bundle)]
     pub resource_type: ResourceType,
 
     /// Where to store the resources
-    #[arg(short, long, value_enum)]
+    #[arg(short, long, value_enum, default_value_t=OutputMode::Screen)]
     pub output_mode: OutputMode,
 }

@@ -115,7 +115,7 @@ pub fn get_ids(
     res_group: Option<&str>,
     id_type: IdType,
     res_type: &str,
-    i: i8,
+    i: u16,
 ) -> (String, String) {
     let id_type_str = match id_type {
         IdType::Id => id_type.as_str().to_string(),

@@ -28,8 +28,15 @@ const PROXY_URL: &str = "";
 
 fn main() {
     let cli = CliArgs::parse();
+
+    let msg = format!("write to a file in /{}", DATA_FOLDER);
+    let storage = match cli.output_mode {
+        OutputMode::Screen => "show on terminal",
+        OutputMode::File => msg.as_str(),
+        OutputMode::ApiCall => "call API endpoint (WIP)",
+    };
     
-    println!("Hello, world!");
+    println!("Generating {} {:?} and {}...", cli.number, cli.resource_type, storage);
     println!("");
 
     // TODO: directly post a request to an endpoint
@@ -55,7 +62,7 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
 
     for _i in range {
         // Use Default::default() or constructing new resources by yourself
-        let i: i8 = Faker.fake();
+        let i: u16 = Faker.fake();
         let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
         let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
         let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
