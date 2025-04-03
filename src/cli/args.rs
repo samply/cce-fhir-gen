@@ -47,6 +47,23 @@ pub enum ResourceType {
     MedicationStatement,
 }
 
+impl ResourceType {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            ResourceType::Bundle => "Bundle",
+            ResourceType::Patient => "Patient",
+            ResourceType::Condition => "Condition",
+            ResourceType::Specimen => "Specimen",
+            ResourceType::ObservationHistology => "Observation Histology",
+            ResourceType::ObservationVitalStatus => "Observation VitalStatus",
+            ResourceType::ObservationTNMc => "Observation TNMc",
+            ResourceType::ProcedureRadiotherapy => "Procedure Radiotherapy",
+            ResourceType::ProcedureOperation => "Procedure Operation",
+            ResourceType::MedicationStatement => "Medication Statement",
+        }
+    }
+}
+
 /// A program to generate synthetic XML data (conforming to CCE FHIR profiles)
 #[derive(Debug, Parser)]
 #[command(version, about, long_about = None)]
