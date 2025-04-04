@@ -43,11 +43,11 @@ pub fn get_bundle() -> Bundle {
     let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-    let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str(), Faker.fake());
+    let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
     // let pt1 = pt.clone();
     // print_fhir_data(pt1, "patient");
 
-    let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
+    let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
     // let s1 = s.clone();
     // print_fhir_data(s1, "specimen");
 
@@ -56,7 +56,6 @@ pub fn get_bundle() -> Bundle {
         patient_ref_id.as_str(),
         "C34.0",
         "C34.0",
-        Faker.fake(),
     );
     // let c1 = c.clone();
     // print_fhir_data(c1, "condition");
@@ -76,7 +75,6 @@ pub fn get_bundle() -> Bundle {
         obs_vital_status_id.as_str(),
         patient_ref_id.as_str(),
         ed.date_naive(),
-        Faker.fake(),
     );
     // let ovs1 = ovs.clone();
     // print_fhir_data(ovs1, "observation-vitalstatus");
@@ -85,10 +83,6 @@ pub fn get_bundle() -> Bundle {
         &obs_tnmc_id.as_str(),
         patient_ref_id.as_str(),
         ed.date_naive(),
-        Faker.fake(),
-        Faker.fake(),
-        Faker.fake(),
-        Faker.fake(),
     );
     // let otnmc1 = otnmc.clone();
     // print_fhir_data(otnmc1, "observation-tnmc");
@@ -122,7 +116,6 @@ pub fn get_bundle() -> Bundle {
         "medicine",
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
-        Faker.fake(),
         "2021-06-12",
         "2021-06-21",
     );
@@ -168,113 +161,20 @@ fn assemble_bundle(
         ..Default::default()
     };
 
-    let patient = BundleEntry {
-        full_url: Some(get_full_url(
-            patient_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
-        )),
-        resource: Some(Resource::Patient(Box::new(patient_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", patient_tuple.1).into_some(),
-        ..Default::default()
-    };
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let specimen = specimen_svc::get_bundle_entry(specimen_tuple.0, specimen_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
 
-    let specimen = BundleEntry {
-        full_url: Some(get_full_url(
-            specimen_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
-        )),
-        resource: Some(Resource::Specimen(Box::new(specimen_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", specimen_tuple.1).into_some(),
-        ..Default::default()
-    };
+    let observation =
+        observation_svc::get_bundle_entry(obs_histology_tuple.0, obs_histology_tuple.1);
+    let vital_status =
+        observation_svc::get_bundle_entry(obs_vital_status_tuple.0, obs_vital_status_tuple.1);
+    let tnmc = observation_svc::get_bundle_entry(obs_tnmc_tuple.0, obs_tnmc_tuple.1);
 
-    let condition = BundleEntry {
-        full_url: Some(get_full_url(
-            condition_tuple
-                .0
-                .clone()
-                .id
-                .unwrap()
-                .value
-                .unwrap()
-                .as_str(),
-        )),
-        resource: Some(Resource::Condition(Box::new(condition_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", condition_tuple.1).into_some(),
-        ..Default::default()
-    };
+    let procedure = procedure_svc::get_bundle_entry(proc_rt_tuple.0, proc_rt_tuple.1);
+    let operation = procedure_svc::get_bundle_entry(proc_op_tuple.0, proc_op_tuple.1);
 
-    let observation = BundleEntry {
-        full_url: Some(get_full_url(
-            obs_histology_tuple
-                .0
-                .clone()
-                .id
-                .unwrap()
-                .value
-                .unwrap()
-                .as_str(),
-        )),
-        resource: Some(Resource::Observation(Box::new(
-            obs_histology_tuple.0.clone(),
-        ))),
-        request: get_bundle_entry_request("PUT", obs_histology_tuple.1).into_some(),
-        ..Default::default()
-    };
-
-    let vital_status = BundleEntry {
-        full_url: Some(get_full_url(
-            obs_vital_status_tuple
-                .0
-                .clone()
-                .id
-                .unwrap()
-                .value
-                .unwrap()
-                .as_str(),
-        )),
-        resource: Some(Resource::Observation(Box::new(
-            obs_vital_status_tuple.0.clone(),
-        ))),
-        request: get_bundle_entry_request("PUT", obs_vital_status_tuple.1).into_some(),
-        ..Default::default()
-    };
-
-    let tnmc = BundleEntry {
-        full_url: Some(get_full_url(
-            obs_tnmc_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
-        )),
-        resource: Some(Resource::Observation(Box::new(obs_tnmc_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", obs_tnmc_tuple.1).into_some(),
-        ..Default::default()
-    };
-
-    let procedure = BundleEntry {
-        full_url: Some(get_full_url(
-            proc_rt_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
-        )),
-        resource: Some(Resource::Procedure(Box::new(proc_rt_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", proc_rt_tuple.1).into_some(),
-        ..Default::default()
-    };
-
-    let operation = BundleEntry {
-        full_url: Some(get_full_url(
-            proc_op_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
-        )),
-        resource: Some(Resource::Procedure(Box::new(proc_op_tuple.0.clone()))),
-        request: get_bundle_entry_request("PUT", proc_op_tuple.1).into_some(),
-        ..Default::default()
-    };
-
-    let med_stmt = BundleEntry {
-        full_url: Some(get_full_url(
-            med_stmt_tuple.0.clone().id.unwrap().value.unwrap().as_str(),
-        )),
-        resource: Some(Resource::MedicationStatement(Box::new(
-            med_stmt_tuple.0.clone(),
-        ))),
-        request: get_bundle_entry_request("PUT", med_stmt_tuple.1).into_some(),
-        ..Default::default()
-    };
+    let med_stmt = medication_svc::get_bundle_entry(med_stmt_tuple.0, med_stmt_tuple.1);
 
     Bundle {
         id: Some(id),

@@ -1,20 +1,24 @@
+use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{
-    MedicationStatement, MedicationStatementEffective, MedicationStatementMedication,
+    BundleEntry, MedicationStatement, MedicationStatementEffective, MedicationStatementMedication
 };
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Period, Reference};
+use fhirbolt::model::r4b::Resource;
 
+use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
-use crate::utils::get_syst_therapy_type_url;
+use crate::utils::{get_bundle_entry_request, get_full_url, get_syst_therapy_type_url};
 
 pub fn get_med_statement(
     id: &str,
     med_ref: &str,
     sub_ref: &str,
     reason_ref: &str,
-    therapy_type: SystTherapyType,
     start: &str,
     end: &str,
 ) -> MedicationStatement {
+    let therapy_type: SystTherapyType = Faker.fake();
+    
     let pid = Id {
         value: Some(id.to_string()),
         ..Default::default()
@@ -66,6 +70,17 @@ pub fn get_med_statement(
         subject: Box::new(sub_rfrnc),
         effective: Some(effective),
         reason_reference: vec![reason_rfrnc],
+        ..Default::default()
+    }
+}
+
+pub fn get_bundle_entry(patient: MedicationStatement, patient_ref_id: &str) -> BundleEntry {
+    BundleEntry {
+        full_url: Some(get_full_url(
+            patient.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::MedicationStatement(Box::new(patient.clone()))),
+        request: get_bundle_entry_request("PUT", patient_ref_id).into_some(),
         ..Default::default()
     }
 }

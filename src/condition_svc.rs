@@ -1,16 +1,15 @@
-use fhirbolt::model::r4b::resources::{Condition, ConditionOnset};
+use fake::{Fake, Faker};
+use fhirbolt::model::r4b::resources::{BundleEntry, Condition, ConditionOnset};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri};
+use fhirbolt::model::r4b::Resource;
 
+use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
-use crate::utils::get_site_location_url;
+use crate::utils::{get_bundle_entry_request, get_full_url, get_site_location_url};
 
-pub fn get_condition(
-    id: &str,
-    sub_ref: &str,
-    code_value: &str,
-    bs_code_value1: &str,
-    bs_code_value2: TumorSiteLocation,
-) -> Condition {
+pub fn get_condition(id: &str, sub_ref: &str, code_value: &str, bs_code_value1: &str) -> Condition {
+    let bs_code_value2: TumorSiteLocation = Faker.fake();
+
     let cid = Id {
         value: Some(id.to_string()),
         ..Default::default()
@@ -57,6 +56,17 @@ pub fn get_condition(
         subject: Box::new(sub_rfrnc),
         onset: Some(ConditionOnset::DateTime(effective.clone())),
         recorded_date: Some(effective.clone()),
+        ..Default::default()
+    }
+}
+
+pub fn get_bundle_entry(condition: Condition, condition_ref_id: &str) -> BundleEntry {
+    BundleEntry {
+        full_url: Some(get_full_url(
+            condition.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Condition(Box::new(condition.clone()))),
+        request: get_bundle_entry_request("PUT", condition_ref_id).into_some(),
         ..Default::default()
     }
 }

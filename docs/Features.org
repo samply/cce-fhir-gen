@@ -1,0 +1,9 @@
+* Features & ToDos
+
+- Generate multiple resources in a bundle
+- Use PatientId as a newtype
+
+** Clean up
+
+- DONE [2025-4-4 Fri] Add more services and get rid of data_gen_svc
+- TODO Minimize method parameters

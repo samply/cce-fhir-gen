@@ -3,13 +3,17 @@ use std::ops::Range;
 use chrono::{prelude::*, Months};
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
-use fhirbolt::model::r4b::resources::{Patient, PatientDeceased};
+use fhirbolt::model::r4b::resources::{BundleEntry, Patient, PatientDeceased};
 use fhirbolt::model::r4b::types::{Code, Date, DateTime, Id, Identifier, String};
+use fhirbolt::model::r4b::Resource;
 
+use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::gender::Gender;
+use crate::utils::{get_bundle_entry_request, get_full_url};
 
-pub fn get_patient(id: &str, src_id: &str, min_date_time: chrono::DateTime<Utc>) -> Patient {
+pub fn get_patient(id: &str, src_id: &str) -> Patient {
     let gender: Gender = Faker.fake();
+    let min_date_time: chrono::DateTime<Utc> = Faker.fake();
     let birthdate: chrono::DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let deceased: bool = Faker.fake();
 
@@ -53,13 +57,23 @@ pub fn get_patient(id: &str, src_id: &str, min_date_time: chrono::DateTime<Utc>)
     }
 }
 
+pub fn get_bundle_entry(patient: Patient, patient_ref_id: &str) -> BundleEntry {
+    BundleEntry {
+        full_url: Some(get_full_url(
+            patient.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Patient(Box::new(patient.clone()))),
+        request: get_bundle_entry_request("PUT", patient_ref_id).into_some(),
+        ..Default::default()
+    }
+}
+
 pub fn get_patients(
     id: &str,
     src_id: &str,
-    min_date_time: chrono::DateTime<Utc>,
     range: Range<u8>,
 ) -> Vec<Patient> {
     range
-        .map(|_| get_patient(id, src_id, min_date_time))
+        .map(|_| get_patient(id, src_id))
         .collect()
 }

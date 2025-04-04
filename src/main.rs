@@ -1,5 +1,5 @@
-mod cli;
 mod bundle_svc;
+mod cli;
 mod condition_svc;
 mod extensions;
 mod medication_svc;
@@ -32,10 +32,10 @@ const PROXY_URL: &str = "";
 fn main() {
     let cli = CliArgs::parse();
 
-    let msg = format!("write to a file in /{}", DATA_FOLDER);
+    let file_msg = format!("write to a file in /{}", DATA_FOLDER);
     let storage = match cli.output_mode {
         OutputMode::Screen => "show on terminal",
-        OutputMode::File => msg.as_str(),
+        OutputMode::File => file_msg.as_str(),
         OutputMode::ApiCall => "call API endpoint (WIP)",
     };
 
@@ -95,13 +95,11 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
         let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
         let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-        let pt =
-            patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str(), Faker.fake());
+        let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
         // let pt1 = pt.clone();
         // print_fhir_data(pt1, "patient");
 
-        let s =
-            specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
+        let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
         // let s1 = s.clone();
         // print_fhir_data(s1, "specimen");
 
@@ -110,7 +108,6 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
             patient_ref_id.as_str(),
             "C34.0",
             "C34.0",
-            Faker.fake(),
         );
         // let c1 = c.clone();
         // print_fhir_data(c1, "condition");
@@ -130,7 +127,6 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
             obs_vital_status_id.as_str(),
             patient_ref_id.as_str(),
             ed.date_naive(),
-            Faker.fake(),
         );
         // let ovs1 = ovs.clone();
         // print_fhir_data(ovs1, "observation-vitalstatus");
@@ -139,10 +135,6 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
             &obs_tnmc_id.as_str(),
             patient_ref_id.as_str(),
             ed.date_naive(),
-            Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
         );
         // let otnmc1 = otnmc.clone();
         // print_fhir_data(otnmc1, "observation-tnmc");
@@ -176,7 +168,6 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
             "medicine",
             patient_ref_id.as_str(),
             condition_ref_id.as_str(),
-            Faker.fake(),
             "2021-06-12",
             "2021-06-21",
         );

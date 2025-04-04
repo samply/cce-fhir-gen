@@ -1,10 +1,15 @@
-use fhirbolt::model::r4b::resources::{Specimen, SpecimenCollection, SpecimenCollectionCollected};
+use fake::{Fake, Faker};
+use fhirbolt::model::r4b::resources::{BundleEntry, Specimen, SpecimenCollection, SpecimenCollectionCollected};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference};
+use fhirbolt::model::r4b::Resource;
 
+use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::sample_material_type::SampleMaterialType;
-use crate::utils::{get_body_site_url, get_sample_mat_type_url};
+use crate::utils::{get_body_site_url, get_bundle_entry_request, get_full_url, get_sample_mat_type_url};
 
-pub fn get_specimen(id: &str, sub_ref: &str, sample_material_type: SampleMaterialType) -> Specimen {
+pub fn get_specimen(id: &str, sub_ref: &str) -> Specimen {
+    let sample_material_type: SampleMaterialType = Faker.fake();
+
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()
@@ -49,6 +54,17 @@ pub fn get_specimen(id: &str, sub_ref: &str, sample_material_type: SampleMateria
         subject: Some(Box::new(sub_rfrnc)),
         collection: Some(specimen_collection),
         r#type: Some(Box::new(cod_concept)),
+        ..Default::default()
+    }
+}
+
+pub fn get_bundle_entry(specimen: Specimen, specimen_ref_id: &str) -> BundleEntry {
+    BundleEntry {
+        full_url: Some(get_full_url(
+            specimen.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Specimen(Box::new(specimen.clone()))),
+        request: get_bundle_entry_request("PUT", specimen_ref_id).into_some(),
         ..Default::default()
     }
 }
