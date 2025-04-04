@@ -14,7 +14,7 @@ use std::fs;
 
 use chrono::prelude::*;
 use clap::Parser;
-use cli::args::{CliArgs, OutputMode};
+use cli::args::{CliArgs, OutputMode, ResourceType};
 use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
@@ -47,184 +47,369 @@ fn main() {
 
     // TODO: directly post a request to an endpoint
     // TODO: for curl, we need a server name, user name, pwd, proxy url
-    generate_fhir_bundles(cli.number, cli.output_mode);
+    generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
 }
 
-fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
-    let range = 1..(number + 1);
-    // println!("current dir: {}", env::current_dir().unwrap().display());
+fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
+    let i: u16 = Faker.fake();
 
-    let server_name = "";
-    let user_name = "";
-    let pwd = "";
+    let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
+    let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
+    let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
+    let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
+    let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+    let (obs_vital_status_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+    let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+    let (proc_rt_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
+    let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (med_stmt_id, _) = get_ids(
+        "MedicationStatement".into_some(),
+        IdType::Id,
+        "SystemicTherapy",
+        i,
+    );
 
-    let mut client: Option<Client> = None;
-    if output_mode == OutputMode::ApiCall {
-        // let http_proxy = reqwest::Proxy::http(http_proxy_svr).unwrap();
-        // let https_proxy = reqwest::Proxy::http(https_proxy_svr).unwrap();
-        client = Some(get_client());
-        // client = Some(Client::new());
-    }
+    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
-    for _i in range {
-        // Use Default::default() or constructing new resources by yourself
-        let i: u16 = Faker.fake();
-        let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
-        let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
-        let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
-        let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
-        let (obs_hist_id, obs_hist_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "Histology", i);
-        let (obs_vital_status_id, obs_vital_status_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-        let (obs_tnmc_id, obs_tnmc_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
-        let (proc_rt_id, proc_rt_ref_id) =
-            get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-        let (proc_op_id, proc_op_ref_id) =
-            get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
-        let (med_stmt_id, med_stmt_ref_id) = get_ids(
-            "MedicationStatement".into_some(),
-            IdType::Id,
-            "SystemicTherapy",
-            i,
-        );
+    let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let end_date: DateTime<Utc> = DateTimeAfter(start_date).fake();
 
-        let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
-        let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-        let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let (xml_data, file_name) = match resource_type {
+        ResourceType::Patient => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            (
+                xml::to_string(&pt, None).unwrap_or("Cannot serialize patient to XML.".to_string()),
+                patient_id,
+            )
+        }
 
-        let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-        let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-        // let pt1 = pt.clone();
-        // print_fhir_data(pt1, "patient");
+        ResourceType::Condition => {
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            (
+                xml::to_string(&c, None)
+                    .unwrap_or("Cannot serialize condition to XML.".to_string()),
+                condition_id,
+            )
+        }
 
-        let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
-        // let s1 = s.clone();
-        // print_fhir_data(s1, "specimen");
+        ResourceType::Specimen => {
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
+            (
+                xml::to_string(&s, None).unwrap_or("Cannot serialize specimen to XML.".to_string()),
+                specimen_id,
+            )
+        }
 
-        let c = condition_svc::get_condition(
-            condition_id.as_str(),
-            patient_ref_id.as_str(),
-            "C34.0",
-            "C34.0",
-        );
-        // let c1 = c.clone();
-        // print_fhir_data(c1, "condition");
+        ResourceType::ObservationHistology => {
+            let ohist = observation_svc::get_histology(
+                obs_hist_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                specimen_ref_id.as_str(),
+                effective_date.date_naive(),
+                "8140/3",
+            );
+            (
+                xml::to_string(&ohist, None)
+                    .unwrap_or("Cannot serialize observation histology to XML.".to_string()),
+                obs_hist_id,
+            )
+        }
 
-        let ohist = observation_svc::get_histology(
-            obs_hist_id.as_str(),
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            specimen_ref_id.as_str(),
-            ed.date_naive(),
-            "8140/3",
-        );
-        // let ohist1 = ohist.clone();
-        // print_fhir_data(ohist1, "observation-histology");
+        ResourceType::ObservationVitalStatus => {
+            let ovs = observation_svc::get_vital_status(
+                obs_vital_status_id.as_str(),
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+            );
+            (
+                xml::to_string(&ovs, None)
+                    .unwrap_or("Cannot serialize observation vital-status to XML.".to_string()),
+                obs_vital_status_id,
+            )
+        }
 
-        let ovs = observation_svc::get_vital_status(
-            obs_vital_status_id.as_str(),
-            patient_ref_id.as_str(),
-            ed.date_naive(),
-        );
-        // let ovs1 = ovs.clone();
-        // print_fhir_data(ovs1, "observation-vitalstatus");
+        ResourceType::ObservationTNMc => {
+            let otnmc = observation_svc::get_tnmc(
+                &obs_tnmc_id.as_str(),
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+            );
+            (
+                xml::to_string(&otnmc, None)
+                    .unwrap_or("Cannot serialize observation tnmc to XML.".to_string()),
+                obs_tnmc_id,
+            )
+        }
 
-        let otnmc = observation_svc::get_tnmc(
-            &obs_tnmc_id.as_str(),
-            patient_ref_id.as_str(),
-            ed.date_naive(),
-        );
-        // let otnmc1 = otnmc.clone();
-        // print_fhir_data(otnmc1, "observation-tnmc");
+        ResourceType::ProcedureRadiotherapy => {
+            let prt = procedure_svc::get_procedure(
+                proc_rt_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                SystTherapyType::RT,
+            );
+            (
+                xml::to_string(&prt, None)
+                    .unwrap_or("Cannot serialize procedure radiotherapy to XML.".to_string()),
+                proc_rt_id,
+            )
+        }
 
-        let sd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-        let ed: DateTime<Utc> = DateTimeAfter(sd).fake();
-        let prt = procedure_svc::get_procedure(
-            proc_rt_id.as_str(),
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            sd.date_naive(),
-            ed.date_naive(),
-            SystTherapyType::RT,
-        );
-        // let prt1 = prt.clone();
-        // print_fhir_data(prt1, "procedure-radiotherapy");
+        ResourceType::ProcedureOperation => {
+            let pop = procedure_svc::get_procedure(
+                proc_op_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                SystTherapyType::OP,
+            );
+            (
+                xml::to_string(&pop, None)
+                    .unwrap_or("Cannot serialize procedure operation to XML.".to_string()),
+                proc_op_id,
+            )
+        }
 
-        let pop = procedure_svc::get_procedure(
-            proc_op_id.as_str(),
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            sd.date_naive(),
-            ed.date_naive(),
-            SystTherapyType::OP,
-        );
-        // let pop1 = pop.clone();
-        // print_fhir_data(pop1, "procedure-operation");
+        ResourceType::MedicationStatement => {
+            let m = medication_svc::get_med_statement(
+                med_stmt_id.as_str(),
+                "medicine",
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                "2021-06-12",
+                "2021-06-21",
+            );
+            (
+                xml::to_string(&m, None)
+                    .unwrap_or("Cannot serialize medication stmt to XML.".to_string()),
+                med_stmt_id,
+            )
+        }
 
-        let m = medication_svc::get_med_statement(
-            med_stmt_id.as_str(),
-            "medicine",
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            "2021-06-12",
-            "2021-06-21",
-        );
-        // let m1 = m.clone();
-        // print_fhir_data(m1, "medication statement");
+        ResourceType::Bundle => {
+            let b = bundle_svc::get_bundle();
+            (
+                xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string()),
+                bundle_id,
+            )
+        }
+    };
 
-        let b = bundle_svc::get_bundle();
-        let data =
-            xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
+    match output_mode {
+        OutputMode::Screen => {
+            println!("{}:", resource_type.as_str());
+            println!("{xml_data}");
+            println!();
+        }
 
-        match output_mode {
-            OutputMode::Screen => print_fhir_data(b, "bundle"),
-
-            OutputMode::File => {
-                let dir_path = format!("./{DATA_FOLDER}");
-                if fs::exists(&dir_path).expect("dir exists error") {
-                    println!("{} already exists.", dir_path);
-                } else {
-                    println!("creating {}.", &dir_path);
-                    fs::create_dir(&dir_path).expect("failed to create dir");
-                }
-
-                let file_name = format!("Bundle-{}.xml", i);
-                let file_path = format!("{}/{}", &dir_path, file_name);
-                fs::write(file_path, data).expect("Unable to create XML file");
+        OutputMode::File => {
+            let dir_path = format!("./{DATA_FOLDER}");
+            if fs::exists(&dir_path).expect("dir exists error") {
+                println!("{} already exists.", dir_path);
+            } else {
+                println!("creating {}.", &dir_path);
+                fs::create_dir(&dir_path).expect("failed to create dir");
             }
 
-            OutputMode::ApiCall => {
-                let url = utils::get_bh_fhir_api_url(server_name);
-                println!("api url: {}", &url);
-                let res = client
-                    .as_mut()
-                    .unwrap()
-                    .post(url)
-                    .basic_auth(user_name, Some(pwd))
-                    .header(ACCEPT, "application/xml")
-                    .header(CONTENT_TYPE, "application/xml") // this fixed it
-                    .header(USER_AGENT, "Rust-Reqwest-App")
-                    .body(data)
-                    .send();
+            let with_extn = format!("{}.xml", file_name);
+            let file_path = format!("{}/{}", &dir_path, with_extn);
+            fs::write(file_path, xml_data).expect("Unable to create XML file");
+        }
 
-                match res {
-                    Ok(resp) => println!(
-                        "Successfully posted bundle({}): {}",
-                        i,
-                        resp.status().as_str()
-                    ),
-                    Err(e) => println!(
-                        "Error in posting bundle({}): connect: {}, body: {}, timeout: {}",
-                        i,
-                        e.is_connect(),
-                        e.is_body(),
-                        e.is_timeout()
-                    ),
+        OutputMode::ApiCall => todo!(),
+    }
+}
+
+fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+    if number > 1 {
+        let range = 0..number;
+        // println!("current dir: {}", env::current_dir().unwrap().display());
+
+        let server_name = "";
+        let user_name = "";
+        let pwd = "";
+
+        let mut client: Option<Client> = None;
+        if output_mode == OutputMode::ApiCall {
+            // let http_proxy = reqwest::Proxy::http(http_proxy_svr).unwrap();
+            // let https_proxy = reqwest::Proxy::http(https_proxy_svr).unwrap();
+            client = Some(get_client());
+            // client = Some(Client::new());
+        }
+
+        for _i in range {
+            // Use Default::default() or constructing new resources by yourself
+            let i: u16 = Faker.fake();
+            let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
+            let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
+            let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
+            let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
+            let (obs_hist_id, obs_hist_ref_id) =
+                get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+            let (obs_vital_status_id, obs_vital_status_ref_id) =
+                get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+            let (obs_tnmc_id, obs_tnmc_ref_id) =
+                get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+            let (proc_rt_id, proc_rt_ref_id) =
+                get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
+            let (proc_op_id, proc_op_ref_id) =
+                get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+            let (med_stmt_id, med_stmt_ref_id) = get_ids(
+                "MedicationStatement".into_some(),
+                IdType::Id,
+                "SystemicTherapy",
+                i,
+            );
+
+            let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+            let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+            let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            // let pt1 = pt.clone();
+            // print_fhir_data(pt1, "patient");
+
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
+            // let s1 = s.clone();
+            // print_fhir_data(s1, "specimen");
+
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            // let c1 = c.clone();
+            // print_fhir_data(c1, "condition");
+
+            let ohist = observation_svc::get_histology(
+                obs_hist_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                specimen_ref_id.as_str(),
+                ed.date_naive(),
+                "8140/3",
+            );
+            // let ohist1 = ohist.clone();
+            // print_fhir_data(ohist1, "observation-histology");
+
+            let ovs = observation_svc::get_vital_status(
+                obs_vital_status_id.as_str(),
+                patient_ref_id.as_str(),
+                ed.date_naive(),
+            );
+            // let ovs1 = ovs.clone();
+            // print_fhir_data(ovs1, "observation-vitalstatus");
+
+            let otnmc = observation_svc::get_tnmc(
+                &obs_tnmc_id.as_str(),
+                patient_ref_id.as_str(),
+                ed.date_naive(),
+            );
+            // let otnmc1 = otnmc.clone();
+            // print_fhir_data(otnmc1, "observation-tnmc");
+
+            let sd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+            let ed: DateTime<Utc> = DateTimeAfter(sd).fake();
+            let prt = procedure_svc::get_procedure(
+                proc_rt_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                sd.date_naive(),
+                ed.date_naive(),
+                SystTherapyType::RT,
+            );
+            // let prt1 = prt.clone();
+            // print_fhir_data(prt1, "procedure-radiotherapy");
+
+            let pop = procedure_svc::get_procedure(
+                proc_op_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                sd.date_naive(),
+                ed.date_naive(),
+                SystTherapyType::OP,
+            );
+            // let pop1 = pop.clone();
+            // print_fhir_data(pop1, "procedure-operation");
+
+            let m = medication_svc::get_med_statement(
+                med_stmt_id.as_str(),
+                "medicine",
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                "2021-06-12",
+                "2021-06-21",
+            );
+            // let m1 = m.clone();
+            // print_fhir_data(m1, "medication statement");
+
+            let b = bundle_svc::get_bundle();
+            let data =
+                xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
+
+            match output_mode {
+                OutputMode::Screen => print_fhir_data(b, "bundle"),
+
+                OutputMode::File => {
+                    let dir_path = format!("./{DATA_FOLDER}");
+                    if fs::exists(&dir_path).expect("dir exists error") {
+                        println!("{} already exists.", dir_path);
+                    } else {
+                        println!("creating {}.", &dir_path);
+                        fs::create_dir(&dir_path).expect("failed to create dir");
+                    }
+
+                    let file_name = format!("Bundle-{}.xml", i);
+                    let file_path = format!("{}/{}", &dir_path, file_name);
+                    fs::write(file_path, data).expect("Unable to create XML file");
+                }
+
+                OutputMode::ApiCall => {
+                    let url = utils::get_bh_fhir_api_url(server_name);
+                    println!("api url: {}", &url);
+                    let res = client
+                        .as_mut()
+                        .unwrap()
+                        .post(url)
+                        .basic_auth(user_name, Some(pwd))
+                        .header(ACCEPT, "application/xml")
+                        .header(CONTENT_TYPE, "application/xml") // this fixed it
+                        .header(USER_AGENT, "Rust-Reqwest-App")
+                        .body(data)
+                        .send();
+
+                    match res {
+                        Ok(resp) => println!(
+                            "Successfully posted bundle({}): {}",
+                            i,
+                            resp.status().as_str()
+                        ),
+                        Err(e) => println!(
+                            "Error in posting bundle({}): connect: {}, body: {}, timeout: {}",
+                            i,
+                            e.is_connect(),
+                            e.is_body(),
+                            e.is_timeout()
+                        ),
+                    }
                 }
             }
         }
+    } else {
+        generate_fhir_bundle(resource_type, output_mode);
     }
 }
 

@@ -5,5 +5,6 @@
 
 ** Clean up
 
-- DONE [2025-4-4 Fri] Add more services and get rid of data_gen_svc
-- TODO Minimize method parameters
+* DONE [2025-4-4 Fri] Add more services and get rid of data_gen_svc
+* DONE [2025-4-4 Fri] Minimize method parameters
+* TODO When generating individual resources, also generate the referenced resources (and will therefore have to wrap in a bundle)
