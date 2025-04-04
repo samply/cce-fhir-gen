@@ -4,13 +4,11 @@
 use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification};
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
-use crate::models::enums::tnmr_symbol::TnmrSymbol;
 use crate::models::enums::tnmt_category::TnmtCategory;
-use crate::models::enums::tnmy_symbol::TnmySymbol;
 use crate::models::enums::uicc_stage::UiccStage;
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{
-    get_loinc_url, get_tnmm_url, get_tnmn_url, get_tnmr_symbol_url, get_tnmt_url, get_tnmy_symbol_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS
+    get_loinc_url, get_tnmm_url, get_tnmn_url, get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS
 };
 use chrono::NaiveDate;
 use fhirbolt::model::r4b::resources::{
@@ -145,8 +143,6 @@ pub fn get_tnmc(
     tnmm: TnmmCategory,
     tnmn: TnmnCategory,
     tnmt: TnmtCategory,
-    tnmr: TnmrSymbol,
-    tnmy: TnmySymbol,
 ) -> Observation {
     // TODO: check date, code etc.
     let oid = Id {

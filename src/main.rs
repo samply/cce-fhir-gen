@@ -1,17 +1,20 @@
 mod cli;
-mod data_gen_svc;
+mod bundle_svc;
+mod condition_svc;
 mod extensions;
+mod medication_svc;
 mod models;
 mod observation_svc;
+mod patient_svc;
 mod procedure_svc;
+mod specimen_svc;
 mod utils;
 
 use std::fs;
 
 use chrono::prelude::*;
-use cli::args::{CliArgs, OutputMode};
 use clap::Parser;
-use data_gen_svc::get_bundle;
+use cli::args::{CliArgs, OutputMode};
 use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
@@ -35,8 +38,11 @@ fn main() {
         OutputMode::File => msg.as_str(),
         OutputMode::ApiCall => "call API endpoint (WIP)",
     };
-    
-    println!("Generating {} {:?} and {}...", cli.number, cli.resource_type, storage);
+
+    println!(
+        "Generating {} {:?} and {}...",
+        cli.number, cli.resource_type, storage
+    );
     println!("");
 
     // TODO: directly post a request to an endpoint
@@ -89,22 +95,17 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
         let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
         let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-        let pt = data_gen_svc::get_patient(
-            patient_id.as_str(),
-            patient_src_id.as_str(),
-            Faker.fake(),
-            bd.date_naive(),
-            Faker.fake(),
-        );
+        let pt =
+            patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str(), Faker.fake());
         // let pt1 = pt.clone();
         // print_fhir_data(pt1, "patient");
 
         let s =
-            data_gen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
+            specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
         // let s1 = s.clone();
         // print_fhir_data(s1, "specimen");
 
-        let c = data_gen_svc::get_condition(
+        let c = condition_svc::get_condition(
             condition_id.as_str(),
             patient_ref_id.as_str(),
             "C34.0",
@@ -142,8 +143,6 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
             Faker.fake(),
             Faker.fake(),
             Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
         );
         // let otnmc1 = otnmc.clone();
         // print_fhir_data(otnmc1, "observation-tnmc");
@@ -172,7 +171,7 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
         // let pop1 = pop.clone();
         // print_fhir_data(pop1, "procedure-operation");
 
-        let m = data_gen_svc::get_med_statement(
+        let m = medication_svc::get_med_statement(
             med_stmt_id.as_str(),
             "medicine",
             patient_ref_id.as_str(),
@@ -184,18 +183,7 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
         // let m1 = m.clone();
         // print_fhir_data(m1, "medication statement");
 
-        let b = get_bundle(
-            bundle_id.as_str(),
-            (pt, patient_ref_id.as_str()),
-            (s, specimen_ref_id.as_str()),
-            (c, condition_ref_id.as_str()),
-            (ohist, obs_hist_ref_id.as_str()),
-            (ovs, obs_vital_status_ref_id.as_str()),
-            (otnmc, obs_tnmc_ref_id.as_str()),
-            (pop, proc_op_ref_id.as_str()),
-            (prt, proc_rt_ref_id.as_str()),
-            (m, med_stmt_ref_id.as_str()),
-        );
+        let b = bundle_svc::get_bundle();
         let data =
             xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
 
@@ -231,8 +219,18 @@ fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
                     .send();
 
                 match res {
-                    Ok(resp) => println!("Successfully posted bundle({}): {}", i, resp.status().as_str()),
-                    Err(e) => println!("Error in posting bundle({}): connect: {}, body: {}, timeout: {}", i, e.is_connect(), e.is_body(), e.is_timeout()),
+                    Ok(resp) => println!(
+                        "Successfully posted bundle({}): {}",
+                        i,
+                        resp.status().as_str()
+                    ),
+                    Err(e) => println!(
+                        "Error in posting bundle({}): connect: {}, body: {}, timeout: {}",
+                        i,
+                        e.is_connect(),
+                        e.is_body(),
+                        e.is_timeout()
+                    ),
                 }
             }
         }
