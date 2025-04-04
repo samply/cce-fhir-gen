@@ -39,8 +39,10 @@ pub fn get_bundle() -> Bundle {
     );
 
     let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
-    let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-    let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+
+    let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let end_date: DateTime<Utc> = DateTimeAfter(start_date).fake();
 
     let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
     let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
@@ -65,7 +67,7 @@ pub fn get_bundle() -> Bundle {
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
         specimen_ref_id.as_str(),
-        ed.date_naive(),
+        effective_date.date_naive(),
         "8140/3",
     );
     // let ohist1 = ohist.clone();
@@ -74,7 +76,7 @@ pub fn get_bundle() -> Bundle {
     let ovs = observation_svc::get_vital_status(
         obs_vital_status_id.as_str(),
         patient_ref_id.as_str(),
-        ed.date_naive(),
+        effective_date.date_naive(),
     );
     // let ovs1 = ovs.clone();
     // print_fhir_data(ovs1, "observation-vitalstatus");
@@ -82,19 +84,17 @@ pub fn get_bundle() -> Bundle {
     let otnmc = observation_svc::get_tnmc(
         &obs_tnmc_id.as_str(),
         patient_ref_id.as_str(),
-        ed.date_naive(),
+        effective_date.date_naive(),
     );
     // let otnmc1 = otnmc.clone();
     // print_fhir_data(otnmc1, "observation-tnmc");
 
-    let sd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-    let ed: DateTime<Utc> = DateTimeAfter(sd).fake();
     let prt = procedure_svc::get_procedure(
         proc_rt_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
-        sd.date_naive(),
-        ed.date_naive(),
+        start_date.date_naive(),
+        end_date.date_naive(),
         SystTherapyType::RT,
     );
     // let prt1 = prt.clone();
@@ -104,8 +104,8 @@ pub fn get_bundle() -> Bundle {
         proc_op_id.as_str(),
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
-        sd.date_naive(),
-        ed.date_naive(),
+        start_date.date_naive(),
+        end_date.date_naive(),
         SystTherapyType::OP,
     );
     // let pop1 = pop.clone();
@@ -138,6 +138,186 @@ pub fn get_bundle() -> Bundle {
     // print_fhir_data(b1, "bundle");
 
     b
+}
+
+pub fn get_condition_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: vec![
+            patient,
+            condition,
+        ],
+        ..Default::default()
+    }
+}
+
+pub fn get_specimen_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    specimen_tuple: (Specimen, &str),
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let specimen = specimen_svc::get_bundle_entry(specimen_tuple.0, specimen_tuple.1);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: vec![
+            patient,
+            specimen,
+        ],
+        ..Default::default()
+    }
+}
+
+pub fn get_observation_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    observation_tuple: (Observation, &str),
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let observation = observation_svc::get_bundle_entry(observation_tuple.0, observation_tuple.1);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: vec![
+            patient,
+            observation,
+        ],
+        ..Default::default()
+    }
+}
+
+pub fn get_observation_histology_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+    specimen_tuple: (Specimen, &str),
+    observation_tuple: (Observation, &str),
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+    let specimen = specimen_svc::get_bundle_entry(specimen_tuple.0, specimen_tuple.1);
+    let observation = observation_svc::get_bundle_entry(observation_tuple.0, observation_tuple.1);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: vec![
+            patient,
+            condition,
+            specimen,
+            observation,
+        ],
+        ..Default::default()
+    }
+}
+
+pub fn get_procedure_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+    procedure_tuple: (Procedure, &str),
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+    let procedure = procedure_svc::get_bundle_entry(procedure_tuple.0, procedure_tuple.1);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: vec![
+            patient,
+            condition,
+            procedure,
+        ],
+        ..Default::default()
+    }
+}
+
+pub fn get_med_stmt_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+    med_stmt_tuple: (MedicationStatement, &str),
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+    let med_stmt = medication_svc::get_bundle_entry(med_stmt_tuple.0, med_stmt_tuple.1);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: vec![
+            patient,
+            condition,
+            med_stmt,
+        ],
+        ..Default::default()
+    }
 }
 
 fn assemble_bundle(

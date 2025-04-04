@@ -1,10 +1,10 @@
 * Features & ToDos
 
-- Generate multiple resources in a bundle
-- Use PatientId as a newtype
+* TODO Generate multiple resources in a bundle
+* TODO Use PatientId as a newtype
+* DONE [2025-4-4 Fri] When generating individual resources, also generate the referenced resources (and will therefore have to wrap in a bundle)
 
 ** Clean up
 
 * DONE [2025-4-4 Fri] Add more services and get rid of data_gen_svc
 * DONE [2025-4-4 Fri] Minimize method parameters
-* TODO When generating individual resources, also generate the referenced resources (and will therefore have to wrap in a bundle)

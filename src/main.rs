@@ -57,12 +57,15 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
     let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
     let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
     let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
-    let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
-    let (obs_vital_status_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-    let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
-    let (proc_rt_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
-    let (med_stmt_id, _) = get_ids(
+    let (obs_hist_id, obs_hist_ref_id) =
+        get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+    let (obs_vital_status_id, obs_vital_status_ref_id) =
+        get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+    let (proc_rt_id, proc_rt_ref_id) =
+        get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
+    let (proc_op_id, proc_op_ref_id) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (med_stmt_id, med_stmt_ref_id) = get_ids(
         "MedicationStatement".into_some(),
         IdType::Id,
         "SystemicTherapy",
@@ -79,35 +82,50 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         ResourceType::Patient => {
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            (
-                xml::to_string(&pt, None).unwrap_or("Cannot serialize patient to XML.".to_string()),
-                patient_id,
-            )
+            (utils::get_xml(pt, "patient"), patient_id)
         }
 
         ResourceType::Condition => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
                 patient_ref_id.as_str(),
                 "C34.0",
                 "C34.0",
             );
-            (
-                xml::to_string(&c, None)
-                    .unwrap_or("Cannot serialize condition to XML.".to_string()),
-                condition_id,
-            )
+            let b = bundle_svc::get_condition_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "condition (bundle)"), condition_id)
         }
 
         ResourceType::Specimen => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
             let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
-            (
-                xml::to_string(&s, None).unwrap_or("Cannot serialize specimen to XML.".to_string()),
-                specimen_id,
-            )
+            let b = bundle_svc::get_specimen_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (s, specimen_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "specimen (bundle)"), specimen_id)
         }
 
         ResourceType::ObservationHistology => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
             let ohist = observation_svc::get_histology(
                 obs_hist_id.as_str(),
                 patient_ref_id.as_str(),
@@ -116,40 +134,65 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
                 effective_date.date_naive(),
                 "8140/3",
             );
+            let b = bundle_svc::get_observation_histology_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (s, specimen_ref_id.as_str()),
+                (ohist, obs_hist_ref_id.as_str()),
+            );
             (
-                xml::to_string(&ohist, None)
-                    .unwrap_or("Cannot serialize observation histology to XML.".to_string()),
+                utils::get_xml(b, "observation histology (bundle)"),
                 obs_hist_id,
             )
         }
 
         ResourceType::ObservationVitalStatus => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
             let ovs = observation_svc::get_vital_status(
                 obs_vital_status_id.as_str(),
                 patient_ref_id.as_str(),
                 effective_date.date_naive(),
             );
+            let b = bundle_svc::get_observation_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (ovs, obs_vital_status_ref_id.as_str()),
+            );
             (
-                xml::to_string(&ovs, None)
-                    .unwrap_or("Cannot serialize observation vital-status to XML.".to_string()),
+                utils::get_xml(b, "observation vital-status (bundle)"),
                 obs_vital_status_id,
             )
         }
 
         ResourceType::ObservationTNMc => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
             let otnmc = observation_svc::get_tnmc(
                 &obs_tnmc_id.as_str(),
                 patient_ref_id.as_str(),
                 effective_date.date_naive(),
             );
-            (
-                xml::to_string(&otnmc, None)
-                    .unwrap_or("Cannot serialize observation tnmc to XML.".to_string()),
-                obs_tnmc_id,
-            )
+            let b = bundle_svc::get_observation_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (otnmc, obs_tnmc_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "observation tnmc (bundle)"), obs_tnmc_id)
         }
 
         ResourceType::ProcedureRadiotherapy => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
             let prt = procedure_svc::get_procedure(
                 proc_rt_id.as_str(),
                 patient_ref_id.as_str(),
@@ -158,14 +201,27 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
                 end_date.date_naive(),
                 SystTherapyType::RT,
             );
+            let b = bundle_svc::get_procedure_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (prt, proc_rt_ref_id.as_str()),
+            );
             (
-                xml::to_string(&prt, None)
-                    .unwrap_or("Cannot serialize procedure radiotherapy to XML.".to_string()),
+                utils::get_xml(b, "procedure radiotherapy (bundle)"),
                 proc_rt_id,
             )
         }
 
         ResourceType::ProcedureOperation => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
             let pop = procedure_svc::get_procedure(
                 proc_op_id.as_str(),
                 patient_ref_id.as_str(),
@@ -174,14 +230,27 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
                 end_date.date_naive(),
                 SystTherapyType::OP,
             );
+            let b = bundle_svc::get_procedure_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (pop, proc_op_ref_id.as_str()),
+            );
             (
-                xml::to_string(&pop, None)
-                    .unwrap_or("Cannot serialize procedure operation to XML.".to_string()),
+                utils::get_xml(b, "procedure operation (bundle)"),
                 proc_op_id,
             )
         }
 
         ResourceType::MedicationStatement => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
             let m = medication_svc::get_med_statement(
                 med_stmt_id.as_str(),
                 "medicine",
@@ -190,11 +259,13 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
                 "2021-06-12",
                 "2021-06-21",
             );
-            (
-                xml::to_string(&m, None)
-                    .unwrap_or("Cannot serialize medication stmt to XML.".to_string()),
-                med_stmt_id,
-            )
+            let b = bundle_svc::get_med_stmt_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (m, med_stmt_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "medication stmt (bundle)"), med_stmt_id)
         }
 
         ResourceType::Bundle => {

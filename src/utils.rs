@@ -102,11 +102,19 @@ pub fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {
     }
 }
 
+pub fn get_xml<T>(t: T, error_infix: &str) -> String
+where
+    T: SerializeResource,
+{
+    let error_str = format!("Cannot serialize {} to XML.", error_infix);
+    xml::to_string(&t, None).unwrap_or(error_str)
+}
+
 pub fn print_fhir_data<T>(t: T, name: &str)
 where
     T: SerializeResource,
 {
-    let serialized_data = xml::to_string(&t, None).unwrap();
+    let serialized_data = get_xml(t, "");
     println!("{name}: {serialized_data:#?}");
     println!("");
 }
