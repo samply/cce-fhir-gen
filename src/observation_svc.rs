@@ -1,20 +1,26 @@
 //! We have multiple FHIR resources for an Observation. This module has functions to generate XML for these
 //! different Observation resources.
 
+use std::ops::Range;
+
 use crate::extensions::option_ext::OptionExt;
-use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification};
+use crate::models::enums::loinc_codes::{
+    TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification,
+};
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
 use crate::models::enums::tnmt_category::TnmtCategory;
 use crate::models::enums::uicc_stage::UiccStage;
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{
-    get_bundle_entry_request, get_full_url, get_loinc_url, get_tnmm_url, get_tnmn_url, get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS
+    get_bundle_entry_request, get_full_url, get_loinc_url, get_tnmm_url, get_tnmn_url,
+    get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS,
 };
 use chrono::NaiveDate;
 use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{
-    BundleEntry, Observation, ObservationComponent, ObservationComponentValue, ObservationEffective, ObservationValue
+    BundleEntry, Observation, ObservationComponent, ObservationComponentValue,
+    ObservationEffective, ObservationValue,
 };
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri};
 use fhirbolt::model::r4b::Resource;
@@ -84,15 +90,11 @@ pub fn get_histology(
 }
 
 /// Generates observation vitalstatus
-pub fn get_vital_status(
-    id: &str,
-    sub_ref: &str,
-    effective_date: NaiveDate,
-) -> Observation {
+pub fn get_vital_status(id: &str, sub_ref: &str, effective_date: NaiveDate) -> Observation {
     // NOTE: VitalStatus is also an Observation
     // TODO: check date, code etc.
     let code_value: VitalStatus = Faker.fake();
-    
+
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()
@@ -138,11 +140,7 @@ pub fn get_vital_status(
 }
 
 /// Generates observation TNMc
-pub fn get_tnmc(
-    id: &str,
-    sub_ref: &str,
-    effective_date: NaiveDate,
-) -> Observation {
+pub fn get_tnmc(id: &str, sub_ref: &str, effective_date: NaiveDate) -> Observation {
     let uicc_code_value: UiccStage = Faker.fake();
     let tnmm: TnmmCategory = Faker.fake();
     let tnmn: TnmnCategory = Faker.fake();
@@ -160,7 +158,7 @@ pub fn get_tnmc(
         value: Some(effective_date.to_string()),
         ..Default::default()
     };
-    
+
     let coding = Coding {
         system: Some(get_uicc_stage_url()),
         version: Some("8".into()),
@@ -280,6 +278,13 @@ pub fn get_bundle_entry(observation: Observation, observation_ref_id: &str) -> B
         request: get_bundle_entry_request("PUT", observation_ref_id).into_some(),
         ..Default::default()
     }
+}
+
+pub fn get_observations(id: &str, src_id: &str, range: Range<u8>) -> Vec<Observation> {
+    todo!()
+    // range
+    //     .map(|_| geto(id, src_id))
+    //     .collect()
 }
 
 fn get_loinc_code(code_val: &str) -> CodeableConcept {

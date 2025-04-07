@@ -1,6 +1,8 @@
 //! We have multiple FHIR resources for a Procedure. This module has functions to generate XML for these
 //! different Procedure resources.
 
+use std::ops::Range;
+
 use chrono::NaiveDate;
 use fhirbolt::model::r4b::resources::{BundleEntry, Procedure, ProcedurePerformed};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Period, Reference};
@@ -80,4 +82,15 @@ pub fn get_bundle_entry(procedure: Procedure, procedure_ref_id: &str) -> BundleE
         request: get_bundle_entry_request("PUT", procedure_ref_id).into_some(),
         ..Default::default()
     }
+}
+
+pub fn get_procedures(
+    id: &str,
+    src_id: &str,
+    range: Range<u8>,
+) -> Vec<Procedure> {
+    todo!()
+    // range
+    //     .map(|_| get_procedure(id, src_id))
+    //     .collect()
 }

@@ -1,3 +1,5 @@
+use std::ops::Range;
+
 use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{
     BundleEntry, MedicationStatement, MedicationStatementEffective, MedicationStatementMedication
@@ -12,7 +14,7 @@ use crate::utils::{get_bundle_entry_request, get_full_url, get_syst_therapy_type
 pub fn get_med_statement(
     id: &str,
     med_ref: &str,
-    sub_ref: &str,
+    subject_ref: &str,
     reason_ref: &str,
     start: &str,
     end: &str,
@@ -32,8 +34,8 @@ pub fn get_med_statement(
         ..Default::default()
     };
     let medication = MedicationStatementMedication::Reference(Box::new(med_rfrnc));
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let reason_rfrnc = Reference {
@@ -67,7 +69,7 @@ pub fn get_med_statement(
         status,
         medication,
         category: Some(Box::new(cod_concept)),
-        subject: Box::new(sub_rfrnc),
+        subject: Box::new(subject_rfrnc),
         effective: Some(effective),
         reason_reference: vec![reason_rfrnc],
         ..Default::default()
@@ -83,4 +85,15 @@ pub fn get_bundle_entry(patient: MedicationStatement, patient_ref_id: &str) -> B
         request: get_bundle_entry_request("PUT", patient_ref_id).into_some(),
         ..Default::default()
     }
+}
+
+pub fn get_med_statements(
+    id: &str,
+    src_id: &str,
+    range: Range<u8>,
+) -> Vec<MedicationStatement> {
+    todo!()
+    // range
+    //     .map(|_| get_med_statement(id, src_id))
+    //     .collect()
 }

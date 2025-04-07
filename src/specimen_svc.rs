@@ -1,21 +1,27 @@
+use std::ops::Range;
+
 use fake::{Fake, Faker};
-use fhirbolt::model::r4b::resources::{BundleEntry, Specimen, SpecimenCollection, SpecimenCollectionCollected};
+use fhirbolt::model::r4b::resources::{
+    BundleEntry, Specimen, SpecimenCollection, SpecimenCollectionCollected,
+};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference};
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::sample_material_type::SampleMaterialType;
-use crate::utils::{get_body_site_url, get_bundle_entry_request, get_full_url, get_sample_mat_type_url};
+use crate::utils::{
+    get_body_site_url, get_bundle_entry_request, get_full_url, get_sample_mat_type_url,
+};
 
-pub fn get_specimen(id: &str, sub_ref: &str) -> Specimen {
+pub fn get_specimen(id: &str, subject_ref: &str) -> Specimen {
     let sample_material_type: SampleMaterialType = Faker.fake();
 
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()
     };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let collected = DateTime {
@@ -51,7 +57,7 @@ pub fn get_specimen(id: &str, sub_ref: &str) -> Specimen {
 
     Specimen {
         r#id: Some(oid),
-        subject: Some(Box::new(sub_rfrnc)),
+        subject: Some(Box::new(subject_rfrnc)),
         collection: Some(specimen_collection),
         r#type: Some(Box::new(cod_concept)),
         ..Default::default()
@@ -67,4 +73,8 @@ pub fn get_bundle_entry(specimen: Specimen, specimen_ref_id: &str) -> BundleEntr
         request: get_bundle_entry_request("PUT", specimen_ref_id).into_some(),
         ..Default::default()
     }
+}
+
+pub fn get_specimens(id: &str, src_id: &str, range: Range<u8>) -> Vec<Specimen> {
+    range.map(|_| get_specimen(id, src_id)).collect()
 }

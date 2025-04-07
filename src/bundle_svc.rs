@@ -160,10 +160,7 @@ pub fn get_condition_bundle(
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![
-            patient,
-            condition,
-        ],
+        entry: vec![patient, condition],
         ..Default::default()
     }
 }
@@ -188,10 +185,7 @@ pub fn get_specimen_bundle(
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![
-            patient,
-            specimen,
-        ],
+        entry: vec![patient, specimen],
         ..Default::default()
     }
 }
@@ -216,10 +210,7 @@ pub fn get_observation_bundle(
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![
-            patient,
-            observation,
-        ],
+        entry: vec![patient, observation],
         ..Default::default()
     }
 }
@@ -248,12 +239,7 @@ pub fn get_observation_histology_bundle(
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![
-            patient,
-            condition,
-            specimen,
-            observation,
-        ],
+        entry: vec![patient, condition, specimen, observation],
         ..Default::default()
     }
 }
@@ -280,11 +266,7 @@ pub fn get_procedure_bundle(
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![
-            patient,
-            condition,
-            procedure,
-        ],
+        entry: vec![patient, condition, procedure],
         ..Default::default()
     }
 }
@@ -311,11 +293,7 @@ pub fn get_med_stmt_bundle(
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: vec![
-            patient,
-            condition,
-            med_stmt,
-        ],
+        entry: vec![patient, condition, med_stmt],
         ..Default::default()
     }
 }
@@ -384,4 +362,75 @@ fn assemble_bundles(
     med_stmt_tuples: Vec<(MedicationStatement, &str)>,
 ) -> Vec<Bundle> {
     todo!()
+}
+
+pub fn get_patients_bundle(bundle_id: &str, patients_tuple: Vec<(Patient, String)>) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient_entries: Vec<BundleEntry> = patients_tuple
+        .iter()
+        .map(|pt_tuple| patient_svc::get_bundle_entry(pt_tuple.0.clone(), pt_tuple.1.as_str()))
+        .collect();
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: patient_entries,
+        ..Default::default()
+    }
+}
+
+pub fn get_conditions_bundle(bundle_id: &str, conditions_tuple: (Vec<Condition>, &str)) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let condition_entries: Vec<BundleEntry> = conditions_tuple
+        .0
+        .iter()
+        .map(|c| condition_svc::get_bundle_entry(c.clone(), conditions_tuple.1))
+        .collect();
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: condition_entries,
+        ..Default::default()
+    }
+}
+
+pub fn get_specimens_bundle(bundle_id: &str, specimen_tuple: (Vec<Specimen>, &str)) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let specimen_entries: Vec<BundleEntry> = specimen_tuple
+        .0
+        .iter()
+        .map(|s| specimen_svc::get_bundle_entry(s.clone(), specimen_tuple.1))
+        .collect();
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: specimen_entries,
+        ..Default::default()
+    }
 }

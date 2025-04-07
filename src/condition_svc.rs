@@ -1,3 +1,5 @@
+use std::ops::Range;
+
 use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{BundleEntry, Condition, ConditionOnset};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri};
@@ -7,15 +9,20 @@ use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
 use crate::utils::{get_bundle_entry_request, get_full_url, get_site_location_url};
 
-pub fn get_condition(id: &str, sub_ref: &str, code_value: &str, bs_code_value1: &str) -> Condition {
+pub fn get_condition(
+    id: &str,
+    subject_ref: &str,
+    code_value: &str,
+    bs_code_value1: &str,
+) -> Condition {
     let bs_code_value2: TumorSiteLocation = Faker.fake();
 
     let cid = Id {
         value: Some(id.to_string()),
         ..Default::default()
     };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let effective = DateTime {
@@ -53,7 +60,7 @@ pub fn get_condition(id: &str, sub_ref: &str, code_value: &str, bs_code_value1: 
         r#id: Some(cid),
         code: Some(Box::new(cod_concept)),
         body_site: vec![body_site],
-        subject: Box::new(sub_rfrnc),
+        subject: Box::new(subject_rfrnc),
         onset: Some(ConditionOnset::DateTime(effective.clone())),
         recorded_date: Some(effective.clone()),
         ..Default::default()
@@ -69,4 +76,16 @@ pub fn get_bundle_entry(condition: Condition, condition_ref_id: &str) -> BundleE
         request: get_bundle_entry_request("PUT", condition_ref_id).into_some(),
         ..Default::default()
     }
+}
+
+pub fn get_conditions(
+    id: &str,
+    subject_ref: &str,
+    code_value: &str,
+    bs_code_value1: &str,
+    range: Range<u8>,
+) -> Vec<Condition> {
+    range
+        .map(|_| get_condition(id, subject_ref, code_value, bs_code_value1))
+        .collect()
 }

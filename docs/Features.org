@@ -8,3 +8,5 @@
 
 * DONE [2025-4-4 Fri] Add more services and get rid of data_gen_svc
 * DONE [2025-4-4 Fri] Minimize method parameters
+* TODO Convert get_ids method to return a struct
+* TODO get_ids should return all 3 ids in a struct

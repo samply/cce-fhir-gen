@@ -125,6 +125,7 @@ pub fn get_ids(
     res_type: &str,
     i: u16,
 ) -> (String, String) {
+    // TODO: should return all 3 ids in a struct
     let id_type_str = match id_type {
         IdType::Id => id_type.as_str().to_string(),
         IdType::Identifier => format!("src-{}", id_type.as_str()),

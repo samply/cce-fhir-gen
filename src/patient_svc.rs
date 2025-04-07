@@ -9,7 +9,8 @@ use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::gender::Gender;
-use crate::utils::{get_bundle_entry_request, get_full_url};
+use crate::models::enums::id_type::IdType;
+use crate::utils::{get_bundle_entry_request, get_full_url, get_ids};
 
 pub fn get_patient(id: &str, src_id: &str) -> Patient {
     let gender: Gender = Faker.fake();
@@ -68,12 +69,13 @@ pub fn get_bundle_entry(patient: Patient, patient_ref_id: &str) -> BundleEntry {
     }
 }
 
-pub fn get_patients(
-    id: &str,
-    src_id: &str,
-    range: Range<u8>,
-) -> Vec<Patient> {
+pub fn get_patients(range: Range<u8>) -> Vec<(Patient, std::string::String)> {
     range
-        .map(|_| get_patient(id, src_id))
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (patient_id, _) = get_ids(None, IdType::Id, "Patient", i);
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            (get_patient(patient_id.as_str(), patient_src_id.as_str()), patient_id)
+        })
         .collect()
 }
