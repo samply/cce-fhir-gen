@@ -6,8 +6,9 @@ use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, R
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::enums::id_type::IdType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_site_location_url};
+use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_site_location_url};
 
 pub fn get_condition(
     id: &str,
@@ -79,13 +80,16 @@ pub fn get_bundle_entry(condition: Condition, condition_ref_id: &str) -> BundleE
 }
 
 pub fn get_conditions(
-    id: &str,
     subject_ref: &str,
     code_value: &str,
     bs_code_value1: &str,
     range: Range<u8>,
-) -> Vec<Condition> {
+) -> Vec<(Condition, String)> {
     range
-        .map(|_| get_condition(id, subject_ref, code_value, bs_code_value1))
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (condition_id, _) = get_ids(None, IdType::Id, "Condition", i);
+            (get_condition(condition_id.as_str(), subject_ref, code_value, bs_code_value1), condition_id)
+        })
         .collect()
 }
