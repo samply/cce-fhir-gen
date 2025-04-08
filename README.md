@@ -22,7 +22,7 @@ There are, a total of 10 profiles -
 
 ## Usage
 
-This tool is implemented as a command line tool, so it can be run from the command prompt. It accepts the following command line arguments -
+This repository implements a command line tool, to be run from the command prompt. It accepts the following command line arguments -
 
 ```
 Usage: cce-fhir-gen [OPTIONS]
@@ -71,6 +71,6 @@ Options:
 
 | Parameter | Default value | Meaning |
 |-----------|---------------|---------|
-| n | 1 | a value greater than 1 means generate a bundle containing multiple resources of the resource type specified by `r` |
-| r | bundle | generates a bundle containing all the other resources |
+| n | 1 | a value greater than 1 generates a bundle containing multiple resources of the resource type specified by `r` |
+| r | bundle | generates a bundle containing one each of the other resources |
 | o | screen | displays the generated data on the screen |

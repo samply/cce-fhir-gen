@@ -54,11 +54,26 @@ impl ResourceType {
             ResourceType::Patient => "Patient",
             ResourceType::Condition => "Condition",
             ResourceType::Specimen => "Specimen",
-            ResourceType::ObservationHistology => "Observation Histology",
-            ResourceType::ObservationVitalStatus => "Observation VitalStatus",
-            ResourceType::ObservationTNMc => "Observation TNMc",
-            ResourceType::ProcedureRadiotherapy => "Procedure Radiotherapy",
-            ResourceType::ProcedureOperation => "Procedure Operation",
+            ResourceType::ObservationHistology => "Histology",
+            ResourceType::ObservationVitalStatus => "VitalStatus",
+            ResourceType::ObservationTNMc => "TNMc",
+            ResourceType::ProcedureRadiotherapy => "Radiotherapy",
+            ResourceType::ProcedureOperation => "Operation",
+            ResourceType::MedicationStatement => "Medication Statement",
+        }
+    }
+
+    pub fn display(&self) -> &'static str {
+        match self {
+            ResourceType::Bundle => "Bundle",
+            ResourceType::Patient => "Patient",
+            ResourceType::Condition => "Condition",
+            ResourceType::Specimen => "Specimen",
+            ResourceType::ObservationHistology => "Observation/Histology",
+            ResourceType::ObservationVitalStatus => "Observation/VitalStatus",
+            ResourceType::ObservationTNMc => "Observation/TNMc",
+            ResourceType::ProcedureRadiotherapy => "Procedure/Radiotherapy",
+            ResourceType::ProcedureOperation => "Procedure/Operation",
             ResourceType::MedicationStatement => "Medication Statement",
         }
     }

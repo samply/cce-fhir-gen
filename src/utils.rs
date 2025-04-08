@@ -175,6 +175,18 @@ mod tests {
     }
 
     #[test]
+    fn test_get_ids_with_id_type_identifier_and_res_group() {
+        let (obs_hist_id, obs_hist_ref_id) =
+            get_ids("Procedure".into_some(), IdType::Identifier, "Radiotherapy", 1);
+
+        assert_eq!(obs_hist_id, "Radiotherapy-src-identifier-1", "id does not match");
+        assert_eq!(
+            obs_hist_ref_id, "Procedure/Radiotherapy-src-identifier-1",
+            "ref id does not match"
+        );
+    }
+
+    #[test]
     fn test_get_sample_mat_type_url() {
         let smt_url = get_sample_mat_type_url();
         let expected = Uri::from(format!("{CCE_URL}/fhir/core/CodeSystem/SampleMaterialType"));
