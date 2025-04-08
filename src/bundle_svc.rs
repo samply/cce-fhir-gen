@@ -351,18 +351,6 @@ fn assemble_bundle(
     }
 }
 
-fn assemble_bundles(
-    id: &str,
-    patient_tuples: Vec<(Patient, &str)>,
-    specimen_tuples: Vec<(Specimen, &str)>,
-    condition_tuples: Vec<(Condition, &str)>,
-    observation_tuples: Vec<(Observation, &str)>,
-    procedure_tuples: Vec<(Procedure, &str)>,
-    med_stmt_tuples: Vec<(MedicationStatement, &str)>,
-) -> Vec<Bundle> {
-    todo!()
-}
-
 pub fn get_patients_bundle(bundle_id: &str, patient_tuples: Vec<(Patient, String)>) -> Bundle {
     let id = Id {
         value: Some(bundle_id.to_string()),
@@ -439,6 +427,42 @@ pub fn get_specimens_bundle(
 
     let mut entries = vec![patient];
     entries.extend(specimen_entries);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: entries,
+        ..Default::default()
+    }
+}
+
+pub fn get_histologies_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+    specimen_tuple: (Specimen, &str),
+    observation_tuples: Vec<(Observation, String)>,
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+    let specimen = specimen_svc::get_bundle_entry(specimen_tuple.0, specimen_tuple.1);
+    // let observation = observation_svc::get_bundle_entry(observation_tuple.0, observation_tuple.1);
+    let hist_entries: Vec<BundleEntry> = observation_tuples
+        .iter()
+        .map(|hist_tuple| observation_svc::get_bundle_entry(hist_tuple.0.clone(), hist_tuple.1.as_str()))
+        .collect();
+
+    let mut entries = vec![patient, condition, specimen];
+    entries.extend(hist_entries);
 
     Bundle {
         id: Some(id),

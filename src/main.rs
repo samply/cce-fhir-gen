@@ -310,15 +310,12 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
     let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
     let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
     let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
-    let (obs_hist_id, obs_hist_ref_id) =
-        get_ids("Observation".into_some(), IdType::Id, "Histology", i);
-    let (obs_vital_status_id, obs_vital_status_ref_id) =
-        get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
-    let (proc_rt_id, proc_rt_ref_id) =
-        get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (proc_op_id, proc_op_ref_id) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
-    let (med_stmt_id, med_stmt_ref_id) = get_ids(
+    let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+    let (obs_vital_status_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+    let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+    let (proc_rt_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
+    let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (med_stmt_id, _) = get_ids(
         "MedicationStatement".into_some(),
         IdType::Id,
         "SystemicTherapy",
@@ -366,35 +363,31 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
         }
 
         ResourceType::ObservationHistology => {
-            todo!()
-            // let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-            // let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            // let c = condition_svc::get_condition(
-            //     condition_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     "C34.0",
-            //     "C34.0",
-            // );
-            // let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
-            // let ohist = observation_svc::get_histology(
-            //     obs_hist_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     condition_ref_id.as_str(),
-            //     specimen_ref_id.as_str(),
-            //     effective_date.date_naive(),
-            //     "8140/3",
-            // );
-            // let b = bundle_svc::get_observation_histology_bundle(
-            //     &bundle_id,
-            //     (pt, patient_ref_id.as_str()),
-            //     (c, condition_ref_id.as_str()),
-            //     (s, specimen_ref_id.as_str()),
-            //     (ohist, obs_hist_ref_id.as_str()),
-            // );
-            // (
-            //     utils::get_xml(b, "observation histology (bundle)"),
-            //     obs_hist_id,
-            // )
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
+            let hist_tuples = observation_svc::get_histologies(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                specimen_ref_id.as_str(),
+                effective_date.date_naive(),
+                "8140/3",
+                range,
+            );
+            let b = bundle_svc::get_histologies_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (s, specimen_ref_id.as_str()),
+                hist_tuples,
+            );
+            (b, obs_hist_id)
         }
 
         ResourceType::ObservationVitalStatus => {

@@ -247,6 +247,33 @@ pub fn get_bundle_entry(observation: Observation, observation_ref_id: &str) -> B
     }
 }
 
+pub fn get_histologies(
+    subject_ref: &str,
+    focus_ref: &str,
+    specimen_ref: &str,
+    effective_date: NaiveDate,
+    code_value: &str,
+    range: Range<u8>,
+) -> Vec<(Observation, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+            (
+                get_histology(
+                    obs_hist_id.as_str(),
+                    subject_ref,
+                    focus_ref,
+                    specimen_ref,
+                    effective_date,
+                    code_value,
+                ),
+                obs_hist_id,
+            )
+        })
+        .collect()
+}
+
 pub fn get_vital_statuses(
     subject_ref: &str,
     effective_date: NaiveDate,
