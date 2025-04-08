@@ -432,33 +432,28 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
         }
 
         ResourceType::ProcedureRadiotherapy => {
-            todo!()
-            // let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-            // let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            // let c = condition_svc::get_condition(
-            //     condition_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     "C34.0",
-            //     "C34.0",
-            // );
-            // let prt = procedure_svc::get_procedure(
-            //     proc_rt_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     condition_ref_id.as_str(),
-            //     start_date.date_naive(),
-            //     end_date.date_naive(),
-            //     SystTherapyType::RT,
-            // );
-            // let b = bundle_svc::get_procedure_bundle(
-            //     &bundle_id,
-            //     (pt, patient_ref_id.as_str()),
-            //     (c, condition_ref_id.as_str()),
-            //     (prt, proc_rt_ref_id.as_str()),
-            // );
-            // (
-            //     utils::get_xml(b, "procedure radiotherapy (bundle)"),
-            //     proc_rt_id,
-            // )
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let prt_tuples = procedure_svc::get_proc_radio_therapies(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_procedures_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                prt_tuples,
+            );
+            (b, proc_rt_id)
         }
 
         ResourceType::ProcedureOperation => {

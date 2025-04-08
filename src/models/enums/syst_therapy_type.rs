@@ -2,7 +2,7 @@ use core::fmt;
 
 use fake::Dummy;
 
-#[derive(Debug, Dummy)]
+#[derive(Clone, Debug, Dummy)]
 pub enum SystTherapyType {
     CH,
     HO,

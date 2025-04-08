@@ -93,20 +93,60 @@ pub fn get_proc_operations(
     end_date: NaiveDate,
     range: Range<u8>,
 ) -> Vec<(Procedure, String)> {
+    let res_type = "Operation";
+    get_procedures(
+        res_type,
+        src_id,
+        reason_ref,
+        start_date,
+        end_date,
+        SystTherapyType::OP,
+        range,
+    )
+}
+
+pub fn get_proc_radio_therapies(
+    src_id: &str,
+    reason_ref: &str,
+    start_date: NaiveDate,
+    end_date: NaiveDate,
+    range: Range<u8>,
+) -> Vec<(Procedure, String)> {
+    let res_type = "Radiotherapy";
+    get_procedures(
+        res_type,
+        src_id,
+        reason_ref,
+        start_date,
+        end_date,
+        SystTherapyType::RT,
+        range,
+    )
+}
+
+fn get_procedures(
+    res_type: &str,
+    src_id: &str,
+    reason_ref: &str,
+    start_date: NaiveDate,
+    end_date: NaiveDate,
+    therapy_type: SystTherapyType,
+    range: Range<u8>,
+) -> Vec<(Procedure, String)> {
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+            let (id, _) = get_ids("Procedure".into_some(), IdType::Id, res_type, i);
             (
                 get_procedure(
-                    proc_op_id.as_str(),
+                    id.as_str(),
                     src_id,
                     reason_ref,
                     start_date,
                     end_date,
-                    SystTherapyType::OP,
+                    therapy_type.clone(),
                 ),
-                proc_op_id,
+                id.to_string(),
             )
         })
         .collect()
