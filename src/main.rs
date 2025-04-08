@@ -47,7 +47,11 @@ fn main() {
 
     // TODO: directly post a request to an endpoint
     // TODO: for curl, we need a server name, user name, pwd, proxy url
-    generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
+    if cli.number > 1 {
+        generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
+    } else {
+        generate_fhir_bundle(cli.resource_type, cli.output_mode);
+    }
 }
 
 fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
@@ -302,7 +306,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
     }
 }
 
-fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
     let range = 0..number;
     let i: u16 = Faker.fake();
 
@@ -532,14 +536,6 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
         }
 
         OutputMode::ApiCall => todo!(),
-    }
-}
-
-fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
-    if number > 1 {
-        generate_fhir_bundle_mult(number, resource_type, output_mode);
-    } else {
-        generate_fhir_bundle(resource_type, output_mode);
     }
 }
 
