@@ -40,7 +40,7 @@ pub fn get_patient(id: &str, src_id: &str) -> Patient {
             ..Default::default()
         }),
         birth_date: Some(Date {
-            value: Some(birthdate.to_string()),
+            value: Some(birthdate.date_naive().to_string()),
             ..Default::default()
         }),
         ..Default::default()

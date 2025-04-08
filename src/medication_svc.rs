@@ -1,26 +1,28 @@
 use std::ops::Range;
 
+use chrono::NaiveDate;
 use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{
-    BundleEntry, MedicationStatement, MedicationStatementEffective, MedicationStatementMedication
+    BundleEntry, MedicationStatement, MedicationStatementEffective, MedicationStatementMedication,
 };
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Period, Reference};
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_syst_therapy_type_url};
+use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_syst_therapy_type_url};
 
 pub fn get_med_statement(
     id: &str,
     med_ref: &str,
     subject_ref: &str,
     reason_ref: &str,
-    start: &str,
-    end: &str,
+    start_date: NaiveDate,
+    end_date: NaiveDate,
 ) -> MedicationStatement {
     let therapy_type: SystTherapyType = Faker.fake();
-    
+
     let pid = Id {
         value: Some(id.to_string()),
         ..Default::default()
@@ -53,11 +55,11 @@ pub fn get_med_statement(
     };
     let period = Period {
         start: Some(DateTime {
-            value: Some(start.to_string()),
+            value: Some(start_date.to_string()),
             ..Default::default()
         }),
         end: Some(DateTime {
-            value: Some(end.to_string()),
+            value: Some(end_date.to_string()),
             ..Default::default()
         }),
         ..Default::default()
@@ -88,12 +90,32 @@ pub fn get_bundle_entry(patient: MedicationStatement, patient_ref_id: &str) -> B
 }
 
 pub fn get_med_statements(
-    id: &str,
     src_id: &str,
+    reason_ref: &str,
+    start_date: NaiveDate,
+    end_date: NaiveDate,
     range: Range<u8>,
-) -> Vec<MedicationStatement> {
-    todo!()
-    // range
-    //     .map(|_| get_med_statement(id, src_id))
-    //     .collect()
+) -> Vec<(MedicationStatement, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (med_stmt_id, _) = get_ids(
+                "MedicationStatement".into_some(),
+                IdType::Id,
+                "SystemicTherapy",
+                i,
+            );
+            (
+                get_med_statement(
+                    med_stmt_id.as_str(),
+                    "medicine",
+                    src_id,
+                    reason_ref,
+                    start_date,
+                    end_date,
+                ),
+                med_stmt_id,
+            )
+        })
+        .collect()
 }

@@ -256,8 +256,8 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
                 "medicine",
                 patient_ref_id.as_str(),
                 condition_ref_id.as_str(),
-                "2021-06-12",
-                "2021-06-21",
+                start_date.date_naive(),
+                end_date.date_naive(),
             );
             let b = bundle_svc::get_med_stmt_bundle(
                 &bundle_id,
@@ -482,30 +482,28 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
         }
 
         ResourceType::MedicationStatement => {
-            todo!()
-            // let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-            // let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            // let c = condition_svc::get_condition(
-            //     condition_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     "C34.0",
-            //     "C34.0",
-            // );
-            // let m = medication_svc::get_med_statement(
-            //     med_stmt_id.as_str(),
-            //     "medicine",
-            //     patient_ref_id.as_str(),
-            //     condition_ref_id.as_str(),
-            //     "2021-06-12",
-            //     "2021-06-21",
-            // );
-            // let b = bundle_svc::get_med_stmt_bundle(
-            //     &bundle_id,
-            //     (pt, patient_ref_id.as_str()),
-            //     (c, condition_ref_id.as_str()),
-            //     (m, med_stmt_ref_id.as_str()),
-            // );
-            // (utils::get_xml(b, "medication stmt (bundle)"), med_stmt_id)
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let med_stmt_tuples = medication_svc::get_med_statements(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_med_stmts_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                med_stmt_tuples,
+            );
+            (b, med_stmt_id)
         }
 
         ResourceType::Bundle => {

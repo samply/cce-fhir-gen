@@ -115,8 +115,8 @@ pub fn get_bundle() -> Bundle {
         "medicine",
         patient_ref_id.as_str(),
         condition_ref_id.as_str(),
-        "2021-06-12",
-        "2021-06-21",
+        start_date.date_naive(),
+        end_date.date_naive(),
     );
     // let m1 = m.clone();
     // print_fhir_data(m1, "medication statement");
@@ -534,6 +534,39 @@ pub fn get_procedures_bundle(
 
     let mut entries = vec![patient, condition];
     entries.extend(proc_entries);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: entries,
+        ..Default::default()
+    }
+}
+
+pub fn get_med_stmts_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+    med_stmt_tuples: Vec<(MedicationStatement, String)>,
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+    let ms_entries: Vec<BundleEntry> = med_stmt_tuples
+        .iter()
+        .map(|ms_tuple| medication_svc::get_bundle_entry(ms_tuple.0.clone(), ms_tuple.1.as_str()))
+        .collect();
+
+    let mut entries = vec![patient, condition];
+    entries.extend(ms_entries);
 
     Bundle {
         id: Some(id),
