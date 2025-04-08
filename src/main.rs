@@ -1,5 +1,4 @@
 mod bundle_svc;
-mod cli;
 mod condition_svc;
 mod extensions;
 mod medication_svc;
@@ -14,20 +13,17 @@ use std::fs;
 
 use chrono::prelude::*;
 use clap::Parser;
-use cli::args::{CliArgs, OutputMode, ResourceType};
+use models::cli::{CliArgs, OutputMode, ResourceType};
 use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::serde::xml;
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
-use reqwest::blocking::Client;
-use reqwest::header::{ACCEPT, CONTENT_TYPE, USER_AGENT};
-use reqwest::Proxy;
-use utils::{get_ids, print_fhir_data};
+use utils::get_ids;
 
 const DATA_FOLDER: &str = "generated-data";
-const PROXY_URL: &str = "";
+// const PROXY_URL: &str = "";
 
 fn main() {
     let cli = CliArgs::parse();
@@ -45,8 +41,6 @@ fn main() {
     );
     println!("");
 
-    // TODO: directly post a request to an endpoint
-    // TODO: for curl, we need a server name, user name, pwd, proxy url
     if cli.number > 1 {
         generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
     } else {
@@ -539,11 +533,11 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
     }
 }
 
-fn get_client() -> Client {
-    let proxy = get_proxy();
-    Client::builder().proxy(proxy).build().unwrap()
-}
+// fn get_client() -> Client {
+//     let proxy = get_proxy();
+//     Client::builder().proxy(proxy).build().unwrap()
+// }
 
-fn get_proxy() -> Proxy {
-    Proxy::all(PROXY_URL).unwrap()
-}
+// fn get_proxy() -> Proxy {
+//     Proxy::all(PROXY_URL).unwrap()
+// }

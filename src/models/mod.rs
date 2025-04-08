@@ -1,2 +1,2 @@
 pub mod enums;
-pub mod lookup;
+pub mod cli;

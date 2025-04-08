@@ -1,8 +1,10 @@
 * Features & ToDos
 
-* TODO Generate multiple resources in a bundle
+* DONE [2025-4-8 Tue] Generate multiple resources in a bundle
 * TODO Use PatientId as a newtype
 * DONE [2025-4-4 Fri] When generating individual resources, also generate the referenced resources (and will therefore have to wrap in a bundle)
+* TODO Directly post a request to an endpoint
+* TODO For calling an API, we need a server name, user name, pwd, proxy url
 
 ** Clean up
 

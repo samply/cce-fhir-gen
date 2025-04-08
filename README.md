@@ -19,3 +19,58 @@ There are, a total of 10 profiles -
 - 4 Observation profiles (Histology, TNMc, TNMp, VitalStatus)
 - 2 Procedure profiles (Operation, Radiotherapy)
 - and 1 each of Patient, Condition, Specimen & MedicationStatement
+
+## Usage
+
+This tool is implemented as a command line tool, so it can be run from the command prompt. It accepts the following command line arguments -
+
+```
+Usage: cce-fhir-gen [OPTIONS]
+
+Options:
+  -n, --number <NUMBER>
+          Number of resources to generate
+          
+          [default: 1]
+
+  -r, --resource-type <RESOURCE_TYPE>
+          Type of resource to generate
+          
+          [default: bundle]
+
+          Possible values:
+          - bundle:                   Generate whole Bundle
+          - patient:                  Generate Patient
+          - condition:                Generate Condition
+          - specimen:                 Generate Specimen
+          - observation-histology:    Generate Observation Histology
+          - observation-vital-status: Generate Observation VitalStatus
+          - observation-tn-mc:        Generate Observation TNMc
+          - procedure-radiotherapy:   Generate Procedure Radiotherapy
+          - procedure-operation:      Generate Procedure Operation
+          - medication-statement:     Generate Medication Statement
+
+  -o, --output-mode <OUTPUT_MODE>
+          Where to store the resources
+          
+          [default: screen]
+
+          Possible values:
+          - screen:   Show the generated XML in the terminal
+          - file:     Store the generated XML in a file
+          - api-call: Call the given API endpoint (WIP)
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
+```
+
+### Parameters and their default values
+
+| Parameter | Default value | Meaning |
+|-----------|---------------|---------|
+| n | 1 | a value greater than 1 means generate a bundle containing multiple resources of the resource type specified by `r` |
+| r | bundle | generates a bundle containing all the other resources |
+| o | screen | displays the generated data on the screen |
