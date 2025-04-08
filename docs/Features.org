@@ -10,3 +10,12 @@
 * DONE [2025-4-4 Fri] Minimize method parameters
 * TODO Convert get_ids method to return a struct
 * TODO get_ids should return all 3 ids in a struct
+
+** Get multiple
+
+* DONE [2025-4-7 Mon] patients in a bundle
+* DONE [2025-4-7 Mon] conditions in a bundle
+* DONE [2025-4-8 Tue] specimen in a bundle
+* TODO observations in a bundle
+* TODO procedures in a bundle
+* TODO med-stmts in a bundle

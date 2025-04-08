@@ -418,7 +418,11 @@ pub fn get_conditions_bundle(
     }
 }
 
-pub fn get_specimens_bundle(bundle_id: &str, specimen_tuple: (Vec<Specimen>, &str)) -> Bundle {
+pub fn get_specimens_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    specimen_tuple: Vec<(Specimen, String)>,
+) -> Bundle {
     let id = Id {
         value: Some(bundle_id.to_string()),
         ..Default::default()
@@ -428,16 +432,19 @@ pub fn get_specimens_bundle(bundle_id: &str, specimen_tuple: (Vec<Specimen>, &st
         ..Default::default()
     };
 
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
     let specimen_entries: Vec<BundleEntry> = specimen_tuple
-        .0
         .iter()
-        .map(|s| specimen_svc::get_bundle_entry(s.clone(), specimen_tuple.1))
+        .map(|s_tuple| specimen_svc::get_bundle_entry(s_tuple.0.clone(), s_tuple.1.as_str()))
         .collect();
+
+    let mut entries = vec![patient];
+    entries.extend(specimen_entries);
 
     Bundle {
         id: Some(id),
         r#type: code,
-        entry: specimen_entries,
+        entry: entries,
         ..Default::default()
     }
 }

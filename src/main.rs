@@ -342,12 +342,8 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            let conditions_tuple = condition_svc::get_conditions(
-                patient_ref_id.as_str(),
-                "C34.0",
-                "C34.0",
-                range,
-            );
+            let conditions_tuple =
+                condition_svc::get_conditions(patient_ref_id.as_str(), "C34.0", "C34.0", range);
             let b = bundle_svc::get_conditions_bundle(
                 &bundle_id,
                 (pt, patient_ref_id.as_str()),
@@ -360,10 +356,13 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            let specimens =
+            let specimens_tuple =
                 specimen_svc::get_specimens(specimen_id.as_str(), patient_ref_id.as_str(), range);
-            let b =
-                bundle_svc::get_specimens_bundle(&bundle_id, (specimens, specimen_ref_id.as_str()));
+            let b = bundle_svc::get_specimens_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                specimens_tuple,
+            );
             (b, specimen_id)
         }
 
