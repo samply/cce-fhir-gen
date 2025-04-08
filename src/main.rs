@@ -462,33 +462,28 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
         }
 
         ResourceType::ProcedureOperation => {
-            todo!()
-            // let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-            // let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            // let c = condition_svc::get_condition(
-            //     condition_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     "C34.0",
-            //     "C34.0",
-            // );
-            // let pop = procedure_svc::get_procedure(
-            //     proc_op_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     condition_ref_id.as_str(),
-            //     start_date.date_naive(),
-            //     end_date.date_naive(),
-            //     SystTherapyType::OP,
-            // );
-            // let b = bundle_svc::get_procedure_bundle(
-            //     &bundle_id,
-            //     (pt, patient_ref_id.as_str()),
-            //     (c, condition_ref_id.as_str()),
-            //     (pop, proc_op_ref_id.as_str()),
-            // );
-            // (
-            //     utils::get_xml(b, "procedure operation (bundle)"),
-            //     proc_op_id,
-            // )
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let pop_tuples = procedure_svc::get_proc_operations(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_procedures_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                pop_tuples,
+            );
+            (b, proc_op_id)
         }
 
         ResourceType::MedicationStatement => {

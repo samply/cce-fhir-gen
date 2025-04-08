@@ -509,3 +509,36 @@ pub fn get_tnmcs_bundle(
         ..Default::default()
     }
 }
+
+pub fn get_procedures_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    condition_tuple: (Condition, &str),
+    procedure_tuples: Vec<(Procedure, String)>,
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
+    let proc_entries: Vec<BundleEntry> = procedure_tuples
+        .iter()
+        .map(|proc_tuple| procedure_svc::get_bundle_entry(proc_tuple.0.clone(), proc_tuple.1.as_str()))
+        .collect();
+
+    let mut entries = vec![patient, condition];
+    entries.extend(proc_entries);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: entries,
+        ..Default::default()
+    }
+}

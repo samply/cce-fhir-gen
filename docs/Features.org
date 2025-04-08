@@ -19,5 +19,6 @@
 * DONE [2025-4-8 Tue] (vital status) observations in a bundle
 * DONE [2025-4-8 Tue] (tnmc) observations in a bundle
 * TODO (histology) observations in a bundle
-* TODO procedures in a bundle
+* DONE [2025-4-8 Tue] (operation) procedures in a bundle
+* TODO (radio-therapy) procedures in a bundle
 * TODO med-stmts in a bundle

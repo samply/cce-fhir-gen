@@ -4,17 +4,19 @@
 use std::ops::Range;
 
 use chrono::NaiveDate;
+use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{BundleEntry, Procedure, ProcedurePerformed};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Period, Reference};
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_syst_therapy_type_url};
+use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_syst_therapy_type_url};
 
 pub fn get_procedure(
     id: &str,
-    sub_ref: &str,
+    subject_ref: &str,
     reason_ref: &str,
     start_date: NaiveDate,
     end_date: NaiveDate,
@@ -28,8 +30,8 @@ pub fn get_procedure(
         id: Some("successful".to_string()),
         ..Default::default()
     };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let reason_rfrnc = Reference {
@@ -66,7 +68,7 @@ pub fn get_procedure(
         r#id: Some(pid),
         status,
         category: Some(Box::new(cod_concept)),
-        subject: Box::new(sub_rfrnc),
+        subject: Box::new(subject_rfrnc),
         performed: Some(ProcedurePerformed::Period(Box::new(period))),
         reason_reference: vec![reason_rfrnc],
         ..Default::default()
@@ -84,13 +86,28 @@ pub fn get_bundle_entry(procedure: Procedure, procedure_ref_id: &str) -> BundleE
     }
 }
 
-pub fn get_procedures(
-    id: &str,
+pub fn get_proc_operations(
     src_id: &str,
+    reason_ref: &str,
+    start_date: NaiveDate,
+    end_date: NaiveDate,
     range: Range<u8>,
-) -> Vec<Procedure> {
-    todo!()
-    // range
-    //     .map(|_| get_procedure(id, src_id))
-    //     .collect()
+) -> Vec<(Procedure, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+            (
+                get_procedure(
+                    proc_op_id.as_str(),
+                    src_id,
+                    reason_ref,
+                    start_date,
+                    end_date,
+                    SystTherapyType::OP,
+                ),
+                proc_op_id,
+            )
+        })
+        .collect()
 }
