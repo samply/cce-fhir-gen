@@ -102,11 +102,19 @@ pub fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {
     }
 }
 
+pub fn get_xml<T>(t: T, error_infix: &str) -> String
+where
+    T: SerializeResource,
+{
+    let error_str = format!("Cannot serialize {} to XML.", error_infix);
+    xml::to_string(&t, None).unwrap_or(error_str)
+}
+
 pub fn print_fhir_data<T>(t: T, name: &str)
 where
     T: SerializeResource,
 {
-    let serialized_data = xml::to_string(&t, None).unwrap();
+    let serialized_data = get_xml(t, "");
     println!("{name}: {serialized_data:#?}");
     println!("");
 }
@@ -117,6 +125,7 @@ pub fn get_ids(
     res_type: &str,
     i: u16,
 ) -> (String, String) {
+    // TODO: should return all 3 ids in a struct
     let id_type_str = match id_type {
         IdType::Id => id_type.as_str().to_string(),
         IdType::Identifier => format!("src-{}", id_type.as_str()),
@@ -149,6 +158,18 @@ mod tests {
         assert_eq!(bundle_id, "Bundle-src-identifier-1", "id does not match");
         assert_eq!(
             bundle_ref_id, "Bundle/Bundle-src-identifier-1",
+            "ref id does not match"
+        );
+    }
+
+    #[test]
+    fn test_get_ids_with_id_type_id_and_res_group() {
+        let (obs_hist_id, obs_hist_ref_id) =
+            get_ids("Observation".into_some(), IdType::Id, "Histology", 1);
+
+        assert_eq!(obs_hist_id, "Histology-id-1", "id does not match");
+        assert_eq!(
+            obs_hist_ref_id, "Observation/Histology-id-1",
             "ref id does not match"
         );
     }

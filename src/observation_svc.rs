@@ -1,28 +1,35 @@
 //! We have multiple FHIR resources for an Observation. This module has functions to generate XML for these
 //! different Observation resources.
 
-use crate::models::enums::loinc_codes::{TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification};
+use std::ops::Range;
+
+use crate::extensions::option_ext::OptionExt;
+use crate::models::enums::id_type::IdType;
+use crate::models::enums::loinc_codes::{
+    TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification,
+};
 use crate::models::enums::tnmm_category::TnmmCategory;
 use crate::models::enums::tnmn_category::TnmnCategory;
-use crate::models::enums::tnmr_symbol::TnmrSymbol;
 use crate::models::enums::tnmt_category::TnmtCategory;
-use crate::models::enums::tnmy_symbol::TnmySymbol;
 use crate::models::enums::uicc_stage::UiccStage;
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{
-    get_loinc_url, get_tnmm_url, get_tnmn_url, get_tnmr_symbol_url, get_tnmt_url, get_tnmy_symbol_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS
+    get_bundle_entry_request, get_full_url, get_ids, get_loinc_url, get_tnmm_url, get_tnmn_url,
+    get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS,
 };
 use chrono::NaiveDate;
+use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{
-    Observation, ObservationComponent, ObservationComponentValue, ObservationEffective,
-    ObservationValue,
+    BundleEntry, Observation, ObservationComponent, ObservationComponentValue,
+    ObservationEffective, ObservationValue,
 };
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri};
+use fhirbolt::model::r4b::Resource;
 
 /// Generates observation histology
 pub fn get_histology(
     id: &str,
-    sub_ref: &str,
+    subject_ref: &str,
     focus_ref: &str,
     specimen_ref: &str,
     effective_date: NaiveDate,
@@ -33,8 +40,8 @@ pub fn get_histology(
         value: Some(id.to_string()),
         ..Default::default()
     };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let focus_rfrnc = Reference {
@@ -71,7 +78,7 @@ pub fn get_histology(
 
     Observation {
         r#id: Some(oid),
-        subject: Some(Box::new(sub_rfrnc)),
+        subject: Some(Box::new(subject_rfrnc)),
         focus: vec![focus_rfrnc],
         specimen: Some(Box::new(speci_rfrnc)),
         effective: Some(ObservationEffective::DateTime(effective)),
@@ -84,20 +91,17 @@ pub fn get_histology(
 }
 
 /// Generates observation vitalstatus
-pub fn get_vital_status(
-    id: &str,
-    sub_ref: &str,
-    effective_date: NaiveDate,
-    code_value: VitalStatus,
-) -> Observation {
+pub fn get_vital_status(id: &str, subject_ref: &str, effective_date: NaiveDate) -> Observation {
     // NOTE: VitalStatus is also an Observation
     // TODO: check date, code etc.
+    let code_value: VitalStatus = Faker.fake();
+
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()
     };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let effective = DateTime {
@@ -126,7 +130,7 @@ pub fn get_vital_status(
 
     Observation {
         r#id: Some(oid),
-        subject: Some(Box::new(sub_rfrnc)),
+        subject: Some(Box::new(subject_rfrnc)),
         effective: Some(ObservationEffective::DateTime(effective)),
         // NOTE: status is required by the FHIR lib
         status: OBSERVATION_STATUS.into(),
@@ -137,31 +141,25 @@ pub fn get_vital_status(
 }
 
 /// Generates observation TNMc
-pub fn get_tnmc(
-    id: &str,
-    sub_ref: &str,
-    effective_date: NaiveDate,
-    uicc_code_value: UiccStage,
-    tnmm: TnmmCategory,
-    tnmn: TnmnCategory,
-    tnmt: TnmtCategory,
-    tnmr: TnmrSymbol,
-    tnmy: TnmySymbol,
-) -> Observation {
+pub fn get_tnmc(id: &str, subject_ref: &str, effective_date: NaiveDate) -> Observation {
+    let uicc_code_value: UiccStage = Faker.fake();
+    let tnmm: TnmmCategory = Faker.fake();
+    let tnmn: TnmnCategory = Faker.fake();
+    let tnmt: TnmtCategory = Faker.fake();
     // TODO: check date, code etc.
     let oid = Id {
         value: Some(id.to_string()),
         ..Default::default()
     };
-    let sub_rfrnc = Reference {
-        reference: Some(sub_ref.into()),
+    let subject_rfrnc = Reference {
+        reference: Some(subject_ref.into()),
         ..Default::default()
     };
     let effective = DateTime {
         value: Some(effective_date.to_string()),
         ..Default::default()
     };
-    
+
     let coding = Coding {
         system: Some(get_uicc_stage_url()),
         version: Some("8".into()),
@@ -224,43 +222,9 @@ pub fn get_tnmc(
         ..Default::default()
     };
 
-    // let tnmr_coding = Coding {
-    //     system: Some(get_tnmr_symbol_url()),
-    //     code: Some(Code::from(tnmr.code())),
-    //     ..Default::default()
-    // };
-    // let tnmr_concept = CodeableConcept {
-    //     coding: vec![tnmr_coding],
-    //     ..Default::default()
-    // };
-    // let tnmr_comp = ObservationComponent {
-    //     code: Box::new(get_loinc_code("21983-2")),
-    //     value: Some(ObservationComponentValue::CodeableConcept(Box::new(
-    //         tnmr_concept,
-    //     ))),
-    //     ..Default::default()
-    // };
-
-    // let tnmy_coding = Coding {
-    //     system: Some(get_tnmy_symbol_url()),
-    //     code: Some(Code::from(tnmy.code())),
-    //     ..Default::default()
-    // };
-    // let tnmy_concept = CodeableConcept {
-    //     coding: vec![tnmy_coding],
-    //     ..Default::default()
-    // };
-    // let tnmy_comp = ObservationComponent {
-    //     code: Box::new(get_loinc_code("59479-6")),
-    //     value: Some(ObservationComponentValue::CodeableConcept(Box::new(
-    //         tnmy_concept,
-    //     ))),
-    //     ..Default::default()
-    // };
-
     Observation {
         r#id: Some(oid),
-        subject: Some(Box::new(sub_rfrnc)),
+        subject: Some(Box::new(subject_rfrnc)),
         effective: Some(ObservationEffective::DateTime(effective)),
         // NOTE: status is required by the FHIR lib
         status: OBSERVATION_STATUS.into(),
@@ -270,6 +234,78 @@ pub fn get_tnmc(
         component: vec![tnmm_comp, tnmn_comp, tnmt_comp],
         ..Default::default()
     }
+}
+
+pub fn get_bundle_entry(observation: Observation, observation_ref_id: &str) -> BundleEntry {
+    BundleEntry {
+        full_url: Some(get_full_url(
+            observation.clone().id.unwrap().value.unwrap().as_str(),
+        )),
+        resource: Some(Resource::Observation(Box::new(observation.clone()))),
+        request: get_bundle_entry_request("PUT", observation_ref_id).into_some(),
+        ..Default::default()
+    }
+}
+
+pub fn get_histologies(
+    subject_ref: &str,
+    focus_ref: &str,
+    specimen_ref: &str,
+    effective_date: NaiveDate,
+    code_value: &str,
+    range: Range<u8>,
+) -> Vec<(Observation, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+            (
+                get_histology(
+                    obs_hist_id.as_str(),
+                    subject_ref,
+                    focus_ref,
+                    specimen_ref,
+                    effective_date,
+                    code_value,
+                ),
+                obs_hist_id,
+            )
+        })
+        .collect()
+}
+
+pub fn get_vital_statuses(
+    subject_ref: &str,
+    effective_date: NaiveDate,
+    range: Range<u8>,
+) -> Vec<(Observation, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (ovs_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+            (
+                get_vital_status(ovs_id.as_str(), subject_ref, effective_date),
+                ovs_id,
+            )
+        })
+        .collect()
+}
+
+pub fn get_tnmcs(
+    subject_ref: &str,
+    effective_date: NaiveDate,
+    range: Range<u8>,
+) -> Vec<(Observation, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+            (
+                get_tnmc(obs_tnmc_id.as_str(), subject_ref, effective_date),
+                obs_tnmc_id,
+            )
+        })
+        .collect()
 }
 
 fn get_loinc_code(code_val: &str) -> CodeableConcept {

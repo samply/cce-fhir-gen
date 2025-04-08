@@ -1,17 +1,20 @@
+mod bundle_svc;
 mod cli;
-mod data_gen_svc;
+mod condition_svc;
 mod extensions;
+mod medication_svc;
 mod models;
 mod observation_svc;
+mod patient_svc;
 mod procedure_svc;
+mod specimen_svc;
 mod utils;
 
 use std::fs;
 
 use chrono::prelude::*;
-use cli::args::{CliArgs, OutputMode};
 use clap::Parser;
-use data_gen_svc::get_bundle;
+use cli::args::{CliArgs, OutputMode, ResourceType};
 use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
@@ -29,213 +32,510 @@ const PROXY_URL: &str = "";
 fn main() {
     let cli = CliArgs::parse();
 
-    let msg = format!("write to a file in /{}", DATA_FOLDER);
+    let file_msg = format!("write to a file in /{}", DATA_FOLDER);
     let storage = match cli.output_mode {
         OutputMode::Screen => "show on terminal",
-        OutputMode::File => msg.as_str(),
+        OutputMode::File => file_msg.as_str(),
         OutputMode::ApiCall => "call API endpoint (WIP)",
     };
-    
-    println!("Generating {} {:?} and {}...", cli.number, cli.resource_type, storage);
+
+    println!(
+        "Generating {} {:?} and {}...",
+        cli.number, cli.resource_type, storage
+    );
     println!("");
 
     // TODO: directly post a request to an endpoint
     // TODO: for curl, we need a server name, user name, pwd, proxy url
-    generate_fhir_bundles(cli.number, cli.output_mode);
+    if cli.number > 1 {
+        generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
+    } else {
+        generate_fhir_bundle(cli.resource_type, cli.output_mode);
+    }
 }
 
-fn generate_fhir_bundles(number: u8, output_mode: OutputMode) {
-    let range = 1..(number + 1);
-    // println!("current dir: {}", env::current_dir().unwrap().display());
+fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
+    let i: u16 = Faker.fake();
 
-    let server_name = "";
-    let user_name = "";
-    let pwd = "";
+    let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
+    let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
+    let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
+    let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
+    let (obs_hist_id, obs_hist_ref_id) =
+        get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+    let (obs_vital_status_id, obs_vital_status_ref_id) =
+        get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+    let (proc_rt_id, proc_rt_ref_id) =
+        get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
+    let (proc_op_id, proc_op_ref_id) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (med_stmt_id, med_stmt_ref_id) = get_ids(
+        "MedicationStatement".into_some(),
+        IdType::Id,
+        "SystemicTherapy",
+        i,
+    );
 
-    let mut client: Option<Client> = None;
-    if output_mode == OutputMode::ApiCall {
-        // let http_proxy = reqwest::Proxy::http(http_proxy_svr).unwrap();
-        // let https_proxy = reqwest::Proxy::http(https_proxy_svr).unwrap();
-        client = Some(get_client());
-        // client = Some(Client::new());
-    }
+    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
-    for _i in range {
-        // Use Default::default() or constructing new resources by yourself
-        let i: u16 = Faker.fake();
-        let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
-        let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
-        let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
-        let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
-        let (obs_hist_id, obs_hist_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "Histology", i);
-        let (obs_vital_status_id, obs_vital_status_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-        let (obs_tnmc_id, obs_tnmc_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
-        let (proc_rt_id, proc_rt_ref_id) =
-            get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-        let (proc_op_id, proc_op_ref_id) =
-            get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
-        let (med_stmt_id, med_stmt_ref_id) = get_ids(
-            "MedicationStatement".into_some(),
-            IdType::Id,
-            "SystemicTherapy",
-            i,
-        );
+    let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let end_date: DateTime<Utc> = DateTimeAfter(start_date).fake();
 
-        let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
-        let bd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-        let ed: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-
-        let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-        let pt = data_gen_svc::get_patient(
-            patient_id.as_str(),
-            patient_src_id.as_str(),
-            Faker.fake(),
-            bd.date_naive(),
-            Faker.fake(),
-        );
-        // let pt1 = pt.clone();
-        // print_fhir_data(pt1, "patient");
-
-        let s =
-            data_gen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str(), Faker.fake());
-        // let s1 = s.clone();
-        // print_fhir_data(s1, "specimen");
-
-        let c = data_gen_svc::get_condition(
-            condition_id.as_str(),
-            patient_ref_id.as_str(),
-            "C34.0",
-            "C34.0",
-            Faker.fake(),
-        );
-        // let c1 = c.clone();
-        // print_fhir_data(c1, "condition");
-
-        let ohist = observation_svc::get_histology(
-            obs_hist_id.as_str(),
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            specimen_ref_id.as_str(),
-            ed.date_naive(),
-            "8140/3",
-        );
-        // let ohist1 = ohist.clone();
-        // print_fhir_data(ohist1, "observation-histology");
-
-        let ovs = observation_svc::get_vital_status(
-            obs_vital_status_id.as_str(),
-            patient_ref_id.as_str(),
-            ed.date_naive(),
-            Faker.fake(),
-        );
-        // let ovs1 = ovs.clone();
-        // print_fhir_data(ovs1, "observation-vitalstatus");
-
-        let otnmc = observation_svc::get_tnmc(
-            &obs_tnmc_id.as_str(),
-            patient_ref_id.as_str(),
-            ed.date_naive(),
-            Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
-            Faker.fake(),
-        );
-        // let otnmc1 = otnmc.clone();
-        // print_fhir_data(otnmc1, "observation-tnmc");
-
-        let sd: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
-        let ed: DateTime<Utc> = DateTimeAfter(sd).fake();
-        let prt = procedure_svc::get_procedure(
-            proc_rt_id.as_str(),
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            sd.date_naive(),
-            ed.date_naive(),
-            SystTherapyType::RT,
-        );
-        // let prt1 = prt.clone();
-        // print_fhir_data(prt1, "procedure-radiotherapy");
-
-        let pop = procedure_svc::get_procedure(
-            proc_op_id.as_str(),
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            sd.date_naive(),
-            ed.date_naive(),
-            SystTherapyType::OP,
-        );
-        // let pop1 = pop.clone();
-        // print_fhir_data(pop1, "procedure-operation");
-
-        let m = data_gen_svc::get_med_statement(
-            med_stmt_id.as_str(),
-            "medicine",
-            patient_ref_id.as_str(),
-            condition_ref_id.as_str(),
-            Faker.fake(),
-            "2021-06-12",
-            "2021-06-21",
-        );
-        // let m1 = m.clone();
-        // print_fhir_data(m1, "medication statement");
-
-        let b = get_bundle(
-            bundle_id.as_str(),
-            (pt, patient_ref_id.as_str()),
-            (s, specimen_ref_id.as_str()),
-            (c, condition_ref_id.as_str()),
-            (ohist, obs_hist_ref_id.as_str()),
-            (ovs, obs_vital_status_ref_id.as_str()),
-            (otnmc, obs_tnmc_ref_id.as_str()),
-            (pop, proc_op_ref_id.as_str()),
-            (prt, proc_rt_ref_id.as_str()),
-            (m, med_stmt_ref_id.as_str()),
-        );
-        let data =
-            xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string());
-
-        match output_mode {
-            OutputMode::Screen => print_fhir_data(b, "bundle"),
-
-            OutputMode::File => {
-                let dir_path = format!("./{DATA_FOLDER}");
-                if fs::exists(&dir_path).expect("dir exists error") {
-                    println!("{} already exists.", dir_path);
-                } else {
-                    println!("creating {}.", &dir_path);
-                    fs::create_dir(&dir_path).expect("failed to create dir");
-                }
-
-                let file_name = format!("Bundle-{}.xml", i);
-                let file_path = format!("{}/{}", &dir_path, file_name);
-                fs::write(file_path, data).expect("Unable to create XML file");
-            }
-
-            OutputMode::ApiCall => {
-                let url = utils::get_bh_fhir_api_url(server_name);
-                println!("api url: {}", &url);
-                let res = client
-                    .as_mut()
-                    .unwrap()
-                    .post(url)
-                    .basic_auth(user_name, Some(pwd))
-                    .header(ACCEPT, "application/xml")
-                    .header(CONTENT_TYPE, "application/xml") // this fixed it
-                    .header(USER_AGENT, "Rust-Reqwest-App")
-                    .body(data)
-                    .send();
-
-                match res {
-                    Ok(resp) => println!("Successfully posted bundle({}): {}", i, resp.status().as_str()),
-                    Err(e) => println!("Error in posting bundle({}): connect: {}, body: {}, timeout: {}", i, e.is_connect(), e.is_body(), e.is_timeout()),
-                }
-            }
+    let (xml_data, file_name) = match resource_type {
+        ResourceType::Patient => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            (utils::get_xml(pt, "patient"), patient_id)
         }
+
+        ResourceType::Condition => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let b = bundle_svc::get_condition_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "condition (bundle)"), condition_id)
+        }
+
+        ResourceType::Specimen => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
+            let b = bundle_svc::get_specimen_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (s, specimen_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "specimen (bundle)"), specimen_id)
+        }
+
+        ResourceType::ObservationHistology => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
+            let ohist = observation_svc::get_histology(
+                obs_hist_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                specimen_ref_id.as_str(),
+                effective_date.date_naive(),
+                "8140/3",
+            );
+            let b = bundle_svc::get_observation_histology_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (s, specimen_ref_id.as_str()),
+                (ohist, obs_hist_ref_id.as_str()),
+            );
+            (
+                utils::get_xml(b, "observation histology (bundle)"),
+                obs_hist_id,
+            )
+        }
+
+        ResourceType::ObservationVitalStatus => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let ovs = observation_svc::get_vital_status(
+                obs_vital_status_id.as_str(),
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+            );
+            let b = bundle_svc::get_observation_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (ovs, obs_vital_status_ref_id.as_str()),
+            );
+            (
+                utils::get_xml(b, "observation vital-status (bundle)"),
+                obs_vital_status_id,
+            )
+        }
+
+        ResourceType::ObservationTNMc => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let otnmc = observation_svc::get_tnmc(
+                &obs_tnmc_id.as_str(),
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+            );
+            let b = bundle_svc::get_observation_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (otnmc, obs_tnmc_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "observation tnmc (bundle)"), obs_tnmc_id)
+        }
+
+        ResourceType::ProcedureRadiotherapy => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let prt = procedure_svc::get_procedure(
+                proc_rt_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                SystTherapyType::RT,
+            );
+            let b = bundle_svc::get_procedure_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (prt, proc_rt_ref_id.as_str()),
+            );
+            (
+                utils::get_xml(b, "procedure radiotherapy (bundle)"),
+                proc_rt_id,
+            )
+        }
+
+        ResourceType::ProcedureOperation => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let pop = procedure_svc::get_procedure(
+                proc_op_id.as_str(),
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                SystTherapyType::OP,
+            );
+            let b = bundle_svc::get_procedure_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (pop, proc_op_ref_id.as_str()),
+            );
+            (
+                utils::get_xml(b, "procedure operation (bundle)"),
+                proc_op_id,
+            )
+        }
+
+        ResourceType::MedicationStatement => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let m = medication_svc::get_med_statement(
+                med_stmt_id.as_str(),
+                "medicine",
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+            );
+            let b = bundle_svc::get_med_stmt_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (m, med_stmt_ref_id.as_str()),
+            );
+            (utils::get_xml(b, "medication stmt (bundle)"), med_stmt_id)
+        }
+
+        ResourceType::Bundle => {
+            let b = bundle_svc::get_bundle();
+            (
+                xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string()),
+                bundle_id,
+            )
+        }
+    };
+
+    match output_mode {
+        OutputMode::Screen => {
+            println!("{}:", resource_type.as_str());
+            println!("{xml_data}");
+            println!();
+        }
+
+        OutputMode::File => {
+            let dir_path = format!("./{DATA_FOLDER}");
+            if fs::exists(&dir_path).expect("dir exists error") {
+                println!("{} already exists.", dir_path);
+            } else {
+                println!("creating {}.", &dir_path);
+                fs::create_dir(&dir_path).expect("failed to create dir");
+            }
+
+            let with_extn = format!("{}.xml", file_name);
+            let file_path = format!("{}/{}", &dir_path, with_extn);
+            fs::write(file_path, xml_data).expect("Unable to create XML file");
+        }
+
+        OutputMode::ApiCall => todo!(),
+    }
+}
+
+fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+    let range = 0..number;
+    let i: u16 = Faker.fake();
+
+    let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
+    let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
+    let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
+    let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
+    let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+    let (obs_vital_status_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+    let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+    let (proc_rt_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
+    let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (med_stmt_id, _) = get_ids(
+        "MedicationStatement".into_some(),
+        IdType::Id,
+        "SystemicTherapy",
+        i,
+    );
+
+    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+
+    let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
+    let end_date: DateTime<Utc> = DateTimeAfter(start_date).fake();
+
+    let (bundle, file_name) = match resource_type {
+        ResourceType::Patient => {
+            let patient_tuples = patient_svc::get_patients(range);
+            let b = bundle_svc::get_patients_bundle(bundle_id.as_str(), patient_tuples);
+            (b, patient_id)
+        }
+
+        ResourceType::Condition => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let condition_tuples =
+                condition_svc::get_conditions(patient_ref_id.as_str(), "C34.0", "C34.0", range);
+            let b = bundle_svc::get_conditions_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                condition_tuples,
+            );
+            (b, condition_id)
+        }
+
+        ResourceType::Specimen => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let specimen_tuples = specimen_svc::get_specimens(patient_ref_id.as_str(), range);
+            let b = bundle_svc::get_specimens_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                specimen_tuples,
+            );
+            (b, specimen_id)
+        }
+
+        ResourceType::ObservationHistology => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
+            let hist_tuples = observation_svc::get_histologies(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                specimen_ref_id.as_str(),
+                effective_date.date_naive(),
+                "8140/3",
+                range,
+            );
+            let b = bundle_svc::get_histologies_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                (s, specimen_ref_id.as_str()),
+                hist_tuples,
+            );
+            (b, obs_hist_id)
+        }
+
+        ResourceType::ObservationVitalStatus => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let vital_status_tuples = observation_svc::get_vital_statuses(
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_vital_statuses_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                vital_status_tuples,
+            );
+            (b, obs_vital_status_id)
+        }
+
+        ResourceType::ObservationTNMc => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+
+            let tnmc_tuples = observation_svc::get_tnmcs(
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_tnmcs_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                tnmc_tuples,
+            );
+            (b, obs_tnmc_id)
+        }
+
+        ResourceType::ProcedureRadiotherapy => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let prt_tuples = procedure_svc::get_proc_radio_therapies(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_procedures_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                prt_tuples,
+            );
+            (b, proc_rt_id)
+        }
+
+        ResourceType::ProcedureOperation => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let pop_tuples = procedure_svc::get_proc_operations(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_procedures_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                pop_tuples,
+            );
+            (b, proc_op_id)
+        }
+
+        ResourceType::MedicationStatement => {
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let c = condition_svc::get_condition(
+                condition_id.as_str(),
+                patient_ref_id.as_str(),
+                "C34.0",
+                "C34.0",
+            );
+            let med_stmt_tuples = medication_svc::get_med_statements(
+                patient_ref_id.as_str(),
+                condition_ref_id.as_str(),
+                start_date.date_naive(),
+                end_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_med_stmts_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                (c, condition_ref_id.as_str()),
+                med_stmt_tuples,
+            );
+            (b, med_stmt_id)
+        }
+
+        ResourceType::Bundle => {
+            todo!()
+            // let b = bundle_svc::get_bundle();
+            // (
+            //     xml::to_string(&b, None).unwrap_or("Cannot serialize bundle to XML.".to_string()),
+            //     bundle_id,
+            // )
+        }
+    };
+
+    let bundle_xml = utils::get_xml(bundle, "bundle");
+    match output_mode {
+        OutputMode::Screen => {
+            println!("{}:", resource_type.as_str());
+            println!("{bundle_xml}");
+            println!();
+        }
+
+        OutputMode::File => {
+            let dir_path = format!("./{DATA_FOLDER}");
+            if fs::exists(&dir_path).expect("dir exists error") {
+                println!("{} already exists.", dir_path);
+            } else {
+                println!("creating {}.", &dir_path);
+                fs::create_dir(&dir_path).expect("failed to create dir");
+            }
+
+            let with_extn = format!("{}.xml", file_name);
+            let file_path = format!("{}/{}", &dir_path, with_extn);
+            fs::write(file_path, bundle_xml).expect("Unable to create XML file");
+        }
+
+        OutputMode::ApiCall => todo!(),
     }
 }
 

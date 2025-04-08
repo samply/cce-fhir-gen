@@ -1,0 +1,7 @@
+* General Notes
+
+** About FhirBolt library
+
+- A Bundle accepts a vec of BundleEntry resources
+- BundleEntry wraps other resources (like a Patient or a Specimen)
+- Resource enum describes all types of resources (like Condition etc.)
