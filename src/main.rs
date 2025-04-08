@@ -356,8 +356,7 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            let specimens_tuple =
-                specimen_svc::get_specimens(specimen_id.as_str(), patient_ref_id.as_str(), range);
+            let specimens_tuple = specimen_svc::get_specimens(patient_ref_id.as_str(), range);
             let b = bundle_svc::get_specimens_bundle(
                 &bundle_id,
                 (pt, patient_ref_id.as_str()),
@@ -399,24 +398,20 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
         }
 
         ResourceType::ObservationVitalStatus => {
-            todo!()
-            // let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-            // let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            // let ovs = observation_svc::get_vital_status(
-            //     obs_vital_status_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     effective_date.date_naive(),
-            // );
-            // let b = bundle_svc::get_observation_bundle(
-            //     &bundle_id,
-            //     (pt, patient_ref_id.as_str()),
-            //     (ovs, obs_vital_status_ref_id.as_str()),
-            // );
-            // (
-            //     utils::get_xml(b, "observation vital-status (bundle)"),
-            //     obs_vital_status_id,
-            // )
+            let vital_statuses_tuple = observation_svc::get_vital_statuses(
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_vital_statuses_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                vital_statuses_tuple,
+            );
+            (b, obs_vital_status_id)
         }
 
         ResourceType::ObservationTNMc => {

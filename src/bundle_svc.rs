@@ -6,7 +6,7 @@ use fake::{Fake, Faker};
 use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_ids};
+use crate::utils::get_ids;
 use crate::{
     condition_svc, medication_svc, observation_svc, patient_svc, procedure_svc, specimen_svc,
 };
@@ -15,7 +15,6 @@ use fhirbolt::model::r4b::resources::{
     Bundle, BundleEntry, Condition, MedicationStatement, Observation, Patient, Procedure, Specimen,
 };
 use fhirbolt::model::r4b::types::{Code, Id};
-use fhirbolt::model::r4b::Resource;
 
 pub fn get_bundle() -> Bundle {
     let i: u16 = Faker.fake();
@@ -440,6 +439,37 @@ pub fn get_specimens_bundle(
 
     let mut entries = vec![patient];
     entries.extend(specimen_entries);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: entries,
+        ..Default::default()
+    }
+}
+
+pub fn get_vital_statuses_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    obs_vs_tuple: Vec<(Observation, String)>,
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let vs_entries: Vec<BundleEntry> = obs_vs_tuple
+        .iter()
+        .map(|vs_tuple| observation_svc::get_bundle_entry(vs_tuple.0.clone(), vs_tuple.1.as_str()))
+        .collect();
+
+    let mut entries = vec![patient];
+    entries.extend(vs_entries);
 
     Bundle {
         id: Some(id),

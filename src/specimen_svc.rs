@@ -11,7 +11,7 @@ use crate::extensions::option_ext::OptionExt;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::utils::{
-    get_body_site_url, get_bundle_entry_request, get_full_url, get_ids, get_sample_mat_type_url
+    get_body_site_url, get_bundle_entry_request, get_full_url, get_ids, get_sample_mat_type_url,
 };
 
 pub fn get_specimen(id: &str, subject_ref: &str) -> Specimen {
@@ -76,12 +76,12 @@ pub fn get_bundle_entry(specimen: Specimen, specimen_ref_id: &str) -> BundleEntr
     }
 }
 
-pub fn get_specimens(id: &str, src_id: &str, range: Range<u8>) -> Vec<(Specimen, String)> {
+pub fn get_specimens(subject_ref: &str, range: Range<u8>) -> Vec<(Specimen, String)> {
     range
         .map(|_| {
             let i: u16 = Faker.fake();
             let (specimen_id, _) = get_ids(None, IdType::Id, "Specimen", i);
-            (get_specimen(specimen_id.as_str(), src_id), specimen_id)
+            (get_specimen(specimen_id.as_str(), subject_ref), specimen_id)
         })
         .collect()
 }
