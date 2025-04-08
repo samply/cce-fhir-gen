@@ -333,8 +333,8 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
 
     let (bundle, file_name) = match resource_type {
         ResourceType::Patient => {
-            let patients_tuple = patient_svc::get_patients(range);
-            let b = bundle_svc::get_patients_bundle(bundle_id.as_str(), patients_tuple);
+            let patient_tuples = patient_svc::get_patients(range);
+            let b = bundle_svc::get_patients_bundle(bundle_id.as_str(), patient_tuples);
             (b, patient_id)
         }
 
@@ -342,12 +342,12 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            let conditions_tuple =
+            let condition_tuples =
                 condition_svc::get_conditions(patient_ref_id.as_str(), "C34.0", "C34.0", range);
             let b = bundle_svc::get_conditions_bundle(
                 &bundle_id,
                 (pt, patient_ref_id.as_str()),
-                conditions_tuple,
+                condition_tuples,
             );
             (b, condition_id)
         }
@@ -356,11 +356,11 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            let specimens_tuple = specimen_svc::get_specimens(patient_ref_id.as_str(), range);
+            let specimen_tuples = specimen_svc::get_specimens(patient_ref_id.as_str(), range);
             let b = bundle_svc::get_specimens_bundle(
                 &bundle_id,
                 (pt, patient_ref_id.as_str()),
-                specimens_tuple,
+                specimen_tuples,
             );
             (b, specimen_id)
         }
@@ -401,7 +401,7 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            let vital_statuses_tuple = observation_svc::get_vital_statuses(
+            let vital_status_tuples = observation_svc::get_vital_statuses(
                 patient_ref_id.as_str(),
                 effective_date.date_naive(),
                 range,
@@ -409,27 +409,26 @@ fn generate_fhir_bundle_mult(number: u8, resource_type: ResourceType, output_mod
             let b = bundle_svc::get_vital_statuses_bundle(
                 &bundle_id,
                 (pt, patient_ref_id.as_str()),
-                vital_statuses_tuple,
+                vital_status_tuples,
             );
             (b, obs_vital_status_id)
         }
 
         ResourceType::ObservationTNMc => {
-            todo!()
-            // let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
-            // let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
+            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
-            // let otnmc = observation_svc::get_tnmc(
-            //     &obs_tnmc_id.as_str(),
-            //     patient_ref_id.as_str(),
-            //     effective_date.date_naive(),
-            // );
-            // let b = bundle_svc::get_observation_bundle(
-            //     &bundle_id,
-            //     (pt, patient_ref_id.as_str()),
-            //     (otnmc, obs_tnmc_ref_id.as_str()),
-            // );
-            // (utils::get_xml(b, "observation tnmc (bundle)"), obs_tnmc_id)
+            let tnmc_tuples = observation_svc::get_tnmcs(
+                patient_ref_id.as_str(),
+                effective_date.date_naive(),
+                range,
+            );
+            let b = bundle_svc::get_tnmcs_bundle(
+                &bundle_id,
+                (pt, patient_ref_id.as_str()),
+                tnmc_tuples,
+            );
+            (b, obs_tnmc_id)
         }
 
         ResourceType::ProcedureRadiotherapy => {

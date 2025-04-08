@@ -264,6 +264,23 @@ pub fn get_vital_statuses(
         .collect()
 }
 
+pub fn get_tnmcs(
+    subject_ref: &str,
+    effective_date: NaiveDate,
+    range: Range<u8>,
+) -> Vec<(Observation, String)> {
+    range
+        .map(|_| {
+            let i: u16 = Faker.fake();
+            let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+            (
+                get_tnmc(obs_tnmc_id.as_str(), subject_ref, effective_date),
+                obs_tnmc_id,
+            )
+        })
+        .collect()
+}
+
 fn get_loinc_code(code_val: &str) -> CodeableConcept {
     let loinc_coding = Coding {
         system: Some(get_loinc_url()),

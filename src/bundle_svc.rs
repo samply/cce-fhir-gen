@@ -363,7 +363,7 @@ fn assemble_bundles(
     todo!()
 }
 
-pub fn get_patients_bundle(bundle_id: &str, patients_tuple: Vec<(Patient, String)>) -> Bundle {
+pub fn get_patients_bundle(bundle_id: &str, patient_tuples: Vec<(Patient, String)>) -> Bundle {
     let id = Id {
         value: Some(bundle_id.to_string()),
         ..Default::default()
@@ -373,7 +373,7 @@ pub fn get_patients_bundle(bundle_id: &str, patients_tuple: Vec<(Patient, String
         ..Default::default()
     };
 
-    let patient_entries: Vec<BundleEntry> = patients_tuple
+    let patient_entries: Vec<BundleEntry> = patient_tuples
         .iter()
         .map(|pt_tuple| patient_svc::get_bundle_entry(pt_tuple.0.clone(), pt_tuple.1.as_str()))
         .collect();
@@ -389,7 +389,7 @@ pub fn get_patients_bundle(bundle_id: &str, patients_tuple: Vec<(Patient, String
 pub fn get_conditions_bundle(
     bundle_id: &str,
     patient_tuple: (Patient, &str),
-    conditions_tuple: Vec<(Condition, String)>,
+    condition_tuples: Vec<(Condition, String)>,
 ) -> Bundle {
     let id = Id {
         value: Some(bundle_id.to_string()),
@@ -401,7 +401,7 @@ pub fn get_conditions_bundle(
     };
 
     let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
-    let condition_entries: Vec<BundleEntry> = conditions_tuple
+    let condition_entries: Vec<BundleEntry> = condition_tuples
         .iter()
         .map(|c_tuple| condition_svc::get_bundle_entry(c_tuple.0.clone(), c_tuple.1.as_str()))
         .collect();
@@ -420,7 +420,7 @@ pub fn get_conditions_bundle(
 pub fn get_specimens_bundle(
     bundle_id: &str,
     patient_tuple: (Patient, &str),
-    specimen_tuple: Vec<(Specimen, String)>,
+    specimen_tuples: Vec<(Specimen, String)>,
 ) -> Bundle {
     let id = Id {
         value: Some(bundle_id.to_string()),
@@ -432,7 +432,7 @@ pub fn get_specimens_bundle(
     };
 
     let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
-    let specimen_entries: Vec<BundleEntry> = specimen_tuple
+    let specimen_entries: Vec<BundleEntry> = specimen_tuples
         .iter()
         .map(|s_tuple| specimen_svc::get_bundle_entry(s_tuple.0.clone(), s_tuple.1.as_str()))
         .collect();
@@ -451,7 +451,7 @@ pub fn get_specimens_bundle(
 pub fn get_vital_statuses_bundle(
     bundle_id: &str,
     patient_tuple: (Patient, &str),
-    obs_vs_tuple: Vec<(Observation, String)>,
+    obs_vs_tuples: Vec<(Observation, String)>,
 ) -> Bundle {
     let id = Id {
         value: Some(bundle_id.to_string()),
@@ -463,9 +463,40 @@ pub fn get_vital_statuses_bundle(
     };
 
     let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
-    let vs_entries: Vec<BundleEntry> = obs_vs_tuple
+    let vs_entries: Vec<BundleEntry> = obs_vs_tuples
         .iter()
         .map(|vs_tuple| observation_svc::get_bundle_entry(vs_tuple.0.clone(), vs_tuple.1.as_str()))
+        .collect();
+
+    let mut entries = vec![patient];
+    entries.extend(vs_entries);
+
+    Bundle {
+        id: Some(id),
+        r#type: code,
+        entry: entries,
+        ..Default::default()
+    }
+}
+
+pub fn get_tnmcs_bundle(
+    bundle_id: &str,
+    patient_tuple: (Patient, &str),
+    obs_tnmc_tuples: Vec<(Observation, String)>,
+) -> Bundle {
+    let id = Id {
+        value: Some(bundle_id.to_string()),
+        ..Default::default()
+    };
+    let code = Code {
+        value: Some("transaction".to_string()),
+        ..Default::default()
+    };
+
+    let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
+    let vs_entries: Vec<BundleEntry> = obs_tnmc_tuples
+        .iter()
+        .map(|tnmc_tuple| observation_svc::get_bundle_entry(tnmc_tuple.0.clone(), tnmc_tuple.1.as_str()))
         .collect();
 
     let mut entries = vec![patient];
