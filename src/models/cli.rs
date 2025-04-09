@@ -43,8 +43,8 @@ pub enum ResourceType {
     /// Generate Procedure Operation
     ProcedureOperation,
 
-    /// Generate Medication Statement
-    MedicationStatement,
+    /// Generate Medication Statement Systemic Therapy
+    MedicationStatementSystemicTherapy,
 }
 
 impl ResourceType {
@@ -59,7 +59,7 @@ impl ResourceType {
             ResourceType::ObservationTNMc => "TNMc",
             ResourceType::ProcedureRadiotherapy => "Radiotherapy",
             ResourceType::ProcedureOperation => "Operation",
-            ResourceType::MedicationStatement => "Medication Statement",
+            ResourceType::MedicationStatementSystemicTherapy => "SystemicTherapy",
         }
     }
 
@@ -74,7 +74,7 @@ impl ResourceType {
             ResourceType::ObservationTNMc => "Observation/TNMc",
             ResourceType::ProcedureRadiotherapy => "Procedure/Radiotherapy",
             ResourceType::ProcedureOperation => "Procedure/Operation",
-            ResourceType::MedicationStatement => "Medication Statement",
+            ResourceType::MedicationStatementSystemicTherapy => "MedicationStatement/SystemicTherapy",
         }
     }
 }

@@ -39,16 +39,16 @@ Options:
           [default: bundle]
 
           Possible values:
-          - bundle:                   Generate whole Bundle
-          - patient:                  Generate Patient
-          - condition:                Generate Condition
-          - specimen:                 Generate Specimen
-          - observation-histology:    Generate Observation Histology
-          - observation-vital-status: Generate Observation VitalStatus
-          - observation-tn-mc:        Generate Observation TNMc
-          - procedure-radiotherapy:   Generate Procedure Radiotherapy
-          - procedure-operation:      Generate Procedure Operation
-          - medication-statement:     Generate Medication Statement
+          - bundle:                                     Generate whole Bundle
+          - patient:                                    Generate Patient
+          - condition:                                  Generate Condition
+          - specimen:                                   Generate Specimen
+          - observation-histology:                      Generate Observation Histology
+          - observation-vital-status:                   Generate Observation VitalStatus
+          - observation-tn-mc:                          Generate Observation TNMc
+          - procedure-radiotherapy:                     Generate Procedure Radiotherapy
+          - procedure-operation:                        Generate Procedure Operation
+          - medication-statement-systemic-therapy:      Generate Medication Statement
 
   -o, --output-mode <OUTPUT_MODE>
           Where to store the resources

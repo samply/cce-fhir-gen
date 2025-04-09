@@ -1,5 +1,7 @@
 use fake::Dummy;
 
+/// Represents whether the type of identifying (unique) value is
+/// from the FHIR DB store or the source system.
 #[derive(Debug, Dummy)]
 pub enum IdType {
     /// Unique value in the FHIR DB or system
