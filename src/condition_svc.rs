@@ -6,6 +6,7 @@ use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, R
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
 use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_site_location_url};
@@ -88,7 +89,7 @@ pub fn get_conditions(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (condition_id, _) = get_ids(None, IdType::Id, "Condition", i);
+            let (condition_id, _) = get_ids(None, IdType::Id, ResourceType::Condition, i);
             (get_condition(condition_id.as_str(), subject_ref, code_value, bs_code_value1), condition_id)
         })
         .collect()

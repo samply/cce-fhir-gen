@@ -9,6 +9,7 @@ use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, P
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_syst_therapy_type_url};
@@ -102,7 +103,7 @@ pub fn get_med_statements(
             let (med_stmt_id, _) = get_ids(
                 "MedicationStatement".into_some(),
                 IdType::Id,
-                "SystemicTherapy",
+                ResourceType::MedicationStatementSystemicTherapy,
                 i,
             );
             (

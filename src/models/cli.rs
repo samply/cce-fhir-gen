@@ -63,12 +63,12 @@ impl ResourceType {
         }
     }
 
-    pub fn display(&self) -> &'static str {
+    pub fn id_prefix(&self) -> &'static str {
         match self {
-            ResourceType::Bundle => "Bundle",
-            ResourceType::Patient => "Patient",
-            ResourceType::Condition => "Condition",
-            ResourceType::Specimen => "Specimen",
+            ResourceType::Bundle => "Bundle/Bundle",
+            ResourceType::Patient => "Patient/Patient",
+            ResourceType::Condition => "Condition/Condition",
+            ResourceType::Specimen => "Specimen/Specimen",
             ResourceType::ObservationHistology => "Observation/Histology",
             ResourceType::ObservationVitalStatus => "Observation/VitalStatus",
             ResourceType::ObservationTNMc => "Observation/TNMc",

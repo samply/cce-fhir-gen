@@ -4,6 +4,7 @@
 use std::ops::Range;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::loinc_codes::{
     TnmClassification, TnmmClassification, TnmnClassification, TnmtClassification,
@@ -258,7 +259,7 @@ pub fn get_histologies(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+            let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, ResourceType::ObservationHistology, i);
             (
                 get_histology(
                     obs_hist_id.as_str(),
@@ -282,7 +283,7 @@ pub fn get_vital_statuses(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (ovs_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
+            let (ovs_id, _) = get_ids("Observation".into_some(), IdType::Id, ResourceType::ObservationVitalStatus, i);
             (
                 get_vital_status(ovs_id.as_str(), subject_ref, effective_date),
                 ovs_id,
@@ -299,7 +300,7 @@ pub fn get_tnmcs(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+            let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, ResourceType::ObservationTNMc, i);
             (
                 get_tnmc(obs_tnmc_id.as_str(), subject_ref, effective_date),
                 obs_tnmc_id,

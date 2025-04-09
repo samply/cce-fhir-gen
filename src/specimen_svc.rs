@@ -8,6 +8,7 @@ use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, R
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::sample_material_type::SampleMaterialType;
 use crate::utils::{
@@ -80,7 +81,7 @@ pub fn get_specimens(subject_ref: &str, range: Range<u8>) -> Vec<(Specimen, Stri
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (specimen_id, _) = get_ids(None, IdType::Id, "Specimen", i);
+            let (specimen_id, _) = get_ids(None, IdType::Id, ResourceType::Specimen, i);
             (get_specimen(specimen_id.as_str(), subject_ref), specimen_id)
         })
         .collect()
