@@ -81,7 +81,7 @@ pub fn get_specimens(subject_ref: &str, range: Range<u8>) -> Vec<(Specimen, Stri
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (specimen_id, _) = get_ids(None, IdType::Id, ResourceType::Specimen, i);
+            let (specimen_id, _) = get_ids(IdType::Id, ResourceType::Specimen, i);
             (get_specimen(specimen_id.as_str(), subject_ref), specimen_id)
         })
         .collect()

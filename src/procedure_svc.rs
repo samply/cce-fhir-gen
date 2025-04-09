@@ -137,7 +137,7 @@ fn get_procedures(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (id, _) = get_ids("Procedure".into_some(), IdType::Id, res_type, i);
+            let (id, _) = get_ids(IdType::Id, res_type, i);
             (
                 get_procedure(
                     id.as_str(),

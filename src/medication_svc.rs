@@ -101,7 +101,6 @@ pub fn get_med_statements(
         .map(|_| {
             let i: u16 = Faker.fake();
             let (med_stmt_id, _) = get_ids(
-                "MedicationStatement".into_some(),
                 IdType::Id,
                 ResourceType::MedicationStatementSystemicTherapy,
                 i,

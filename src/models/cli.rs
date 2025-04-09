@@ -63,18 +63,18 @@ impl ResourceType {
         }
     }
 
-    pub fn id_prefix(&self) -> &'static str {
+    pub fn get_resource_group(&self) -> &'static str {
         match self {
-            ResourceType::Bundle => "Bundle/Bundle",
-            ResourceType::Patient => "Patient/Patient",
-            ResourceType::Condition => "Condition/Condition",
-            ResourceType::Specimen => "Specimen/Specimen",
-            ResourceType::ObservationHistology => "Observation/Histology",
-            ResourceType::ObservationVitalStatus => "Observation/VitalStatus",
-            ResourceType::ObservationTNMc => "Observation/TNMc",
-            ResourceType::ProcedureRadiotherapy => "Procedure/Radiotherapy",
-            ResourceType::ProcedureOperation => "Procedure/Operation",
-            ResourceType::MedicationStatementSystemicTherapy => "MedicationStatement/SystemicTherapy",
+            ResourceType::Bundle => "Bundle",
+            ResourceType::Patient => "Patient",
+            ResourceType::Condition => "Condition",
+            ResourceType::Specimen => "Specimen",
+            ResourceType::ObservationHistology => "Observation",
+            ResourceType::ObservationVitalStatus => "Observation",
+            ResourceType::ObservationTNMc => "Observation",
+            ResourceType::ProcedureRadiotherapy => "Procedure",
+            ResourceType::ProcedureOperation => "Procedure",
+            ResourceType::MedicationStatementSystemicTherapy => "MedicationStatement",
         }
     }
 }
