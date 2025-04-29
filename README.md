@@ -74,3 +74,13 @@ Options:
 | n | 1 | a value greater than 1 generates a bundle containing multiple resources of the resource type specified by `r` |
 | r | bundle | generates a bundle containing one each of the other resources |
 | o | screen | displays the generated data on the screen |
+
+### How to run
+
+#### Development mode
+
+In development mode, we tend to run `cargo run` command for running the application. In this case, you can use:
+
+```
+cargo run -- -n 100 -r patient
+```

@@ -14,7 +14,14 @@ impl IdType {
     pub fn as_str(&self) -> &'static str {
         match self {
             IdType::Id => "id",
-            IdType::Identifier => "identifier"
+            IdType::Identifier => "identifier",
+        }
+    }
+
+    pub fn get_id(&self, i: u16) -> String {
+        match self {
+            IdType::Id => format!("{}-{}", self.as_str(), i),
+            IdType::Identifier => format!("src-{}-{}", self.as_str(), i),
         }
     }
 }
