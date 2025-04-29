@@ -22,7 +22,7 @@ There are, a total of 10 profiles -
 
 ## Usage
 
-This tool is implemented as a command line tool, so it can be run from the command prompt. It accepts the following command line arguments -
+This repository implements a command line tool, to be run from the command prompt. It accepts the following command line arguments -
 
 ```
 Usage: cce-fhir-gen [OPTIONS]
@@ -39,16 +39,16 @@ Options:
           [default: bundle]
 
           Possible values:
-          - bundle:                   Generate whole Bundle
-          - patient:                  Generate Patient
-          - condition:                Generate Condition
-          - specimen:                 Generate Specimen
-          - observation-histology:    Generate Observation Histology
-          - observation-vital-status: Generate Observation VitalStatus
-          - observation-tn-mc:        Generate Observation TNMc
-          - procedure-radiotherapy:   Generate Procedure Radiotherapy
-          - procedure-operation:      Generate Procedure Operation
-          - medication-statement:     Generate Medication Statement
+          - bundle:                                     Generate whole Bundle
+          - patient:                                    Generate Patient
+          - condition:                                  Generate Condition
+          - specimen:                                   Generate Specimen
+          - observation-histology:                      Generate Observation Histology
+          - observation-vital-status:                   Generate Observation VitalStatus
+          - observation-tn-mc:                          Generate Observation TNMc
+          - procedure-radiotherapy:                     Generate Procedure Radiotherapy
+          - procedure-operation:                        Generate Procedure Operation
+          - medication-statement-systemic-therapy:      Generate Medication Statement
 
   -o, --output-mode <OUTPUT_MODE>
           Where to store the resources
@@ -71,6 +71,16 @@ Options:
 
 | Parameter | Default value | Meaning |
 |-----------|---------------|---------|
-| n | 1 | a value greater than 1 means generate a bundle containing multiple resources of the resource type specified by `r` |
-| r | bundle | generates a bundle containing all the other resources |
+| n | 1 | a value greater than 1 generates a bundle containing multiple resources of the resource type specified by `r` |
+| r | bundle | generates a bundle containing one each of the other resources |
 | o | screen | displays the generated data on the screen |
+
+### How to run
+
+#### Development mode
+
+In development mode, we tend to run `cargo run` command for running the application. In this case, you can use:
+
+```
+cargo run -- -n 100 -r patient
+```

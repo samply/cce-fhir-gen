@@ -3,7 +3,7 @@ use chrono::prelude::*;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 
-use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::utils::get_ids;
@@ -18,22 +18,21 @@ use fhirbolt::model::r4b::types::{Code, Id};
 
 pub fn get_bundle() -> Bundle {
     let i: u16 = Faker.fake();
-    let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
-    let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
-    let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
-    let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
+    let (bundle_id, _) = get_ids(IdType::Id, ResourceType::Bundle, i);
+    let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
+    let (condition_id, condition_ref_id) = get_ids(IdType::Id, ResourceType::Condition, i);
+    let (specimen_id, specimen_ref_id) = get_ids(IdType::Id, ResourceType::Specimen, i);
     let (obs_hist_id, obs_hist_ref_id) =
-        get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+        get_ids(IdType::Id, ResourceType::ObservationHistology, i);
     let (obs_vital_status_id, obs_vital_status_ref_id) =
-        get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+        get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
+    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
     let (proc_rt_id, proc_rt_ref_id) =
-        get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (proc_op_id, proc_op_ref_id) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+        get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
+    let (proc_op_id, proc_op_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
-        "MedicationStatement".into_some(),
         IdType::Id,
-        "SystemicTherapy",
+        ResourceType::MedicationStatementSystemicTherapy,
         i,
     );
 
@@ -43,7 +42,7 @@ pub fn get_bundle() -> Bundle {
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let end_date: DateTime<Utc> = DateTimeAfter(start_date).fake();
 
-    let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+    let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
     let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
     // let pt1 = pt.clone();
     // print_fhir_data(pt1, "patient");

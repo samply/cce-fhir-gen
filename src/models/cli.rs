@@ -43,8 +43,8 @@ pub enum ResourceType {
     /// Generate Procedure Operation
     ProcedureOperation,
 
-    /// Generate Medication Statement
-    MedicationStatement,
+    /// Generate Medication Statement Systemic Therapy
+    MedicationStatementSystemicTherapy,
 }
 
 impl ResourceType {
@@ -54,12 +54,27 @@ impl ResourceType {
             ResourceType::Patient => "Patient",
             ResourceType::Condition => "Condition",
             ResourceType::Specimen => "Specimen",
-            ResourceType::ObservationHistology => "Observation Histology",
-            ResourceType::ObservationVitalStatus => "Observation VitalStatus",
-            ResourceType::ObservationTNMc => "Observation TNMc",
-            ResourceType::ProcedureRadiotherapy => "Procedure Radiotherapy",
-            ResourceType::ProcedureOperation => "Procedure Operation",
-            ResourceType::MedicationStatement => "Medication Statement",
+            ResourceType::ObservationHistology => "Histology",
+            ResourceType::ObservationVitalStatus => "VitalStatus",
+            ResourceType::ObservationTNMc => "TNMc",
+            ResourceType::ProcedureRadiotherapy => "Radiotherapy",
+            ResourceType::ProcedureOperation => "Operation",
+            ResourceType::MedicationStatementSystemicTherapy => "SystemicTherapy",
+        }
+    }
+
+    pub fn get_resource_group(&self) -> &'static str {
+        match self {
+            ResourceType::Bundle => "Bundle",
+            ResourceType::Patient => "Patient",
+            ResourceType::Condition => "Condition",
+            ResourceType::Specimen => "Specimen",
+            ResourceType::ObservationHistology => "Observation",
+            ResourceType::ObservationVitalStatus => "Observation",
+            ResourceType::ObservationTNMc => "Observation",
+            ResourceType::ProcedureRadiotherapy => "Procedure",
+            ResourceType::ProcedureOperation => "Procedure",
+            ResourceType::MedicationStatementSystemicTherapy => "MedicationStatement",
         }
     }
 }

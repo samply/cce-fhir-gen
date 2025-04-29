@@ -7,7 +7,10 @@ use fhirbolt::{
     xml,
 };
 
-use crate::{extensions::option_ext::OptionExt, models::enums::id_type::IdType};
+use crate::{
+    extensions::option_ext::OptionExt,
+    models::{cli::ResourceType, enums::id_type::IdType},
+};
 
 const CCE_URL: &str = "https://www.cancercoreeurope.eu";
 const LOINC_URL: &str = "https://loinc.org";
@@ -119,25 +122,9 @@ where
     println!("");
 }
 
-pub fn get_ids(
-    res_group: Option<&str>,
-    id_type: IdType,
-    res_type: &str,
-    i: u16,
-) -> (String, String) {
-    // TODO: should return all 3 ids in a struct
-    let id_type_str = match id_type {
-        IdType::Id => id_type.as_str().to_string(),
-        IdType::Identifier => format!("src-{}", id_type.as_str()),
-    };
-    let id = format!("{res_type}-{}-{}", id_type_str, i);
-
-    let ref_id = if res_group.is_some() {
-        format!("{}/{}", res_group.unwrap(), id)
-    } else {
-        format!("{res_type}/{}", id)
-    };
-
+pub fn get_ids(id_type: IdType, res_type: ResourceType, i: u16) -> (String, String) {
+    let id = format!("{}-{}", res_type.as_str(), id_type.get_id(i));
+    let ref_id = format!("{}/{}", res_type.get_resource_group(), id);
     (id, ref_id)
 }
 
@@ -147,14 +134,14 @@ mod tests {
 
     #[test]
     fn test_get_ids_with_id_type_id() {
-        let (bundle_id, bundle_ref_id) = get_ids(None, IdType::Id, "Bundle", 1);
+        let (bundle_id, bundle_ref_id) = get_ids(IdType::Id, ResourceType::Bundle, 1);
         assert_eq!(bundle_id, "Bundle-id-1", "id does not match");
         assert_eq!(bundle_ref_id, "Bundle/Bundle-id-1", "ref id does not match");
     }
 
     #[test]
     fn test_get_ids_with_id_type_identifier() {
-        let (bundle_id, bundle_ref_id) = get_ids(None, IdType::Identifier, "Bundle", 1);
+        let (bundle_id, bundle_ref_id) = get_ids(IdType::Identifier, ResourceType::Bundle, 1);
         assert_eq!(bundle_id, "Bundle-src-identifier-1", "id does not match");
         assert_eq!(
             bundle_ref_id, "Bundle/Bundle-src-identifier-1",
@@ -165,11 +152,26 @@ mod tests {
     #[test]
     fn test_get_ids_with_id_type_id_and_res_group() {
         let (obs_hist_id, obs_hist_ref_id) =
-            get_ids("Observation".into_some(), IdType::Id, "Histology", 1);
+            get_ids(IdType::Id, ResourceType::ObservationHistology, 1);
 
         assert_eq!(obs_hist_id, "Histology-id-1", "id does not match");
         assert_eq!(
             obs_hist_ref_id, "Observation/Histology-id-1",
+            "ref id does not match"
+        );
+    }
+
+    #[test]
+    fn test_get_ids_with_id_type_identifier_and_res_group() {
+        let (obs_hist_id, obs_hist_ref_id) =
+            get_ids(IdType::Identifier, ResourceType::ProcedureRadiotherapy, 1);
+
+        assert_eq!(
+            obs_hist_id, "Radiotherapy-src-identifier-1",
+            "id does not match"
+        );
+        assert_eq!(
+            obs_hist_ref_id, "Procedure/Radiotherapy-src-identifier-1",
             "ref id does not match"
         );
     }

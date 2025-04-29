@@ -8,6 +8,7 @@ use fhirbolt::model::r4b::types::{Code, Date, DateTime, Id, Identifier, String};
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::gender::Gender;
 use crate::models::enums::id_type::IdType;
 use crate::utils::{get_bundle_entry_request, get_full_url, get_ids};
@@ -73,8 +74,8 @@ pub fn get_patients(range: Range<u8>) -> Vec<(Patient, std::string::String)> {
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (patient_id, _) = get_ids(None, IdType::Id, "Patient", i);
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_id, _) = get_ids(IdType::Id, ResourceType::Patient, i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             (get_patient(patient_id.as_str(), patient_src_id.as_str()), patient_id)
         })
         .collect()

@@ -1,5 +1,7 @@
 use fake::Dummy;
 
+/// Represents whether the type of identifying (unique) value is
+/// from the FHIR DB store or the source system.
 #[derive(Debug, Dummy)]
 pub enum IdType {
     /// Unique value in the FHIR DB or system
@@ -12,7 +14,14 @@ impl IdType {
     pub fn as_str(&self) -> &'static str {
         match self {
             IdType::Id => "id",
-            IdType::Identifier => "identifier"
+            IdType::Identifier => "identifier",
+        }
+    }
+
+    pub fn get_id(&self, i: u16) -> String {
+        match self {
+            IdType::Id => format!("{}-{}", self.as_str(), i),
+            IdType::Identifier => format!("src-{}-{}", self.as_str(), i),
         }
     }
 }

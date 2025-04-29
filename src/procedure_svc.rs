@@ -10,6 +10,7 @@ use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, P
 use fhirbolt::model::r4b::Resource;
 
 use crate::extensions::option_ext::OptionExt;
+use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
 use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_syst_therapy_type_url};
@@ -93,7 +94,7 @@ pub fn get_proc_operations(
     end_date: NaiveDate,
     range: Range<u8>,
 ) -> Vec<(Procedure, String)> {
-    let res_type = "Operation";
+    let res_type = ResourceType::ProcedureOperation;
     get_procedures(
         res_type,
         src_id,
@@ -112,7 +113,7 @@ pub fn get_proc_radio_therapies(
     end_date: NaiveDate,
     range: Range<u8>,
 ) -> Vec<(Procedure, String)> {
-    let res_type = "Radiotherapy";
+    let res_type = ResourceType::ProcedureRadiotherapy;
     get_procedures(
         res_type,
         src_id,
@@ -125,7 +126,7 @@ pub fn get_proc_radio_therapies(
 }
 
 fn get_procedures(
-    res_type: &str,
+    res_type: ResourceType,
     src_id: &str,
     reason_ref: &str,
     start_date: NaiveDate,
@@ -136,7 +137,7 @@ fn get_procedures(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (id, _) = get_ids("Procedure".into_some(), IdType::Id, res_type, i);
+            let (id, _) = get_ids(IdType::Id, res_type, i);
             (
                 get_procedure(
                     id.as_str(),

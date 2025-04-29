@@ -14,7 +14,6 @@ use std::fs;
 use chrono::prelude::*;
 use clap::Parser;
 use models::cli::{CliArgs, OutputMode, ResourceType};
-use extensions::option_ext::OptionExt;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::serde::xml;
@@ -51,22 +50,21 @@ fn main() {
 fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
     let i: u16 = Faker.fake();
 
-    let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
-    let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
-    let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
-    let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
+    let (bundle_id, _) = get_ids(IdType::Id, ResourceType::Bundle, i);
+    let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
+    let (condition_id, condition_ref_id) = get_ids(IdType::Id, ResourceType::Condition, i);
+    let (specimen_id, specimen_ref_id) = get_ids(IdType::Id, ResourceType::Specimen, i);
     let (obs_hist_id, obs_hist_ref_id) =
-        get_ids("Observation".into_some(), IdType::Id, "Histology", i);
+        get_ids(IdType::Id, ResourceType::ObservationHistology, i);
     let (obs_vital_status_id, obs_vital_status_ref_id) =
-        get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
+        get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
+    let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
     let (proc_rt_id, proc_rt_ref_id) =
-        get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (proc_op_id, proc_op_ref_id) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+        get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
+    let (proc_op_id, proc_op_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
-        "MedicationStatement".into_some(),
         IdType::Id,
-        "SystemicTherapy",
+        ResourceType::MedicationStatementSystemicTherapy,
         i,
     );
 
@@ -78,13 +76,13 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
 
     let (xml_data, file_name) = match resource_type {
         ResourceType::Patient => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             (utils::get_xml(pt, "patient"), patient_id)
         }
 
         ResourceType::Condition => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let c = condition_svc::get_condition(
@@ -102,7 +100,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
 
         ResourceType::Specimen => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let s = specimen_svc::get_specimen(specimen_id.as_str(), patient_ref_id.as_str());
@@ -115,7 +113,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
 
         ResourceType::ObservationHistology => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -146,7 +144,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
 
         ResourceType::ObservationVitalStatus => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let ovs = observation_svc::get_vital_status(
@@ -166,7 +164,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
 
         ResourceType::ObservationTNMc => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let otnmc = observation_svc::get_tnmc(
@@ -183,7 +181,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
 
         ResourceType::ProcedureRadiotherapy => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -212,7 +210,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
 
         ResourceType::ProcedureOperation => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -240,8 +238,8 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
             )
         }
 
-        ResourceType::MedicationStatement => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+        ResourceType::MedicationStatementSystemicTherapy => {
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -304,19 +302,18 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
     let range = 0..number;
     let i: u16 = Faker.fake();
 
-    let (bundle_id, _) = get_ids(None, IdType::Id, "Bundle", i);
-    let (patient_id, patient_ref_id) = get_ids(None, IdType::Id, "Patient", i);
-    let (condition_id, condition_ref_id) = get_ids(None, IdType::Id, "Condition", i);
-    let (specimen_id, specimen_ref_id) = get_ids(None, IdType::Id, "Specimen", i);
-    let (obs_hist_id, _) = get_ids("Observation".into_some(), IdType::Id, "Histology", i);
-    let (obs_vital_status_id, _) = get_ids("Observation".into_some(), IdType::Id, "VitalStatus", i);
-    let (obs_tnmc_id, _) = get_ids("Observation".into_some(), IdType::Id, "TNMc", i);
-    let (proc_rt_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Radiotherapy", i);
-    let (proc_op_id, _) = get_ids("Procedure".into_some(), IdType::Id, "Operation", i);
+    let (bundle_id, _) = get_ids(IdType::Id, ResourceType::Bundle, i);
+    let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
+    let (condition_id, condition_ref_id) = get_ids(IdType::Id, ResourceType::Condition, i);
+    let (specimen_id, specimen_ref_id) = get_ids(IdType::Id, ResourceType::Specimen, i);
+    let (obs_hist_id, _) = get_ids(IdType::Id, ResourceType::ObservationHistology, i);
+    let (obs_vital_status_id, _) = get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
+    let (obs_tnmc_id, _) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
+    let (proc_rt_id, _) = get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
+    let (proc_op_id, _) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, _) = get_ids(
-        "MedicationStatement".into_some(),
         IdType::Id,
-        "SystemicTherapy",
+        ResourceType::MedicationStatementSystemicTherapy,
         i,
     );
 
@@ -334,7 +331,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::Condition => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let condition_tuples =
@@ -348,7 +345,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::Specimen => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let specimen_tuples = specimen_svc::get_specimens(patient_ref_id.as_str(), range);
@@ -361,7 +358,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::ObservationHistology => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -389,7 +386,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::ObservationVitalStatus => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let vital_status_tuples = observation_svc::get_vital_statuses(
@@ -406,7 +403,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::ObservationTNMc => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
 
             let tnmc_tuples = observation_svc::get_tnmcs(
@@ -423,7 +420,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::ProcedureRadiotherapy => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -448,7 +445,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         }
 
         ResourceType::ProcedureOperation => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
@@ -472,8 +469,8 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
             (b, proc_op_id)
         }
 
-        ResourceType::MedicationStatement => {
-            let (patient_src_id, _) = get_ids(None, IdType::Identifier, "Patient", i);
+        ResourceType::MedicationStatementSystemicTherapy => {
+            let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
                 condition_id.as_str(),
