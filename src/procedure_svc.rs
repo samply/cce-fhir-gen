@@ -137,7 +137,7 @@ fn get_procedures(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (id, _) = get_ids(IdType::Id, res_type, i);
+            let (id, ref_id) = get_ids(IdType::Id, res_type, i);
             (
                 get_procedure(
                     id.as_str(),
@@ -147,7 +147,7 @@ fn get_procedures(
                     end_date,
                     therapy_type.clone(),
                 ),
-                id.to_string(),
+                ref_id.to_string(),
             )
         })
         .collect()

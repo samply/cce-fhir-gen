@@ -2,6 +2,7 @@ use chrono::prelude::*;
 
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
+use log::debug;
 
 use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
@@ -17,6 +18,8 @@ use fhirbolt::model::r4b::resources::{
 use fhirbolt::model::r4b::types::{Code, Id};
 
 pub fn get_bundle() -> Bundle {
+    debug!("get_bundle");
+
     let i: u16 = Faker.fake();
     let (bundle_id, _) = get_ids(IdType::Id, ResourceType::Bundle, i);
     let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);

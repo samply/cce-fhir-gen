@@ -259,7 +259,7 @@ pub fn get_histologies(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (obs_hist_id, _) = get_ids(IdType::Id, ResourceType::ObservationHistology, i);
+            let (obs_hist_id, obs_hist_ref_id) = get_ids(IdType::Id, ResourceType::ObservationHistology, i);
             (
                 get_histology(
                     obs_hist_id.as_str(),
@@ -269,7 +269,7 @@ pub fn get_histologies(
                     effective_date,
                     code_value,
                 ),
-                obs_hist_id,
+                obs_hist_ref_id,
             )
         })
         .collect()
@@ -283,10 +283,10 @@ pub fn get_vital_statuses(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (ovs_id, _) = get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
+            let (ovs_id, ovs_ref_id) = get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
             (
                 get_vital_status(ovs_id.as_str(), subject_ref, effective_date),
-                ovs_id,
+                ovs_ref_id,
             )
         })
         .collect()
@@ -300,10 +300,10 @@ pub fn get_tnmcs(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (obs_tnmc_id, _) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
+            let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
             (
                 get_tnmc(obs_tnmc_id.as_str(), subject_ref, effective_date),
-                obs_tnmc_id,
+                obs_tnmc_ref_id,
             )
         })
         .collect()

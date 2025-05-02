@@ -13,10 +13,11 @@ use std::fs;
 
 use chrono::prelude::*;
 use clap::Parser;
-use models::cli::{CliArgs, OutputMode, ResourceType};
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::serde::xml;
+use log::info;
+use models::cli::{CliArgs, OutputMode, ResourceType};
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
 use utils::get_ids;
@@ -25,6 +26,11 @@ const DATA_FOLDER: &str = "generated-data";
 // const PROXY_URL: &str = "";
 
 fn main() {
+    // initialize colored logger to level Info (change this to Debug for seeing debug stmts in output)
+    let mut colog = colog::default_builder();
+    colog.filter(None, log::LevelFilter::Info);
+    colog.init();
+
     let cli = CliArgs::parse();
 
     let file_msg = format!("write to a file in /{}", DATA_FOLDER);
@@ -41,26 +47,32 @@ fn main() {
     println!("");
 
     if cli.number > 1 {
+        info!("generating a single bundle containing multiple {:?}...", cli.resource_type);
         generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
     } else {
+        if cli.resource_type == ResourceType::Bundle {
+            info!("generating a single bundle containing all resource types...");
+        } else {
+            info!("generating a single bundle containing a {:?}...", cli.resource_type);
+        }
         generate_fhir_bundle(cli.resource_type, cli.output_mode);
     }
 }
 
 fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
+    info!("generate_fhir_bundle");
+
     let i: u16 = Faker.fake();
 
     let (bundle_id, _) = get_ids(IdType::Id, ResourceType::Bundle, i);
     let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
     let (condition_id, condition_ref_id) = get_ids(IdType::Id, ResourceType::Condition, i);
     let (specimen_id, specimen_ref_id) = get_ids(IdType::Id, ResourceType::Specimen, i);
-    let (obs_hist_id, obs_hist_ref_id) =
-        get_ids(IdType::Id, ResourceType::ObservationHistology, i);
+    let (obs_hist_id, obs_hist_ref_id) = get_ids(IdType::Id, ResourceType::ObservationHistology, i);
     let (obs_vital_status_id, obs_vital_status_ref_id) =
         get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
     let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
-    let (proc_rt_id, proc_rt_ref_id) =
-        get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
+    let (proc_rt_id, proc_rt_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
     let (proc_op_id, proc_op_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
         IdType::Id,
@@ -78,11 +90,8 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         ResourceType::Patient => {
             let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            
-            let b = bundle_svc::get_patients_bundle(
-                &bundle_id,
-                vec![(pt, patient_ref_id)],
-            );
+
+            let b = bundle_svc::get_patients_bundle(&bundle_id, vec![(pt, patient_ref_id)]);
             (utils::get_xml(b, "patient (bundle)"), patient_id)
         }
 
@@ -304,6 +313,8 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
 }
 
 fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+    info!("generate_fhir_bundles");
+
     let range = 0..number;
     let i: u16 = Faker.fake();
 

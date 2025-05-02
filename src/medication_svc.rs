@@ -100,7 +100,7 @@ pub fn get_med_statements(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (med_stmt_id, _) = get_ids(
+            let (med_stmt_id, med_stmt_ref_id) = get_ids(
                 IdType::Id,
                 ResourceType::MedicationStatementSystemicTherapy,
                 i,
@@ -114,7 +114,7 @@ pub fn get_med_statements(
                     start_date,
                     end_date,
                 ),
-                med_stmt_id,
+                med_stmt_ref_id,
             )
         })
         .collect()
