@@ -1,0 +1,1759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-24515"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-56984"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-56984"/>
+        <identifier>
+          <value value="Patient-src-identifier-56984"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2248-04-07"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-56984"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-12228"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-12228"/>
+        <identifier>
+          <value value="Patient-src-identifier-12228"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2070-09-06"/>
+        <deceasedDateTime value="2120-09-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-12228"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-5323"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-5323"/>
+        <identifier>
+          <value value="Patient-src-identifier-5323"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1691-09-05"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-5323"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-3620"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-3620"/>
+        <identifier>
+          <value value="Patient-src-identifier-3620"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2243-12-29"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-3620"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-13747"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-13747"/>
+        <identifier>
+          <value value="Patient-src-identifier-13747"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2094-03-22"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-13747"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-9231"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-9231"/>
+        <identifier>
+          <value value="Patient-src-identifier-9231"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2218-10-01"/>
+        <deceasedDateTime value="2268-10-01"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-9231"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-60842"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-60842"/>
+        <identifier>
+          <value value="Patient-src-identifier-60842"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2051-09-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-60842"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-6396"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-6396"/>
+        <identifier>
+          <value value="Patient-src-identifier-6396"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2002-03-16"/>
+        <deceasedDateTime value="2052-03-16"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-6396"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-12518"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-12518"/>
+        <identifier>
+          <value value="Patient-src-identifier-12518"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1857-12-10"/>
+        <deceasedDateTime value="1907-12-10"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-12518"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-39027"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-39027"/>
+        <identifier>
+          <value value="Patient-src-identifier-39027"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1918-01-17"/>
+        <deceasedDateTime value="1968-01-17"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-39027"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-9758"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-9758"/>
+        <identifier>
+          <value value="Patient-src-identifier-9758"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1837-09-18"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-9758"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-23323"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-23323"/>
+        <identifier>
+          <value value="Patient-src-identifier-23323"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1769-09-25"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-23323"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-35218"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-35218"/>
+        <identifier>
+          <value value="Patient-src-identifier-35218"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1895-05-02"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-35218"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-36654"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-36654"/>
+        <identifier>
+          <value value="Patient-src-identifier-36654"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2094-05-17"/>
+        <deceasedDateTime value="2144-05-17"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-36654"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-56727"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-56727"/>
+        <identifier>
+          <value value="Patient-src-identifier-56727"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2022-09-08"/>
+        <deceasedDateTime value="2072-09-08"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-56727"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-55081"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-55081"/>
+        <identifier>
+          <value value="Patient-src-identifier-55081"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2123-01-26"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-55081"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-53784"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-53784"/>
+        <identifier>
+          <value value="Patient-src-identifier-53784"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1922-01-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-53784"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-52533"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-52533"/>
+        <identifier>
+          <value value="Patient-src-identifier-52533"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2260-05-16"/>
+        <deceasedDateTime value="2310-05-16"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-52533"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-45180"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-45180"/>
+        <identifier>
+          <value value="Patient-src-identifier-45180"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1986-06-08"/>
+        <deceasedDateTime value="2036-06-08"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-45180"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-63204"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-63204"/>
+        <identifier>
+          <value value="Patient-src-identifier-63204"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2139-10-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-63204"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-20758"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-20758"/>
+        <identifier>
+          <value value="Patient-src-identifier-20758"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2181-06-17"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-20758"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-53517"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-53517"/>
+        <identifier>
+          <value value="Patient-src-identifier-53517"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2082-11-14"/>
+        <deceasedDateTime value="2132-11-14"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-53517"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-47935"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-47935"/>
+        <identifier>
+          <value value="Patient-src-identifier-47935"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2101-01-16"/>
+        <deceasedDateTime value="2151-01-16"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-47935"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-55490"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-55490"/>
+        <identifier>
+          <value value="Patient-src-identifier-55490"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2192-01-05"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-55490"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-19402"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-19402"/>
+        <identifier>
+          <value value="Patient-src-identifier-19402"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2079-09-21"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-19402"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-47094"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-47094"/>
+        <identifier>
+          <value value="Patient-src-identifier-47094"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1904-12-19"/>
+        <deceasedDateTime value="1954-12-19"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-47094"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-8744"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-8744"/>
+        <identifier>
+          <value value="Patient-src-identifier-8744"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1867-08-21"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-8744"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-44495"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-44495"/>
+        <identifier>
+          <value value="Patient-src-identifier-44495"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2182-01-06"/>
+        <deceasedDateTime value="2232-01-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-44495"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-33267"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-33267"/>
+        <identifier>
+          <value value="Patient-src-identifier-33267"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2043-07-04"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-33267"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-15681"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-15681"/>
+        <identifier>
+          <value value="Patient-src-identifier-15681"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2023-01-14"/>
+        <deceasedDateTime value="2073-01-14"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-15681"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-44970"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-44970"/>
+        <identifier>
+          <value value="Patient-src-identifier-44970"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2250-12-14"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-44970"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-28603"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-28603"/>
+        <identifier>
+          <value value="Patient-src-identifier-28603"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2000-08-11"/>
+        <deceasedDateTime value="2050-08-11"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-28603"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-18798"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-18798"/>
+        <identifier>
+          <value value="Patient-src-identifier-18798"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1689-05-19"/>
+        <deceasedDateTime value="1739-05-19"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-18798"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-36673"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-36673"/>
+        <identifier>
+          <value value="Patient-src-identifier-36673"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1997-03-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-36673"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-39923"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-39923"/>
+        <identifier>
+          <value value="Patient-src-identifier-39923"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1963-04-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-39923"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-21077"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-21077"/>
+        <identifier>
+          <value value="Patient-src-identifier-21077"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1729-04-07"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-21077"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-53856"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-53856"/>
+        <identifier>
+          <value value="Patient-src-identifier-53856"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2227-08-13"/>
+        <deceasedDateTime value="2277-08-13"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-53856"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-44570"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-44570"/>
+        <identifier>
+          <value value="Patient-src-identifier-44570"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2013-02-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-44570"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-4501"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-4501"/>
+        <identifier>
+          <value value="Patient-src-identifier-4501"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1839-07-15"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-4501"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-9697"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-9697"/>
+        <identifier>
+          <value value="Patient-src-identifier-9697"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2254-10-26"/>
+        <deceasedDateTime value="2304-10-26"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-9697"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-5869"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-5869"/>
+        <identifier>
+          <value value="Patient-src-identifier-5869"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2260-01-09"/>
+        <deceasedDateTime value="2310-01-09"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-5869"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-50214"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-50214"/>
+        <identifier>
+          <value value="Patient-src-identifier-50214"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1782-03-02"/>
+        <deceasedDateTime value="1832-03-02"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-50214"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-2548"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-2548"/>
+        <identifier>
+          <value value="Patient-src-identifier-2548"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1738-02-18"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-2548"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-21347"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-21347"/>
+        <identifier>
+          <value value="Patient-src-identifier-21347"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2169-06-20"/>
+        <deceasedDateTime value="2219-06-20"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-21347"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-46160"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-46160"/>
+        <identifier>
+          <value value="Patient-src-identifier-46160"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2107-09-10"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-46160"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-38442"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-38442"/>
+        <identifier>
+          <value value="Patient-src-identifier-38442"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2109-05-06"/>
+        <deceasedDateTime value="2159-05-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-38442"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-47533"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-47533"/>
+        <identifier>
+          <value value="Patient-src-identifier-47533"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2241-12-02"/>
+        <deceasedDateTime value="2291-12-02"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-47533"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-43585"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-43585"/>
+        <identifier>
+          <value value="Patient-src-identifier-43585"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2116-10-01"/>
+        <deceasedDateTime value="2166-10-01"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-43585"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-55117"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-55117"/>
+        <identifier>
+          <value value="Patient-src-identifier-55117"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2250-01-08"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-55117"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-21888"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-21888"/>
+        <identifier>
+          <value value="Patient-src-identifier-21888"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1797-09-19"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-21888"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-4138"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-4138"/>
+        <identifier>
+          <value value="Patient-src-identifier-4138"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1767-02-14"/>
+        <deceasedDateTime value="1817-02-14"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-4138"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-43152"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-43152"/>
+        <identifier>
+          <value value="Patient-src-identifier-43152"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1818-06-21"/>
+        <deceasedDateTime value="1868-06-21"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-43152"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-6012"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-6012"/>
+        <identifier>
+          <value value="Patient-src-identifier-6012"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2103-11-12"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-6012"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-51737"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-51737"/>
+        <identifier>
+          <value value="Patient-src-identifier-51737"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2155-12-31"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-51737"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-60519"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-60519"/>
+        <identifier>
+          <value value="Patient-src-identifier-60519"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2138-01-27"/>
+        <deceasedDateTime value="2188-01-27"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-60519"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-39137"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-39137"/>
+        <identifier>
+          <value value="Patient-src-identifier-39137"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2259-02-11"/>
+        <deceasedDateTime value="2309-02-11"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-39137"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-27054"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-27054"/>
+        <identifier>
+          <value value="Patient-src-identifier-27054"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2206-12-28"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-27054"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-3251"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-3251"/>
+        <identifier>
+          <value value="Patient-src-identifier-3251"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2144-04-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-3251"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-26814"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-26814"/>
+        <identifier>
+          <value value="Patient-src-identifier-26814"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1978-06-23"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-26814"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-57476"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-57476"/>
+        <identifier>
+          <value value="Patient-src-identifier-57476"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2137-01-31"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-57476"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-39392"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-39392"/>
+        <identifier>
+          <value value="Patient-src-identifier-39392"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1871-04-13"/>
+        <deceasedDateTime value="1921-04-13"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-39392"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-39110"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-39110"/>
+        <identifier>
+          <value value="Patient-src-identifier-39110"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2146-10-26"/>
+        <deceasedDateTime value="2196-10-26"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-39110"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-20620"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-20620"/>
+        <identifier>
+          <value value="Patient-src-identifier-20620"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2155-02-28"/>
+        <deceasedDateTime value="2205-02-28"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-20620"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-25565"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-25565"/>
+        <identifier>
+          <value value="Patient-src-identifier-25565"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1903-11-29"/>
+        <deceasedDateTime value="1953-11-29"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-25565"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-31159"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-31159"/>
+        <identifier>
+          <value value="Patient-src-identifier-31159"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1918-11-01"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-31159"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-48529"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-48529"/>
+        <identifier>
+          <value value="Patient-src-identifier-48529"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2220-03-31"/>
+        <deceasedDateTime value="2270-03-31"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-48529"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-21779"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-21779"/>
+        <identifier>
+          <value value="Patient-src-identifier-21779"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1746-02-28"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-21779"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-50769"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-50769"/>
+        <identifier>
+          <value value="Patient-src-identifier-50769"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1786-12-23"/>
+        <deceasedDateTime value="1836-12-23"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-50769"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-64811"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-64811"/>
+        <identifier>
+          <value value="Patient-src-identifier-64811"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1947-11-23"/>
+        <deceasedDateTime value="1997-11-23"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-64811"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-7072"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-7072"/>
+        <identifier>
+          <value value="Patient-src-identifier-7072"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1806-01-01"/>
+        <deceasedDateTime value="1856-01-01"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-7072"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-36412"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-36412"/>
+        <identifier>
+          <value value="Patient-src-identifier-36412"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2012-12-16"/>
+        <deceasedDateTime value="2062-12-16"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-36412"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-48144"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-48144"/>
+        <identifier>
+          <value value="Patient-src-identifier-48144"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2195-02-23"/>
+        <deceasedDateTime value="2245-02-23"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-48144"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-8224"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-8224"/>
+        <identifier>
+          <value value="Patient-src-identifier-8224"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1757-03-31"/>
+        <deceasedDateTime value="1807-03-31"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-8224"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-25496"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-25496"/>
+        <identifier>
+          <value value="Patient-src-identifier-25496"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2116-05-15"/>
+        <deceasedDateTime value="2166-05-15"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-25496"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-40575"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-40575"/>
+        <identifier>
+          <value value="Patient-src-identifier-40575"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2101-02-28"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-40575"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-41082"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-41082"/>
+        <identifier>
+          <value value="Patient-src-identifier-41082"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2254-01-29"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-41082"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-30171"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-30171"/>
+        <identifier>
+          <value value="Patient-src-identifier-30171"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2140-11-03"/>
+        <deceasedDateTime value="2190-11-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-30171"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-58818"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-58818"/>
+        <identifier>
+          <value value="Patient-src-identifier-58818"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1792-09-30"/>
+        <deceasedDateTime value="1842-09-30"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-58818"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-12162"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-12162"/>
+        <identifier>
+          <value value="Patient-src-identifier-12162"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2045-02-22"/>
+        <deceasedDateTime value="2095-02-22"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-12162"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-71"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-71"/>
+        <identifier>
+          <value value="Patient-src-identifier-71"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2177-02-20"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-71"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-31509"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-31509"/>
+        <identifier>
+          <value value="Patient-src-identifier-31509"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1918-01-14"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-31509"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-40338"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-40338"/>
+        <identifier>
+          <value value="Patient-src-identifier-40338"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1833-12-19"/>
+        <deceasedDateTime value="1883-12-19"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-40338"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-58214"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-58214"/>
+        <identifier>
+          <value value="Patient-src-identifier-58214"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1753-10-11"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-58214"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-45871"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-45871"/>
+        <identifier>
+          <value value="Patient-src-identifier-45871"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2158-06-19"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-45871"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-38191"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-38191"/>
+        <identifier>
+          <value value="Patient-src-identifier-38191"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2010-12-04"/>
+        <deceasedDateTime value="2060-12-04"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-38191"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-3933"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-3933"/>
+        <identifier>
+          <value value="Patient-src-identifier-3933"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2053-01-28"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-3933"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-9633"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-9633"/>
+        <identifier>
+          <value value="Patient-src-identifier-9633"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2137-09-05"/>
+        <deceasedDateTime value="2187-09-05"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-9633"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-65045"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-65045"/>
+        <identifier>
+          <value value="Patient-src-identifier-65045"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2238-04-06"/>
+        <deceasedDateTime value="2288-04-06"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-65045"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-44393"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-44393"/>
+        <identifier>
+          <value value="Patient-src-identifier-44393"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1974-07-18"/>
+        <deceasedDateTime value="2024-07-18"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-44393"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-38793"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-38793"/>
+        <identifier>
+          <value value="Patient-src-identifier-38793"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1980-12-24"/>
+        <deceasedDateTime value="2030-12-24"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-38793"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-55079"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-55079"/>
+        <identifier>
+          <value value="Patient-src-identifier-55079"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1900-12-07"/>
+        <deceasedDateTime value="1950-12-07"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-55079"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-55142"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-55142"/>
+        <identifier>
+          <value value="Patient-src-identifier-55142"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1685-09-03"/>
+        <deceasedDateTime value="1735-09-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-55142"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-7831"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-7831"/>
+        <identifier>
+          <value value="Patient-src-identifier-7831"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1972-12-05"/>
+        <deceasedDateTime value="2022-12-05"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-7831"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-61565"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-61565"/>
+        <identifier>
+          <value value="Patient-src-identifier-61565"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1852-01-09"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-61565"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-55927"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-55927"/>
+        <identifier>
+          <value value="Patient-src-identifier-55927"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1718-03-01"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-55927"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-15767"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-15767"/>
+        <identifier>
+          <value value="Patient-src-identifier-15767"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2189-06-16"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-15767"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-2285"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-2285"/>
+        <identifier>
+          <value value="Patient-src-identifier-2285"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1876-01-21"/>
+        <deceasedDateTime value="1926-01-21"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-2285"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-3167"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-3167"/>
+        <identifier>
+          <value value="Patient-src-identifier-3167"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1864-10-03"/>
+        <deceasedDateTime value="1914-10-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-3167"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-21245"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-21245"/>
+        <identifier>
+          <value value="Patient-src-identifier-21245"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2073-12-08"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-21245"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-23597"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-23597"/>
+        <identifier>
+          <value value="Patient-src-identifier-23597"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2104-03-28"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-23597"/>
+    </request>
+  </entry>
+</Bundle>
