@@ -50,7 +50,7 @@ pub fn get_patient(id: &str, src_id: &str) -> Patient {
     if deceased {
         let deceased_date = birthdate.checked_add_months(Months::new(600)).unwrap();
         let deceased_date_time =
-            PatientDeceased::DateTime(DateTime::from(deceased_date.to_string()));
+            PatientDeceased::DateTime(DateTime::from(deceased_date.date_naive().to_string()));
 
         patient.deceased = Some(deceased_date_time);
         patient
