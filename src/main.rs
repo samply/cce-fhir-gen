@@ -78,7 +78,12 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         ResourceType::Patient => {
             let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
-            (utils::get_xml(pt, "patient"), patient_id)
+            
+            let b = bundle_svc::get_patients_bundle(
+                &bundle_id,
+                vec![(pt, patient_ref_id)],
+            );
+            (utils::get_xml(b, "patient (bundle)"), patient_id)
         }
 
         ResourceType::Condition => {
