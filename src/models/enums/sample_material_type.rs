@@ -60,7 +60,7 @@ impl SampleMaterialType {
             SampleMaterialType::Swab => "swab",
             SampleMaterialType::OtherLiquid => "liquid-other",
             SampleMaterialType::TissueFfpe => "tissue-ffpe",
-            SampleMaterialType::TumorTissueFfpe => " tumor-tissue-ffpe",
+            SampleMaterialType::TumorTissueFfpe => "tumor-tissue-ffpe",
             SampleMaterialType::NormalTissueFfpe => "normal-tissue-ffpe",
             SampleMaterialType::OtherTissueFfpe => "other-tissue-ffpe",
             SampleMaterialType::TissueFrozen => "tissue-frozen",
