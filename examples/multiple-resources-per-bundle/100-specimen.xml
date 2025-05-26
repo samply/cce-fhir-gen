@@ -1,0 +1,3022 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-2777"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-2777"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-2777"/>
+        <identifier>
+          <value value="Patient-src-identifier-2777"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2186-04-17"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-2777"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-6452"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-6452"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="ascites"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-6452"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-9186"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-9186"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="swab"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-9186"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-20790"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-20790"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-20790"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-48375"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-48375"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="saliva"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-48375"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-61031"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-61031"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-cell-free"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-61031"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-62901"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-62901"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="cf-dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-62901"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-24697"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-24697"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="normal-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-24697"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-38767"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-38767"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-38767"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-7633"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-7633"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="cf-dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-7633"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-54895"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-54895"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="other-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-54895"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-32651"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-32651"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="ascites"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-32651"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-21461"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-21461"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="peripheral-blood-cells-vital"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-21461"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-9000"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-9000"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-9000"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-18082"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-18082"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="normal-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-18082"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-44767"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-44767"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="ascites"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-44767"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-36871"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-36871"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-36871"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-33584"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-33584"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-33584"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-41294"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-41294"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-heparin"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-41294"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-28069"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-28069"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-28069"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-40582"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-40582"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dried-whole-blood"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-40582"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-52056"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-52056"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-52056"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-21356"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-21356"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-heparin"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-21356"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-61554"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-61554"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="peripheral-blood-cells-vital"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-61554"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-63170"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-63170"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="other-tissue-ffpe"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-63170"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-44661"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-44661"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-heparin"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-44661"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-29245"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-29245"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="liquid-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-29245"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-16634"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-16634"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="liquid-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-16634"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-14726"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-14726"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-citrat"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-14726"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-49707"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-49707"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-49707"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-106"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-106"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-106"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-33521"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-33521"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="cf-dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-33521"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-39956"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-39956"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-ffpe"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-39956"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-29273"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-29273"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="normal-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-29273"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-64606"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-64606"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="urine"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-64606"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-33822"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-33822"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="swab"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-33822"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-3934"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-3934"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-3934"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-64869"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-64869"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="whole-blood"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-64869"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-4151"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-4151"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-4151"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-26644"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-26644"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-ffpe"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-26644"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-12258"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-12258"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-12258"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-8627"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-8627"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-heparin"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-8627"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-38774"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-38774"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-serum"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-38774"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-64584"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-64584"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-citrat"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-64584"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-47922"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-47922"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-ffpe"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-47922"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-13846"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-13846"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-serum"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-13846"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-62504"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-62504"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-cell-free"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-62504"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-10110"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-10110"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="bone-marrow"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-10110"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-5464"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-5464"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="peripheral-blood-cells-vital"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-5464"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-37308"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-37308"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="rna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-37308"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-30568"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-30568"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-30568"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-10929"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-10929"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-10929"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-43664"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-43664"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dried-whole-blood"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-43664"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-45240"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-45240"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="normal-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-45240"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-64884"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-64884"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="g-dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-64884"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-33603"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-33603"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-33603"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-20433"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-20433"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="bone-marrow"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-20433"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-40762"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-40762"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="saliva"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-40762"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-36368"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-36368"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="stool-faeces"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-36368"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-19544"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-19544"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-citrat"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-19544"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-3203"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-3203"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-3203"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-10009"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-10009"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="swab"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-10009"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-32573"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-32573"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-citrat"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-32573"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-5587"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-5587"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="liquid-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-5587"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-45170"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-45170"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-45170"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-23336"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-23336"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-serum"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-23336"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-36999"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-36999"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="ascites"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-36999"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-41658"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-41658"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="bone-marrow"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-41658"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-25615"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-25615"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-25615"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-56659"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-56659"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dried-whole-blood"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-56659"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-12677"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-12677"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="buffy-coat"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-12677"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-27461"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-27461"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="normal-tissue-ffpe"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-27461"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-9146"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-9146"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-9146"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-9378"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-9378"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dried-whole-blood"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-9378"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-30480"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-30480"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="stool-faeces"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-30480"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-12520"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-12520"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-12520"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-38591"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-38591"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="saliva"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-38591"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-20654"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-20654"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-20654"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-39806"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-39806"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-39806"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-28555"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-28555"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-cell-free"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-28555"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-40938"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-40938"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="bone-marrow"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-40938"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-62004"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-62004"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="saliva"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-62004"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-42548"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-42548"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-cell-free"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-42548"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-22619"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-22619"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-edta"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-22619"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-61572"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-61572"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="other-tissue-ffpe"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-61572"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-47280"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-47280"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="swab"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-47280"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-45976"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-45976"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="peripheral-blood-cells-vital"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-45976"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-44324"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-44324"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="csf-liquor"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-44324"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-42185"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-42185"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="cf-dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-42185"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-44106"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-44106"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-44106"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-17111"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-17111"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="csf-liquor"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-17111"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-49241"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-49241"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="derivative-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-49241"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-19471"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-19471"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-heparin"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-19471"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-34175"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-34175"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="tumor-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-34175"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-58832"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-58832"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="saliva"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-58832"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-18211"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-18211"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="plasma-edta"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-18211"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-62387"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-62387"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="stool-faeces"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-62387"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-7882"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-7882"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="dna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-7882"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-34021"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-34021"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="derivative-other"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-34021"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-56465"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-56465"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="other-tissue-frozen"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-56465"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-13984"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-13984"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="blood-plasma"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-2777"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-13984"/>
+    </request>
+  </entry>
+</Bundle>
