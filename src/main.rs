@@ -76,7 +76,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
     let (proc_op_id, proc_op_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
         IdType::Id,
-        ResourceType::MedicationStatementSystemicTherapy,
+        ResourceType::SystemicTherapyMedicationStatement,
         i,
     );
 
@@ -252,7 +252,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
             )
         }
 
-        ResourceType::MedicationStatementSystemicTherapy => {
+        ResourceType::SystemicTherapyMedicationStatement => {
             let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(
@@ -329,7 +329,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
     let (proc_op_id, _) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, _) = get_ids(
         IdType::Id,
-        ResourceType::MedicationStatementSystemicTherapy,
+        ResourceType::SystemicTherapyMedicationStatement,
         i,
     );
 
@@ -485,7 +485,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
             (b, proc_op_id)
         }
 
-        ResourceType::MedicationStatementSystemicTherapy => {
+        ResourceType::SystemicTherapyMedicationStatement => {
             let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
             let pt = patient_svc::get_patient(patient_id.as_str(), patient_src_id.as_str());
             let c = condition_svc::get_condition(

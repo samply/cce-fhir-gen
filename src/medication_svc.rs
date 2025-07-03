@@ -102,7 +102,7 @@ pub fn get_med_statements(
             let i: u16 = Faker.fake();
             let (med_stmt_id, med_stmt_ref_id) = get_ids(
                 IdType::Id,
-                ResourceType::MedicationStatementSystemicTherapy,
+                ResourceType::SystemicTherapyMedicationStatement,
                 i,
             );
             (

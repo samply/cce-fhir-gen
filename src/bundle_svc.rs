@@ -35,7 +35,7 @@ pub fn get_bundle() -> Bundle {
     let (proc_op_id, proc_op_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
         IdType::Id,
-        ResourceType::MedicationStatementSystemicTherapy,
+        ResourceType::SystemicTherapyMedicationStatement,
         i,
     );
 

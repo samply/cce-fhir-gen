@@ -48,7 +48,7 @@ Options:
           - observation-tn-mc:                          Generate Observation TNMc
           - procedure-radiotherapy:                     Generate Procedure Radiotherapy
           - procedure-operation:                        Generate Procedure Operation
-          - medication-statement-systemic-therapy:      Generate Medication Statement Systemic Therapy
+          - systemic-therapy-medication-statement:      Generate Systemic Therapy Medication Statement
 
   -o, --output-mode <OUTPUT_MODE>
           Where to store the resources
