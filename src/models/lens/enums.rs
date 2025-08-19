@@ -50,20 +50,20 @@ impl ConditionType {
 }
 
 pub enum CriteriaType {
-    Str(String),
-    Number(f32),
-    Boolean(bool),
-    Date(NaiveDate),
+    String,
+    Number,
+    Boolean,
+    Date,
     Predefined,
 }
 
 impl CriteriaType {
     pub fn as_str(&self) -> &'static str {
         match self {
-            CriteriaType::Str(_s) => "string",
-            CriteriaType::Number(_n) => "number",
-            CriteriaType::Boolean(_b) => "boolean",
-            CriteriaType::Date(_d) => "date",
+            CriteriaType::String => "string",
+            CriteriaType::Number => "number",
+            CriteriaType::Boolean => "boolean",
+            CriteriaType::Date => "date",
             CriteriaType::Predefined => "predefined",
         }
     }
