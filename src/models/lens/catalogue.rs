@@ -37,11 +37,11 @@ pub struct CategoryGroup {
     pub child_categories: Vec<Category>,
 
     /// Optional text that is accessed by clicking a "ⓘ" button next to the display name
-    #[serde(rename = "infoButtonText")]
+    #[serde(rename = "infoButtonText", skip_serializing_if = "Option::is_none")]
     pub info_button_text: Option<Vec<String>>,
 
     /// Optional hyperlink shown next to the display name
-    #[serde(rename = "infoLink")]
+    #[serde(rename = "infoLink", skip_serializing_if = "Option::is_none")]
     pub info_link: Option<InfoLink>,
 }
 
@@ -83,11 +83,11 @@ pub struct SingleSelectCategory {
     pub criteria: Vec<Criteria>,
 
     /// Optional text that is accessed by clicking a "ⓘ" button next to the display name
-    #[serde(rename = "infoButtonText")]
+    #[serde(rename = "infoButtonText", skip_serializing_if = "Option::is_none")]
     pub info_button_text: Option<Vec<String>>,
 
     /// This overwrites the display name in the catalogue component only. The intended use-case is to have multiple catalogue items with the same key and name but different subCategoryName. They will appear as different collapsable entries in the catalogue but will be grouped together in the same chip in the search bar.
-    #[serde(rename = "subCategoryName")]
+    #[serde(rename = "subCategoryName", skip_serializing_if = "Option::is_none")]
     pub sub_category_name: Option<String>,
 }
 
@@ -122,7 +122,7 @@ pub struct AutocompleteCategory {
     pub criteria: Vec<Criteria>,
 
     /// Optional text that is accessed by clicking a "ⓘ" button next to the display name
-    #[serde(rename = "infoButtonText")]
+    #[serde(rename = "infoButtonText", skip_serializing_if = "Option::is_none")]
     pub info_button_text: Option<Vec<String>>,
 }
 
@@ -147,7 +147,7 @@ pub struct NumericRangeCategory {
     pub max: Option<f64>,
 
     /// Optional text that is accessed by clicking a "ⓘ" button next to the display name
-    #[serde(rename = "infoButtonText")]
+    #[serde(rename = "infoButtonText", skip_serializing_if = "Option::is_none")]
     pub info_button_text: Option<Vec<String>>,
 
     #[serde(rename = "unitText")]
@@ -175,7 +175,7 @@ pub struct DateRangeCategory {
     pub max: Option<String>, // ISO date string
 
     /// Optional text that is accessed by clicking a "ⓘ" button next to the display name
-    #[serde(rename = "infoButtonText")]
+    #[serde(rename = "infoButtonText", skip_serializing_if = "Option::is_none")]
     pub info_button_text: Option<Vec<String>>,
 }
 
@@ -194,13 +194,14 @@ pub struct StringCategory {
     pub r#type: String, // "EQUALS"
 
     /// Optional text that is accessed by clicking a "ⓘ" button next to the display name
-    #[serde(rename = "infoButtonText")]
+    #[serde(rename = "infoButtonText", skip_serializing_if = "Option::is_none")]
     pub info_button_text: Option<Vec<String>>,
 }
 
 /// A criterion that can be selected in a single-select or autocomplete catalogue item.
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Criteria {
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub visible: Option<bool>,
 
     /// A key that uniquely identifies the criterion
@@ -210,11 +211,13 @@ pub struct Criteria {
     pub name: String,
 
     /// Optional description that is shown next to the display name during autocompletion
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
-    #[serde(rename = "aggregatedValue")]
+    #[serde(rename = "aggregatedValue", skip_serializing_if = "Option::is_none")]
     pub aggregated_value: Option<Vec<Vec<AggregatedValue>>>,
 
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub subgroup: Option<Vec<Criteria>>,
 }
 

@@ -27,6 +27,8 @@ use utils::get_ids;
 const DATA_FOLDER: &str = "generated-data";
 // const PROXY_URL: &str = "";
 
+// TODO: Update README as per the new CLI options
+// TODO: Refactor CLI options and pull out output_mode in the main options
 fn main() {
     // initialize colored logger to level Info (change this to Debug for seeing debug stmts in output)
     let mut colored_logger = colog::default_builder();

@@ -16,7 +16,7 @@ use crate::models::enums::uicc_stage::UiccStage;
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{
     get_bundle_entry_request, get_full_url, get_ids, get_loinc_url, get_tnmm_url, get_tnmn_url,
-    get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS,
+    get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS, VITAL_STATUS_LOINC_CODE,
 };
 use chrono::NaiveDate;
 use fake::{Fake, Faker};
@@ -121,7 +121,7 @@ pub fn get_vital_status(id: &str, subject_ref: &str, effective_date: NaiveDate) 
     };
     let loinc_coding = Coding {
         system: Some(get_loinc_url()),
-        code: Some(Code::from("75186-7")),
+        code: Some(Code::from(VITAL_STATUS_LOINC_CODE)),
         ..Default::default()
     };
     let loinc_cod_concept = CodeableConcept {

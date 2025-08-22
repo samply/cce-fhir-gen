@@ -30,6 +30,9 @@ const TNMY_SYMBOL_CS: &str = "TNMySymbolCS";
 
 pub const OBSERVATION_STATUS: &str = "final";
 
+// various LOINC codes
+pub const VITAL_STATUS_LOINC_CODE: &str = "75186-7";
+
 pub fn get_fhir_url() -> String {
     format!("{CCE_URL}/fhir/core")
 }
