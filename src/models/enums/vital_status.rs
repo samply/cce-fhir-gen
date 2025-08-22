@@ -1,15 +1,9 @@
-use std::any::type_name;
-
 use fake::Dummy;
+use strum::Display;
 
-use crate::models::lens::{
-    criteria::Criteria,
-    enums::{ConditionType, CriteriaType},
-    language::{BiLingualDisplay, BiLingualKey},
-    traits::{CriteriaConverter, LanguageConverter},
-};
+use crate::models::lens::{catalogue::Criteria, traits::CriteriaConverter};
 
-#[derive(Debug, Dummy)]
+#[derive(Debug, Display, Dummy)]
 pub enum VitalStatus {
     Alive,
     Deceased,
@@ -25,48 +19,21 @@ impl VitalStatus {
         }
     }
 
-    pub fn to_de_str(&self) -> &'static str {
-        match self {
-            VitalStatus::Alive => "lebend",
-            VitalStatus::Deceased => "verstorben",
-            VitalStatus::Unknown => "unbekannt",
-        }
-    }
-}
-
-impl LanguageConverter for VitalStatus {
-    fn get_bi_lingual_display(&self) -> BiLingualDisplay {
-        BiLingualDisplay::new("Vitalstatus", type_name::<Self>())
-    }
-
-    fn get_bi_lingual_keys(&self) -> Vec<BiLingualKey> {
-        let alive = BiLingualKey::new(
-            "alive",
-            VitalStatus::Alive.to_de_str(),
-            VitalStatus::Alive.as_str(),
-        );
-        let deceased = BiLingualKey::new(
-            "deceased",
-            VitalStatus::Deceased.to_de_str(),
-            VitalStatus::Deceased.as_str(),
-        );
-        let unknown = BiLingualKey::new(
-            "unknown",
-            VitalStatus::Unknown.to_de_str(),
-            VitalStatus::Unknown.as_str(),
-        );
-        vec![alive, deceased, unknown]
-    }
+    // pub fn to_de_str(&self) -> &'static str {
+    //     match self {
+    //         VitalStatus::Alive => "lebend",
+    //         VitalStatus::Deceased => "verstorben",
+    //         VitalStatus::Unknown => "unbekannt",
+    //     }
+    // }
 }
 
 impl CriteriaConverter for VitalStatus {
-    fn get_criteria(&self) -> Criteria {
-        Criteria::new(
-            type_name::<Self>().to_lowercase().as_str(),
-            self.get_bi_lingual_display(),
-            CriteriaType::String,
-            ConditionType::In,
-            self.get_bi_lingual_keys(),
-        )
+
+    fn get_criteria() -> Vec<Criteria> {
+        let alive = Criteria::new(VitalStatus::Alive.as_str(), VitalStatus::Alive.to_string().as_str());
+        let deceased = Criteria::new(VitalStatus::Deceased.as_str(), VitalStatus::Deceased.to_string().as_str());
+        let unknown = Criteria::new(VitalStatus::Unknown.as_str(), VitalStatus::Unknown.to_string().as_str());
+        vec![alive, deceased, unknown]
     }
 }

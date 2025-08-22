@@ -12,14 +12,16 @@ mod utils;
 use std::fs;
 
 use chrono::prelude::*;
-use clap::Parser;
+use clap::{Command, Parser};
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
+use fhirbolt::model::r4b::resources::Patient;
 use fhirbolt::serde::xml;
 use log::info;
-use models::cli::{CliArgs, OutputMode, ResourceType};
+use models::cli::{CliArgs, Commands, OutputMode, ResourceType};
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
+use models::lens::traits::CategoryConverter;
 use utils::get_ids;
 
 const DATA_FOLDER: &str = "generated-data";
@@ -27,35 +29,56 @@ const DATA_FOLDER: &str = "generated-data";
 
 fn main() {
     // initialize colored logger to level Info (change this to Debug for seeing debug stmts in output)
-    let mut colog = colog::default_builder();
-    colog.filter(None, log::LevelFilter::Info);
-    colog.init();
+    let mut colored_logger = colog::default_builder();
+    colored_logger.filter(None, log::LevelFilter::Info);
+    colored_logger.init();
 
     let cli = CliArgs::parse();
+    match cli.cmd {
+        Commands::XmlData {
+            number,
+            resource_type,
+            output_mode,
+        } => {
+            let file_msg = format!("write to a file in /{}", DATA_FOLDER);
+            let storage = match output_mode {
+                OutputMode::Screen => "show on terminal",
+                OutputMode::File => file_msg.as_str(),
+                OutputMode::ApiCall => "call API endpoint (WIP)",
+            };
 
-    let file_msg = format!("write to a file in /{}", DATA_FOLDER);
-    let storage = match cli.output_mode {
-        OutputMode::Screen => "show on terminal",
-        OutputMode::File => file_msg.as_str(),
-        OutputMode::ApiCall => "call API endpoint (WIP)",
-    };
+            println!(
+                "Generating {} {:?} and {}...",
+                number, resource_type, storage
+            );
+            println!("");
 
-    println!(
-        "Generating {} {:?} and {}...",
-        cli.number, cli.resource_type, storage
-    );
-    println!("");
-
-    if cli.number > 1 {
-        info!("generating a single bundle containing multiple {:?}...", cli.resource_type);
-        generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
-    } else {
-        if cli.resource_type == ResourceType::Bundle {
-            info!("generating a single bundle containing all resource types...");
-        } else {
-            info!("generating a single bundle containing a {:?}...", cli.resource_type);
+            if number > 1 {
+                info!(
+                    "generating a single bundle containing multiple {:?}...",
+                    resource_type
+                );
+                generate_fhir_bundles(number, resource_type, output_mode);
+            } else {
+                if resource_type == ResourceType::Bundle {
+                    info!("generating a single bundle containing all resource types...");
+                } else {
+                    info!(
+                        "generating a single bundle containing a {:?}...",
+                        resource_type
+                    );
+                }
+                generate_fhir_bundle(resource_type, output_mode);
+            }
         }
-        generate_fhir_bundle(cli.resource_type, cli.output_mode);
+
+        Commands::Catalog => {
+            let patient_category = Patient::get_category();
+            let categories = vec![patient_category];
+            let json = serde_json::to_string_pretty(&categories)
+                .expect("Failed to serialize categories to JSON");
+            println!("Catalog of categories:\n{json}");
+        },
     }
 }
 

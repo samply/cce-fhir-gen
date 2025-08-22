@@ -1,4 +1,4 @@
-use clap::{command, Parser, ValueEnum};
+use clap::{command, Parser, Subcommand, ValueEnum};
 
 #[derive(Copy, Clone, Debug, Default, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
 pub enum OutputMode {
@@ -83,15 +83,24 @@ impl ResourceType {
 #[derive(Debug, Parser)]
 #[command(version, about, long_about = None)]
 pub struct CliArgs {
-    /// Number of resources to generate
-    #[arg(short, long, default_value_t = 1)]
-    pub number: u8,
+    #[command(subcommand)]
+    pub cmd: Commands,
+}
 
-    /// Type of resource to generate
-    #[arg(short, long, value_enum, default_value_t=ResourceType::Bundle)]
-    pub resource_type: ResourceType,
+#[derive(Subcommand, Debug, Clone)]
+pub enum Commands {
+    XmlData {
+        /// Number of resources to generate
+        #[arg(short, long, default_value_t = 1)]
+        number: u8,
 
-    /// Where to store the resources
-    #[arg(short, long, value_enum, default_value_t=OutputMode::Screen)]
-    pub output_mode: OutputMode,
+        /// Type of resource to generate
+        #[arg(short, long, value_enum, default_value_t=ResourceType::Bundle)]
+        resource_type: ResourceType,
+
+        /// Where to store the resources
+        #[arg(short, long, value_enum, default_value_t=OutputMode::Screen)]
+        output_mode: OutputMode,
+    },
+    Catalog,
 }

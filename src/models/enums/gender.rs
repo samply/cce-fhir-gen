@@ -1,12 +1,9 @@
-use std::any::type_name;
-
 use fake::Dummy;
+use strum::Display;
 
-use crate::models::lens::{
-    criteria::Criteria, enums::{ConditionType, CriteriaType}, language::{BiLingualDisplay, BiLingualKey}, traits::{CriteriaConverter, LanguageConverter}
-};
+use crate::models::lens::{catalogue::Criteria, traits::CriteriaConverter};
 
-#[derive(Debug, Dummy)]
+#[derive(Debug, Display, Dummy)]
 pub enum Gender {
     Male,
     Female,
@@ -20,38 +17,32 @@ impl Gender {
         }
     }
 
-    pub fn to_de_str(&self) -> &'static str {
-        match self {
-            Gender::Male => "männlich",
-            Gender::Female => "weiblich",
-        }
-    }
+    // pub fn to_de_str(&self) -> &'static str {
+    //     match self {
+    //         Gender::Male => "männlich",
+    //         Gender::Female => "weiblich",
+    //     }
+    // }
 }
 
-impl LanguageConverter for Gender {
-    fn get_bi_lingual_display(&self) -> BiLingualDisplay {
-        BiLingualDisplay::new("Geschlecht", type_name::<Self>())
-    }
+impl CriteriaConverter for Gender {
 
-    fn get_bi_lingual_keys(&self) -> Vec<BiLingualKey> {
-        let male = BiLingualKey::new("male", Gender::Male.to_de_str(), Gender::Male.as_str());
-        let female = BiLingualKey::new(
-            "female",
-            Gender::Female.to_de_str(),
-            Gender::Female.as_str(),
-        );
+    fn get_criteria() -> Vec<Criteria> {
+        let male = Criteria::new(&Gender::Male.as_str(), Gender::Male.to_string().as_str());
+        let female = Criteria::new(&Gender::Female.as_str(), Gender::Female.to_string().as_str());
         vec![male, female]
     }
 }
 
-impl CriteriaConverter for Gender {
-    fn get_criteria(&self) -> Criteria {
-        Criteria::new(
-            type_name::<Self>().to_lowercase().as_str(),
-            self.get_bi_lingual_display(),
-            CriteriaType::String,
-            ConditionType::In,
-            self.get_bi_lingual_keys(),
-        )
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_gender_to_str() {
+        let female = Gender::Female;
+
+        assert_eq!(Gender::Male.to_string(), "Male");
+        assert_eq!(female.as_str(), "female");
     }
 }
