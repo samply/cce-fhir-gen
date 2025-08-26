@@ -15,7 +15,7 @@ use chrono::prelude::*;
 use clap::{Command, Parser};
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
-use fhirbolt::model::r4b::resources::Patient;
+use fhirbolt::model::r4b::resources::{Patient, Specimen};
 use fhirbolt::serde::xml;
 use log::info;
 use models::cli::{CliArgs, Commands, OutputMode, ResourceType};
@@ -37,7 +37,7 @@ fn main() {
 
     let cli = CliArgs::parse();
     match cli.cmd {
-        Commands::XmlData {
+        Commands::SyntheticData {
             number,
             resource_type,
             output_mode,
@@ -76,11 +76,13 @@ fn main() {
 
         Commands::Catalog => {
             let patient_category = Patient::get_category();
-            let categories = vec![patient_category];
+            let specimen_category = Specimen::get_category();
+            let categories = vec![patient_category, specimen_category];
+            
             let json = serde_json::to_string_pretty(&categories)
                 .expect("Failed to serialize categories to JSON");
             println!("Catalog of categories:\n{json}");
-        },
+        }
     }
 }
 

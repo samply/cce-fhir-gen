@@ -233,16 +233,16 @@ impl Criteria {
         }
     }
 
-    // pub fn new_with_description(key: &str, name: &str, description: &str) -> Self {
-    //     Self {
-    //         visible: None,
-    //         key: key.to_string(),
-    //         name: name.to_string(),
-    //         description: Some(description.to_string()),
-    //         aggregated_value: None,
-    //         subgroup: None,
-    //     }
-    // }
+    pub fn new_with_description(key: &str, name: &str, description: &str) -> Self {
+        Self {
+            visible: None,
+            key: key.to_string(),
+            name: name.to_string(),
+            description: Some(description.to_string()),
+            aggregated_value: None,
+            subgroup: None,
+        }
+    }
 }
 
 #[derive(Debug, Serialize, Deserialize)]

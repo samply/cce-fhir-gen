@@ -89,7 +89,7 @@ pub struct CliArgs {
 
 #[derive(Subcommand, Debug, Clone)]
 pub enum Commands {
-    XmlData {
+    SyntheticData {
         /// Number of resources to generate
         #[arg(short, long, default_value_t = 1)]
         number: u8,
