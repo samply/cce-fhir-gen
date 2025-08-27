@@ -83,37 +83,36 @@ impl SampleMaterialType {
 }
 
 impl CriteriaConverter for SampleMaterialType {
-
-    // TODO: Names should be with spaces
+    
     fn get_criteria() -> Vec<crate::models::lens::catalogue::Criteria> {
         let whole_blood = Criteria::new_with_description(
             SampleMaterialType::WholeBlood.as_str(),
-            SampleMaterialType::WholeBlood.to_string().as_str(),
+            "Whole Blood",
             "Whole Blood",
         );
         let bone_marrow = Criteria::new_with_description(
             SampleMaterialType::BoneMarrow.as_str(),
-            SampleMaterialType::BoneMarrow.to_string().as_str(),
+            "Bone Marrow",
             "Bone Marrow",
         );
         let plasma = Criteria::new_with_description(
             SampleMaterialType::BloodPlasma.as_str(),
-            SampleMaterialType::BloodPlasma.to_string().as_str(),
+            "Plasma",
             "Plasma",
         );
         let serum = Criteria::new_with_description(
             SampleMaterialType::BloodSerum.as_str(),
-            SampleMaterialType::BloodSerum.to_string().as_str(),
+            "Serum",
             "Serum",
         );
         let csf_liquor = Criteria::new_with_description(
             SampleMaterialType::CsfLiquor.as_str(),
-            SampleMaterialType::CsfLiquor.to_string().as_str(),
+            "Liquor/CSF",
             "Liquor/CSF",
         );
         let stool_faeces = Criteria::new_with_description(
             SampleMaterialType::StoolFaeces.as_str(),
-            SampleMaterialType::StoolFaeces.to_string().as_str(),
+            "Stool/Faeces",
             "Stool/Faeces",
         );
         let urine = Criteria::new_with_description(
@@ -123,7 +122,7 @@ impl CriteriaConverter for SampleMaterialType {
         );
         let tumor_tissue_ffpe = Criteria::new_with_description(
             SampleMaterialType::TumorTissueFfpe.as_str(),
-            SampleMaterialType::TumorTissueFfpe.to_string().as_str(),
+            "Tumor Tissue (FFPE)",
             "Tumor Tissue (FFPE)",
         );
         let normal_tissue_ffpe = Criteria::new_with_description(
@@ -133,37 +132,29 @@ impl CriteriaConverter for SampleMaterialType {
         );
         let tumor_tissue_frozen = Criteria::new_with_description(
             SampleMaterialType::TumorTissueFrozen.as_str(),
-            SampleMaterialType::TumorTissueFrozen.to_string().as_str(),
+            "Tumor Tissue (Frozen)",
             "Tumor Tissue (Frozen)",
         );
         let normal_tissue_frozen = Criteria::new_with_description(
             SampleMaterialType::NormalTissueFrozen.as_str(),
-            SampleMaterialType::NormalTissueFrozen.to_string().as_str(),
+            "Normal Tissue (Frozen)",
             "Normal Tissue (Frozen)",
         );
-        let dna = Criteria::new_with_description(
-            SampleMaterialType::Dna.as_str(),
-            SampleMaterialType::Dna.to_string().as_str(),
-            "DNA",
-        );
-        let rna = Criteria::new_with_description(
-            SampleMaterialType::Rna.as_str(),
-            SampleMaterialType::Rna.to_string().as_str(),
-            "RNA",
-        );
+        let dna = Criteria::new_with_description(SampleMaterialType::Dna.as_str(), "DNA", "DNA");
+        let rna = Criteria::new_with_description(SampleMaterialType::Rna.as_str(), "RNA", "RNA");
 
         vec![
+            tumor_tissue_ffpe,
+            tumor_tissue_frozen,
+            normal_tissue_ffpe,
+            normal_tissue_frozen,
             whole_blood,
-            bone_marrow,
-            plasma,
             serum,
+            plasma,
+            urine,
             csf_liquor,
             stool_faeces,
-            urine,
-            tumor_tissue_ffpe,
-            normal_tissue_ffpe,
-            tumor_tissue_frozen,
-            normal_tissue_frozen,
+            bone_marrow,
             dna,
             rna,
         ]

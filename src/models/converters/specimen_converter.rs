@@ -12,7 +12,7 @@ impl CategoryConverter for Specimen {
     fn get_category() -> Category {
         let sample_material_type = SingleSelectCategory::new(
             "sample-type",
-            "Sample-Type",
+            "Sample Type",
             "",
             SampleMaterialType::get_criteria(),
         );

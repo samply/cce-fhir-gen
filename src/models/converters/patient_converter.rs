@@ -30,3 +30,17 @@ impl CategoryConverter for Patient {
         Category::Group(category_group)
     }
 }
+
+#[cfg(test)]
+mod test_patient_converter {
+    use super::*;
+
+    #[test]
+    fn test_get_category() {
+        let category = Patient::get_category();
+        let categories = vec![category];
+        let json = serde_json::to_string_pretty(&categories)
+            .expect("Failed to serialize categories to JSON");
+        println!("Catalog of patient categories:\n{json}");
+    }
+}
