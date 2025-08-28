@@ -12,7 +12,7 @@ use crate::{
     models::{cli::ResourceType, enums::id_type::IdType},
 };
 
-const CCE_URL: &str = "https://www.cancercoreeurope.eu";
+pub const CCE_URL: &str = "https://www.cancercoreeurope.eu";
 const LOINC_URL: &str = "https://loinc.org";
 const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
 

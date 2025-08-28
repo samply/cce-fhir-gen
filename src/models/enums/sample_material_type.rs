@@ -3,7 +3,7 @@ use std::vec;
 use fake::Dummy;
 use strum::Display;
 
-use crate::models::lens::{catalogue::Criteria, traits::CriteriaConverter};
+use crate::models::{lens::{catalogue::Criteria, traits::CriteriaConverter}, traits::CodeSystem};
 
 #[derive(Debug, Display, Dummy)]
 pub enum SampleMaterialType {
@@ -79,6 +79,28 @@ impl SampleMaterialType {
             SampleMaterialType::Rna => "rna",
             // SampleMaterialType::OtherDerivative => "derivative-other",
         }
+    }
+}
+
+impl CodeSystem for SampleMaterialType {
+    fn get_name() -> String {
+        "SampleMaterialTypeCS".to_string()
+    }
+
+    fn get_title() -> String {
+        "Sample Material Type CS".to_string()
+    }
+
+    fn get_html_title() -> String {
+        "SampleMaterialType".to_string()
+    }
+    
+    fn get_html_description() -> String {
+        "SampleMaterialType CodeSystem".to_string()
+    }
+
+    fn get_url() -> String {
+        Self::get_code_system_url(Self::get_name().as_str())
     }
 }
 

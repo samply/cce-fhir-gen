@@ -1,7 +1,7 @@
 use fake::Dummy;
 use strum::Display;
 
-use crate::models::lens::{catalogue::Criteria, traits::CriteriaConverter};
+use crate::models::{lens::{catalogue::Criteria, traits::CriteriaConverter}, traits::CodeSystem};
 
 #[derive(Debug, Display, Dummy)]
 pub enum VitalStatus {
@@ -26,6 +26,28 @@ impl VitalStatus {
     //         VitalStatus::Unknown => "unbekannt",
     //     }
     // }
+}
+
+impl CodeSystem for VitalStatus {
+    fn get_name() -> String {
+        "VitalStatusCS".to_string()
+    }
+
+    fn get_title() -> String {
+        "Vital Status CS".to_string()
+    }
+
+    fn get_html_title() -> String {
+        "VitalStatus".to_string()
+    }
+    
+    fn get_html_description() -> String {
+        "VitalStatus CodeSystem".to_string()
+    }
+
+    fn get_url() -> String {
+        Self::get_code_system_url(Self::get_name().as_str())
+    }
 }
 
 impl CriteriaConverter for VitalStatus {
