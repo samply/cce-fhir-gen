@@ -13,16 +13,16 @@ pub enum TumorSiteLocation {
 }
 
 impl TumorSiteLocation {
-    pub fn as_str(&self) -> &'static str {
-        match self {
-            TumorSiteLocation::L => "left",
-            TumorSiteLocation::R => "right",
-            TumorSiteLocation::B => "bilateral",
-            TumorSiteLocation::C => "Centerline/Center",
-            TumorSiteLocation::N => "Not applicable",
-            TumorSiteLocation::U => "unknown",
-        }
-    }
+    // pub fn as_str(&self) -> &'static str {
+    //     match self {
+    //         TumorSiteLocation::L => "left",
+    //         TumorSiteLocation::R => "right",
+    //         TumorSiteLocation::B => "bilateral",
+    //         TumorSiteLocation::C => "Centerline/Center",
+    //         TumorSiteLocation::N => "Not applicable",
+    //         TumorSiteLocation::U => "unknown",
+    //     }
+    // }
 }
 
 impl fmt::Display for TumorSiteLocation {

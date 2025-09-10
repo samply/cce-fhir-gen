@@ -16,7 +16,7 @@ pub const CCE_URL: &str = "https://www.cancercoreeurope.eu";
 pub const DATA_FOLDER: &str = "generated-data";
 
 const LOINC_URL: &str = "https://loinc.org";
-const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
+// const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
 
 const UICC_STAGE_CS: &str = "UICCStageCS";
 const SITE_LOCATION_CS: &str = "SitelocationCS";
@@ -27,8 +27,8 @@ const SAMPLE_MATERIAL_TYPE_CS: &str = "SampleMaterialType";
 const TNMMCS_CS: &str = "TNMMCS";
 const TNMNCS_CS: &str = "TNMNCS";
 const TNMTCS_CS: &str = "TNMTCS";
-const TNMR_SYMBOL_CS: &str = "TNMrSymbolCS";
-const TNMY_SYMBOL_CS: &str = "TNMySymbolCS";
+// const TNMR_SYMBOL_CS: &str = "TNMrSymbolCS";
+// const TNMY_SYMBOL_CS: &str = "TNMySymbolCS";
 
 pub const OBSERVATION_STATUS: &str = "final";
 
@@ -43,9 +43,9 @@ pub fn get_loinc_url() -> Uri {
     Uri::from(LOINC_URL)
 }
 
-pub fn get_bh_fhir_api_url(server_name: &str) -> String {
-    format!("https://{}/{FHIR_ENDPOINT}", server_name)
-}
+// pub fn get_bh_fhir_api_url(server_name: &str) -> String {
+//     format!("https://{}/{FHIR_ENDPOINT}", server_name)
+// }
 
 fn get_code_system_url(name: &str) -> String {
     format!("{}/CodeSystem/{}", get_fhir_url(), name)
@@ -83,13 +83,13 @@ pub fn get_tnmt_url() -> Uri {
     Uri::from(get_code_system_url(TNMTCS_CS))
 }
 
-pub fn get_tnmr_symbol_url() -> Uri {
-    Uri::from(get_code_system_url(TNMR_SYMBOL_CS))
-}
+// pub fn get_tnmr_symbol_url() -> Uri {
+//     Uri::from(get_code_system_url(TNMR_SYMBOL_CS))
+// }
 
-pub fn get_tnmy_symbol_url() -> Uri {
-    Uri::from(get_code_system_url(TNMY_SYMBOL_CS))
-}
+// pub fn get_tnmy_symbol_url() -> Uri {
+//     Uri::from(get_code_system_url(TNMY_SYMBOL_CS))
+// }
 
 pub fn get_body_site_url() -> Uri {
     Uri::from("urn:oid:1.3.6.1.4.1.19376.1.3.11.36")
@@ -118,14 +118,14 @@ where
     xml::to_string(&t, None).unwrap_or(error_str)
 }
 
-pub fn print_fhir_data<T>(t: T, name: &str)
-where
-    T: SerializeResource,
-{
-    let serialized_data = get_xml(t, "");
-    println!("{name}: {serialized_data:#?}");
-    println!("");
-}
+// pub fn print_fhir_data<T>(t: T, name: &str)
+// where
+//     T: SerializeResource,
+// {
+//     let serialized_data = get_xml(t, "");
+//     println!("{name}: {serialized_data:#?}");
+//     println!("");
+// }
 
 pub fn get_ids(id_type: IdType, res_type: ResourceType, i: u16) -> (String, String) {
     let id = format!("{}-{}", res_type.as_str(), id_type.get_id(i));

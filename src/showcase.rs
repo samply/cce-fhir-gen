@@ -3,19 +3,17 @@ use std::fs;
 use crate::models::cli::{Commands, OutputMode, ResourceType};
 use crate::utils::DATA_FOLDER;
 
-pub fn showcase_data(
-    data: String,
-    file_name: String,
-    type_of_data: Commands,
-    resource_type: ResourceType,
-    output_mode: OutputMode,
-) {
-    match type_of_data {
-        Commands::SyntheticData { .. } => {
+pub fn showcase_data(data: String, file_name: Option<String>, commands: Commands) {
+    match commands {
+        Commands::SyntheticData {
+            resource_type,
+            output_mode,
+            ..
+        } => {
             synthetic_data(data, file_name, resource_type, output_mode);
         }
 
-        Commands::Catalogue { .. } => {
+        Commands::Catalogue { output_mode } => {
             catalogue(data, output_mode);
         }
     }
@@ -23,7 +21,7 @@ pub fn showcase_data(
 
 fn synthetic_data(
     data: String,
-    file_name: String,
+    file_name: Option<String>,
     resource_type: ResourceType,
     output_mode: OutputMode,
 ) {
@@ -43,7 +41,7 @@ fn synthetic_data(
                 fs::create_dir(&dir_path).expect("failed to create dir");
             }
 
-            let with_extn = format!("{}.xml", file_name);
+            let with_extn = format!("{}.xml", file_name.unwrap_or("unknown_name".to_string()));
             let file_path = format!("{}/{}", &dir_path, with_extn);
             fs::write(file_path, data).expect("Unable to create XML file");
         }

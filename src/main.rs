@@ -10,8 +10,6 @@ mod showcase;
 mod specimen_svc;
 mod utils;
 
-use std::fs;
-
 use chrono::prelude::*;
 use clap::Parser;
 use fake::faker::chrono::en::DateTimeAfter;
@@ -62,7 +60,7 @@ fn main() {
                     "generating a single bundle containing multiple {:?}...",
                     resource_type
                 );
-                generate_fhir_bundles(cli, number, resource_type, output_mode);
+                generate_fhir_bundles(cli, number, resource_type);
             } else {
                 if resource_type == ResourceType::Bundle {
                     info!("generating a single bundle containing all resource types...");
@@ -72,25 +70,23 @@ fn main() {
                         resource_type
                     );
                 }
-                generate_fhir_bundle(cli, resource_type, output_mode);
+                generate_fhir_bundle(cli, resource_type);
             }
         }
 
-        Commands::Catalogue {
-            output_mode,
-        } => {
+        Commands::Catalogue { .. } => {
             let patient_category = Patient::get_category();
             let specimen_category = Specimen::get_category();
             let categories = vec![patient_category, specimen_category];
-            
+
             let json = serde_json::to_string_pretty(&categories)
                 .expect("Failed to serialize categories to JSON");
-            println!("Catalog of categories:\n{json}");
+            showcase_data(json, None, cli.cmd);
         }
     }
 }
 
-fn generate_fhir_bundle(cli: CliArgs, resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundle(cli: CliArgs, resource_type: ResourceType) {
     info!("generate_fhir_bundle");
 
     let i: u16 = Faker.fake();
@@ -318,10 +314,10 @@ fn generate_fhir_bundle(cli: CliArgs, resource_type: ResourceType, output_mode: 
         }
     };
 
-    showcase_data(xml_data, file_name, cli.cmd, resource_type, output_mode);
+    showcase_data(xml_data, Some(file_name), cli.cmd);
 }
 
-fn generate_fhir_bundles(cli: CliArgs, number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundles(cli: CliArgs, number: u8, resource_type: ResourceType) {
     info!("generate_fhir_bundles");
 
     let range = 0..number;
@@ -530,7 +526,7 @@ fn generate_fhir_bundles(cli: CliArgs, number: u8, resource_type: ResourceType, 
     };
 
     let bundle_xml = utils::get_xml(bundle, "bundle");
-    showcase_data(bundle_xml, file_name, cli.cmd, resource_type, output_mode);
+    showcase_data(bundle_xml, Some(file_name), cli.cmd);
 }
 
 // fn get_client() -> Client {
