@@ -13,6 +13,8 @@ use crate::{
 };
 
 pub const CCE_URL: &str = "https://www.cancercoreeurope.eu";
+pub const DATA_FOLDER: &str = "generated-data";
+
 const LOINC_URL: &str = "https://loinc.org";
 const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
 

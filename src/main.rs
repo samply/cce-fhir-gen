@@ -6,13 +6,14 @@ mod models;
 mod observation_svc;
 mod patient_svc;
 mod procedure_svc;
+mod showcase;
 mod specimen_svc;
 mod utils;
 
 use std::fs;
 
 use chrono::prelude::*;
-use clap::{Command, Parser};
+use clap::Parser;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{Patient, Specimen};
@@ -22,6 +23,7 @@ use models::cli::{CliArgs, Commands, OutputMode, ResourceType};
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
 use models::lens::traits::CategoryConverter;
+use showcase::showcase_data;
 use utils::get_ids;
 
 const DATA_FOLDER: &str = "generated-data";
@@ -60,7 +62,7 @@ fn main() {
                     "generating a single bundle containing multiple {:?}...",
                     resource_type
                 );
-                generate_fhir_bundles(number, resource_type, output_mode);
+                generate_fhir_bundles(cli, number, resource_type, output_mode);
             } else {
                 if resource_type == ResourceType::Bundle {
                     info!("generating a single bundle containing all resource types...");
@@ -70,11 +72,13 @@ fn main() {
                         resource_type
                     );
                 }
-                generate_fhir_bundle(resource_type, output_mode);
+                generate_fhir_bundle(cli, resource_type, output_mode);
             }
         }
 
-        Commands::Catalog => {
+        Commands::Catalogue {
+            output_mode,
+        } => {
             let patient_category = Patient::get_category();
             let specimen_category = Specimen::get_category();
             let categories = vec![patient_category, specimen_category];
@@ -86,7 +90,7 @@ fn main() {
     }
 }
 
-fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundle(cli: CliArgs, resource_type: ResourceType, output_mode: OutputMode) {
     info!("generate_fhir_bundle");
 
     let i: u16 = Faker.fake();
@@ -314,32 +318,10 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
     };
 
-    match output_mode {
-        OutputMode::Screen => {
-            println!("{}:", resource_type.as_str());
-            println!("{xml_data}");
-            println!();
-        }
-
-        OutputMode::File => {
-            let dir_path = format!("./{DATA_FOLDER}");
-            if fs::exists(&dir_path).expect("dir exists error") {
-                println!("{} already exists.", dir_path);
-            } else {
-                println!("creating {}.", &dir_path);
-                fs::create_dir(&dir_path).expect("failed to create dir");
-            }
-
-            let with_extn = format!("{}.xml", file_name);
-            let file_path = format!("{}/{}", &dir_path, with_extn);
-            fs::write(file_path, xml_data).expect("Unable to create XML file");
-        }
-
-        OutputMode::ApiCall => todo!(),
-    }
+    showcase_data(xml_data, file_name, cli.cmd, resource_type, output_mode);
 }
 
-fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundles(cli: CliArgs, number: u8, resource_type: ResourceType, output_mode: OutputMode) {
     info!("generate_fhir_bundles");
 
     let range = 0..number;
@@ -548,29 +530,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
     };
 
     let bundle_xml = utils::get_xml(bundle, "bundle");
-    match output_mode {
-        OutputMode::Screen => {
-            println!("{}:", resource_type.as_str());
-            println!("{bundle_xml}");
-            println!();
-        }
-
-        OutputMode::File => {
-            let dir_path = format!("./{DATA_FOLDER}");
-            if fs::exists(&dir_path).expect("dir exists error") {
-                println!("{} already exists.", dir_path);
-            } else {
-                println!("creating {}.", &dir_path);
-                fs::create_dir(&dir_path).expect("failed to create dir");
-            }
-
-            let with_extn = format!("{}.xml", file_name);
-            let file_path = format!("{}/{}", &dir_path, with_extn);
-            fs::write(file_path, bundle_xml).expect("Unable to create XML file");
-        }
-
-        OutputMode::ApiCall => todo!(),
-    }
+    showcase_data(bundle_xml, file_name, cli.cmd, resource_type, output_mode);
 }
 
 // fn get_client() -> Client {

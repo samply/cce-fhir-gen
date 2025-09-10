@@ -1,12 +1,16 @@
 # cce-fhir-gen
 
-Synthetic XML data generator for CCE FHIR profiles.
+The original purpose of this tool was to generate synthetic XML data which conforms to the CCE FHIR profiles.
 
-This repository contains [Rust](https://www.rust-lang.org/) code to generate synthetic XML data for [CCE FHIR models](https://simplifier.net/cce).
+However, while working on the CCE Explorer (the UI for the CCE VDC project), it became clear that some data (like a `catalogue.json`) expected by the CCE Explorer can also be generated using the same code, Hence, the original scope has expanded and newer command-line arguments have been added.
+
+> **NOTE**: If you, as a developer are only interested in synthetic data (and you don't work on the CCE Explorer UI), then you can safely ignore the `catalogue` cmd-line option and use only the `synthetic-data` option.
+
+This repository contains [Rust](https://www.rust-lang.org/) code to generate synthetic XML data for [CCE FHIR profiles](https://simplifier.net/cce) and it also generates a `catalogue.json` (to be used by the CCE Explorer UI).
 
 ## FHIR library
 
-There are a couple of creates that support FHIR:
+There are a couple of crates that support FHIR:
 
 - [fhir-sdk](https://docs.rs/fhir-sdk/latest/fhir_sdk/) - is being used in other projects, but it only supports serialization and deserialization to and from JSON, and **XML is not supported yet**.
 
@@ -24,47 +28,29 @@ There are, a total of 10 profiles -
 
 This repository implements a command line tool, to be run from the command prompt. It accepts the following command line arguments -
 
-```
-Usage: cce-fhir-gen [OPTIONS]
+```sh
+Usage: cce-fhir-gen <COMMAND>
+
+Commands:
+  synthetic-data  Generate synthetic XML data conforming to CCE FHIR profiles
+  catalogue       Create catalogue JSON for the CCE explorer (UI)
+  help            Print this message or the help of the given subcommand(s)
 
 Options:
-  -n, --number <NUMBER>
-          Number of resources to generate
-          
-          [default: 1]
+  -h, --help     Print help
+  -V, --version  Print version
+```
 
-  -r, --resource-type <RESOURCE_TYPE>
-          Type of resource to generate
-          
-          [default: bundle]
+To check, which options are supported by `synthetic-data`, please run the below command (or `cargo run -- synthetic-data -h` in dev mode) -
 
-          Possible values:
-          - bundle:                                     Generate whole Bundle
-          - patient:                                    Generate Patient
-          - condition:                                  Generate Condition
-          - specimen:                                   Generate Specimen
-          - observation-histology:                      Generate Observation Histology
-          - observation-vital-status:                   Generate Observation VitalStatus
-          - observation-tn-mc:                          Generate Observation TNMc
-          - procedure-radiotherapy:                     Generate Procedure Radiotherapy
-          - procedure-operation:                        Generate Procedure Operation
-          - systemic-therapy-medication-statement:      Generate Systemic Therapy Medication Statement
+```sh
+Usage: cce-fhir-gen synthetic-data [OPTIONS]
 
-  -o, --output-mode <OUTPUT_MODE>
-          Where to store the resources
-          
-          [default: screen]
-
-          Possible values:
-          - screen:   Show the generated XML in the terminal
-          - file:     Store the generated XML in a file
-          - api-call: Call the given API endpoint (WIP)
-
-  -h, --help
-          Print help (see a summary with '-h')
-
-  -V, --version
-          Print version
+Options:
+  -n, --number <NUMBER>                Number of resources to generate [default: 1]
+  -r, --resource-type <RESOURCE_TYPE>  Type of resource to generate [default: bundle] [possible values: bundle, patient, condition, specimen, observation-histology, observation-vital-status, observation-tn-mc, procedure-radiotherapy, procedure-operation, systemic-therapy-medication-statement]
+  -o, --output-mode <OUTPUT_MODE>      Where to store the resources [default: screen] [possible values: screen, file, api-call]
+  -h, --help                           Print help (see more with '--help')
 ```
 
 ### Parameters and their default values
@@ -75,14 +61,24 @@ Options:
 | r | bundle | generates a bundle containing one each of the other resources |
 | o | screen | displays the generated data on the screen |
 
+To check, which options are supported by `catalogue`, please run the below command (or `cargo run -- catalogue -h` in dev mode) -
+
+```sh
+Usage: cce-fhir-gen catalogue [OPTIONS]
+
+Options:
+  -o, --output-mode <OUTPUT_MODE>  Where to store the catalogue.json [default: screen] [possible values: screen, file, api-call]
+  -h, --help                       Print help (see more with '--help')
+```
+
 ### How to run
 
 #### Development mode
 
 In development mode, we tend to run `cargo run` command for running the application. In this case, you can use:
 
-```
-cargo run -- -n 100 -r patient
+```sh
+cargo run -- synthetic-data -n 100 -r patient
 ```
 
 ## License

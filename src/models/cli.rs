@@ -89,6 +89,7 @@ pub struct CliArgs {
 
 #[derive(Subcommand, Debug, Clone)]
 pub enum Commands {
+    #[command(about = "Generate synthetic XML data conforming to CCE FHIR profiles")]
     SyntheticData {
         /// Number of resources to generate
         #[arg(short, long, default_value_t = 1)]
@@ -102,5 +103,10 @@ pub enum Commands {
         #[arg(short, long, value_enum, default_value_t=OutputMode::Screen)]
         output_mode: OutputMode,
     },
-    Catalog,
+    #[command(about = "Create catalogue JSON for the CCE explorer (UI)")]
+    Catalogue {
+        /// Where to store the catalogue.json
+        #[arg(short, long, value_enum, default_value_t=OutputMode::Screen)]
+        output_mode: OutputMode,
+    },
 }
