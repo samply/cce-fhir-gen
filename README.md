@@ -49,6 +49,8 @@ Options:
   -V, --version  Print version
 ```
 
+### Generate synthetic data
+
 To check, which options are supported by `synthetic-data`, please run the below command (or `cargo run -- synthetic-data -h` in dev mode) -
 
 ```sh
@@ -63,13 +65,15 @@ Options:
   -h, --help                           Print help (see more with '--help')
 ```
 
-### Parameters and their default values
+#### Parameters and their default values
 
 | Parameter | Default value | Meaning |
 |-----------|---------------|---------|
 | n | 1 | a value greater than 1 generates a bundle containing multiple resources of the resource type specified by `r` |
 | r | bundle | generates a bundle containing one each of the other resources |
 | o | screen | displays the generated data on the screen |
+
+### Generate catalogue.json
 
 To check, which options are supported by `catalogue`, please run the below command (or `cargo run -- catalogue -h` in dev mode) -
 
@@ -82,6 +86,8 @@ Options:
   -o, --output-mode <OUTPUT_MODE>  Where to store the catalogue.json [default: screen] [possible values: screen, file, api-call]
   -h, --help                       Print help (see more with '--help')
 ```
+
+### Generate (supported) FHIR profiles
 
 To check, which options are supported by `fhir-resources`, please run the below command (or `cargo run -- fhir-resources -h` in dev mode) -
 
