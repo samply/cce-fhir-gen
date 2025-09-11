@@ -2,11 +2,16 @@
 
 The original purpose of this tool was to generate synthetic XML data which conforms to the CCE FHIR profiles.
 
-However, while working on the CCE Explorer (the UI for the CCE VDC project), it became clear that some data (like a `catalogue.json`) expected by the CCE Explorer can also be generated using the same code, Hence, the original scope has expanded and newer command-line arguments have been added.
+However, while working on the CCE Explorer (the UI for the CCE VDC project), it became clear that some data (like a `catalogue.json`) expected by the CCE Explorer can be generated using the same code. Similarly, various FHIR profiles (like CodeSystems) can also be generated.
 
-> **NOTE**: If you, as a developer are only interested in synthetic data (and you don't work on the CCE Explorer UI), then you can safely ignore the `catalogue` cmd-line option and use only the `synthetic-data` option.
+Hence, the original scope has expanded and newer command-line arguments have been added.
 
-This repository contains [Rust](https://www.rust-lang.org/) code to generate synthetic XML data for [CCE FHIR profiles](https://simplifier.net/cce) and it also generates a `catalogue.json` (to be used by the CCE Explorer UI).
+> **NOTE**: If you, as a developer are only interested in synthetic data (and you don't work on the CCE Explorer UI, or the CCE FHIR profiles), then you can safely ignore the `catalogue` and the `fhir-resources` cmd-line options and use only the `synthetic-data` option.
+
+This repository contains [Rust](https://www.rust-lang.org/) code to -
+- generate synthetic XML data for [CCE FHIR profiles](https://simplifier.net/cce) 
+- generate a `catalogue.json` (to be used by the CCE Explorer UI)
+- or, to generate various FHIR profiles themselves
 
 ## FHIR library
 
@@ -29,11 +34,14 @@ There are, a total of 10 profiles -
 This repository implements a command line tool, to be run from the command prompt. It accepts the following command line arguments -
 
 ```sh
+A program to generate synthetic XML data (conforming to CCE FHIR profiles), or catalogue JSON for the CCE explorer (UI) or FHIR resources for all supported resource types
+
 Usage: cce-fhir-gen <COMMAND>
 
 Commands:
   synthetic-data  Generate synthetic XML data conforming to CCE FHIR profiles
   catalogue       Create catalogue JSON for the CCE explorer (UI)
+  fhir-resources  Generate FHIR resources for all supported resource types
   help            Print this message or the help of the given subcommand(s)
 
 Options:
@@ -44,6 +52,8 @@ Options:
 To check, which options are supported by `synthetic-data`, please run the below command (or `cargo run -- synthetic-data -h` in dev mode) -
 
 ```sh
+Generate synthetic XML data conforming to CCE FHIR profiles
+
 Usage: cce-fhir-gen synthetic-data [OPTIONS]
 
 Options:
@@ -64,11 +74,24 @@ Options:
 To check, which options are supported by `catalogue`, please run the below command (or `cargo run -- catalogue -h` in dev mode) -
 
 ```sh
+Create catalogue JSON for the CCE explorer (UI)
+
 Usage: cce-fhir-gen catalogue [OPTIONS]
 
 Options:
   -o, --output-mode <OUTPUT_MODE>  Where to store the catalogue.json [default: screen] [possible values: screen, file, api-call]
   -h, --help                       Print help (see more with '--help')
+```
+
+To check, which options are supported by `fhir-resources`, please run the below command (or `cargo run -- fhir-resources -h` in dev mode) -
+
+```sh
+Generate FHIR resources for all supported resource types
+
+Usage: cce-fhir-gen fhir-resources
+
+Options:
+  -h, --help  Print help
 ```
 
 ### How to run
