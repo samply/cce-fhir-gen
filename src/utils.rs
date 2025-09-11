@@ -13,7 +13,14 @@ use crate::{
 };
 
 pub const CCE_URL: &str = "https://www.cancercoreeurope.eu";
+pub const CCE: &str = "CCE";
+pub const CCE_NAME: &str = "Cancer Core Europe";
+pub const FHIR_RESOURCE_STATUS: &str = "draft";
+pub const FHIR_RESOURCE_VERSION: &str = "0.0.1";
+pub const FHIR_COMPLETION_STATUS: &str = "complete";
+pub const GENERATED: &str = "generated";
 pub const DATA_FOLDER: &str = "generated-data";
+pub const XHTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
 const LOINC_URL: &str = "https://loinc.org";
 // const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
@@ -67,6 +74,7 @@ pub fn get_syst_therapy_type_url() -> Uri {
     Uri::from(get_code_system_url(SYST_THERAPY_TYPE_CS))
 }
 
+// TODO: remove this and use VitalStatus::get_url() instead in observation_svc.rs
 pub fn get_vital_status_url() -> Uri {
     Uri::from(get_code_system_url(VITAL_STATUS_CS))
 }
@@ -115,7 +123,11 @@ where
     T: SerializeResource,
 {
     let error_str = format!("Cannot serialize {} to XML.", error_infix);
-    xml::to_string(&t, None).unwrap_or(error_str)
+    let xml_result = xml::to_string(&t, None);
+    match xml_result {
+        Ok(xml) => xml,
+        Err(e) => format!("{error_str} Reason: {}", e.to_string()),
+    }
 }
 
 // pub fn print_fhir_data<T>(t: T, name: &str)

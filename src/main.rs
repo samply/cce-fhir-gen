@@ -1,6 +1,7 @@
 mod bundle_svc;
 mod condition_svc;
 mod extensions;
+mod fhir;
 mod medication_svc;
 mod models;
 mod observation_svc;
@@ -14,12 +15,14 @@ use chrono::prelude::*;
 use clap::Parser;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
+use fhir::vital_status_code_system::get_vital_status_code_system;
 use fhirbolt::model::r4b::resources::{Patient, Specimen};
 use fhirbolt::serde::xml;
 use log::info;
 use models::cli::{CliArgs, Commands, OutputMode, ResourceType};
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
+use models::lens::catalogue::Catalogue;
 use models::lens::traits::CategoryConverter;
 use showcase::showcase_data;
 use utils::get_ids;
@@ -77,12 +80,17 @@ fn main() {
         Commands::Catalogue { .. } => {
             let patient_category = Patient::get_category();
             let specimen_category = Specimen::get_category();
-            let categories = vec![patient_category, specimen_category];
+            let catalogue: Catalogue = vec![patient_category, specimen_category];
 
-            let json = serde_json::to_string_pretty(&categories)
+            let json = serde_json::to_string_pretty(&catalogue)
                 .expect("Failed to serialize categories to JSON");
             showcase_data(json, None, cli.cmd);
         }
+
+        Commands::FhirResources => {
+            let vs_res = utils::get_xml(get_vital_status_code_system(), "vital-status CodeSystem");
+            showcase_data(vs_res, None, cli.cmd);
+        },
     }
 }
 

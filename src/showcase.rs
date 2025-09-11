@@ -16,6 +16,11 @@ pub fn showcase_data(data: String, file_name: Option<String>, commands: Commands
         Commands::Catalogue { output_mode } => {
             catalogue(data, output_mode);
         }
+
+        Commands::FhirResources => {
+            println!("FHIR Resources:");
+            println!("{data}");
+        },
     }
 }
 

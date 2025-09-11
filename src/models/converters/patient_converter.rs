@@ -1,14 +1,13 @@
 use fhirbolt::model::r4b::resources::Patient;
 
 use crate::{
-    models::{
+    fhir::traits::CodeSystemAdapter, models::{
         enums::{gender::Gender, vital_status::VitalStatus},
         lens::{
             catalogue::{Category, CategoryGroup, SingleSelectCategory},
             traits::{CategoryConverter, CriteriaConverter},
         },
-    },
-    utils::{get_vital_status_url, VITAL_STATUS_LOINC_CODE},
+    }, utils::VITAL_STATUS_LOINC_CODE
 };
 
 impl CategoryConverter for Patient {
@@ -18,7 +17,7 @@ impl CategoryConverter for Patient {
         let vital_status = SingleSelectCategory::new(
             VITAL_STATUS_LOINC_CODE,
             "Vital Status",
-            get_vital_status_url().value.unwrap_or_default().as_str(),
+            VitalStatus::get_url().as_str(),
             VitalStatus::get_criteria(),
         );
 
