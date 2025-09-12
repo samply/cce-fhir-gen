@@ -87,7 +87,7 @@ fn main() {
             showcase_data(json, None, cli.cmd);
         }
 
-        Commands::FhirResources => {
+        Commands::FhirProfiles => {
             let vs_res = utils::get_xml(get_vital_status_code_system(), "vital-status CodeSystem");
             showcase_data(vs_res, None, cli.cmd);
         },

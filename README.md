@@ -6,7 +6,7 @@ However, while working on the CCE Explorer (the UI for the CCE VDC project), it 
 
 Hence, the original scope has expanded and newer command-line arguments have been added.
 
-> **NOTE**: If you, as a developer are only interested in synthetic data (and you don't work on the CCE Explorer UI, or the CCE FHIR profiles), then you can safely ignore the `catalogue` and the `fhir-resources` cmd-line options and use only the `synthetic-data` option.
+> **NOTE**: If you, as a developer are only interested in synthetic data (and you don't work on the CCE Explorer UI, or the CCE FHIR profiles), then you can safely ignore the `catalogue` and the `fhir-profiles` cmd-line options and use only the `synthetic-data` option.
 
 This repository contains [Rust](https://www.rust-lang.org/) code to -
 - generate synthetic XML data for [CCE FHIR profiles](https://simplifier.net/cce) 
@@ -34,14 +34,14 @@ There are, a total of 10 profiles -
 This repository implements a command line tool, to be run from the command prompt. It accepts the following command line arguments -
 
 ```sh
-A program to generate synthetic XML data (conforming to CCE FHIR profiles), or catalogue JSON for the CCE explorer (UI) or FHIR resources for all supported resource types
+A program to generate synthetic XML data (conforming to CCE FHIR profiles), or catalogue JSON for the CCE explorer (UI) or FHIR profiles for all supported resource types
 
 Usage: cce-fhir-gen <COMMAND>
 
 Commands:
   synthetic-data  Generate synthetic XML data conforming to CCE FHIR profiles
   catalogue       Create catalogue JSON for the CCE explorer (UI)
-  fhir-resources  Generate FHIR resources for all supported resource types
+  fhir-profiles   Generate FHIR profiles for all supported resource types
   help            Print this message or the help of the given subcommand(s)
 
 Options:
@@ -89,12 +89,12 @@ Options:
 
 ### Generate (supported) FHIR profiles
 
-To check, which options are supported by `fhir-resources`, please run the below command (or `cargo run -- fhir-resources -h` in dev mode) -
+To check, which options are supported by `fhir-profiles`, please run the below command (or `cargo run -- fhir-profiles -h` in dev mode) -
 
 ```sh
-Generate FHIR resources for all supported resource types
+Generate FHIR profiles for all supported resource types
 
-Usage: cce-fhir-gen fhir-resources
+Usage: cce-fhir-gen fhir-profiles
 
 Options:
   -h, --help  Print help

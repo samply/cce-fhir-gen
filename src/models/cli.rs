@@ -80,7 +80,7 @@ impl ResourceType {
 }
 
 /// A program to generate synthetic XML data (conforming to CCE FHIR profiles), or catalogue JSON for the CCE explorer 
-/// (UI) or FHIR resources for all supported resource types
+/// (UI) or FHIR profiles for all supported resource types
 #[derive(Debug, Parser)]
 #[command(version, about, long_about = None)]
 pub struct CliArgs {
@@ -112,6 +112,6 @@ pub enum Commands {
         output_mode: OutputMode,
     },
 
-    #[command(about = "Generate FHIR resources for all supported resource types")]
-    FhirResources,
+    #[command(about = "Generate FHIR profiles for all supported resource types")]
+    FhirProfiles,
 }

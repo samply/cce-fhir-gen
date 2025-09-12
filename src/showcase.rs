@@ -17,8 +17,8 @@ pub fn showcase_data(data: String, file_name: Option<String>, commands: Commands
             catalogue(data, output_mode);
         }
 
-        Commands::FhirResources => {
-            println!("FHIR Resources:");
+        Commands::FhirProfiles => {
+            println!("FHIR Profiles:");
             println!("{data}");
         },
     }
