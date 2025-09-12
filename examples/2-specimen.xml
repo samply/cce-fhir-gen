@@ -1,22 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Specimen xmlns="http://hl7.org/fhir">
-    <id value="Specimen-id-115" />
-    <type>
-        <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType" />
-            <code value="g-dna" />
-        </coding>
-    </type>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <collection>
-        <collectedDateTime value="2021-02-02" />
-        <bodySite>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-27124"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-27124"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-27124"/>
+        <identifier>
+          <value value="Patient-src-identifier-27124"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1751-07-23"/>
+        <deceasedDateTime value="1801-07-23"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-27124"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-27124"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-27124"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="rna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-27124"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
             <coding>
-                <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36" />
-                <code value="C26.8" />
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
             </coding>
-        </bodySite>
-    </collection>
-</Specimen>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-27124"/>
+    </request>
+  </entry>
+</Bundle>

@@ -1,27 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Condition xmlns="http://hl7.org/fhir">
-    <id value="Condition-id-115" />
-    <code>
-        <coding>
-            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm" />
-            <version value="2004" />
-            <code value="C34.0" />
-        </coding>
-    </code>
-    <bodySite>
-        <coding>
-            <system value="urn:oid:2.16.840.1.113883.6.43.1" />
-            <version value="31" />
-            <code value="C34.0" />
-        </coding>
-        <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
-            <code value="N" />
-        </coding>
-    </bodySite>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <onsetDateTime value="2021-02-02" />
-    <recordedDate value="2021-02-02" />
-</Condition>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-17718"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-17718"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-17718"/>
+        <identifier>
+          <value value="Patient-src-identifier-17718"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2142-12-04"/>
+        <deceasedDateTime value="2192-12-04"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-17718"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-17718"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-17718"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-17718"/>
+        </subject>
+        <onsetDateTime value="2021-02-02"/>
+        <recordedDate value="2021-02-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-17718"/>
+    </request>
+  </entry>
+</Bundle>

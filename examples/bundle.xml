@@ -1,327 +1,317 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bundle xmlns="http://hl7.org/fhir">
-    <id value="Bundle-id-115" />
-    <type value="transaction" />
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-115" />
-        <resource>
-            <Patient>
-                <id value="Patient-id-115" />
-                <identifier>
-                    <value value="Patient-src-identifier-115" />
-                </identifier>
-                <gender value="male" />
-                <birthDate value="1930-11-07" />
-                <deceasedDateTime value="1980-11-07" />
-            </Patient>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Patient/Patient-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-115" />
-        <resource>
-            <Specimen>
-                <id value="Specimen-id-115" />
-                <type>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType" />
-                        <code value="dna" />
-                    </coding>
-                </type>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <collection>
-                    <collectedDateTime value="2021-02-02" />
-                    <bodySite>
-                        <coding>
-                            <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36" />
-                            <code value="C26.8" />
-                        </coding>
-                    </bodySite>
-                </collection>
-            </Specimen>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Specimen/Specimen-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-115" />
-        <resource>
-            <Condition>
-                <id value="Condition-id-115" />
-                <code>
-                    <coding>
-                        <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm" />
-                        <version value="2019" />
-                        <code value="C34.0" />
-                    </coding>
-                </code>
-                <bodySite>
-                    <coding>
-                        <system value="urn:oid:2.16.840.1.113883.6.43.1" />
-                        <version value="31" />
-                        <code value="C34.0" />
-                    </coding>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS" />
-                        <code value="L" />
-                    </coding>
-                </bodySite>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <onsetDateTime value="2021-02-02" />
-                <recordedDate value="2021-02-02" />
-            </Condition>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Condition/Condition-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Histology-id-115" />
-        <resource>
-            <Observation>
-                <id value="Histology-id-115" />
-                <status value="final" />
-                <code>
-                    <coding>
-                        <system value="https://loinc.org" />
-                        <code value="59847-4" />
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <focus>
-                    <reference value="Condition/Condition-id-115" />
-                </focus>
-                <effectiveDateTime value="1930-06-18" />
-                <valueCodeableConcept>
-                    <coding>
-                        <system value="urn:oid:2.16.840.1.113883.6.43.1" />
-                        <version value="32" />
-                        <code value="8140/3" />
-                    </coding>
-                </valueCodeableConcept>
-                <specimen>
-                    <reference value="Specimen/Specimen-id-115" />
-                </specimen>
-            </Observation>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Observation/Histology-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/VitalStatus-id-115" />
-        <resource>
-            <Observation>
-                <id value="VitalStatus-id-115" />
-                <status value="final" />
-                <code>
-                    <coding>
-                        <system value="https://loinc.org" />
-                        <code value="75186-7" />
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <effectiveDateTime value="1930-06-18" />
-                <valueCodeableConcept>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS" />
-                        <code value="deceased" />
-                    </coding>
-                </valueCodeableConcept>
-            </Observation>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Observation/VitalStatus-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/TNMc-id-115" />
-        <resource>
-            <Observation>
-                <id value="TNMc-id-115" />
-                <status value="final" />
-                <code>
-                    <coding>
-                        <system value="https://loinc.org" />
-                        <code value="21908-9" />
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <effectiveDateTime value="1931-06-23" />
-                <valueCodeableConcept>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/UICCStageCS" />
-                        <version value="8" />
-                        <code value="IIIA" />
-                    </coding>
-                </valueCodeableConcept>
-                <component>
-                    <code>
-                        <coding>
-                            <system value="https://loinc.org" />
-                            <code value="21907-1" />
-                        </coding>
-                    </code>
-                    <valueCodeableConcept>
-                        <coding>
-                            <system
-                                value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS" />
-                            <code value="0(mol-)" />
-                        </coding>
-                    </valueCodeableConcept>
-                </component>
-                <component>
-                    <code>
-                        <coding>
-                            <system value="https://loinc.org" />
-                            <code value="201906-3" />
-                        </coding>
-                    </code>
-                    <valueCodeableConcept>
-                        <coding>
-                            <system
-                                value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMNCS" />
-                            <code value="2c" />
-                        </coding>
-                    </valueCodeableConcept>
-                </component>
-                <component>
-                    <code>
-                        <coding>
-                            <system value="https://loinc.org" />
-                            <code value="21907-1" />
-                        </coding>
-                    </code>
-                    <valueCodeableConcept>
-                        <coding>
-                            <system
-                                value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMTCS" />
-                            <code value="4a" />
-                        </coding>
-                    </valueCodeableConcept>
-                </component>
-            </Observation>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Observation/TNMc-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Radiotherapy-id-115" />
-        <resource>
-            <Procedure>
-                <id value="Radiotherapy-id-115" />
-                <status id="successful" />
-                <category>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-                        <code value="RT" />
-                        <display value="Radiotherapy" />
-                    </coding>
-                </category>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <performedPeriod>
-                    <start value="1931-02-26" />
-                    <end value="1932-04-10" />
-                </performedPeriod>
-                <reasonReference>
-                    <reference value="Condition/Condition-id-115" />
-                </reasonReference>
-            </Procedure>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Procedure/Radiotherapy-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Operation-id-115" />
-        <resource>
-            <Procedure>
-                <id value="Operation-id-115" />
-                <status id="successful" />
-                <category>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-                        <code value="OP" />
-                        <display value="Operation" />
-                    </coding>
-                </category>
-                <subject>
-                    <reference value="Procedure/Operation-id-115" />
-                </subject>
-                <performedPeriod>
-                    <start value="1931-02-26" />
-                    <end value="1932-04-10" />
-                </performedPeriod>
-                <reasonReference>
-                    <reference value="Condition/Condition-id-115" />
-                </reasonReference>
-            </Procedure>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="Procedure/Operation-id-115" />
-        </request>
-    </entry>
-    <entry>
-        <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/SystemicTherapy-id-115" />
-        <resource>
-            <MedicationStatement>
-                <id value="SystemicTherapy-id-115" />
-                <status id="ongoing" />
-                <category>
-                    <coding>
-                        <system
-                            value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-                        <code value="HO" />
-                    </coding>
-                </category>
-                <medicationReference>
-                    <reference value="medicine" />
-                </medicationReference>
-                <subject>
-                    <reference value="Patient/Patient-id-115" />
-                </subject>
-                <effectivePeriod>
-                    <start value="2021-06-12" />
-                    <end value="2021-06-21" />
-                </effectivePeriod>
-                <reasonReference>
-                    <reference value="Condition/Condition-id-115" />
-                </reasonReference>
-            </MedicationStatement>
-        </resource>
-        <request>
-            <method value="PUT" />
-            <url value="MedicationStatement/SystemicTherapy-id-115" />
-        </request>
-    </entry>
+  <id value="Bundle-id-15366"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-15366"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-15366"/>
+        <identifier>
+          <value value="Patient-src-identifier-15366"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="2166-08-13"/>
+        <deceasedDateTime value="2216-08-13"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-15366"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-15366"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="rna"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-15366"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-15366"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <onsetDateTime value="2021-02-02"/>
+        <recordedDate value="2021-02-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Histology-id-15366"/>
+    <resource>
+      <Observation>
+        <id value="Histology-id-15366"/>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="https://loinc.org"/>
+            <code value="59847-4"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <focus>
+          <reference value="Condition/Condition-id-15366"/>
+        </focus>
+        <effectiveDateTime value="1931-09-19"/>
+        <valueCodeableConcept>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="32"/>
+            <code value="8140/3"/>
+          </coding>
+        </valueCodeableConcept>
+        <specimen>
+          <reference value="Specimen/Specimen-id-15366"/>
+        </specimen>
+      </Observation>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Observation/Histology-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/VitalStatus-id-15366"/>
+    <resource>
+      <Observation>
+        <id value="VitalStatus-id-15366"/>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="https://loinc.org"/>
+            <code value="75186-7"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <effectiveDateTime value="1931-09-19"/>
+        <valueCodeableConcept>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS"/>
+            <code value="unknown"/>
+          </coding>
+        </valueCodeableConcept>
+      </Observation>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Observation/VitalStatus-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/TNMc-id-15366"/>
+    <resource>
+      <Observation>
+        <id value="TNMc-id-15366"/>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="https://loinc.org"/>
+            <code value="21908-9"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <effectiveDateTime value="1931-09-19"/>
+        <valueCodeableConcept>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/UICCStageCS"/>
+            <version value="8"/>
+            <code value="IIA1"/>
+          </coding>
+        </valueCodeableConcept>
+        <component>
+          <code>
+            <coding>
+              <system value="https://loinc.org"/>
+              <code value="21907-1"/>
+            </coding>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS"/>
+              <code value="1d"/>
+            </coding>
+          </valueCodeableConcept>
+        </component>
+        <component>
+          <code>
+            <coding>
+              <system value="https://loinc.org"/>
+              <code value="21906-3"/>
+            </coding>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMNCS"/>
+              <code value="0(i+)"/>
+            </coding>
+          </valueCodeableConcept>
+        </component>
+        <component>
+          <code>
+            <coding>
+              <system value="https://loinc.org"/>
+              <code value="21905-5"/>
+            </coding>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMTCS"/>
+              <code value="2"/>
+            </coding>
+          </valueCodeableConcept>
+        </component>
+      </Observation>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Observation/TNMc-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Radiotherapy-id-15366"/>
+    <resource>
+      <Procedure>
+        <id value="Radiotherapy-id-15366"/>
+        <status id="successful"/>
+        <category>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS"/>
+            <code value="RT"/>
+            <display value="Radiotherapy"/>
+          </coding>
+        </category>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <performedPeriod>
+          <start value="1931-07-18"/>
+          <end value="1932-10-29"/>
+        </performedPeriod>
+        <reasonReference>
+          <reference value="Condition/Condition-id-15366"/>
+        </reasonReference>
+      </Procedure>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Procedure/Radiotherapy-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Operation-id-15366"/>
+    <resource>
+      <Procedure>
+        <id value="Operation-id-15366"/>
+        <status id="successful"/>
+        <category>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS"/>
+            <code value="OP"/>
+            <display value="Operation"/>
+          </coding>
+        </category>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <performedPeriod>
+          <start value="1931-07-18"/>
+          <end value="1932-10-29"/>
+        </performedPeriod>
+        <reasonReference>
+          <reference value="Condition/Condition-id-15366"/>
+        </reasonReference>
+      </Procedure>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Procedure/Operation-id-15366"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/SystemicTherapy-id-15366"/>
+    <resource>
+      <MedicationStatement>
+        <id value="SystemicTherapy-id-15366"/>
+        <status id="ongoing"/>
+        <category>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS"/>
+            <code value="WS"/>
+          </coding>
+        </category>
+        <medicationReference>
+          <reference value="medicine"/>
+        </medicationReference>
+        <subject>
+          <reference value="Patient/Patient-id-15366"/>
+        </subject>
+        <effectivePeriod>
+          <start value="1931-07-18"/>
+          <end value="1932-10-29"/>
+        </effectivePeriod>
+        <reasonReference>
+          <reference value="Condition/Condition-id-15366"/>
+        </reasonReference>
+      </MedicationStatement>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="MedicationStatement/SystemicTherapy-id-15366"/>
+    </request>
+  </entry>
 </Bundle>

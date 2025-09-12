@@ -1,24 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MedicationStatement xmlns="http://hl7.org/fhir">
-    <id value="SystemicTherapy-id-115" />
-    <status id="ongoing" />
-    <category>
-        <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-            <code value="HO" />
-        </coding>
-    </category>
-    <medicationReference>
-        <reference value="medicine" />
-    </medicationReference>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <effectivePeriod>
-        <start value="2021-06-12" />
-        <end value="2021-06-21" />
-    </effectivePeriod>
-    <reasonReference>
-        <reference value="Condition/Condition-id-115" />
-    </reasonReference>
-</MedicationStatement>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-6182"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-6182"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-6182"/>
+        <identifier>
+          <value value="Patient-src-identifier-6182"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2048-03-23"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-6182"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-6182"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-6182"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-6182"/>
+        </subject>
+        <onsetDateTime value="2021-02-02"/>
+        <recordedDate value="2021-02-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-6182"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/SystemicTherapy-id-6182"/>
+    <resource>
+      <MedicationStatement>
+        <id value="SystemicTherapy-id-6182"/>
+        <status id="ongoing"/>
+        <category>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS"/>
+            <code value="TS"/>
+          </coding>
+        </category>
+        <medicationReference>
+          <reference value="medicine"/>
+        </medicationReference>
+        <subject>
+          <reference value="Patient/Patient-id-6182"/>
+        </subject>
+        <effectivePeriod>
+          <start value="1930-06-25"/>
+          <end value="1931-05-05"/>
+        </effectivePeriod>
+        <reasonReference>
+          <reference value="Condition/Condition-id-6182"/>
+        </reasonReference>
+      </MedicationStatement>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="MedicationStatement/SystemicTherapy-id-6182"/>
+    </request>
+  </entry>
+</Bundle>

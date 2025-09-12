@@ -1,64 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Observation xmlns="http://hl7.org/fhir">
-    <id value="TNMc-id-115" />
-    <status value="final" />
-    <code>
-        <coding>
-            <system value="https://loinc.org" />
-            <code value="21908-9" />
-        </coding>
-    </code>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <effectiveDateTime value="1931-08-27" />
-    <valueCodeableConcept>
-        <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/UICCStageCS" />
-            <version value="8" />
-            <code value="IIIA" />
-        </coding>
-    </valueCodeableConcept>
-    <component>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-24394"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-24394"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-24394"/>
+        <identifier>
+          <value value="Patient-src-identifier-24394"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2144-01-03"/>
+        <deceasedDateTime value="2194-01-03"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-24394"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/TNMc-id-24394"/>
+    <resource>
+      <Observation>
+        <id value="TNMc-id-24394"/>
+        <status value="final"/>
         <code>
-            <coding>
-                <system value="https://loinc.org" />
-                <code value="21907-1" />
-            </coding>
+          <coding>
+            <system value="https://loinc.org"/>
+            <code value="21908-9"/>
+          </coding>
         </code>
+        <subject>
+          <reference value="Patient/Patient-id-24394"/>
+        </subject>
+        <effectiveDateTime value="1930-05-26"/>
         <valueCodeableConcept>
-            <coding>
-                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS" />
-                <code value="1c" />
-            </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/UICCStageCS"/>
+            <version value="8"/>
+            <code value="IVB"/>
+          </coding>
         </valueCodeableConcept>
-    </component>
-    <component>
-        <code>
+        <component>
+          <code>
             <coding>
-                <system value="https://loinc.org" />
-                <code value="21906-3" />
+              <system value="https://loinc.org"/>
+              <code value="21907-1"/>
             </coding>
-        </code>
-        <valueCodeableConcept>
+          </code>
+          <valueCodeableConcept>
             <coding>
-                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMNCS" />
-                <code value="2a" />
+              <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMMCS"/>
+              <code value="0(i-)"/>
             </coding>
-        </valueCodeableConcept>
-    </component>
-    <component>
-        <code>
+          </valueCodeableConcept>
+        </component>
+        <component>
+          <code>
             <coding>
-                <system value="https://loinc.org" />
-                <code value="21905-5" />
+              <system value="https://loinc.org"/>
+              <code value="21906-3"/>
             </coding>
-        </code>
-        <valueCodeableConcept>
+          </code>
+          <valueCodeableConcept>
             <coding>
-                <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMTCS" />
-                <code value="4a" />
+              <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMNCS"/>
+              <code value="3b"/>
             </coding>
-        </valueCodeableConcept>
-    </component>
-</Observation>
+          </valueCodeableConcept>
+        </component>
+        <component>
+          <code>
+            <coding>
+              <system value="https://loinc.org"/>
+              <code value="21905-5"/>
+            </coding>
+          </code>
+          <valueCodeableConcept>
+            <coding>
+              <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TNMTCS"/>
+              <code value="is"/>
+            </coding>
+          </valueCodeableConcept>
+        </component>
+      </Observation>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Observation/TNMc-id-24394"/>
+    </request>
+  </entry>
+</Bundle>
