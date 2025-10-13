@@ -3,7 +3,10 @@ use std::vec;
 use fake::Dummy;
 use strum::Display;
 
-use crate::{fhir::traits::CodeSystemAdapter, lens::{catalogue::Criteria, traits::CriteriaConverter}};
+use crate::{
+    fhir::traits::CodeSystemAdapter,
+    lens::{catalogue::Criteria, traits::CriteriaConverter},
+};
 
 #[derive(Debug, Display, Dummy)]
 pub enum SampleMaterialType {
@@ -94,7 +97,7 @@ impl CodeSystemAdapter for SampleMaterialType {
     fn get_description() -> String {
         "SampleMaterialType".to_string()
     }
-    
+
     fn get_html_description() -> String {
         "SampleMaterialType CodeSystem".to_string()
     }
@@ -105,7 +108,6 @@ impl CodeSystemAdapter for SampleMaterialType {
 }
 
 impl CriteriaConverter for SampleMaterialType {
-    
     fn get_criteria() -> Vec<Criteria> {
         let whole_blood = Criteria::new_with_description(
             SampleMaterialType::WholeBlood.as_str(),

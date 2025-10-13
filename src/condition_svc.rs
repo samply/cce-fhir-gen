@@ -90,7 +90,15 @@ pub fn get_conditions(
         .map(|_| {
             let i: u16 = Faker.fake();
             let (condition_id, condition_ref_id) = get_ids(IdType::Id, ResourceType::Condition, i);
-            (get_condition(condition_id.as_str(), subject_ref, code_value, bs_code_value1), condition_ref_id)
+            (
+                get_condition(
+                    condition_id.as_str(),
+                    subject_ref,
+                    code_value,
+                    bs_code_value1,
+                ),
+                condition_ref_id,
+            )
         })
         .collect()
 }

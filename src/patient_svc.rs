@@ -79,7 +79,10 @@ pub fn get_patients(range: Range<u8>) -> Vec<(Patient, std::string::String)> {
             let i: u16 = Faker.fake();
             let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
             let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
-            (get_patient(patient_id.as_str(), patient_src_id.as_str()), patient_ref_id)
+            (
+                get_patient(patient_id.as_str(), patient_src_id.as_str()),
+                patient_ref_id,
+            )
         })
         .collect()
 }

@@ -26,10 +26,12 @@ impl Gender {
 }
 
 impl CriteriaConverter for Gender {
-
     fn get_criteria() -> Vec<Criteria> {
         let male = Criteria::new(&Gender::Male.as_str(), Gender::Male.to_string().as_str());
-        let female = Criteria::new(&Gender::Female.as_str(), Gender::Female.to_string().as_str());
+        let female = Criteria::new(
+            &Gender::Female.as_str(),
+            Gender::Female.to_string().as_str(),
+        );
         vec![male, female]
     }
 }

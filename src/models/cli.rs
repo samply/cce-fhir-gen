@@ -79,7 +79,7 @@ impl ResourceType {
     }
 }
 
-/// A program to generate synthetic XML data (conforming to CCE FHIR profiles), or catalogue JSON for the CCE explorer 
+/// A program to generate synthetic XML data (conforming to CCE FHIR profiles), or catalogue JSON for the CCE explorer
 /// (UI) or FHIR profiles for all supported resource types
 #[derive(Debug, Parser)]
 #[command(version, about, long_about = None)]
@@ -104,7 +104,7 @@ pub enum Commands {
         #[arg(short, long, value_enum, default_value_t=OutputMode::Screen)]
         output_mode: OutputMode,
     },
-    
+
     #[command(about = "Create catalogue JSON for the CCE explorer (UI)")]
     Catalogue {
         /// Where to store the catalogue.json

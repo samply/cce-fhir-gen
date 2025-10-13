@@ -23,9 +23,7 @@ pub fn get_generated_narrative(html_description: &str, description: &str) -> Nar
         status: GENERATED.into(),
         div: format!(
             "<div xmlns=\"{}\"><p><b>{}</b></p><p>{}</p></div>",
-            XHTML_NAMESPACE,
-            html_description,
-            description
+            XHTML_NAMESPACE, html_description, description
         )
         .into(),
         ..Default::default()

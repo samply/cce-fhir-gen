@@ -5,7 +5,7 @@
 //     fn to_option_string(&self) -> Option<String>;
 // }
 
-// impl OptionStrExt for Option<&str> {    
+// impl OptionStrExt for Option<&str> {
 //     /// Converts Option<&str> to Option<String>
 //     fn to_option_string(&self) -> Option<String> {
 //         self.map(StrExt::to_option_str).flatten().map(str::to_string)

@@ -16,7 +16,8 @@ use crate::models::enums::uicc_stage::UiccStage;
 use crate::models::enums::vital_status::VitalStatus;
 use crate::utils::{
     get_bundle_entry_request, get_full_url, get_ids, get_loinc_url, get_tnmm_url, get_tnmn_url,
-    get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS, VITAL_STATUS_LOINC_CODE,
+    get_tnmt_url, get_uicc_stage_url, get_vital_status_url, OBSERVATION_STATUS,
+    VITAL_STATUS_LOINC_CODE,
 };
 use chrono::NaiveDate;
 use fake::{Fake, Faker};
@@ -259,7 +260,8 @@ pub fn get_histologies(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (obs_hist_id, obs_hist_ref_id) = get_ids(IdType::Id, ResourceType::ObservationHistology, i);
+            let (obs_hist_id, obs_hist_ref_id) =
+                get_ids(IdType::Id, ResourceType::ObservationHistology, i);
             (
                 get_histology(
                     obs_hist_id.as_str(),
@@ -300,7 +302,8 @@ pub fn get_tnmcs(
     range
         .map(|_| {
             let i: u16 = Faker.fake();
-            let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
+            let (obs_tnmc_id, obs_tnmc_ref_id) =
+                get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
             (
                 get_tnmc(obs_tnmc_id.as_str(), subject_ref, effective_date),
                 obs_tnmc_ref_id,

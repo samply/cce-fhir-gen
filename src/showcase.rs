@@ -20,7 +20,7 @@ pub fn showcase_data(data: String, file_name: Option<String>, commands: Commands
         Commands::FhirProfiles => {
             println!("FHIR Profiles:");
             println!("{data}");
-        },
+        }
     }
 }
 

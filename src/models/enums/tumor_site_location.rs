@@ -9,7 +9,7 @@ pub enum TumorSiteLocation {
     B,
     C,
     N,
-    U
+    U,
 }
 
 impl TumorSiteLocation {
