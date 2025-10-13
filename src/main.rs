@@ -80,8 +80,10 @@ fn main() {
 
         Commands::Catalogue { .. } => {
             let patient_category = Patient::get_category();
-            let specimen_category = Specimen::get_category();
-            let catalogue: Catalogue = vec![patient_category, specimen_category];
+            let specimen_category = Specimen::get_category(); // bio-samples
+            let therapy_type_category = SystTherapyType::get_category();
+            let catalogue: Catalogue =
+                vec![patient_category, therapy_type_category, specimen_category];
 
             let json = serde_json::to_string_pretty(&catalogue)
                 .expect("Failed to serialize categories to JSON");
