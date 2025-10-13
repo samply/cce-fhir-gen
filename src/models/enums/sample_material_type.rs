@@ -3,7 +3,7 @@ use std::vec;
 use fake::Dummy;
 use strum::Display;
 
-use crate::{fhir::traits::CodeSystemAdapter, models::lens::{catalogue::Criteria, traits::CriteriaConverter}};
+use crate::{fhir::traits::CodeSystemAdapter, lens::{catalogue::Criteria, traits::CriteriaConverter}};
 
 #[derive(Debug, Display, Dummy)]
 pub enum SampleMaterialType {

@@ -1,7 +1,7 @@
 use fake::Dummy;
 use strum::Display;
 
-use crate::models::lens::{catalogue::Criteria, traits::CriteriaConverter};
+use crate::lens::{catalogue::Criteria, traits::CriteriaConverter};
 
 #[derive(Debug, Display, Dummy)]
 pub enum Gender {

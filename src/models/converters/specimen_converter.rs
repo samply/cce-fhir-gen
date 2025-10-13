@@ -1,11 +1,10 @@
 use fhirbolt::model::r4b::resources::Specimen;
 
-use crate::models::{
-    enums::sample_material_type::SampleMaterialType,
-    lens::{
-        catalogue::{Category, CategoryGroup, SingleSelectCategory},
-        traits::{CategoryConverter, CriteriaConverter},
-    },
+use crate::models::enums::sample_material_type::SampleMaterialType;
+
+use crate::lens::{
+    catalogue::{Category, CategoryGroup, SingleSelectCategory},
+    traits::{CategoryConverter, CriteriaConverter},
 };
 
 impl CategoryConverter for Specimen {

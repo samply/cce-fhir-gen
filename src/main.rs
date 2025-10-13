@@ -2,6 +2,7 @@ mod bundle_svc;
 mod condition_svc;
 mod extensions;
 mod fhir;
+mod lens;
 mod medication_svc;
 mod models;
 mod observation_svc;
@@ -18,12 +19,12 @@ use fake::{Fake, Faker};
 use fhir::vital_status_code_system::get_vital_status_code_system;
 use fhirbolt::model::r4b::resources::{Patient, Specimen};
 use fhirbolt::serde::xml;
+use lens::catalogue::Catalogue;
+use lens::traits::CategoryConverter;
 use log::info;
 use models::cli::{CliArgs, Commands, OutputMode, ResourceType};
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
-use models::lens::catalogue::Catalogue;
-use models::lens::traits::CategoryConverter;
 use showcase::showcase_data;
 use utils::get_ids;
 
@@ -90,7 +91,7 @@ fn main() {
         Commands::FhirProfiles => {
             let vs_res = utils::get_xml(get_vital_status_code_system(), "vital-status CodeSystem");
             showcase_data(vs_res, None, cli.cmd);
-        },
+        }
     }
 }
 

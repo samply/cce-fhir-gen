@@ -7,7 +7,7 @@ use crate::{
         globals::get_generated_narrative,
         traits::{CodeSystemAdapter, CodeSystemConceptAdapter, CodeSystemConceptHelper},
     },
-    models::lens::{catalogue::Criteria, traits::CriteriaConverter},
+    lens::{catalogue::Criteria, traits::CriteriaConverter},
 };
 
 #[derive(Debug, Display, Dummy)]

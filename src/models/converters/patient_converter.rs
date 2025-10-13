@@ -1,13 +1,14 @@
 use fhirbolt::model::r4b::resources::Patient;
 
 use crate::{
-    fhir::traits::CodeSystemAdapter, models::{
-        enums::{gender::Gender, vital_status::VitalStatus},
-        lens::{
-            catalogue::{Category, CategoryGroup, SingleSelectCategory},
-            traits::{CategoryConverter, CriteriaConverter},
-        },
-    }, utils::VITAL_STATUS_LOINC_CODE
+    fhir::traits::CodeSystemAdapter,
+    models::enums::{gender::Gender, vital_status::VitalStatus},
+    utils::VITAL_STATUS_LOINC_CODE,
+};
+
+use crate::lens::{
+    catalogue::{Category, CategoryGroup, SingleSelectCategory},
+    traits::{CategoryConverter, CriteriaConverter},
 };
 
 impl CategoryConverter for Patient {

@@ -2,7 +2,7 @@ use fhirbolt::model::r4b::resources::{CodeSystem, CodeSystemConcept};
 use fhirbolt::model::r4b::types::Code;
 
 use crate::fhir::traits::{CodeSystemAdapter, CodeSystemConceptAdapter}; // Bring the trait into scope
-use crate::models::lens::traits::CriteriaConverter; // Bring the trait into scope
+use crate::lens::traits::CriteriaConverter; // Bring the trait into scope
 use crate::utils::{CCE, FHIR_COMPLETION_STATUS, FHIR_RESOURCE_STATUS, FHIR_RESOURCE_VERSION};
 use crate::models::enums::vital_status::VitalStatus;
 
