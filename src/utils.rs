@@ -41,6 +41,10 @@ pub const OBSERVATION_STATUS: &str = "final";
 
 // various LOINC codes
 pub const VITAL_STATUS_LOINC_CODE: &str = "75186-7";
+pub const CLINICAL_STAGE_GROUP_LOINC_CODE: &str = "21908-9";
+pub const CLINICAL_TUMOR_LOINC_CODE: &str = "21905-5";
+pub const CLINICAL_NODES_LOINC_CODE: &str = "21906-3";
+pub const CLINICAL_METASTASES_LOINC_CODE: &str = "21907-1";
 
 pub fn get_fhir_url() -> String {
     format!("{CCE_URL}/fhir/core")

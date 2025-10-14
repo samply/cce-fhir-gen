@@ -1,8 +1,9 @@
-use core::fmt;
-
 use fake::Dummy;
+use strum::Display;
 
-#[derive(Debug, Dummy)]
+use crate::lens::{catalogue::Criteria, traits::CriteriaConverter};
+
+#[derive(Debug, Display, Dummy)]
 pub enum TumorSiteLocation {
     L,
     R,
@@ -13,27 +14,44 @@ pub enum TumorSiteLocation {
 }
 
 impl TumorSiteLocation {
-    // pub fn as_str(&self) -> &'static str {
-    //     match self {
-    //         TumorSiteLocation::L => "left",
-    //         TumorSiteLocation::R => "right",
-    //         TumorSiteLocation::B => "bilateral",
-    //         TumorSiteLocation::C => "Centerline/Center",
-    //         TumorSiteLocation::N => "Not applicable",
-    //         TumorSiteLocation::U => "unknown",
-    //     }
-    // }
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            TumorSiteLocation::L => "Left",
+            TumorSiteLocation::R => "Right",
+            TumorSiteLocation::B => "Bilateral",
+            TumorSiteLocation::C => "Centered",
+            TumorSiteLocation::N => "Not applicable",
+            TumorSiteLocation::U => "Unknown",
+        }
+    }
 }
 
-impl fmt::Display for TumorSiteLocation {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            TumorSiteLocation::L => write!(f, "L"),
-            TumorSiteLocation::R => write!(f, "R"),
-            TumorSiteLocation::B => write!(f, "B"),
-            TumorSiteLocation::C => write!(f, "C"),
-            TumorSiteLocation::N => write!(f, "N"),
-            TumorSiteLocation::U => write!(f, "U"),
-        }
+impl CriteriaConverter for TumorSiteLocation {
+    fn get_criteria() -> Vec<Criteria> {
+        let left = Criteria::new(
+            TumorSiteLocation::L.as_str(),
+            TumorSiteLocation::L.to_string().as_str(),
+        );
+        let right = Criteria::new(
+            TumorSiteLocation::R.as_str(),
+            TumorSiteLocation::R.to_string().as_str(),
+        );
+        let bilateral = Criteria::new(
+            TumorSiteLocation::B.as_str(),
+            TumorSiteLocation::B.to_string().as_str(),
+        );
+        let centered = Criteria::new(
+            TumorSiteLocation::C.as_str(),
+            TumorSiteLocation::C.to_string().as_str(),
+        );
+        let not_applicable = Criteria::new(
+            TumorSiteLocation::N.as_str(),
+            TumorSiteLocation::N.to_string().as_str(),
+        );
+        let unknown = Criteria::new(
+            TumorSiteLocation::U.as_str(),
+            TumorSiteLocation::U.to_string().as_str(),
+        );
+        vec![left, right, bilateral, centered, unknown, not_applicable]
     }
 }

@@ -17,7 +17,7 @@ use clap::Parser;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhir::vital_status_code_system::get_vital_status_code_system;
-use fhirbolt::model::r4b::resources::{Patient, Specimen};
+use fhirbolt::model::r4b::resources::{Observation, Patient, Specimen};
 use fhirbolt::serde::xml;
 use lens::catalogue::Catalogue;
 use lens::traits::CategoryConverter;
@@ -82,8 +82,13 @@ fn main() {
             let patient_category = Patient::get_category();
             let specimen_category = Specimen::get_category(); // bio-samples
             let therapy_type_category = SystTherapyType::get_category();
-            let catalogue: Catalogue =
-                vec![patient_category, therapy_type_category, specimen_category];
+            let tumor_classification_category = Observation::get_category();
+            let catalogue: Catalogue = vec![
+                patient_category,
+                tumor_classification_category,
+                therapy_type_category,
+                specimen_category,
+            ];
 
             let json = serde_json::to_string_pretty(&catalogue)
                 .expect("Failed to serialize categories to JSON");

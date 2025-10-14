@@ -1,6 +1,9 @@
 use fake::Dummy;
+use strum::Display;
 
-#[derive(Debug, Dummy)]
+use crate::lens::{catalogue::Criteria, traits::CriteriaConverter};
+
+#[derive(Debug, Display, Dummy)]
 pub enum TnmnCategory {
     Zero,
     ZeroIMinus,
@@ -46,5 +49,107 @@ impl TnmnCategory {
             TnmnCategory::ThreeC => "3c",
             TnmnCategory::X => "X",
         }
+    }
+}
+
+impl CriteriaConverter for TnmnCategory {
+    fn get_criteria() -> Vec<Criteria> {
+        let zero = Criteria::new(
+            TnmnCategory::Zero.as_str(),
+            TnmnCategory::Zero.to_string().as_str(),
+        );
+        let zero_i_plus = Criteria::new(
+            TnmnCategory::ZeroIPlus.as_str(),
+            TnmnCategory::ZeroIPlus.to_string().as_str(),
+        );
+        let zero_i_minus = Criteria::new(
+            TnmnCategory::ZeroIMinus.as_str(),
+            TnmnCategory::ZeroIMinus.to_string().as_str(),
+        );
+        let zero_mol_plus = Criteria::new(
+            TnmnCategory::ZeroMolPlus.as_str(),
+            TnmnCategory::ZeroMolPlus.to_string().as_str(),
+        );
+        let zero_mol_minus = Criteria::new(
+            TnmnCategory::ZeroMolMinus.as_str(),
+            TnmnCategory::ZeroMolMinus.to_string().as_str(),
+        );
+        let one = Criteria::new(
+            TnmnCategory::One.as_str(),
+            TnmnCategory::One.to_string().as_str(),
+        );
+        let one_a = Criteria::new(
+            TnmnCategory::OneA.as_str(),
+            TnmnCategory::OneA.to_string().as_str(),
+        );
+        let one_b = Criteria::new(
+            TnmnCategory::OneB.as_str(),
+            TnmnCategory::OneB.to_string().as_str(),
+        );
+        let one_c = Criteria::new(
+            TnmnCategory::OneC.as_str(),
+            TnmnCategory::OneC.to_string().as_str(),
+        );
+        let one_mi = Criteria::new(
+            TnmnCategory::OneMi.as_str(),
+            TnmnCategory::OneMi.to_string().as_str(),
+        );
+        let two = Criteria::new(
+            TnmnCategory::Two.as_str(),
+            TnmnCategory::Two.to_string().as_str(),
+        );
+        let two_a = Criteria::new(
+            TnmnCategory::TwoA.as_str(),
+            TnmnCategory::TwoA.to_string().as_str(),
+        );
+        let two_b = Criteria::new(
+            TnmnCategory::TwoB.as_str(),
+            TnmnCategory::TwoB.to_string().as_str(),
+        );
+        let two_c = Criteria::new(
+            TnmnCategory::TwoC.as_str(),
+            TnmnCategory::TwoC.to_string().as_str(),
+        );
+        let three = Criteria::new(
+            TnmnCategory::Three.as_str(),
+            TnmnCategory::Three.to_string().as_str(),
+        );
+        let three_a = Criteria::new(
+            TnmnCategory::ThreeA.as_str(),
+            TnmnCategory::ThreeA.to_string().as_str(),
+        );
+        let three_b = Criteria::new(
+            TnmnCategory::ThreeB.as_str(),
+            TnmnCategory::ThreeB.to_string().as_str(),
+        );
+        let three_c = Criteria::new(
+            TnmnCategory::ThreeC.as_str(),
+            TnmnCategory::ThreeC.to_string().as_str(),
+        );
+        let x = Criteria::new(
+            TnmnCategory::X.as_str(),
+            TnmnCategory::X.to_string().as_str(),
+        );
+        vec![
+            zero,
+            zero_i_minus,
+            zero_i_plus,
+            zero_mol_minus,
+            zero_mol_plus,
+            one,
+            one_a,
+            one_b,
+            one_c,
+            one_mi,
+            two,
+            two_a,
+            two_b,
+            two_c,
+            three,
+            three_a,
+            three_b,
+            three_c,
+            x,
+        ]
     }
 }

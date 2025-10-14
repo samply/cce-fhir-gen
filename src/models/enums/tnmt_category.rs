@@ -1,6 +1,9 @@
 use fake::Dummy;
+use strum::Display;
 
-#[derive(Debug, Dummy)]
+use crate::lens::{catalogue::Criteria, traits::CriteriaConverter};
+
+#[derive(Debug, Display, Dummy)]
 pub enum TnmtCategory {
     Zero,
     One,
@@ -88,5 +91,176 @@ impl TnmtCategory {
             TnmtCategory::IsPu => "is(pu)",
             TnmtCategory::X => "X",
         }
+    }
+}
+
+impl CriteriaConverter for TnmtCategory {
+    fn get_criteria() -> Vec<Criteria> {
+        let zero = Criteria::new(
+            TnmtCategory::Zero.as_str(),
+            TnmtCategory::Zero.to_string().as_str(),
+        );
+        let one = Criteria::new(
+            TnmtCategory::One.as_str(),
+            TnmtCategory::One.to_string().as_str(),
+        );
+        let one_a = Criteria::new(
+            TnmtCategory::OneA.as_str(),
+            TnmtCategory::OneA.to_string().as_str(),
+        );
+        let one_a1 = Criteria::new(
+            TnmtCategory::OneA1.as_str(),
+            TnmtCategory::OneA1.to_string().as_str(),
+        );
+        let one_a2 = Criteria::new(
+            TnmtCategory::OneA2.as_str(),
+            TnmtCategory::OneA2.to_string().as_str(),
+        );
+        let one_b = Criteria::new(
+            TnmtCategory::OneB.as_str(),
+            TnmtCategory::OneB.to_string().as_str(),
+        );
+        let one_b1 = Criteria::new(
+            TnmtCategory::OneB1.as_str(),
+            TnmtCategory::OneB1.to_string().as_str(),
+        );
+        let one_b2 = Criteria::new(
+            TnmtCategory::OneB2.as_str(),
+            TnmtCategory::OneB2.to_string().as_str(),
+        );
+        let one_c = Criteria::new(
+            TnmtCategory::OneC.as_str(),
+            TnmtCategory::OneC.to_string().as_str(),
+        );
+        let one_c1 = Criteria::new(
+            TnmtCategory::OneC1.as_str(),
+            TnmtCategory::OneC1.to_string().as_str(),
+        );
+        let one_c2 = Criteria::new(
+            TnmtCategory::OneC2.as_str(),
+            TnmtCategory::OneC2.to_string().as_str(),
+        );
+        let one_c3 = Criteria::new(
+            TnmtCategory::OneC3.as_str(),
+            TnmtCategory::OneC3.to_string().as_str(),
+        );
+        let one_d = Criteria::new(
+            TnmtCategory::OneD.as_str(),
+            TnmtCategory::OneD.to_string().as_str(),
+        );
+        let one_mi = Criteria::new(
+            TnmtCategory::OneMi.as_str(),
+            TnmtCategory::OneMi.to_string().as_str(),
+        );
+        let two = Criteria::new(
+            TnmtCategory::Two.as_str(),
+            TnmtCategory::Two.to_string().as_str(),
+        );
+        let two_a = Criteria::new(
+            TnmtCategory::TwoA.as_str(),
+            TnmtCategory::TwoA.to_string().as_str(),
+        );
+        let two_a1 = Criteria::new(
+            TnmtCategory::TwoA1.as_str(),
+            TnmtCategory::TwoA1.to_string().as_str(),
+        );
+        let two_a2 = Criteria::new(
+            TnmtCategory::TwoA2.as_str(),
+            TnmtCategory::TwoA2.to_string().as_str(),
+        );
+        let two_b = Criteria::new(
+            TnmtCategory::TwoB.as_str(),
+            TnmtCategory::TwoB.to_string().as_str(),
+        );
+        let two_c = Criteria::new(
+            TnmtCategory::TwoC.as_str(),
+            TnmtCategory::TwoC.to_string().as_str(),
+        );
+        let two_d = Criteria::new(
+            TnmtCategory::TwoD.as_str(),
+            TnmtCategory::TwoD.to_string().as_str(),
+        );
+        let three = Criteria::new(
+            TnmtCategory::Three.as_str(),
+            TnmtCategory::Three.to_string().as_str(),
+        );
+        let three_a = Criteria::new(
+            TnmtCategory::ThreeA.as_str(),
+            TnmtCategory::ThreeA.to_string().as_str(),
+        );
+        let three_b = Criteria::new(
+            TnmtCategory::ThreeB.as_str(),
+            TnmtCategory::ThreeB.to_string().as_str(),
+        );
+        let three_c = Criteria::new(
+            TnmtCategory::ThreeC.as_str(),
+            TnmtCategory::ThreeC.to_string().as_str(),
+        );
+        let three_d = Criteria::new(
+            TnmtCategory::ThreeD.as_str(),
+            TnmtCategory::ThreeD.to_string().as_str(),
+        );
+        let four = Criteria::new(
+            TnmtCategory::Four.as_str(),
+            TnmtCategory::Four.to_string().as_str(),
+        );
+        let four_a = Criteria::new(
+            TnmtCategory::FourA.as_str(),
+            TnmtCategory::FourA.to_string().as_str(),
+        );
+        let four_b = Criteria::new(
+            TnmtCategory::FourB.as_str(),
+            TnmtCategory::FourB.to_string().as_str(),
+        );
+        let four_c = Criteria::new(
+            TnmtCategory::FourC.as_str(),
+            TnmtCategory::FourC.to_string().as_str(),
+        );
+        let four_d = Criteria::new(
+            TnmtCategory::FourD.as_str(),
+            TnmtCategory::FourD.to_string().as_str(),
+        );
+        let four_e = Criteria::new(
+            TnmtCategory::FourE.as_str(),
+            TnmtCategory::FourE.to_string().as_str(),
+        );
+        let a = Criteria::new(
+            TnmtCategory::A.as_str(),
+            TnmtCategory::A.to_string().as_str(),
+        );
+        let is = Criteria::new(
+            TnmtCategory::Is.as_str(),
+            TnmtCategory::Is.to_string().as_str(),
+        );
+        let is_dcis = Criteria::new(
+            TnmtCategory::IsDcis.as_str(),
+            TnmtCategory::IsDcis.to_string().as_str(),
+        );
+        let is_lcis = Criteria::new(
+            TnmtCategory::IsLcis.as_str(),
+            TnmtCategory::IsLcis.to_string().as_str(),
+        );
+        let is_paget = Criteria::new(
+            TnmtCategory::IsPaget.as_str(),
+            TnmtCategory::IsPaget.to_string().as_str(),
+        );
+        let is_pd = Criteria::new(
+            TnmtCategory::IsPd.as_str(),
+            TnmtCategory::IsPd.to_string().as_str(),
+        );
+        let is_pu = Criteria::new(
+            TnmtCategory::IsPu.as_str(),
+            TnmtCategory::IsPu.to_string().as_str(),
+        );
+        let x = Criteria::new(
+            TnmtCategory::X.as_str(),
+            TnmtCategory::X.to_string().as_str(),
+        );
+        vec![
+            zero, one, one_a, one_a1, one_a2, one_b, one_b1, one_b2, one_c, one_c1, one_c2, one_c3,
+            one_d, one_mi, two, two_a, two_a1, two_a2, two_b, two_c, two_d, three, three_a,
+            three_b, three_c, three_d, four, four_a, four_b, four_c, four_d, four_e, a, is,
+            is_dcis, is_lcis, is_paget, is_pd, is_pu, x,
+        ]
     }
 }
