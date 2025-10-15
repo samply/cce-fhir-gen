@@ -2,8 +2,8 @@ use fake::Dummy;
 use strum::Display;
 
 use crate::lens::{
-    catalogue::{Category, CategoryGroup, SingleSelectCategory},
-    traits::CategoryConverter,
+    catalogue::{Category, CategoryGroup, Criteria, SingleSelectCategory},
+    traits::{CategoryConverter, CriteriaConverter},
 };
 
 #[derive(Clone, Debug, Display, Dummy)]
@@ -51,50 +51,44 @@ impl SystTherapyType {
 
 impl CategoryConverter for SystTherapyType {
     fn get_category() -> Category {
-        let ch = SingleSelectCategory::new(
-            SystTherapyType::CH.to_string().as_str(),
-            SystTherapyType::CH.as_str(),
-            "",
-            vec![],
-        );
-        let ho = SingleSelectCategory::new(
-            SystTherapyType::HO.to_string().as_str(),
-            SystTherapyType::HO.as_str(),
-            "",
-            vec![],
-        );
-        let im = SingleSelectCategory::new(
-            SystTherapyType::IM.to_string().as_str(),
-            SystTherapyType::IM.as_str(),
-            "",
-            vec![],
-        );
-        let rt = SingleSelectCategory::new(
-            SystTherapyType::RT.to_string().as_str(),
-            SystTherapyType::RT.as_str(),
-            "",
-            vec![],
-        );
-        let op = SingleSelectCategory::new(
+        let op = Criteria::new(
             SystTherapyType::OP.to_string().as_str(),
             SystTherapyType::OP.as_str(),
-            "",
-            vec![],
         );
-        let sc = SingleSelectCategory::new(
-            SystTherapyType::SC.to_string().as_str(),
-            SystTherapyType::SC.as_str(),
-            "",
-            vec![],
+        let rt = Criteria::new(
+            SystTherapyType::RT.to_string().as_str(),
+            SystTherapyType::RT.as_str(),
         );
 
+        let operation_radiotherapy_category =
+            SingleSelectCategory::new("procedure", "Operation / Radiotherapy", "", vec![op, rt]);
+
+        let ch = Criteria::new(
+            SystTherapyType::CH.to_string().as_str(),
+            SystTherapyType::CH.as_str(),
+        );
+        let ho = Criteria::new(
+            SystTherapyType::HO.to_string().as_str(),
+            SystTherapyType::HO.as_str(),
+        );
+        let im = Criteria::new(
+            SystTherapyType::IM.to_string().as_str(),
+            SystTherapyType::IM.as_str(),
+        );
+        let sc = Criteria::new(
+            SystTherapyType::SC.to_string().as_str(),
+            SystTherapyType::SC.as_str(),
+        );
+
+        let other_therapy_category = SingleSelectCategory::new(
+            "medicationStatement",
+            "Other Therapies",
+            "",
+            vec![ch, ho, im, sc],
+        );
         let child_categories = vec![
-            Category::SingleSelect(ch),
-            Category::SingleSelect(ho),
-            Category::SingleSelect(im),
-            Category::SingleSelect(rt),
-            Category::SingleSelect(op),
-            Category::SingleSelect(sc),
+            Category::SingleSelect(operation_radiotherapy_category),
+            Category::SingleSelect(other_therapy_category),
         ];
         let category_group =
             CategoryGroup::new("therapy_of_tumor", "Therapy of tumor", child_categories);

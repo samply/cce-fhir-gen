@@ -29,28 +29,28 @@ impl TumorSiteLocation {
 impl CriteriaConverter for TumorSiteLocation {
     fn get_criteria() -> Vec<Criteria> {
         let left = Criteria::new(
-            TumorSiteLocation::L.as_str(),
             TumorSiteLocation::L.to_string().as_str(),
+            TumorSiteLocation::L.as_str(),
         );
         let right = Criteria::new(
-            TumorSiteLocation::R.as_str(),
             TumorSiteLocation::R.to_string().as_str(),
+            TumorSiteLocation::R.as_str(),
         );
         let bilateral = Criteria::new(
-            TumorSiteLocation::B.as_str(),
             TumorSiteLocation::B.to_string().as_str(),
+            TumorSiteLocation::B.as_str(),
         );
         let centered = Criteria::new(
-            TumorSiteLocation::C.as_str(),
             TumorSiteLocation::C.to_string().as_str(),
+            TumorSiteLocation::C.as_str(),
         );
         let not_applicable = Criteria::new(
-            TumorSiteLocation::N.as_str(),
             TumorSiteLocation::N.to_string().as_str(),
+            TumorSiteLocation::N.as_str(),
         );
         let unknown = Criteria::new(
-            TumorSiteLocation::U.as_str(),
             TumorSiteLocation::U.to_string().as_str(),
+            TumorSiteLocation::U.as_str(),
         );
         vec![left, right, bilateral, centered, unknown, not_applicable]
     }

@@ -38,49 +38,28 @@ impl TnmmCategory {
 
 impl CriteriaConverter for TnmmCategory {
     fn get_criteria() -> Vec<Criteria> {
-        let zero = Criteria::new(
-            TnmmCategory::Zero.as_str(),
-            TnmmCategory::Zero.to_string().as_str(),
-        );
-        let one = Criteria::new(
-            TnmmCategory::One.as_str(),
-            TnmmCategory::One.to_string().as_str(),
-        );
-        let one_a = Criteria::new(
-            TnmmCategory::OneA.as_str(),
-            TnmmCategory::OneA.to_string().as_str(),
-        );
-        let one_b = Criteria::new(
-            TnmmCategory::OneB.as_str(),
-            TnmmCategory::OneB.to_string().as_str(),
-        );
-        let one_c = Criteria::new(
-            TnmmCategory::OneC.as_str(),
-            TnmmCategory::OneC.to_string().as_str(),
-        );
-        let one_d = Criteria::new(
-            TnmmCategory::OneD.as_str(),
-            TnmmCategory::OneD.to_string().as_str(),
-        );
-        let one_e = Criteria::new(
-            TnmmCategory::OneE.as_str(),
-            TnmmCategory::OneE.to_string().as_str(),
-        );
+        let zero = Criteria::new(TnmmCategory::Zero.as_str(), TnmmCategory::Zero.as_str());
+        let one = Criteria::new(TnmmCategory::One.as_str(), TnmmCategory::One.as_str());
+        let one_a = Criteria::new(TnmmCategory::OneA.as_str(), TnmmCategory::OneA.as_str());
+        let one_b = Criteria::new(TnmmCategory::OneB.as_str(), TnmmCategory::OneB.as_str());
+        let one_c = Criteria::new(TnmmCategory::OneC.as_str(), TnmmCategory::OneC.as_str());
+        let one_d = Criteria::new(TnmmCategory::OneD.as_str(), TnmmCategory::OneD.as_str());
+        let one_e = Criteria::new(TnmmCategory::OneE.as_str(), TnmmCategory::OneE.as_str());
         let zero_i_minus = Criteria::new(
             TnmmCategory::ZeroIMinus.as_str(),
-            TnmmCategory::ZeroIMinus.to_string().as_str(),
+            TnmmCategory::ZeroIMinus.as_str(),
         );
         let zero_i_plus = Criteria::new(
             TnmmCategory::ZeroIPlus.as_str(),
-            TnmmCategory::ZeroIPlus.to_string().as_str(),
+            TnmmCategory::ZeroIPlus.as_str(),
         );
         let zero_mol_minus = Criteria::new(
             TnmmCategory::ZeroMolMinus.as_str(),
-            TnmmCategory::ZeroMolMinus.to_string().as_str(),
+            TnmmCategory::ZeroMolMinus.as_str(),
         );
         let zero_mol_plus = Criteria::new(
             TnmmCategory::ZeroMolPlus.as_str(),
-            TnmmCategory::ZeroMolPlus.to_string().as_str(),
+            TnmmCategory::ZeroMolPlus.as_str(),
         );
         vec![
             zero,
