@@ -3,9 +3,8 @@ use fhirbolt::model::r4b::resources::Observation;
 use crate::{
     fhir::traits::CodeSystemAdapter,
     models::enums::{
-        gender::Gender, tnmm_category::TnmmCategory, tnmn_category::TnmnCategory,
-        tnmt_category::TnmtCategory, tumor_site_location::TumorSiteLocation, uicc_stage::UiccStage,
-        vital_status::VitalStatus,
+        tnmm_category::TnmmCategory, tnmn_category::TnmnCategory, tnmt_category::TnmtCategory,
+        tumor_site_location::TumorSiteLocation, uicc_stage::UiccStage,
     },
     utils::{
         CLINICAL_METASTASES_LOINC_CODE, CLINICAL_NODES_LOINC_CODE, CLINICAL_STAGE_GROUP_LOINC_CODE,

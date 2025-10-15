@@ -3,7 +3,7 @@ use strum::Display;
 
 use crate::lens::{
     catalogue::{Category, CategoryGroup, Criteria, SingleSelectCategory},
-    traits::{CategoryConverter, CriteriaConverter},
+    traits::CategoryConverter,
 };
 
 #[derive(Clone, Debug, Display, Dummy)]
@@ -31,7 +31,7 @@ impl SystTherapyType {
         match self {
             SystTherapyType::CH => "Chemotherapy",
             SystTherapyType::HO => "Hormone therapy",
-            SystTherapyType::IM => "Immunotherapy and antibody therapy",
+            SystTherapyType::IM => "Immunotherapy",
             // SystTherapyType::BM => "Bone marrow transplantation",
             // SystTherapyType::WS => "Wait and see",
             // SystTherapyType::AS => "Active Surveillance",
@@ -43,7 +43,7 @@ impl SystTherapyType {
             // SystTherapyType::CT => "Chemotherapy + Targeted substances",
             // SystTherapyType::CIT => "Chemo- + Immuno-/Antibody therapy + Targeted substances",
             // SystTherapyType::IT => "Immuno-/Antibody therapy + Targeted substances",
-            SystTherapyType::SC => "Stem cell transplantation (incl. bone marrow transplantation)",
+            SystTherapyType::SC => "Stem cell therapy",
             // SystTherapyType::WW => "Watchful Waiting",
         }
     }
