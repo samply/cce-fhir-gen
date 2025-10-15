@@ -10,7 +10,7 @@ use crate::lens::{
 impl CategoryConverter for Specimen {
     fn get_category() -> Category {
         let sample_material_type = SingleSelectCategory::new(
-            "sample-type",
+            "sample_kind",
             "Sample Type",
             "",
             SampleMaterialType::get_criteria(),
