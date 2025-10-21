@@ -7,7 +7,7 @@ use log::debug;
 use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
-use crate::utils::get_ids;
+use crate::utils::{get_ids, get_min_date_time};
 use crate::{
     condition_svc, medication_svc, observation_svc, patient_svc, procedure_svc, specimen_svc,
 };
@@ -37,7 +37,7 @@ pub fn get_bundle() -> Bundle {
         i,
     );
 
-    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let min_date_time = get_min_date_time();
     let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();

@@ -1,5 +1,7 @@
 use std::ops::Range;
 
+use chrono::prelude::*;
+use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
 use fhirbolt::model::r4b::resources::{BundleEntry, Condition, ConditionOnset};
 use fhirbolt::model::r4b::types::{Code, CodeableConcept, Coding, DateTime, Id, Reference, Uri};
@@ -9,7 +11,10 @@ use crate::extensions::option_ext::OptionExt;
 use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::tumor_site_location::TumorSiteLocation;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_site_location_url};
+use crate::utils::{
+    get_bundle_entry_request, get_full_url, get_ids, get_min_date_time_millenial,
+    get_site_location_url,
+};
 
 pub fn get_condition(
     id: &str,
@@ -18,6 +23,8 @@ pub fn get_condition(
     bs_code_value1: &str,
 ) -> Condition {
     let bs_code_value2: TumorSiteLocation = Faker.fake();
+    let min_date_time: chrono::DateTime<Utc> = get_min_date_time_millenial();
+    let effective_date: chrono::DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let cid = Id {
         value: Some(id.to_string()),
@@ -28,7 +35,7 @@ pub fn get_condition(
         ..Default::default()
     };
     let effective = DateTime {
-        value: Some("2021-02-02".to_string()),
+        value: Some(effective_date.date_naive().to_string()),
         ..Default::default()
     };
     let coding = Coding {

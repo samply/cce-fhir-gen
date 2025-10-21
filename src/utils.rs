@@ -1,3 +1,4 @@
+use chrono::prelude::*;
 use fhirbolt::{
     model::r4b::{
         resources::BundleEntryRequest,
@@ -109,6 +110,14 @@ pub fn get_body_site_url() -> Uri {
 
 pub fn get_full_url(id: &str) -> Uri {
     Uri::from(format!("{CCE_URL}/fhir-xml/examples/{}", id))
+}
+
+pub fn get_min_date_time() -> DateTime<Utc> {
+    Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap()
+}
+
+pub fn get_min_date_time_millenial() -> DateTime<Utc> {
+    Utc.with_ymd_and_hms(1980, 1, 1, 0, 0, 0).unwrap()
 }
 
 pub fn get_bundle_entry_request(method: &str, url: &str) -> BundleEntryRequest {

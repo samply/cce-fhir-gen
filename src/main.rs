@@ -28,6 +28,8 @@ use models::enums::syst_therapy_type::SystTherapyType;
 use showcase::showcase_data;
 use utils::get_ids;
 
+use crate::utils::get_min_date_time;
+
 const DATA_FOLDER: &str = "generated-data";
 // const PROXY_URL: &str = "";
 
@@ -123,7 +125,7 @@ fn generate_fhir_bundle(cli: CliArgs, resource_type: ResourceType) {
         i,
     );
 
-    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let min_date_time = get_min_date_time();
     let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
@@ -354,7 +356,7 @@ fn generate_fhir_bundles(cli: CliArgs, number: u8, resource_type: ResourceType) 
         i,
     );
 
-    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let min_date_time = get_min_date_time();
     let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();

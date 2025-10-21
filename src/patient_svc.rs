@@ -12,13 +12,13 @@ use crate::extensions::option_ext::OptionExt;
 use crate::models::cli::ResourceType;
 use crate::models::enums::gender::Gender;
 use crate::models::enums::id_type::IdType;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_ids};
+use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_min_date_time};
 
 pub fn get_patient(id: &str, src_id: &str) -> Patient {
     debug!("get_patient - id: {}, src_id: {}", id, src_id);
 
     let gender: Gender = Faker.fake();
-    let min_date_time: chrono::DateTime<Utc> = Faker.fake();
+    let min_date_time: chrono::DateTime<Utc> = get_min_date_time();
     let birthdate: chrono::DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let deceased: bool = Faker.fake();
 
