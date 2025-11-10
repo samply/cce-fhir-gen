@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Patient xmlns="http://hl7.org/fhir">
-    <id value="Patient-id-115" />
-    <identifier>
-        <value value="Patient-src-identifier-115" />
-    </identifier>
-    <gender value="male" />
-    <birthDate value="1930-11-07" />
-    <deceasedDateTime value="1980-11-07" />
-</Patient>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-33444"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-33444"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-33444"/>
+        <identifier>
+          <value value="Patient-src-identifier-33444"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2236-04-10"/>
+        <deceasedDateTime value="2286-04-10"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-33444"/>
+    </request>
+  </entry>
+</Bundle>

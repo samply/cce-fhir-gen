@@ -1,65 +1,110 @@
 mod bundle_svc;
 mod condition_svc;
 mod extensions;
+mod fhir;
+mod lens;
 mod medication_svc;
 mod models;
 mod observation_svc;
 mod patient_svc;
 mod procedure_svc;
+mod showcase;
 mod specimen_svc;
 mod utils;
-
-use std::fs;
 
 use chrono::prelude::*;
 use clap::Parser;
 use fake::faker::chrono::en::DateTimeAfter;
 use fake::{Fake, Faker};
+use fhir::vital_status_code_system::get_vital_status_code_system;
+use fhirbolt::model::r4b::resources::{Observation, Patient, Specimen};
 use fhirbolt::serde::xml;
+use lens::catalogue::Catalogue;
+use lens::traits::CategoryConverter;
 use log::info;
-use models::cli::{CliArgs, OutputMode, ResourceType};
+use models::cli::{CliArgs, Commands, OutputMode, ResourceType};
 use models::enums::id_type::IdType;
 use models::enums::syst_therapy_type::SystTherapyType;
+use showcase::showcase_data;
 use utils::get_ids;
+
+use crate::utils::get_min_date_time;
 
 const DATA_FOLDER: &str = "generated-data";
 // const PROXY_URL: &str = "";
 
+// TODO: Update README as per the new CLI options
+// TODO: Refactor CLI options and pull out output_mode in the main options
 fn main() {
     // initialize colored logger to level Info (change this to Debug for seeing debug stmts in output)
-    let mut colog = colog::default_builder();
-    colog.filter(None, log::LevelFilter::Info);
-    colog.init();
+    let mut colored_logger = colog::default_builder();
+    colored_logger.filter(None, log::LevelFilter::Info);
+    colored_logger.init();
 
     let cli = CliArgs::parse();
+    match cli.cmd {
+        Commands::SyntheticData {
+            number,
+            resource_type,
+            output_mode,
+        } => {
+            let file_msg = format!("write to a file in /{}", DATA_FOLDER);
+            let storage = match output_mode {
+                OutputMode::Screen => "show on terminal",
+                OutputMode::File => file_msg.as_str(),
+                OutputMode::ApiCall => "call API endpoint (WIP)",
+            };
 
-    let file_msg = format!("write to a file in /{}", DATA_FOLDER);
-    let storage = match cli.output_mode {
-        OutputMode::Screen => "show on terminal",
-        OutputMode::File => file_msg.as_str(),
-        OutputMode::ApiCall => "call API endpoint (WIP)",
-    };
+            println!(
+                "Generating {} {:?} and {}...",
+                number, resource_type, storage
+            );
+            println!("");
 
-    println!(
-        "Generating {} {:?} and {}...",
-        cli.number, cli.resource_type, storage
-    );
-    println!("");
-
-    if cli.number > 1 {
-        info!("generating a single bundle containing multiple {:?}...", cli.resource_type);
-        generate_fhir_bundles(cli.number, cli.resource_type, cli.output_mode);
-    } else {
-        if cli.resource_type == ResourceType::Bundle {
-            info!("generating a single bundle containing all resource types...");
-        } else {
-            info!("generating a single bundle containing a {:?}...", cli.resource_type);
+            if number > 1 {
+                info!(
+                    "generating a single bundle containing multiple {:?}...",
+                    resource_type
+                );
+                generate_fhir_bundles(cli, number, resource_type);
+            } else {
+                if resource_type == ResourceType::Bundle {
+                    info!("generating a single bundle containing all resource types...");
+                } else {
+                    info!(
+                        "generating a single bundle containing a {:?}...",
+                        resource_type
+                    );
+                }
+                generate_fhir_bundle(cli, resource_type);
+            }
         }
-        generate_fhir_bundle(cli.resource_type, cli.output_mode);
+
+        Commands::Catalogue { .. } => {
+            let patient_category = Patient::get_category();
+            let specimen_category = Specimen::get_category(); // bio-samples
+            let therapy_type_category = SystTherapyType::get_category();
+            let tumor_classification_category = Observation::get_category();
+            let catalogue: Catalogue = vec![
+                patient_category,
+                tumor_classification_category,
+                therapy_type_category,
+                specimen_category,
+            ];
+
+            let json = serde_json::to_string_pretty(&catalogue)
+                .expect("Failed to serialize categories to JSON");
+            showcase_data(json, None, cli.cmd);
+        }
+
+        Commands::FhirProfiles => {
+            let vs_res = utils::get_xml(get_vital_status_code_system(), "vital-status CodeSystem");
+            showcase_data(vs_res, None, cli.cmd);
+        }
     }
 }
 
-fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundle(cli: CliArgs, resource_type: ResourceType) {
     info!("generate_fhir_bundle");
 
     let i: u16 = Faker.fake();
@@ -80,7 +125,7 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         i,
     );
 
-    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let min_date_time = get_min_date_time();
     let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
@@ -287,32 +332,10 @@ fn generate_fhir_bundle(resource_type: ResourceType, output_mode: OutputMode) {
         }
     };
 
-    match output_mode {
-        OutputMode::Screen => {
-            println!("{}:", resource_type.as_str());
-            println!("{xml_data}");
-            println!();
-        }
-
-        OutputMode::File => {
-            let dir_path = format!("./{DATA_FOLDER}");
-            if fs::exists(&dir_path).expect("dir exists error") {
-                println!("{} already exists.", dir_path);
-            } else {
-                println!("creating {}.", &dir_path);
-                fs::create_dir(&dir_path).expect("failed to create dir");
-            }
-
-            let with_extn = format!("{}.xml", file_name);
-            let file_path = format!("{}/{}", &dir_path, with_extn);
-            fs::write(file_path, xml_data).expect("Unable to create XML file");
-        }
-
-        OutputMode::ApiCall => todo!(),
-    }
+    showcase_data(xml_data, Some(file_name), cli.cmd);
 }
 
-fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: OutputMode) {
+fn generate_fhir_bundles(cli: CliArgs, number: u8, resource_type: ResourceType) {
     info!("generate_fhir_bundles");
 
     let range = 0..number;
@@ -333,7 +356,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
         i,
     );
 
-    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let min_date_time = get_min_date_time();
     let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
@@ -521,29 +544,7 @@ fn generate_fhir_bundles(number: u8, resource_type: ResourceType, output_mode: O
     };
 
     let bundle_xml = utils::get_xml(bundle, "bundle");
-    match output_mode {
-        OutputMode::Screen => {
-            println!("{}:", resource_type.as_str());
-            println!("{bundle_xml}");
-            println!();
-        }
-
-        OutputMode::File => {
-            let dir_path = format!("./{DATA_FOLDER}");
-            if fs::exists(&dir_path).expect("dir exists error") {
-                println!("{} already exists.", dir_path);
-            } else {
-                println!("creating {}.", &dir_path);
-                fs::create_dir(&dir_path).expect("failed to create dir");
-            }
-
-            let with_extn = format!("{}.xml", file_name);
-            let file_path = format!("{}/{}", &dir_path, with_extn);
-            fs::write(file_path, bundle_xml).expect("Unable to create XML file");
-        }
-
-        OutputMode::ApiCall => todo!(),
-    }
+    showcase_data(bundle_xml, Some(file_name), cli.cmd);
 }
 
 // fn get_client() -> Client {

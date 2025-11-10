@@ -1,22 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Procedure xmlns="http://hl7.org/fhir">
-    <id value="Operation-id-115" />
-    <status id="successful" />
-    <category>
-        <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS" />
-            <code value="OP" />
-            <display value="Operation" />
-        </coding>
-    </category>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <performedPeriod>
-        <start value="1930-10-24" />
-        <end value="1931-09-20" />
-    </performedPeriod>
-    <reasonReference>
-        <reference value="Condition/Condition-id-115" />
-    </reasonReference>
-</Procedure>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-57097"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-57097"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-57097"/>
+        <identifier>
+          <value value="Patient-src-identifier-57097"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="2223-04-14"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-57097"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-57097"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-57097"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-57097"/>
+        </subject>
+        <onsetDateTime value="2021-02-02"/>
+        <recordedDate value="2021-02-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-57097"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Operation-id-57097"/>
+    <resource>
+      <Procedure>
+        <id value="Operation-id-57097"/>
+        <status id="successful"/>
+        <category>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SYSTTherapyTypeCS"/>
+            <code value="OP"/>
+            <display value="Operation"/>
+          </coding>
+        </category>
+        <subject>
+          <reference value="Patient/Patient-id-57097"/>
+        </subject>
+        <performedPeriod>
+          <start value="1930-02-26"/>
+          <end value="1930-04-13"/>
+        </performedPeriod>
+        <reasonReference>
+          <reference value="Condition/Condition-id-57097"/>
+        </reasonReference>
+      </Procedure>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Procedure/Operation-id-57097"/>
+    </request>
+  </entry>
+</Bundle>

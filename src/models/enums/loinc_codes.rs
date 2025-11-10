@@ -1,5 +1,10 @@
 use fake::Dummy;
 
+use crate::utils::{
+    CLINICAL_METASTASES_LOINC_CODE, CLINICAL_NODES_LOINC_CODE, CLINICAL_STAGE_GROUP_LOINC_CODE,
+    CLINICAL_TUMOR_LOINC_CODE,
+};
+
 #[derive(Debug, Dummy)]
 pub enum TnmClassification {
     Pathologic,
@@ -10,7 +15,8 @@ impl TnmClassification {
     pub fn as_str(&self) -> &'static str {
         match self {
             TnmClassification::Pathologic => "21902-2",
-            TnmClassification::Clinical => "21908-9",
+            // TODO: ... check if this is correct
+            TnmClassification::Clinical => CLINICAL_STAGE_GROUP_LOINC_CODE,
         }
     }
 }
@@ -25,7 +31,7 @@ impl TnmtClassification {
     pub fn as_str(&self) -> &'static str {
         match self {
             TnmtClassification::Pathologic => "21899-0",
-            TnmtClassification::Clinical => "21905-5",
+            TnmtClassification::Clinical => CLINICAL_TUMOR_LOINC_CODE,
         }
     }
 }
@@ -40,7 +46,7 @@ impl TnmnClassification {
     pub fn as_str(&self) -> &'static str {
         match self {
             TnmnClassification::Pathologic => "21900-6",
-            TnmnClassification::Clinical => "21906-3",
+            TnmnClassification::Clinical => CLINICAL_NODES_LOINC_CODE,
         }
     }
 }
@@ -55,7 +61,7 @@ impl TnmmClassification {
     pub fn as_str(&self) -> &'static str {
         match self {
             TnmmClassification::Pathologic => "21901-4",
-            TnmmClassification::Clinical => "21907-1",
+            TnmmClassification::Clinical => CLINICAL_METASTASES_LOINC_CODE,
         }
     }
 }

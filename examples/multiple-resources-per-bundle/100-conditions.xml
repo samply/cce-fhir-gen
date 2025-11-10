@@ -1,0 +1,3522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-50666"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-50666"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-50666"/>
+        <identifier>
+          <value value="Patient-src-identifier-50666"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1931-01-27"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-50666"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-24769"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-24769"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-11-18"/>
+        <recordedDate value="1980-11-18"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-24769"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-19702"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-19702"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-03-19"/>
+        <recordedDate value="1981-03-19"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-19702"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-45285"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-45285"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-03-04"/>
+        <recordedDate value="1980-03-04"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-45285"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-45948"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-45948"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-26"/>
+        <recordedDate value="1980-05-26"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-45948"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-429"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-429"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-04-12"/>
+        <recordedDate value="1980-04-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-429"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-18744"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-18744"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-06-28"/>
+        <recordedDate value="1981-06-28"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-18744"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-31996"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-31996"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-12"/>
+        <recordedDate value="1980-12-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-31996"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-30336"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-30336"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-11-05"/>
+        <recordedDate value="1980-11-05"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-30336"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-59672"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-59672"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-02-14"/>
+        <recordedDate value="1981-02-14"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-59672"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-19483"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-19483"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-07-20"/>
+        <recordedDate value="1981-07-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-19483"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-60748"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-60748"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-03-14"/>
+        <recordedDate value="1980-03-14"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-60748"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-41402"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-41402"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-20"/>
+        <recordedDate value="1980-12-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-41402"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-24380"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-24380"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-09-10"/>
+        <recordedDate value="1980-09-10"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-24380"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-57888"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-57888"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-08-13"/>
+        <recordedDate value="1980-08-13"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-57888"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-19905"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-19905"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-08-11"/>
+        <recordedDate value="1980-08-11"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-19905"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-21180"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-21180"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-02-22"/>
+        <recordedDate value="1980-02-22"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-21180"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-1155"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-1155"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-24"/>
+        <recordedDate value="1981-09-24"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-1155"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-47431"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-47431"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-07"/>
+        <recordedDate value="1980-05-07"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-47431"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-34949"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-34949"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-09-18"/>
+        <recordedDate value="1980-09-18"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-34949"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-23752"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-23752"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-05-09"/>
+        <recordedDate value="1981-05-09"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-23752"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-2598"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-2598"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-07-20"/>
+        <recordedDate value="1980-07-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-2598"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-12588"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-12588"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-21"/>
+        <recordedDate value="1981-09-21"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-12588"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-19048"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-19048"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-04-03"/>
+        <recordedDate value="1980-04-03"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-19048"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-5370"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-5370"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-11-20"/>
+        <recordedDate value="1981-11-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-5370"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-46397"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-46397"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-08-24"/>
+        <recordedDate value="1981-08-24"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-46397"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-32470"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-32470"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-08-06"/>
+        <recordedDate value="1980-08-06"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-32470"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-35096"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-35096"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-02-15"/>
+        <recordedDate value="1981-02-15"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-35096"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-37163"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-37163"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-06-24"/>
+        <recordedDate value="1981-06-24"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-37163"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-6733"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-6733"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-01-10"/>
+        <recordedDate value="1980-01-10"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-6733"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-990"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-990"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-12"/>
+        <recordedDate value="1980-12-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-990"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-45827"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-45827"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-07"/>
+        <recordedDate value="1980-05-07"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-45827"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-16433"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-16433"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-03-31"/>
+        <recordedDate value="1981-03-31"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-16433"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-61334"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-61334"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-10-17"/>
+        <recordedDate value="1980-10-17"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-61334"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-39423"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-39423"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-08-23"/>
+        <recordedDate value="1981-08-23"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-39423"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-37277"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-37277"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-04-20"/>
+        <recordedDate value="1981-04-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-37277"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-24541"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-24541"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-03-27"/>
+        <recordedDate value="1981-03-27"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-24541"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-6010"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-6010"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-11-24"/>
+        <recordedDate value="1981-11-24"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-6010"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-31300"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-31300"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-30"/>
+        <recordedDate value="1981-09-30"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-31300"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-1983"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-1983"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-07-21"/>
+        <recordedDate value="1981-07-21"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-1983"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-55676"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-55676"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-10-17"/>
+        <recordedDate value="1980-10-17"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-55676"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-45643"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-45643"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-23"/>
+        <recordedDate value="1980-12-23"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-45643"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-58034"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-58034"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-03-20"/>
+        <recordedDate value="1981-03-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-58034"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-56851"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-56851"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-04-11"/>
+        <recordedDate value="1981-04-11"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-56851"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-45133"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-45133"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-06-23"/>
+        <recordedDate value="1981-06-23"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-45133"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-52905"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-52905"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-07-13"/>
+        <recordedDate value="1980-07-13"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-52905"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-19491"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-19491"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-02-07"/>
+        <recordedDate value="1981-02-07"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-19491"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-27166"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-27166"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-08-12"/>
+        <recordedDate value="1981-08-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-27166"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-44032"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-44032"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-14"/>
+        <recordedDate value="1981-09-14"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-44032"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-9032"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-9032"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-03"/>
+        <recordedDate value="1980-12-03"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-9032"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-46223"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-46223"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-05-03"/>
+        <recordedDate value="1981-05-03"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-46223"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-36112"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-36112"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-06-05"/>
+        <recordedDate value="1980-06-05"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-36112"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-32985"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-32985"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-11-11"/>
+        <recordedDate value="1980-11-11"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-32985"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-3339"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-3339"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-05-15"/>
+        <recordedDate value="1981-05-15"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-3339"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-38398"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-38398"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-01-18"/>
+        <recordedDate value="1981-01-18"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-38398"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-34805"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-34805"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-01-09"/>
+        <recordedDate value="1980-01-09"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-34805"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-64065"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-64065"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-12"/>
+        <recordedDate value="1980-12-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-64065"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-8130"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-8130"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-05-17"/>
+        <recordedDate value="1981-05-17"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-8130"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-8045"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-8045"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-03-02"/>
+        <recordedDate value="1981-03-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-8045"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-47197"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-47197"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-06-25"/>
+        <recordedDate value="1980-06-25"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-47197"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-47790"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-47790"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-01-12"/>
+        <recordedDate value="1981-01-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-47790"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-64884"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-64884"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-04-25"/>
+        <recordedDate value="1981-04-25"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-64884"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-1161"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-1161"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-10-23"/>
+        <recordedDate value="1980-10-23"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-1161"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-54626"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-54626"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-02-07"/>
+        <recordedDate value="1980-02-07"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-54626"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-38951"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-38951"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-11"/>
+        <recordedDate value="1980-05-11"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-38951"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-61535"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-61535"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-30"/>
+        <recordedDate value="1980-12-30"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-61535"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-6660"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-6660"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-25"/>
+        <recordedDate value="1980-12-25"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-6660"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-45892"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-45892"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-07-03"/>
+        <recordedDate value="1981-07-03"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-45892"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-61583"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-61583"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-14"/>
+        <recordedDate value="1980-05-14"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-61583"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-2315"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-2315"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-07-13"/>
+        <recordedDate value="1981-07-13"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-2315"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-10619"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-10619"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-03-28"/>
+        <recordedDate value="1981-03-28"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-10619"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-9072"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-9072"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-10-02"/>
+        <recordedDate value="1980-10-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-9072"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-35256"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-35256"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-09-02"/>
+        <recordedDate value="1980-09-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-35256"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-37561"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-37561"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-10-12"/>
+        <recordedDate value="1980-10-12"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-37561"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-30927"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-30927"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-06-14"/>
+        <recordedDate value="1981-06-14"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-30927"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-46476"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-46476"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-03"/>
+        <recordedDate value="1980-05-03"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-46476"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-4212"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-4212"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-29"/>
+        <recordedDate value="1981-09-29"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-4212"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-51711"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-51711"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-11-13"/>
+        <recordedDate value="1981-11-13"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-51711"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-41984"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-41984"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-04-19"/>
+        <recordedDate value="1980-04-19"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-41984"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-35568"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-35568"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-01-01"/>
+        <recordedDate value="1981-01-01"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-35568"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-26192"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-26192"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-01-14"/>
+        <recordedDate value="1980-01-14"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-26192"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-63879"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-63879"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-04"/>
+        <recordedDate value="1981-09-04"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-63879"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-46673"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-46673"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-05-10"/>
+        <recordedDate value="1980-05-10"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-46673"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-13966"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-13966"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-04-20"/>
+        <recordedDate value="1981-04-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-13966"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-38302"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-38302"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-02-02"/>
+        <recordedDate value="1981-02-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-38302"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-21701"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-21701"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-07-31"/>
+        <recordedDate value="1980-07-31"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-21701"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-57043"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-57043"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-01-02"/>
+        <recordedDate value="1981-01-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-57043"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-58254"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-58254"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-06-21"/>
+        <recordedDate value="1981-06-21"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-58254"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-54010"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-54010"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-02-26"/>
+        <recordedDate value="1981-02-26"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-54010"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-58686"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-58686"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="U"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-10-20"/>
+        <recordedDate value="1981-10-20"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-58686"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-31042"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-31042"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-23"/>
+        <recordedDate value="1981-09-23"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-31042"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-34994"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-34994"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-11-24"/>
+        <recordedDate value="1980-11-24"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-34994"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-16235"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-16235"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-02-15"/>
+        <recordedDate value="1980-02-15"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-16235"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-20612"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-20612"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-25"/>
+        <recordedDate value="1980-12-25"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-20612"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-40162"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-40162"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="R"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-01-15"/>
+        <recordedDate value="1981-01-15"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-40162"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-64874"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-64874"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-08-28"/>
+        <recordedDate value="1980-08-28"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-64874"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-12520"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-12520"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-05-25"/>
+        <recordedDate value="1981-05-25"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-12520"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-14717"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-14717"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="B"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1981-09-24"/>
+        <recordedDate value="1981-09-24"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-14717"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-34644"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-34644"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-08-15"/>
+        <recordedDate value="1980-08-15"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-34644"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-47869"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-47869"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="L"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-12-03"/>
+        <recordedDate value="1980-12-03"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-47869"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-34875"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-34875"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="N"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50666"/>
+        </subject>
+        <onsetDateTime value="1980-09-29"/>
+        <recordedDate value="1980-09-29"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-34875"/>
+    </request>
+  </entry>
+</Bundle>

@@ -1,28 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Observation xmlns="http://hl7.org/fhir">
-    <id value="Histology-id-115" />
-    <status value="final" />
-    <code>
-        <coding>
-            <system value="https://loinc.org" />
-            <code value="59847-4" />
-        </coding>
-    </code>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <focus>
-        <reference value="Condition/Condition-id-115" />
-    </focus>
-    <effectiveDateTime value="1930-06-18" />
-    <valueCodeableConcept>
-        <coding>
-            <system value="urn:oid:2.16.840.1.113883.6.43.1" />
-            <version value="32" />
-            <code value="8140/3" />
-        </coding>
-    </valueCodeableConcept>
-    <specimen>
-        <reference value="Specimen/Specimen-id-115" />
-    </specimen>
-</Observation>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-50092"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-50092"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-50092"/>
+        <identifier>
+          <value value="Patient-src-identifier-50092"/>
+        </identifier>
+        <gender value="female"/>
+        <birthDate value="1857-03-09"/>
+        <deceasedDateTime value="1907-03-09"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-50092"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Condition-id-50092"/>
+    <resource>
+      <Condition>
+        <id value="Condition-id-50092"/>
+        <code>
+          <coding>
+            <system value="http://fhir.de/CodeSystem/bfarm/icd-10-gm"/>
+            <version value="2019"/>
+            <code value="C34.0"/>
+          </coding>
+        </code>
+        <bodySite>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="31"/>
+            <code value="C34.0"/>
+          </coding>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <code value="C"/>
+          </coding>
+        </bodySite>
+        <subject>
+          <reference value="Patient/Patient-id-50092"/>
+        </subject>
+        <onsetDateTime value="2021-02-02"/>
+        <recordedDate value="2021-02-02"/>
+      </Condition>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Condition/Condition-id-50092"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Specimen-id-50092"/>
+    <resource>
+      <Specimen>
+        <id value="Specimen-id-50092"/>
+        <type>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SampleMaterialType"/>
+            <code value="bone-marrow"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Patient-id-50092"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2021-02-02"/>
+          <bodySite>
+            <coding>
+              <system value="urn:oid:1.3.6.1.4.1.19376.1.3.11.36"/>
+              <code value="C26.8"/>
+            </coding>
+          </bodySite>
+        </collection>
+      </Specimen>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Specimen/Specimen-id-50092"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Histology-id-50092"/>
+    <resource>
+      <Observation>
+        <id value="Histology-id-50092"/>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="https://loinc.org"/>
+            <code value="59847-4"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Patient-id-50092"/>
+        </subject>
+        <focus>
+          <reference value="Condition/Condition-id-50092"/>
+        </focus>
+        <effectiveDateTime value="1931-09-29"/>
+        <valueCodeableConcept>
+          <coding>
+            <system value="urn:oid:2.16.840.1.113883.6.43.1"/>
+            <version value="32"/>
+            <code value="8140/3"/>
+          </coding>
+        </valueCodeableConcept>
+        <specimen>
+          <reference value="Specimen/Specimen-id-50092"/>
+        </specimen>
+      </Observation>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Observation/Histology-id-50092"/>
+    </request>
+  </entry>
+</Bundle>

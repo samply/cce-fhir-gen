@@ -7,7 +7,7 @@ use log::debug;
 use crate::models::cli::ResourceType;
 use crate::models::enums::id_type::IdType;
 use crate::models::enums::syst_therapy_type::SystTherapyType;
-use crate::utils::get_ids;
+use crate::utils::{get_ids, get_min_date_time};
 use crate::{
     condition_svc, medication_svc, observation_svc, patient_svc, procedure_svc, specimen_svc,
 };
@@ -25,13 +25,11 @@ pub fn get_bundle() -> Bundle {
     let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
     let (condition_id, condition_ref_id) = get_ids(IdType::Id, ResourceType::Condition, i);
     let (specimen_id, specimen_ref_id) = get_ids(IdType::Id, ResourceType::Specimen, i);
-    let (obs_hist_id, obs_hist_ref_id) =
-        get_ids(IdType::Id, ResourceType::ObservationHistology, i);
+    let (obs_hist_id, obs_hist_ref_id) = get_ids(IdType::Id, ResourceType::ObservationHistology, i);
     let (obs_vital_status_id, obs_vital_status_ref_id) =
         get_ids(IdType::Id, ResourceType::ObservationVitalStatus, i);
     let (obs_tnmc_id, obs_tnmc_ref_id) = get_ids(IdType::Id, ResourceType::ObservationTNMc, i);
-    let (proc_rt_id, proc_rt_ref_id) =
-        get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
+    let (proc_rt_id, proc_rt_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureRadiotherapy, i);
     let (proc_op_id, proc_op_ref_id) = get_ids(IdType::Id, ResourceType::ProcedureOperation, i);
     let (med_stmt_id, med_stmt_ref_id) = get_ids(
         IdType::Id,
@@ -39,7 +37,7 @@ pub fn get_bundle() -> Bundle {
         i,
     );
 
-    let min_date_time = Utc.with_ymd_and_hms(1930, 1, 1, 0, 0, 0).unwrap();
+    let min_date_time = get_min_date_time();
     let effective_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
 
     let start_date: DateTime<Utc> = DateTimeAfter(min_date_time).fake();
@@ -460,7 +458,9 @@ pub fn get_histologies_bundle(
     // let observation = observation_svc::get_bundle_entry(observation_tuple.0, observation_tuple.1);
     let hist_entries: Vec<BundleEntry> = observation_tuples
         .iter()
-        .map(|hist_tuple| observation_svc::get_bundle_entry(hist_tuple.0.clone(), hist_tuple.1.as_str()))
+        .map(|hist_tuple| {
+            observation_svc::get_bundle_entry(hist_tuple.0.clone(), hist_tuple.1.as_str())
+        })
         .collect();
 
     let mut entries = vec![patient, condition, specimen];
@@ -522,7 +522,9 @@ pub fn get_tnmcs_bundle(
     let patient = patient_svc::get_bundle_entry(patient_tuple.0, patient_tuple.1);
     let vs_entries: Vec<BundleEntry> = obs_tnmc_tuples
         .iter()
-        .map(|tnmc_tuple| observation_svc::get_bundle_entry(tnmc_tuple.0.clone(), tnmc_tuple.1.as_str()))
+        .map(|tnmc_tuple| {
+            observation_svc::get_bundle_entry(tnmc_tuple.0.clone(), tnmc_tuple.1.as_str())
+        })
         .collect();
 
     let mut entries = vec![patient];
@@ -555,7 +557,9 @@ pub fn get_procedures_bundle(
     let condition = condition_svc::get_bundle_entry(condition_tuple.0, condition_tuple.1);
     let proc_entries: Vec<BundleEntry> = procedure_tuples
         .iter()
-        .map(|proc_tuple| procedure_svc::get_bundle_entry(proc_tuple.0.clone(), proc_tuple.1.as_str()))
+        .map(|proc_tuple| {
+            procedure_svc::get_bundle_entry(proc_tuple.0.clone(), proc_tuple.1.as_str())
+        })
         .collect();
 
     let mut entries = vec![patient, condition];

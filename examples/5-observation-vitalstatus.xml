@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Observation xmlns="http://hl7.org/fhir">
-    <id value="VitalStatus-id-115" />
-    <status value="final" />
-    <code>
-        <coding>
-            <system value="https://loinc.org" />
-            <code value="75186-7" />
-        </coding>
-    </code>
-    <subject>
-        <reference value="Patient/Patient-id-115" />
-    </subject>
-    <effectiveDateTime value="1930-06-18" />
-    <valueCodeableConcept>
-        <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS" />
-            <code value="deceased" />
-        </coding>
-    </valueCodeableConcept>
-</Observation>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="Bundle-id-10279"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/Patient-id-10279"/>
+    <resource>
+      <Patient>
+        <id value="Patient-id-10279"/>
+        <identifier>
+          <value value="Patient-src-identifier-10279"/>
+        </identifier>
+        <gender value="male"/>
+        <birthDate value="1948-11-18"/>
+      </Patient>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Patient/Patient-id-10279"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="https://www.cancercoreeurope.eu/fhir-xml/examples/VitalStatus-id-10279"/>
+    <resource>
+      <Observation>
+        <id value="VitalStatus-id-10279"/>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="https://loinc.org"/>
+            <code value="75186-7"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Patient-id-10279"/>
+        </subject>
+        <effectiveDateTime value="1930-12-04"/>
+        <valueCodeableConcept>
+          <coding>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/VitalStatusCS"/>
+            <code value="alive"/>
+          </coding>
+        </valueCodeableConcept>
+      </Observation>
+    </resource>
+    <request>
+      <method value="PUT"/>
+      <url value="Observation/VitalStatus-id-10279"/>
+    </request>
+  </entry>
+</Bundle>

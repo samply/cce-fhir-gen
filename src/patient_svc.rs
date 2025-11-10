@@ -12,13 +12,13 @@ use crate::extensions::option_ext::OptionExt;
 use crate::models::cli::ResourceType;
 use crate::models::enums::gender::Gender;
 use crate::models::enums::id_type::IdType;
-use crate::utils::{get_bundle_entry_request, get_full_url, get_ids};
+use crate::utils::{get_bundle_entry_request, get_full_url, get_ids, get_min_date_time};
 
 pub fn get_patient(id: &str, src_id: &str) -> Patient {
     debug!("get_patient - id: {}, src_id: {}", id, src_id);
 
     let gender: Gender = Faker.fake();
-    let min_date_time: chrono::DateTime<Utc> = Faker.fake();
+    let min_date_time: chrono::DateTime<Utc> = get_min_date_time();
     let birthdate: chrono::DateTime<Utc> = DateTimeAfter(min_date_time).fake();
     let deceased: bool = Faker.fake();
 
@@ -79,7 +79,10 @@ pub fn get_patients(range: Range<u8>) -> Vec<(Patient, std::string::String)> {
             let i: u16 = Faker.fake();
             let (patient_id, patient_ref_id) = get_ids(IdType::Id, ResourceType::Patient, i);
             let (patient_src_id, _) = get_ids(IdType::Identifier, ResourceType::Patient, i);
-            (get_patient(patient_id.as_str(), patient_src_id.as_str()), patient_ref_id)
+            (
+                get_patient(patient_id.as_str(), patient_src_id.as_str()),
+                patient_ref_id,
+            )
         })
         .collect()
 }
