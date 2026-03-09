@@ -38,7 +38,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -73,7 +73,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -108,7 +108,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -143,7 +143,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -178,7 +178,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -213,7 +213,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -248,7 +248,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -283,7 +283,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -318,7 +318,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -353,7 +353,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -388,7 +388,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -423,7 +423,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -458,7 +458,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -493,7 +493,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -528,7 +528,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -563,7 +563,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -598,7 +598,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -633,7 +633,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -668,7 +668,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -703,7 +703,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -738,7 +738,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -773,7 +773,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -808,7 +808,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -843,7 +843,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -878,7 +878,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -913,7 +913,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -948,7 +948,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -983,7 +983,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -1018,7 +1018,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -1053,7 +1053,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -1088,7 +1088,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -1123,7 +1123,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1158,7 +1158,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -1193,7 +1193,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1228,7 +1228,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -1263,7 +1263,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -1298,7 +1298,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -1333,7 +1333,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -1368,7 +1368,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -1403,7 +1403,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1438,7 +1438,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -1473,7 +1473,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -1508,7 +1508,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1543,7 +1543,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -1578,7 +1578,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -1613,7 +1613,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -1648,7 +1648,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -1683,7 +1683,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1718,7 +1718,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -1753,7 +1753,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -1788,7 +1788,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -1823,7 +1823,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -1858,7 +1858,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1893,7 +1893,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -1928,7 +1928,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -1963,7 +1963,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -1998,7 +1998,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2033,7 +2033,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -2068,7 +2068,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -2103,7 +2103,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2138,7 +2138,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2173,7 +2173,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2208,7 +2208,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -2243,7 +2243,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2278,7 +2278,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -2313,7 +2313,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2348,7 +2348,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -2383,7 +2383,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -2418,7 +2418,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2453,7 +2453,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -2488,7 +2488,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -2523,7 +2523,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -2558,7 +2558,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2593,7 +2593,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -2628,7 +2628,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -2663,7 +2663,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -2698,7 +2698,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -2733,7 +2733,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2768,7 +2768,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2803,7 +2803,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2838,7 +2838,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -2873,7 +2873,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2908,7 +2908,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -2943,7 +2943,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -2978,7 +2978,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -3013,7 +3013,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -3048,7 +3048,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -3083,7 +3083,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -3118,7 +3118,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="U"/>
           </coding>
         </bodySite>
@@ -3153,7 +3153,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -3188,7 +3188,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -3223,7 +3223,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="C"/>
           </coding>
         </bodySite>
@@ -3258,7 +3258,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -3293,7 +3293,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="R"/>
           </coding>
         </bodySite>
@@ -3328,7 +3328,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -3363,7 +3363,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -3398,7 +3398,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="B"/>
           </coding>
         </bodySite>
@@ -3433,7 +3433,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
@@ -3468,7 +3468,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="L"/>
           </coding>
         </bodySite>
@@ -3503,7 +3503,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>

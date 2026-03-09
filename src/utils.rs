@@ -27,7 +27,7 @@ const LOINC_URL: &str = "https://loinc.org";
 // const FHIR_ENDPOINT: &str = "cce-localdatamanagement/fhir/";
 
 const UICC_STAGE_CS: &str = "UICCStageCS";
-const SITE_LOCATION_CS: &str = "SitelocationCS";
+const SITE_LOCATION_CS: &str = "TumorSiteLocationCS";
 const SYST_THERAPY_TYPE_CS: &str = "SYSTTherapyTypeCS";
 const VITAL_STATUS_CS: &str = "VitalStatusCS";
 const SAMPLE_MATERIAL_TYPE_CS: &str = "SampleMaterialType";
@@ -212,6 +212,13 @@ mod tests {
         let smt_url = get_sample_mat_type_url();
         let expected = Uri::from(format!("{CCE_URL}/fhir/core/CodeSystem/SampleMaterialType"));
         assert_eq!(smt_url, expected, "urls do not match");
+    }
+
+    #[test]
+    fn test_get_site_location_url() {
+        let sl_url = get_site_location_url();
+        let expected = Uri::from(format!("{CCE_URL}/fhir/core/CodeSystem/TumorSiteLocationCS"));
+        assert_eq!(sl_url, expected, "urls do not match");
     }
 
     #[test]

@@ -38,7 +38,7 @@
             <code value="C34.0"/>
           </coding>
           <coding>
-            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/SitelocationCS"/>
+            <system value="https://www.cancercoreeurope.eu/fhir/core/CodeSystem/TumorSiteLocationCS"/>
             <code value="N"/>
           </coding>
         </bodySite>
